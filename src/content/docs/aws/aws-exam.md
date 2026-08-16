@@ -1,5 +1,4 @@
-\---
-
+---
 title: מבחן AWS - תרגול לקראת ההסמכה
 description: קישורים לאתרי תרגול שאלות בחינם לקראת מבחני הסמכת AWS
 ---
@@ -19,6 +18,3 @@ description: קישורים לאתרי תרגול שאלות בחינם לקרא
 אוסף שאלות תרגול נוסף, מאורגן לפי נושאים ורמות קושי.
 
 🔗 [aws-exams.matthewntsiful.com](https://aws-exams.matthewntsiful.com/)
-
-## 
-
