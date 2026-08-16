@@ -3,7 +3,7 @@
 // דף הבית - עיצוב "night-shift ops console": טורקיז-שחור, אותות כתומים, JetBrains Mono
 
 const topics = [
-  { icon: "☁️", title: "AWS", path: "~/topics/aws", desc: "שירותי ענן, ארכיטקטורה, אבטחה ו-Solutions Architect", link: "/aws/exam/" },
+  { icon: "☁️", title: "AWS", path: "~/topics/aws", desc: "שירותי ענן, ארכיטקטורה, אבטחה ו-Solutions Architect", link: "/aws/aws-exam/" },
   { icon: "🐧", title: "Linux", path: "~/topics/linux", desc: "פקודות, הרשאות, שירותים, Networking וניהול שרתים", link: "/devops/git-basics/" },
   { icon: "🪟", title: "Windows Server", path: "~/topics/win-server", desc: "Active Directory, DNS, DHCP, GPO וניהול שרתים", link: "/devops/git-basics/" },
   { icon: "⚙️", title: "DevOps", path: "~/topics/devops", desc: "Git, CI/CD, Docker, Kubernetes ואוטומציה", link: "/devops/git-basics/" },
@@ -13,10 +13,10 @@ const topics = [
 ];
 
 const features = [
-  { flag: "--focused", desc: "תוכן בלי רעש מיותר" },
+  { flag: "--focused", desc: "תוכן" },
   { flag: "--practical", desc: "דוגמאות ותרחישים מהעולם האמיתי" },
-  { flag: "--hebrew", desc: "ידע טכני נגיש לקהל הישראלי" },
-  { flag: "--growing", desc: "תוכן חדש ונושאים נוספים לאורך הדרך" },
+  { flag: "--hebrew", desc: "ידע טכני לקהל הישראלי" },
+  { flag: "--growing", desc: "תוכן חדש ונושאים נוספים" },
 ];
 ---
 
@@ -24,7 +24,7 @@ const features = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Royi Guides — לומדים IT</title>
+    <title>Royi Guides — לומדים DevOps</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@500;600;700&family=Heebo:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
@@ -52,8 +52,7 @@ const features = [
             <span class="eyebrow">IT • CLOUD • DEVOPS</span>
             <h1>לומדים IT.<br /><span>בונים ידע. מתקדמים.</span></h1>
             <p>
-              מדריכים ומאמרים מעשיים בעברית לעולם ה-IT, Cloud, Infrastructure
-              ו-DevOps — בלי מים, עם דוגמאות אמיתיות.
+              מדריכים ומאמרים מעשיים בעברית לעולם ה - IT, Cloud, Infrastructure ו-DevOps
             </p>
             <div class="buttons">
               <a class="btn btn-primary" href="/guides">🚀 התחל ללמוד</a>
@@ -68,13 +67,13 @@ const features = [
             </div>
             <div class="terminal-body">
               <div class="term-line">
-                <span class="term-prompt">royi@guides</span><span class="term-comment">:</span><span class="term-path">~</span><span class="term-comment">$ </span><span class="term-output">ls topics/</span>
+                <span class="term-prompt">royiyahud@gmail.com</span><span class="term-comment">:</span><span class="term-path">~</span><span class="term-comment">$ </span><span class="term-output">ls topics/</span>
               </div>
               <div class="term-line">aws/ linux/ windows-server/ devops/</div>
               <div class="term-line">vmware/ terraform/ powershell/</div>
               <div class="term-line">&nbsp;</div>
               <div class="term-line">
-                <span class="term-prompt">royi@guides</span><span class="term-comment">:</span><span class="term-path">~</span><span class="term-comment">$ </span><span class="term-output">./start-learning.sh</span>
+                <span class="term-prompt">royiyahud@gmail.com</span><span class="term-comment">:</span><span class="term-path">~</span><span class="term-comment">$ </span><span class="term-output">./start-learning.sh</span>
               </div>
               <div class="term-line">
                 <span class="term-comment">&gt; מתחילים ללמוד תשתיות, ענן ו-DevOps</span>
@@ -91,7 +90,7 @@ const features = [
         <div class="section-header">
           <span class="eyebrow">נושאים</span>
           <h2>נושאים מרכזיים</h2>
-          <p>בחר נושא והתחל ללמוד בקצב שלך</p>
+          <p>בחר נושא והתחל ללמוד</p>
         </div>
 
         <div class="topic-grid">
@@ -132,11 +131,14 @@ const features = [
           </div>
         </div>
       </section>
+
+      <section class="contact">
+        <p>שאלות או הצעות? ניתן לפנות במייל</p>
+        <a class="contact-email" href="mailto:royiyahud@gmail.com">royiyahud@gmail.com</a>
+      </section>
     </main>
 
-    <footer class="site-footer">
-      © 2026 Royi Guides · <a class="footer-link" href="mailto:royiyahud@gmail.com">royiyahud@gmail.com</a>
-    </footer>
+    <footer class="site-footer">© 2026 Royi Guides</footer>
 
     <style>
       :root {
@@ -375,6 +377,7 @@ const features = [
 
       .term-comment {
         color: var(--ia-text-faint);
+        unicode-bidi: plaintext;
       }
 
       .cursor {
@@ -520,6 +523,30 @@ const features = [
 
       .why-us h2 span {
         color: var(--ia-wire);
+      }
+
+      .contact {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 5rem;
+        text-align: center;
+      }
+
+      .contact p {
+        color: var(--ia-text-dim);
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+      }
+
+      .contact-email {
+        color: var(--ia-wire);
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        text-decoration: none;
+      }
+
+      .contact-email:hover {
+        text-decoration: underline;
       }
 
       .why-grid > div:first-child p {
