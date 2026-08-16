@@ -1,21 +1,21 @@
 ---
 // src/pages/index.astro
-// Royi Guides — DevOps, Cloud & Infrastructure
+// Minimal, Highly Animated, DevOps Pipeline Focus
 
 const devopsPath = [
-  { icon: "🔀", title: "Git", desc: "Version Control & Branching", link: "/devops/git/git-basics/" },
-  { icon: "⚙️", title: "CI/CD", desc: "Automation & Pipelines", link: "/devops/cicd/01-מבוא-ל-cicd/" },
-  { icon: "🐳", title: "Docker", desc: "Containers & Registries", link: "/devops/docker/01-מבוא-ל-docker/" },
-  { icon: "☸️", title: "Kubernetes", desc: "Orchestration & Clusters", link: "/devops/kubernetes/01-mavo-vearchitectura/" },
+  { step: "01", icon: "🔀", title: "Git", link: "/devops/git/git-basics/", color: "#f14e32" },
+  { step: "02", icon: "⚙️", title: "CI/CD", link: "/devops/cicd/01-מבוא-ל-cicd/", color: "#2088ff" },
+  { step: "03", icon: "🐳", title: "Docker", link: "/devops/docker/01-מבוא-ל-docker/", color: "#2496ed" },
+  { step: "04", icon: "☸️", title: "Kubernetes", link: "/devops/kubernetes/01-mavo-vearchitectura/", color: "#326ce5" },
 ];
 
-const allTopics = [
-  { icon: "🏗️", title: "Terraform", category: "IaC", desc: "Infrastructure as Code, State ו-Modules", link: "/terraform/01-מבוא-ויסודות-terraform/" },
-  { icon: "☁️", title: "AWS", category: "Cloud", desc: "Cloud Services, EC2, IAM ו-S3", link: "/aws/aws-exam/" },
-  { icon: "🐧", title: "Linux", category: "Infrastructure", desc: "Commands, Permissions ו-Bash", link: "/linux/01-פקודות-בסיסיות/" },
-  { icon: "🪟", title: "Windows Server", category: "Infrastructure", desc: "Active Directory, DNS ו-Group Policy", link: "/windows-server/intro/" },
-  { icon: "🖥️", title: "VMware", category: "Virtualization", desc: "Virtualization, ESXi ו-vSphere", link: "/vmware/01-virtualization-vmware-basics/" },
-  { icon: "💻", title: "PowerShell", category: "Scripting", desc: "Automation, Scripting ו-Modules", link: "/powershell/01-basics/" },
+const topics = [
+  { icon: "🏗️", title: "Terraform", link: "/terraform/01-מבוא-ויסודות-terraform/" },
+  { icon: "☁️", title: "AWS", link: "/aws/aws-exam/" },
+  { icon: "🐧", title: "Linux", link: "/linux/01-פקודות-בסיסיות/" },
+  { icon: "🪟", title: "Windows", link: "/windows-server/intro/" },
+  { icon: "🖥️", title: "VMware", link: "/vmware/01-virtualization-vmware-basics/" },
+  { icon: "💻", title: "PowerShell", link: "/powershell/01-basics/" },
 ];
 ---
 
@@ -23,421 +23,278 @@ const allTopics = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Royi Guides - מדריכים בעברית לעולם IT, Cloud ו-DevOps מעשיים" />
-    <title>Royi Guides — DevOps, Cloud & Infrastructure בעברית</title>
+    <title>Royi Guides | DevOps & Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">דילוג לתוכן הראשי</a>
+    <!-- Background Animated Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
 
-    <!-- Top Navigation Bar -->
     <header class="navbar">
       <div class="container nav-inner">
-        <a class="logo" href="/" aria-label="Royi Guides - דף הבית">
-          <span class="logo-icon">⚡</span>
-          <span class="logo-text">Royi<span class="highlight">Guides</span></span>
+        <a class="logo" href="/">
+          <span class="logo-icon">⚡</span> Royi<span class="highlight">Guides</span>
         </a>
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>DevOps Path v2.0</span>
-        </div>
+        <a class="btn-sm" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 התחל עכשיו</a>
       </div>
     </header>
 
-    <main id="main-content">
+    <main>
       <!-- Hero Section -->
       <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-text">
-            <div class="badge">🚀 CODE TO PRODUCTION</div>
-            <h1>מקוד לפרודקשן<br /><span class="gradient-text">בתוך שניות</span></h1>
-            <p>
-              Git, CI/CD, Docker, Kubernetes. הכלים שמהנדסים צריכים להכיר בעולם ה-DevOps והתשתיות המודרניות.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 התחל עם CI/CD</a>
-              <a class="btn btn-secondary" href="/devops/git/git-basics/">📖 Git & Branching</a>
-            </div>
-          </div>
-
-          <!-- Code Window / Pipeline Preview -->
-          <div class="code-window">
-            <div class="window-header">
-              <div class="window-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="window-title">deploy-pipeline.yml</span>
-            </div>
-            <div class="window-body">
-              <pre><code><span class="k">name:</span> Production Deploy
-<span class="k">on:</span>
-  <span class="k">push:</span>
-    <span class="k">branches:</span> [ main ]
-<span class="k">jobs:</span>
-  <span class="k">build-and-deploy:</span>
-    <span class="k">runs-on:</span> ubuntu-latest
-    <span class="k">steps:</span>
-      - <span class="k">uses:</span> actions/checkout@v4
-      - <span class="k">name:</span> Build Docker Image
-        <span class="s">run: docker build -t app:v1.0 .</span>
-      - <span class="k">name:</span> Deploy to K8s Cluster
-        <span class="s">run: kubectl apply -f k8s/</span>
-<span class="comment"># Status: All checks passed (0.42s) ✓</span></code></pre>
-            </div>
-          </div>
+        <div class="container text-center">
+          <div class="badge fade-in-up">PIPELINE TO PRODUCTION</div>
+          <h1 class="fade-in-up delay-1">תשתיות ו-DevOps.<br/><span class="gradient-text">בלי בולשיט.</span></h1>
+          <p class="hero-sub fade-in-up delay-2">כלים אמיתיים. מדריכים קצרים. ישר ולעניין.</p>
         </div>
       </section>
 
-      <!-- DevOps Pipeline Section -->
-      <section class="pipeline-section">
+      <!-- Animated Pipeline Section -->
+      <section class="pipeline-visual fade-in-up delay-3">
         <div class="container">
-          <div class="section-header">
-            <span class="sub-title">🔄 THE PIPELINE</span>
-            <h2>DevOps Workflow</h2>
-            <p>מסלול הלימוד המבוסס מקוד מקור ועד לניהול קונטיינרים ב-Production</p>
+          
+          <!-- Animated SVG Pipeline -->
+          <div class="svg-container">
+            <svg viewBox="0 0 1000 200" class="flow-svg" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#f14e32" />
+                  <stop offset="33%" stop-color="#2088ff" />
+                  <stop offset="66%" stop-color="#2496ed" />
+                  <stop offset="100%" stop-color="#326ce5" />
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Base Track -->
+              <path d="M 100 100 L 900 100" class="track-line" />
+              <!-- Animated Data Flow -->
+              <path d="M 100 100 L 900 100" class="data-line" />
+
+              <!-- Nodes -->
+              <g class="node pulse-1" transform="translate(100, 100)">
+                <circle r="24" fill="#0b0f17" stroke="#f14e32" stroke-width="4" filter="url(#glow)"/>
+                <text x="0" y="8" text-anchor="middle" font-size="20">🔀</text>
+              </g>
+
+              <g class="node pulse-2" transform="translate(366, 100)">
+                <circle r="24" fill="#0b0f17" stroke="#2088ff" stroke-width="4" filter="url(#glow)"/>
+                <text x="0" y="8" text-anchor="middle" font-size="20">⚙️</text>
+              </g>
+
+              <g class="node pulse-3" transform="translate(633, 100)">
+                <circle r="24" fill="#0b0f17" stroke="#2496ed" stroke-width="4" filter="url(#glow)"/>
+                <text x="0" y="8" text-anchor="middle" font-size="20">🐳</text>
+              </g>
+
+              <g class="node pulse-4" transform="translate(900, 100)">
+                <circle r="24" fill="#0b0f17" stroke="#326ce5" stroke-width="4" filter="url(#glow)"/>
+                <text x="0" y="8" text-anchor="middle" font-size="20">☸️</text>
+              </g>
+            </svg>
           </div>
 
-          <div class="pipeline-grid">
-            {devopsPath.map((step, index) => (
-              <a href={step.link} class="pipeline-card">
-                <div class="card-top">
-                  <span class="step-num">{String(index + 1).padStart(2, '0')}</span>
-                  <span class="card-icon">{step.icon}</span>
-                </div>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-                <span class="card-link">למידה והעמקה ←</span>
+          <!-- Interactive Steps -->
+          <div class="steps-grid">
+            {devopsPath.map(step => (
+              <a href={step.link} class="step-card" style={`--accent: ${step.color}`}>
+                <div class="step-num">{step.step}</div>
+                <h2>{step.icon} {step.title}</h2>
               </a>
             ))}
           </div>
+
         </div>
       </section>
 
-      <!-- Topics Section -->
-      <section class="topics-section">
-        <div class="container">
-          <div class="section-header">
-            <span class="sub-title">📚 LEARN</span>
-            <h2>Topics & Guides</h2>
-            <p>בחר נושא והתחל ללמוד מדריכים מעשיים בעברית</p>
-          </div>
-
-          <div class="topics-grid">
-            {allTopics.map((topic) => (
-              <a href={topic.link} class="topic-card">
-                <div class="topic-header">
-                  <span class="topic-icon">{topic.icon}</span>
-                  <span class="topic-category">{topic.category}</span>
-                </div>
-                <h3>{topic.title}</h3>
-                <p>{topic.desc}</p>
+      <!-- Tech Stack Section (Minimal Grid) -->
+      <section class="stack-section fade-in-up delay-4">
+        <div class="container text-center">
+          <h3 class="section-title">טכנולוגיות נוספות</h3>
+          <div class="tech-grid">
+            {topics.map(tech => (
+              <a href={tech.link} class="tech-card">
+                <span class="tech-icon">{tech.icon}</span>
+                <span class="tech-name">{tech.title}</span>
               </a>
             ))}
           </div>
-        </div>
-      </section>
-
-      <!-- Why DevOps / Diff Section -->
-      <section class="diff-section">
-        <div class="container">
-          <div class="section-header">
-            <span class="sub-title">💡 WHY DEVOPS</span>
-            <h2>Automate Everything</h2>
-            <p>בלי DevOps? שבועות. עם DevOps? דקות.</p>
-          </div>
-
-          <div class="diff-container">
-            <div class="diff-box diff-old">
-              <div class="diff-header">❌ No DevOps (עבודה ידנית)</div>
-              <ul>
-                <li><code>-</code> כתיבה ופריסה ידנית לשרתים</li>
-                <li><code>-</code> תקווה שהכל יעבוד ללא בדיקות</li>
-                <li><code>-</code> המתנה איטית לאישורי פריסה</li>
-                <li><code>-</code> תיקון תקלות ידני ומורכב בזמן אמת</li>
-              </ul>
-            </div>
-
-            <div class="diff-box diff-new">
-              <div class="diff-header">✅ With DevOps (אוטומציה מלאה)</div>
-              <ul>
-                <li><code>+</code> בדיקות אוטומטיות בכל Push</li>
-                <li><code>+</code> Auto-Deploy רציף ללא Downtime</li>
-                <li><code>+</code> ניטור רציף והתראות בזמן אמת</li>
-                <li><code>+</code> Rollback מיידי בלחיצת כפתור</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="cta-section">
-        <div class="container">
-          <div class="cta-box">
-            <h2>Ready to Automate?</h2>
-            <p>בחר נושא מהמדריכים והתחל לבנות תשתיות מודרניות עוד היום.</p>
-            <div class="hero-actions justify-center">
-              <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 להתחיל עכשיו</a>
-              <a class="btn btn-secondary" href="/devops/git/git-basics/">📖 Git Basics</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="contact-section">
-        <div class="container">
-          <p>שאלות, הצעות או משוב?</p>
-          <a class="contact-email" href="mailto:royiyahud@gmail.com">✉️ royiyahud@gmail.com</a>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p>© 2026 <strong>Royi Guides</strong> — DevOps, Cloud & Infrastructure Learning</p>
-        <p class="footer-note">מדריכים בעברית לעולם IT מודרני</p>
-      </div>
+    <footer class="text-center fade-in-up delay-5">
+      <p>© 2026 Royi Guides</p>
     </footer>
 
     <style>
       :root {
-        --bg: #0b0f17;
-        --panel: #111827;
-        --panel-hover: #1f293d;
-        --border: #1e293b;
-        --border-light: #334155;
-        
-        --text-main: #f8fafc;
-        --text-muted: #94a3b8;
-        --text-dim: #64748b;
-        
-        --accent-cyan: #38bdf8;
-        --accent-green: #10b981;
-        --accent-orange: #ff7a3d;
-        --accent-red: #ef4444;
-
-        --font-sans: 'Heebo', system-ui, sans-serif;
+        --bg: #050505;
+        --surface: rgba(255, 255, 255, 0.03);
+        --surface-hover: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.1);
+        --text: #ffffff;
+        --text-dim: #888888;
+        --primary: #00e5ff;
+        --font-sans: 'Heebo', sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      html { scroll-behavior: smooth; }
       
       body {
-        background-color: var(--bg);
-        color: var(--text-main);
-        font-family: var(--font-sans);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
+        background: var(--bg); color: var(--text);
+        font-family: var(--font-sans); overflow-x: hidden;
       }
 
-      .container {
-        max-width: 1140px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+      .text-center { text-align: center; }
+
+      /* Background Orbs Animation */
+      .bg-orb {
+        position: absolute; border-radius: 50%; filter: blur(120px);
+        z-index: -1; opacity: 0.4; animation: float 10s infinite ease-in-out alternate;
+      }
+      .orb-1 {
+        width: 400px; height: 400px; background: rgba(0, 229, 255, 0.2);
+        top: -100px; right: -100px;
+      }
+      .orb-2 {
+        width: 500px; height: 500px; background: rgba(50, 108, 229, 0.2);
+        bottom: 20%; left: -200px; animation-delay: -5s;
       }
 
-      /* Accessibility */
-      .skip-link {
-        position: absolute; top: -40px; right: 10px;
-        background: var(--accent-cyan); color: #000;
-        padding: 8px 16px; font-weight: bold; z-index: 100;
-        border-radius: 4px; text-decoration: none;
+      @keyframes float {
+        0% { transform: translateY(0) scale(1); }
+        100% { transform: translateY(50px) scale(1.1); }
       }
-      .skip-link:focus { top: 10px; }
 
       /* Navbar */
       .navbar {
+        padding: 1.5rem 0; position: relative; z-index: 10;
         border-bottom: 1px solid var(--border);
-        background: rgba(11, 15, 23, 0.85);
-        backdrop-filter: blur(12px);
-        position: sticky; top: 0; z-index: 50;
+        background: rgba(5, 5, 5, 0.5); backdrop-filter: blur(10px);
       }
-      .nav-inner {
-        height: 64px; display: flex;
-        align-items: center; justify-content: space-between;
+      .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+      .logo { font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+      .logo .highlight { color: var(--primary); }
+      .btn-sm {
+        background: var(--surface); border: 1px solid var(--border);
+        color: var(--text); padding: 8px 16px; border-radius: 99px;
+        text-decoration: none; font-size: 0.9rem; transition: 0.3s;
       }
-      .logo {
-        display: flex; align-items: center; gap: 8px;
-        text-decoration: none; color: var(--text-main);
-        font-weight: 700; font-size: 1.15rem;
-      }
-      .logo-icon { color: var(--accent-cyan); }
-      .logo .highlight { color: var(--accent-cyan); }
-      .status-badge {
-        display: flex; align-items: center; gap: 8px;
-        font-family: var(--font-mono); font-size: 0.75rem;
-        color: var(--text-muted); background: var(--panel);
-        padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border);
-      }
-      .status-dot {
-        width: 8px; height: 8px; background-color: var(--accent-green);
-        border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);
-      }
+      .btn-sm:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.2); }
 
-      /* Hero Section */
-      .hero { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-      .hero-grid {
-        display: grid; grid-template-columns: 1.1fr 0.9fr;
-        gap: 3.5rem; align-items: center;
-      }
+      /* Typography & Hero */
+      .hero { padding: 8rem 0 4rem; position: relative; z-index: 2; }
       .badge {
         display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
-        color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1);
-        border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 12px;
-        border-radius: 99px; margin-bottom: 1rem;
+        letter-spacing: 2px; color: var(--primary); background: rgba(0, 229, 255, 0.1);
+        padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem;
+        border: 1px solid rgba(0, 229, 255, 0.2);
       }
-      .hero-text h1 {
-        font-size: 2.75rem; line-height: 1.2; font-weight: 700; margin-bottom: 1rem;
-      }
+      h1 { font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.1; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px; }
       .gradient-text {
-        background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+        background: linear-gradient(to left, #fff, #888);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       }
-      .hero-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
-      .hero-actions { display: flex; gap: 1rem; }
-      .justify-center { justify-content: center; }
+      .hero-sub { font-size: 1.25rem; color: var(--text-dim); }
 
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        padding: 12px 24px; border-radius: 8px; font-weight: 600;
-        text-decoration: none; transition: all 0.2s ease; font-size: 0.95rem;
+      /* SVG Pipeline Animation */
+      .pipeline-visual { margin: 2rem 0 5rem; position: relative; }
+      .svg-container { width: 100%; overflow: hidden; margin-bottom: 2rem; }
+      .flow-svg { width: 100%; max-height: 180px; display: block; overflow: visible; }
+      
+      .track-line { fill: none; stroke: var(--surface-hover); stroke-width: 4; }
+      .data-line {
+        fill: none; stroke: url(#lineGrad); stroke-width: 6;
+        stroke-dasharray: 20 20; animation: flowData 1.5s linear infinite;
+        filter: drop-shadow(0 0 8px rgba(0,229,255,0.5));
       }
-      .btn-primary { background: var(--accent-cyan); color: #000; }
-      .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
-      .btn-secondary { background: var(--panel); color: var(--text-main); border: 1px solid var(--border-light); }
-      .btn-secondary:hover { background: var(--panel-hover); border-color: var(--text-muted); }
 
-      /* Code Window */
-      .code-window {
-        background: var(--panel); border: 1px solid var(--border-light);
-        border-radius: 12px; overflow: hidden; font-family: var(--font-mono);
-        direction: ltr; text-align: left; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      @keyframes flowData {
+        from { stroke-dashoffset: 40; }
+        to { stroke-dashoffset: 0; }
       }
-      .window-header {
-        background: #0d121d; padding: 10px 16px; border-bottom: 1px solid var(--border);
-        display: flex; align-items: center; justify-content: space-between;
-      }
-      .window-dots { display: flex; gap: 6px; }
-      .dot { width: 10px; height: 10px; border-radius: 50%; }
-      .dot.red { background: #ff5f56; }
-      .dot.yellow { background: #ffbd2e; }
-      .dot.green { background: #27c93f; }
-      .window-title { font-size: 0.75rem; color: var(--text-dim); }
-      .window-body { padding: 1.25rem; font-size: 0.85rem; line-height: 1.7; overflow-x: auto; }
-      .window-body .k { color: var(--accent-cyan); }
-      .window-body .s { color: var(--accent-green); }
-      .window-body .comment { color: var(--text-dim); font-style: italic; display: block; margin-top: 8px; }
 
-      /* Section Common */
-      .section-header { text-align: center; margin-bottom: 3rem; }
-      .sub-title {
-        font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;
-        color: var(--accent-cyan); display: block; margin-bottom: 0.5rem;
-      }
-      .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
-      .section-header p { color: var(--text-muted); }
+      .node { transition: transform 0.3s ease; }
+      .node:hover { transform: scale(1.2); cursor: pointer; }
+      
+      .pulse-1 circle { animation: pulseNode 2s infinite; }
+      .pulse-2 circle { animation: pulseNode 2s infinite 0.5s; }
+      .pulse-3 circle { animation: pulseNode 2s infinite 1s; }
+      .pulse-4 circle { animation: pulseNode 2s infinite 1.5s; }
 
-      /* Pipeline Grid */
-      .pipeline-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-      .pipeline-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
+      @keyframes pulseNode {
+        0% { filter: drop-shadow(0 0 0px var(--primary)); }
+        50% { filter: drop-shadow(0 0 15px var(--primary)); }
+        100% { filter: drop-shadow(0 0 0px var(--primary)); }
       }
-      .pipeline-card {
-        background: var(--panel); border: 1px solid var(--border);
-        border-radius: 12px; padding: 1.75rem; text-decoration: none; color: var(--text-main);
-        transition: all 0.25s ease; display: flex; flex-direction: column;
-      }
-      .pipeline-card:hover {
-        border-color: var(--accent-cyan); transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(56, 189, 248, 0.1);
-      }
-      .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-      .step-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: bold; }
-      .card-icon { font-size: 1.5rem; }
-      .pipeline-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-      .pipeline-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
-      .card-link { font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); }
 
-      /* Topics Section */
-      .topics-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-      .topics-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
+      /* Step Cards (Glassmorphism) */
+      .steps-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+        position: relative; z-index: 5;
       }
-      .topic-card {
-        background: var(--panel); border: 1px solid var(--border);
-        border-radius: 10px; padding: 1.5rem; text-decoration: none; color: var(--text-main);
-        transition: all 0.2s ease;
+      .step-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-top: 2px solid var(--accent); border-radius: 12px;
+        padding: 1.5rem; text-decoration: none; color: var(--text);
+        transition: 0.3s; display: flex; flex-direction: column; align-items: center;
+        backdrop-filter: blur(10px);
       }
-      .topic-card:hover { border-color: var(--border-light); background: var(--panel-hover); }
-      .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-      .topic-icon { font-size: 1.4rem; }
-      .topic-category {
-        font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
-        background: var(--bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
+      .step-card:hover {
+        transform: translateY(-5px); background: var(--surface-hover);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
       }
-      .topic-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-      .topic-card p { color: var(--text-muted); font-size: 0.88rem; }
+      .step-num { font-family: var(--font-mono); color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.5rem; }
+      .step-card h2 { font-size: 1.25rem; font-weight: 600; }
 
-      /* Diff Section */
-      .diff-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-      .diff-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .diff-box {
-        background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
-        padding: 1.75rem; font-family: var(--font-mono); font-size: 0.88rem;
+      /* Tech Stack Grid */
+      .stack-section { padding: 2rem 0 6rem; border-top: 1px solid var(--surface-hover); }
+      .section-title { color: var(--text-dim); font-size: 1rem; margin-bottom: 2rem; font-weight: 400; letter-spacing: 1px; }
+      .tech-grid {
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
       }
-      .diff-header { font-weight: bold; margin-bottom: 1.25rem; font-size: 1rem; }
-      .diff-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-      .diff-old { border-color: rgba(239, 68, 68, 0.3); }
-      .diff-old .diff-header { color: var(--accent-red); }
-      .diff-old code { color: var(--accent-red); font-weight: bold; margin-left: 6px; }
-      .diff-old li { color: #fca5a5; }
-
-      .diff-new { border-color: rgba(16, 185, 129, 0.3); }
-      .diff-new .diff-header { color: var(--accent-green); }
-      .diff-new code { color: var(--accent-green); font-weight: bold; margin-left: 6px; }
-      .diff-new li { color: #6ee7b7; }
-
-      /* CTA Section */
-      .cta-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-      .cta-box {
-        background: var(--panel); border: 1px solid var(--border-light);
-        border-radius: 16px; padding: 3.5rem 2rem; text-align: center;
+      .tech-card {
+        display: flex; align-items: center; gap: 0.75rem;
+        background: var(--surface); border: 1px solid var(--border);
+        padding: 0.75rem 1.5rem; border-radius: 99px; text-decoration: none;
+        color: var(--text); font-weight: 600; transition: 0.2s;
       }
-      .cta-box h2 { font-size: 2rem; margin-bottom: 0.75rem; }
-      .cta-box p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
-
-      /* Contact Section */
-      .contact-section { padding: 3rem 0; text-align: center; }
-      .contact-section p { color: var(--text-muted); margin-bottom: 0.5rem; }
-      .contact-email { color: var(--accent-cyan); font-weight: 600; text-decoration: none; font-size: 1.1rem; }
-      .contact-email:hover { text-decoration: underline; }
+      .tech-card:hover {
+        background: var(--text); color: var(--bg); transform: scale(1.05);
+      }
+      .tech-icon { font-size: 1.2rem; }
 
       /* Footer */
-      .footer {
-        border-top: 1px solid var(--border); padding: 2.5rem 0;
-        color: var(--text-dim); font-size: 0.88rem; text-align: center;
-      }
-      .footer-inner { display: flex; flex-direction: column; gap: 0.4rem; align-items: center; }
-      .footer strong { color: var(--text-muted); }
-      .footer-note { font-size: 0.8rem; }
+      footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
 
-      /* Responsive Media Queries */
-      @media (max-width: 900px) {
-        .hero-grid, .diff-container { grid-template-columns: 1fr; }
-        .hero-text h1 { font-size: 2.2rem; }
+      /* Entrance Animations */
+      .fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.4s; }
+      .delay-4 { animation-delay: 0.6s; }
+      .delay-5 { animation-delay: 0.8s; }
+
+      @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
       }
-      @media (max-width: 600px) {
-        .hero-actions { flex-direction: column; }
-        .btn { width: 100%; }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        .flow-svg { display: none; /* Hide horizontal SVG on mobile, focus on cards */ }
+      }
+      @media (max-width: 500px) {
+        .steps-grid { grid-template-columns: 1fr; }
+        .tech-card { width: 100%; justify-content: center; }
       }
     </style>
   </body>
