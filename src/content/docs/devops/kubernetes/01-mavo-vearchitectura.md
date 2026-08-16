@@ -1,4 +1,8 @@
-# מדריך 1: מבוא ל-Kubernetes וארכיטקטורה
+---
+title: "מבוא ל-Kubernetes וארכיטקטורה"
+category: DevOps/Kubernetes
+part: 1/10
+---
 
 ## תוכן עניינים
 1. [מה זה Kubernetes ולמה צריך אותו](#מה-זה-kubernetes)

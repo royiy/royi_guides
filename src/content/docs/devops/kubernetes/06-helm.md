@@ -1,4 +1,8 @@
-# מדריך 6: Helm - מנהל החבילות של Kubernetes
+---
+title: "Helm - מנהל החבילות של Kubernetes"
+category: DevOps/Kubernetes
+part: 6/10
+---
 
 ## תוכן עניינים
 1. [מה זה Helm ולמה צריך אותו](#מה-זה-helm)

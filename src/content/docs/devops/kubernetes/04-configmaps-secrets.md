@@ -1,4 +1,8 @@
-# מדריך 4: ConfigMaps ו-Secrets
+---
+title: "ConfigMaps ו-Secrets"
+category: DevOps/Kubernetes
+part: 4/10
+---
 
 ## תוכן עניינים
 1. [למה להפריד הגדרות מהקוד](#למה-להפריד)

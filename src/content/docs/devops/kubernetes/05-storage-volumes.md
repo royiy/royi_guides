@@ -1,4 +1,8 @@
-# מדריך 5: אחסון (Storage) ו-Volumes ב-Kubernetes
+---
+title: "אחסון (Storage) ו-Volumes ב-Kubernetes"
+category: DevOps/Kubernetes
+part: 5/10
+---
 
 ## תוכן עניינים
 1. [הבעיה: קונטיינרים הם ephemeral](#הבעיה)

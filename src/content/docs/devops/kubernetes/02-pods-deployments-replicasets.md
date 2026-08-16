@@ -1,4 +1,8 @@
-# מדריך 2: Pods, Deployments ו-ReplicaSets
+---
+title: "Pods, Deployments ו-ReplicaSets"
+category: DevOps/Kubernetes
+part: 2/10
+---
 
 ## תוכן עניינים
 1. [מהו Pod](#מהו-pod)

@@ -1,4 +1,8 @@
-# מדריך 9: Monitoring ו-Logging ב-Kubernetes
+---
+title: "Monitoring ו-Logging ב-Kubernetes"
+category: DevOps/Kubernetes
+part: 9/10
+---
 
 ## תוכן עניינים
 1. [למה ניטור בקוברנטיס שונה ומורכב יותר](#למה-שונה)

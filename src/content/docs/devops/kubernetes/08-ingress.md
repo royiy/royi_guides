@@ -1,4 +1,8 @@
-# מדריך 8: Ingress ו-Ingress Controllers
+---
+title: "Ingress ו-Ingress Controllers"
+category: DevOps/Kubernetes
+part: 8/10
+---
 
 ## תוכן עניינים
 1. [מהו Ingress ולמה הוא נחוץ](#מהו-ingress)

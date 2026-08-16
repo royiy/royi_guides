@@ -1,4 +1,8 @@
-# מדריך 10: שאלות ראיון עבודה מקיפות, טיפים וטריקים, ופתרון תקלות (Troubleshooting)
+---
+title: "שאלות ראיון עבודה, טיפים וטריקים, ופתרון תקלות"
+category: DevOps/Kubernetes
+part: 10/10
+---
 
 זהו מדריך הסיכום - ריכוז של שאלות ראיון נפוצות ברמות שונות (Junior עד Senior/DevOps), יחד עם workflow שיטתי לפתרון תקלות (troubleshooting) שכל מהנדס Kubernetes חייב להכיר.
 

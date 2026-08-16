@@ -1,4 +1,8 @@
-# מדריך 7: RBAC ואבטחה ב-Kubernetes
+---
+title: "RBAC ואבטחה ב-Kubernetes"
+category: DevOps/Kubernetes
+part: 7/10
+---
 
 ## תוכן עניינים
 1. [שלושת שלבי הבקשה: Authentication, Authorization, Admission Control](#שלושת-שלבים)

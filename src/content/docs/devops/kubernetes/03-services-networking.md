@@ -1,4 +1,8 @@
-# מדריך 3: Services ו-Networking ב-Kubernetes
+---
+title: "Services ו-Networking ב-Kubernetes"
+category: DevOps/Kubernetes
+part: 3/10
+---
 
 ## תוכן עניינים
 1. [מודל הרשת של Kubernetes](#מודל-רשת)
