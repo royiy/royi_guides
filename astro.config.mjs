@@ -17,15 +17,45 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/royiy/royi_guides' }],
 			sidebar: [
 				{
+					label: 'AWS',
+					items: [
+						{ autogenerate: { directory: 'aws' } },
+					],
+				},
+				{
+					label: 'Linux',
+					items: [
+						{ autogenerate: { directory: 'linux' } },
+					],
+				},
+				{
+					label: 'Windows Server',
+					items: [
+						{ autogenerate: { directory: 'windows-server' } },
+					],
+				},
+				{
 					label: 'DevOps',
 					items: [
 						{ autogenerate: { directory: 'devops' } },
 					],
 				},
 				{
-					label: 'AWS',
+					label: 'VMware',
 					items: [
-						{ autogenerate: { directory: 'aws' } },
+						{ autogenerate: { directory: 'vmware' } },
+					],
+				},
+				{
+					label: 'Terraform',
+					items: [
+						{ autogenerate: { directory: 'terraform' } },
+					],
+				},
+				{
+					label: 'PowerShell',
+					items: [
+						{ autogenerate: { directory: 'powershell' } },
 					],
 				},
 			],
