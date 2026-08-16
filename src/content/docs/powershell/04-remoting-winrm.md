@@ -1,3 +1,8 @@
+---
+sidebar_position: 4
+title: "מדריך 04 — PowerShell Remoting, WinRM ו-ניהול מרחוק"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 04 — PowerShell Remoting, WinRM ו-ניהול מרחוק

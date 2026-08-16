@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+title: "מדריך 05 — Error Handling, Debugging, Logging וכתיבת סקריפטים Production"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 05 — Error Handling, Debugging, Logging וכתיבת סקריפטים Production

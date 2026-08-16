@@ -1,3 +1,8 @@
+---
+sidebar_position: 7
+title: "מדריך 07 — PowerShell לרשתות, DNS, HTTP, TCP ו-Troubleshooting"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 07 — PowerShell לרשתות, DNS, HTTP, TCP ו-Troubleshooting

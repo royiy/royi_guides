@@ -1,3 +1,8 @@
+---
+sidebar_position: 6
+title: "מדריך 06 — PowerShell מתקדם: Functions, Modules, Objects, Classes ו-Pipeline"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 06 — PowerShell מתקדם: Functions, Modules, Objects, Classes ו-Pipeline

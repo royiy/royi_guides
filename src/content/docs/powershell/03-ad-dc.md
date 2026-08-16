@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "מדריך 03 — Active Directory, Domain Controllers ומשתמשים"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 03 — Active Directory, Domain Controllers ומשתמשים

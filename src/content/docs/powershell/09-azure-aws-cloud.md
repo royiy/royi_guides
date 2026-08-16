@@ -1,3 +1,8 @@
+---
+sidebar_position: 9
+title: "מדריך 09 — PowerShell לענן: Azure, AWS ו-GCP"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 09 — PowerShell לענן: Azure, AWS ו-GCP

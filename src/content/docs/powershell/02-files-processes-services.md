@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "מדריך 02 — קבצים, תהליכים, Services, Registry ו-Event Logs"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 02 — קבצים, תהליכים, Services, Registry ו-Event Logs

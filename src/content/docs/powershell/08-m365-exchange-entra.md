@@ -1,3 +1,8 @@
+---
+sidebar_position: 8
+title: "מדריך 08 — Microsoft 365, Exchange Online ו-Microsoft Entra עם PowerShell"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 08 — Microsoft 365, Exchange Online ו-Microsoft Entra עם PowerShell

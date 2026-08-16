@@ -1,3 +1,8 @@
+---
+sidebar_position: 10
+title: "מדריך 10 — מאגר שאלות ראיון PowerShell ל-System / Cloud Administrator"
+---
+
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
 # מדריך 10 — מאגר שאלות ראיון PowerShell ל-System / Cloud Administrator
