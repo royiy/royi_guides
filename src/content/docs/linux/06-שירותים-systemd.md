@@ -1,3 +1,8 @@
+---
+sidebar_position: 6
+title: "מדריך 6: ניהול שירותים עם systemd"
+---
+
 # מדריך 6: ניהול שירותים עם systemd
 
 ## מבוא

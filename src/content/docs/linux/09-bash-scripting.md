@@ -1,3 +1,8 @@
+---
+sidebar_position: 9
+title: "מדריך 9: Bash Scripting"
+---
+
 # מדריך 9: Bash Scripting
 
 ## מבוא

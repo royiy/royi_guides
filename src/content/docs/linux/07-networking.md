@@ -1,3 +1,8 @@
+---
+sidebar_position: 7
+title: "מדריך 7: Networking בלינוקס"
+---
+
 # מדריך 7: Networking בלינוקס
 
 ## מבוא
