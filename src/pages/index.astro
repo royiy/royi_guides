@@ -3,13 +3,13 @@
 // דף הבית - עיצוב "night-shift ops console": טורקיז-שחור, אותות כתומים, JetBrains Mono
 
 const topics = [
-  { icon: "☁️", title: "AWS", path: "~/topics/aws", desc: "שירותי ענן, ארכיטקטורה, אבטחה ו-Solutions Architect" },
-  { icon: "🐧", title: "Linux", path: "~/topics/linux", desc: "פקודות, הרשאות, שירותים, Networking וניהול שרתים" },
-  { icon: "🪟", title: "Windows Server", path: "~/topics/win-server", desc: "Active Directory, DNS, DHCP, GPO וניהול שרתים" },
-  { icon: "⚙️", title: "DevOps", path: "~/topics/devops", desc: "Git, CI/CD, Docker, Kubernetes ואוטומציה" },
-  { icon: "🖥️", title: "VMware", path: "~/topics/vmware", desc: "vSphere, ESXi, vCenter, HA וירטואליזציה" },
-  { icon: "🏗️", title: "Terraform", path: "~/topics/terraform", desc: "Infrastructure as Code וניהול תשתיות בענן" },
-  { icon: "💻", title: "PowerShell", path: "~/topics/powershell", desc: "אוטומציה, ניהול Windows וסקריפטים" },
+  { icon: "☁️", title: "AWS", path: "~/topics/aws", desc: "שירותי ענן, ארכיטקטורה, אבטחה ו-Solutions Architect", link: "/devops/git-basics/" },
+  { icon: "🐧", title: "Linux", path: "~/topics/linux", desc: "פקודות, הרשאות, שירותים, Networking וניהול שרתים", link: "/devops/git-basics/" },
+  { icon: "🪟", title: "Windows Server", path: "~/topics/win-server", desc: "Active Directory, DNS, DHCP, GPO וניהול שרתים", link: "/devops/git-basics/" },
+  { icon: "⚙️", title: "DevOps", path: "~/topics/devops", desc: "Git, CI/CD, Docker, Kubernetes ואוטומציה", link: "/devops/git-basics/" },
+  { icon: "🖥️", title: "VMware", path: "~/topics/vmware", desc: "vSphere, ESXi, vCenter, HA וירטואליזציה", link: "/devops/git-basics/" },
+  { icon: "🏗️", title: "Terraform", path: "~/topics/terraform", desc: "Infrastructure as Code וניהול תשתיות בענן", link: "/devops/git-basics/" },
+  { icon: "💻", title: "PowerShell", path: "~/topics/powershell", desc: "אוטומציה, ניהול Windows וסקריפטים", link: "/devops/git-basics/" },
 ];
 
 const features = [
@@ -97,7 +97,7 @@ const features = [
         <div class="topic-grid">
           {
             topics.map((t) => (
-              <a class="topic-card" href="/docs/intro">
+              <a class="topic-card" href={t.link}>
                 <div class="topic-path">{t.path}</div>
                 <div class="topic-icon">{t.icon}</div>
                 <h3>{t.title}</h3>
