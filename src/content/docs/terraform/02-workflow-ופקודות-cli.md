@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "מדריך 2: Terraform CLI Workflow ופקודות חיוניות"
+---
+
 # מדריך 2: Terraform CLI Workflow ופקודות חיוניות
 
 ## מבוא

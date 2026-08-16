@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "מדריך 3: שפת HCL - משתנים, פלטים ו-Locals"
+---
+
 # מדריך 3: שפת HCL - משתנים, פלטים ו-Locals
 
 ## מה זה HCL?

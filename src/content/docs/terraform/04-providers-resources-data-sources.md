@@ -1,3 +1,8 @@
+---
+sidebar_position: 4
+title: "מדריך 4: Providers, Resources ו-Data Sources"
+---
+
 # מדריך 4: Providers, Resources ו-Data Sources
 
 ## מה זה Provider?

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "מדריך 1: מבוא ויסודות Terraform"
+---
+
 # מדריך 1: מבוא ויסודות Terraform
 
 ## מה זה Terraform?

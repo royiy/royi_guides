@@ -1,3 +1,8 @@
+---
+sidebar_position: 7
+title: "מדריך 7: Workspaces וניהול סביבות מרובות"
+---
+
 # מדריך 7: Workspaces וניהול סביבות מרובות
 
 ## מה זה Workspace?

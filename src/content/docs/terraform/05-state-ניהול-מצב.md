@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+title: "מדריך 5: Terraform State לעומק"
+---
+
 # מדריך 5: Terraform State לעומק
 
 ## מה זה State ולמה הוא קיים?

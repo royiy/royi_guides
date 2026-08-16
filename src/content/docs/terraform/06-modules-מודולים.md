@@ -1,3 +1,8 @@
+---
+sidebar_position: 6
+title: "מדריך 6: Modules - קוד לשימוש חוזר"
+---
+
 # מדריך 6: Modules - קוד לשימוש חוזר
 
 ## מה זה Module?
