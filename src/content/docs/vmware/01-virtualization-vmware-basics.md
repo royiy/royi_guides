@@ -4,7 +4,6 @@ sidebar\_position: 1
 description: "מדריך מלא למתחילים: Hypervisor, ESXi, vSphere, vCenter, VM, Datastore, Cluster וארכיטקטורה."
 ---
 
-# VMware #1 — וירטואליזציה מהבסיס
 
 > \*\*הערת גרסאות:\*\* VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 

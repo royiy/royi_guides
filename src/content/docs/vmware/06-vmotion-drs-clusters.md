@@ -3,8 +3,6 @@ sidebar_position: 6
 title: "VMware #6 — Cluster, vMotion ו-DRS לעומק"
 ---
 
-# VMware #6 — Cluster, vMotion ו-DRS
-
 ## 1. Cluster
 
 ```text

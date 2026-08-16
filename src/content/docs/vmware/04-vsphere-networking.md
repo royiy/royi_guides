@@ -3,8 +3,6 @@ sidebar_position: 4
 title: "VMware #4 — Networking לעומק: vSwitch, vDS, VLAN ו-VMkernel"
 ---
 
-# VMware #4 — Networking לעומק
-
 ## מטרת המדריך
 
 זהו אחד הפרקים החשובים ביותר לאיש System/Virtualization. המטרה היא להגיע למצב שבו אפשר לעקוב אחרי Packet מה-VM ועד ה-Switch הפיזי.

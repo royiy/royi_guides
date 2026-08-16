@@ -3,8 +3,6 @@ sidebar_position: 5
 title: "VMware #5 — Storage לעומק: VMFS, NFS, iSCSI ו-Performance"
 ---
 
-# VMware #5 — Storage לעומק
-
 ## 1. איך VM נשמרת?
 
 ```text

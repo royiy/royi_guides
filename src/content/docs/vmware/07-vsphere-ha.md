@@ -3,8 +3,6 @@ sidebar_position: 7
 title: "VMware #7 — vSphere HA לעומק: Failure, Isolation ו-Admission Control"
 ---
 
-# VMware #7 — vSphere HA לעומק
-
 ## 1. מטרת HA
 
 HA נועד לסייע בהתאוששות ממצב שבו Host נכשל, באמצעות הפעלה מחדש של VMs על Hosts אחרים ב-Cluster.

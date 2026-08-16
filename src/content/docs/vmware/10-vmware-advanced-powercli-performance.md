@@ -3,8 +3,6 @@ sidebar_position: 10
 title: "VMware #10 — Advanced: PowerCLI, Performance ו-Best Practices"
 ---
 
-# VMware #10 — Advanced VMware
-
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## מטרת המדריך

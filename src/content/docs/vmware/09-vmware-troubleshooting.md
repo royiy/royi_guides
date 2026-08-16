@@ -3,8 +3,6 @@ sidebar_position: 9
 title: "VMware #9 — Troubleshooting מעשי"
 ---
 
-# VMware #9 — Troubleshooting מעשי
-
 ## שיטת העבודה
 
 ```text

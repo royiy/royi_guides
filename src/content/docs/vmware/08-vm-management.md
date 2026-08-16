@@ -3,8 +3,6 @@ sidebar_position: 8
 title: "VMware #8 — Snapshot, Template, Clone וניהול משאבים"
 ---
 
-# VMware #8 — ניהול VM
-
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## 1. Snapshot

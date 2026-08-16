@@ -3,8 +3,6 @@ sidebar_position: 3
 title: "VMware #3 — vCenter Server"
 ---
 
-# VMware #3 — vCenter Server
-
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## מטרת המדריך

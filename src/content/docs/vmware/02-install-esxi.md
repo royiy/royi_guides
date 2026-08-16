@@ -3,8 +3,6 @@ sidebar_position: 2
 title: "VMware #2 — התקנת ESXi והקמת Host"
 ---
 
-# VMware #2 — התקנת ESXi והקמת Host
-
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## מטרת המדריך
