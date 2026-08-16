@@ -37,18 +37,17 @@ const topics = [
         <a class="logo" href="/">
           <span class="logo-icon">⚡</span> Royi<span class="highlight">Guides</span>
         </a>
-        <a class="btn-sm" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 התחל עכשיו</a>
       </div>
     </header>
 
     <main>
-      <!-- Hero: Infinite DevOps Loop -->
+      <!-- Hero: Infinite DevOps Loop with Stages -->
       <section class="hero-infinity fade-in-up">
         <div class="badge">CODE TO PRODUCTION</div>
         
         <!-- Animated DevOps Infinity SVG -->
         <div class="infinity-wrapper">
-          <svg viewBox="0 0 800 300" class="infinity-svg" preserveAspectRatio="xMidYMid meet">
+          <svg viewBox="0 0 800 300" class="infinity-svg" preserveAspectRatio="xMidYMid meet" style="overflow: visible;">
             <defs>
               <linearGradient id="infGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#f14e32" />
@@ -57,7 +56,7 @@ const topics = [
                 <stop offset="100%" stop-color="#326ce5" />
               </linearGradient>
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feGaussianBlur stdDeviation="6" result="blur" />
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
               </filter>
             </defs>
@@ -71,24 +70,47 @@ const topics = [
                   fill="none" stroke="url(#infGrad)" stroke-width="10" stroke-linecap="round"
                   class="inf-path" filter="url(#glow)" />
 
-            <!-- Pulsing Nodes -->
-            <g class="pulse-node" transform="translate(100, 150)">
-              <circle r="12" fill="#050505" stroke="#f14e32" stroke-width="4" filter="url(#glow)"/>
+            <!-- DEV CYCLE (Left Side) -->
+            <g class="stage-node pulse-1" transform="translate(250, 53)">
+              <circle r="8" fill="#050505" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="-18" text-anchor="middle" class="stage-text">PLAN</text>
             </g>
-            <g class="pulse-node" transform="translate(400, 150)" style="animation-delay: 1s">
-              <circle r="12" fill="#050505" stroke="#2088ff" stroke-width="4" filter="url(#glow)"/>
+            <g class="stage-node pulse-2" transform="translate(100, 150)">
+              <circle r="8" fill="#050505" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
+              <text x="-18" y="5" text-anchor="end" class="stage-text">CODE</text>
             </g>
-            <g class="pulse-node" transform="translate(700, 150)" style="animation-delay: 2s">
-              <circle r="12" fill="#050505" stroke="#326ce5" stroke-width="4" filter="url(#glow)"/>
+            <g class="stage-node pulse-3" transform="translate(250, 247)">
+              <circle r="8" fill="#050505" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="30" text-anchor="middle" class="stage-text">BUILD</text>
+            </g>
+            <g class="stage-node pulse-4" transform="translate(340, 150)">
+              <circle r="8" fill="#050505" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="-18" text-anchor="middle" class="stage-text">TEST</text>
+            </g>
+
+            <!-- OPS CYCLE (Right Side) -->
+            <g class="stage-node pulse-5" transform="translate(550, 53)">
+              <circle r="8" fill="#050505" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="-18" text-anchor="middle" class="stage-text">RELEASE</text>
+            </g>
+            <g class="stage-node pulse-6" transform="translate(700, 150)">
+              <circle r="8" fill="#050505" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
+              <text x="18" y="5" text-anchor="start" class="stage-text">DEPLOY</text>
+            </g>
+            <g class="stage-node pulse-7" transform="translate(550, 247)">
+              <circle r="8" fill="#050505" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="30" text-anchor="middle" class="stage-text">OPERATE</text>
+            </g>
+            <g class="stage-node pulse-8" transform="translate(460, 150)">
+              <circle r="8" fill="#050505" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
+              <text x="0" y="30" text-anchor="middle" class="stage-text">MONITOR</text>
             </g>
           </svg>
         </div>
-        
-        <p class="hero-sub fade-in-up delay-1">כלים אמיתיים. בלי רעשי רקע. ישר ולעניין.</p>
       </section>
 
       <!-- Glassmorphism Pipeline Cards -->
-      <section class="pipeline-section fade-in-up delay-2">
+      <section class="pipeline-section fade-in-up delay-1">
         <div class="container steps-grid">
           {devopsPath.map(step => (
             <a href={step.link} class="step-card" style={`--accent: ${step.color}`}>
@@ -100,7 +122,7 @@ const topics = [
       </section>
 
       <!-- Minimal Tech Stack Grid -->
-      <section class="stack-section fade-in-up delay-3">
+      <section class="stack-section fade-in-up delay-2">
         <div class="container text-center">
           <div class="tech-grid">
             {topics.map(tech => (
@@ -114,8 +136,9 @@ const topics = [
       </section>
     </main>
 
-    <footer class="text-center fade-in-up delay-4">
+    <footer class="text-center fade-in-up delay-3">
       <p>© 2026 Royi Guides</p>
+      <a href="mailto:royiyahud@gmail.com" class="footer-email">royiyahud@gmail.com</a>
     </footer>
 
     <style>
@@ -166,32 +189,24 @@ const topics = [
         border-bottom: 1px solid var(--border);
         background: rgba(5, 5, 5, 0.5); backdrop-filter: blur(10px);
       }
-      .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+      .nav-inner { display: flex; align-items: center; }
       .logo { font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
       .logo .highlight { color: var(--primary); }
-      .btn-sm {
-        background: var(--surface); border: 1px solid var(--border);
-        color: var(--text); padding: 8px 16px; border-radius: 99px;
-        text-decoration: none; font-size: 0.9rem; transition: 0.3s;
-      }
-      .btn-sm:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.2); }
 
       /* Hero Infinity Loop */
       .hero-infinity { 
         padding: 4rem 0 2rem; 
         display: flex; flex-direction: column; align-items: center; justify-content: center;
-        text-align: center;
       }
       .badge {
         display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
         letter-spacing: 2px; color: var(--primary); background: rgba(0, 229, 255, 0.1);
-        padding: 6px 16px; border-radius: 99px; margin-bottom: 2rem;
+        padding: 6px 16px; border-radius: 99px; margin-bottom: 3rem;
         border: 1px solid rgba(0, 229, 255, 0.2);
       }
-      .hero-sub { font-size: 1.25rem; color: var(--text-dim); margin-top: -1rem; }
 
-      /* Infinity SVG Animations */
-      .infinity-wrapper { width: 100%; max-width: 900px; margin: 0 auto 1rem; }
+      /* Infinity SVG Animations & Texts */
+      .infinity-wrapper { width: 100%; max-width: 900px; margin: 0 auto 2rem; }
       .infinity-svg { width: 100%; height: auto; display: block; }
       
       .inf-path {
@@ -204,12 +219,26 @@ const topics = [
         to { stroke-dashoffset: 0; }
       }
 
-      .pulse-node circle {
-        animation: pulse 2s infinite alternate;
+      .stage-text {
+        fill: #ffffff;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
       }
+
+      .pulse-1 circle { animation: pulse 2s infinite alternate 0.0s; }
+      .pulse-2 circle { animation: pulse 2s infinite alternate 0.2s; }
+      .pulse-3 circle { animation: pulse 2s infinite alternate 0.4s; }
+      .pulse-4 circle { animation: pulse 2s infinite alternate 0.6s; }
+      .pulse-5 circle { animation: pulse 2s infinite alternate 0.8s; }
+      .pulse-6 circle { animation: pulse 2s infinite alternate 1.0s; }
+      .pulse-7 circle { animation: pulse 2s infinite alternate 1.2s; }
+      .pulse-8 circle { animation: pulse 2s infinite alternate 1.4s; }
+
       @keyframes pulse {
         0% { transform: scale(1); filter: brightness(1); }
-        100% { transform: scale(1.3); filter: brightness(1.5); }
+        100% { transform: scale(1.4); filter: brightness(1.6); }
       }
 
       /* Step Cards (Glassmorphism) */
@@ -249,14 +278,24 @@ const topics = [
       .tech-icon { font-size: 1.2rem; }
 
       /* Footer */
-      footer { padding: 2rem 0; border-top: 1px solid var(--surface); color: var(--text-dim); font-size: 0.9rem; }
+      footer { padding: 2rem 0 3rem; border-top: 1px solid var(--surface); color: var(--text-dim); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
+      
+      .footer-email {
+        color: var(--text-dim);
+        font-family: var(--font-mono);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        letter-spacing: 0.5px;
+      }
+      .footer-email:hover {
+        color: var(--primary);
+      }
 
       /* Entrance Animations */
       .fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
       .delay-1 { animation-delay: 0.2s; }
       .delay-2 { animation-delay: 0.4s; }
       .delay-3 { animation-delay: 0.6s; }
-      .delay-4 { animation-delay: 0.8s; }
 
       @keyframes fadeInUp {
         to { opacity: 1; transform: translateY(0); }
@@ -270,6 +309,7 @@ const topics = [
         .steps-grid { grid-template-columns: 1fr; }
         .tech-card { width: 100%; justify-content: center; }
         .infinity-wrapper { padding: 0 1rem; }
+        .stage-text { font-size: 12px; }
       }
     </style>
   </body>
