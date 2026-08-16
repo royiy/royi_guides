@@ -2,7 +2,6 @@
 title: "מדריך 2: ניהול Active Directory Domain Services"
 description: "הבנת AD, ניהול אובייקטים, קבוצות, הרשאות ותפקידי FSMO."
 ---
-# מדריך 2: ניהול Active Directory Domain Services (AD DS) 🗄️
 
 ## מבוא
 Active Directory (או בקיצור AD) הוא שירות ניהול התשתיות, הזהויות וההרשאות של מיקרוסופט. הוא משמש כ"ספר טלפונים" ומרכז בקרת אבטחה של הארגון. שרת שעליו מותקן AD נקרא **Domain Controller (DC)**.

@@ -2,7 +2,6 @@
 title: "מדריך 6: רשתות, תקשורת ו-Windows Firewall"
 description: "תפיסות רשת, NIC Teaming וחומת האש של Windows."
 ---
-# מדריך 6: רשתות, תקשורת ו-Windows Firewall 🌐🛡️
 
 ## מבוא
 שרתי Windows הם לעיתים רבות הלב של התקשורת בארגון. יכולות הרשת של השרת כוללות לא רק כתובות IP וראוטינג (Routing) בסיסי, אלא מנגנונים לשיפור ביצועים כגון איחוד כרטיסי רשת (NIC Teaming), ניתוב מתקדם (RRAS), חומת אש מובנית וחזקה (Windows Defender Firewall with Advanced Security), ופתרונות VPN.

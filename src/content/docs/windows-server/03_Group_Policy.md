@@ -2,7 +2,6 @@
 title: "מדריך 3: ניהול Group Policy (GPO)"
 description: "ניהול פוליסות ארגוניות באמצעות GPO ב-Windows Server."
 ---
-# מדריך 3: ניהול Group Policy (GPO) 📜
 
 ## מבוא
 Group Policy הוא כלי העוצמה של ה-Active Directory. הוא מאפשר למנהלי רשת לאכוף הגדרות, מדיניות אבטחה, התקנת תוכנות, הוספת מדפסות והגבלות על כל מחשבי הארגון באופן אוטומטי ממרכז אחד. הגדרות המדיניות נקראות GPOs (Group Policy Objects).

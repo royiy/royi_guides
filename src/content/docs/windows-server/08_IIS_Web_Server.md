@@ -2,7 +2,6 @@
 title: "מדריך 8: ניהול שרת אינטרנט IIS"
 description: "הקמת שרת Web, ניהול Application Pools והגדרות SSL/SNI."
 ---
-# מדריך 8: ניהול שרת אינטרנט IIS 🌐
 
 ## מבוא
 IIS (Internet Information Services) הוא שרת ה-Web המובנה של Windows Server. הוא מאפשר אירוח אתרי אינטרנט, אפליקציות רשת המבוססות על ASP.NET, ושירותי FTP.
