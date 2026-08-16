@@ -1,24 +1,26 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Royi Guides',
+			defaultLocale: 'root',
+			locales: {
+				root: {
+					label: 'עברית',
+					lang: 'he',
+					dir: 'rtl',
+				},
+			},
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/royiy/royi_guides' }],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'DevOps',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ autogenerate: { directory: 'devops' } },
 					],
-				},
-				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
 				},
 			],
 		}),
