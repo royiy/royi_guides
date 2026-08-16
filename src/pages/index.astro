@@ -1,6 +1,6 @@
 ---
 // src/pages/index.astro
-// Minimal, Highly Animated, DevOps Pipeline Focus
+// Pure Visual DevOps Path - Minimal Text, Infinite Loop Animation
 
 const devopsPath = [
   { step: "01", icon: "🔀", title: "Git", link: "/devops/git/git-basics/", color: "#f14e32" },
@@ -23,7 +23,7 @@ const topics = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Royi Guides | DevOps & Infrastructure</title>
+    <title>Royi Guides | DevOps Loop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
@@ -42,80 +42,66 @@ const topics = [
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="container text-center">
-          <div class="badge fade-in-up">PIPELINE TO PRODUCTION</div>
-          <h1 class="fade-in-up delay-1">תשתיות ו-DevOps.<br/><span class="gradient-text">בלי בולשיט.</span></h1>
-          <p class="hero-sub fade-in-up delay-2">כלים אמיתיים. מדריכים קצרים. ישר ולעניין.</p>
+      <!-- Hero: Infinite DevOps Loop -->
+      <section class="hero-infinity fade-in-up">
+        <div class="badge">CODE TO PRODUCTION</div>
+        
+        <!-- Animated DevOps Infinity SVG -->
+        <div class="infinity-wrapper">
+          <svg viewBox="0 0 800 300" class="infinity-svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="infGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f14e32" />
+                <stop offset="33%" stop-color="#2088ff" />
+                <stop offset="66%" stop-color="#2496ed" />
+                <stop offset="100%" stop-color="#326ce5" />
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            
+            <!-- Shadow/Background Track -->
+            <path d="M400,150 C300,300 100,300 100,150 C100,0 300,0 400,150 C500,300 700,300 700,150 C700,0 500,0 400,150 Z" 
+                  fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="20" stroke-linecap="round" />
+            
+            <!-- Animated Flowing Beam -->
+            <path d="M400,150 C300,300 100,300 100,150 C100,0 300,0 400,150 C500,300 700,300 700,150 C700,0 500,0 400,150 Z" 
+                  fill="none" stroke="url(#infGrad)" stroke-width="10" stroke-linecap="round"
+                  class="inf-path" filter="url(#glow)" />
+
+            <!-- Pulsing Nodes -->
+            <g class="pulse-node" transform="translate(100, 150)">
+              <circle r="12" fill="#050505" stroke="#f14e32" stroke-width="4" filter="url(#glow)"/>
+            </g>
+            <g class="pulse-node" transform="translate(400, 150)" style="animation-delay: 1s">
+              <circle r="12" fill="#050505" stroke="#2088ff" stroke-width="4" filter="url(#glow)"/>
+            </g>
+            <g class="pulse-node" transform="translate(700, 150)" style="animation-delay: 2s">
+              <circle r="12" fill="#050505" stroke="#326ce5" stroke-width="4" filter="url(#glow)"/>
+            </g>
+          </svg>
+        </div>
+        
+        <p class="hero-sub fade-in-up delay-1">כלים אמיתיים. בלי רעשי רקע. ישר ולעניין.</p>
+      </section>
+
+      <!-- Glassmorphism Pipeline Cards -->
+      <section class="pipeline-section fade-in-up delay-2">
+        <div class="container steps-grid">
+          {devopsPath.map(step => (
+            <a href={step.link} class="step-card" style={`--accent: ${step.color}`}>
+              <div class="step-num">{step.step}</div>
+              <h2>{step.icon} {step.title}</h2>
+            </a>
+          ))}
         </div>
       </section>
 
-      <!-- Animated Pipeline Section -->
-      <section class="pipeline-visual fade-in-up delay-3">
-        <div class="container">
-          
-          <!-- Animated SVG Pipeline -->
-          <div class="svg-container">
-            <svg viewBox="0 0 1000 200" class="flow-svg" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#f14e32" />
-                  <stop offset="33%" stop-color="#2088ff" />
-                  <stop offset="66%" stop-color="#2496ed" />
-                  <stop offset="100%" stop-color="#326ce5" />
-                </linearGradient>
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="5" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-
-              <!-- Base Track -->
-              <path d="M 100 100 L 900 100" class="track-line" />
-              <!-- Animated Data Flow -->
-              <path d="M 100 100 L 900 100" class="data-line" />
-
-              <!-- Nodes -->
-              <g class="node pulse-1" transform="translate(100, 100)">
-                <circle r="24" fill="#0b0f17" stroke="#f14e32" stroke-width="4" filter="url(#glow)"/>
-                <text x="0" y="8" text-anchor="middle" font-size="20">🔀</text>
-              </g>
-
-              <g class="node pulse-2" transform="translate(366, 100)">
-                <circle r="24" fill="#0b0f17" stroke="#2088ff" stroke-width="4" filter="url(#glow)"/>
-                <text x="0" y="8" text-anchor="middle" font-size="20">⚙️</text>
-              </g>
-
-              <g class="node pulse-3" transform="translate(633, 100)">
-                <circle r="24" fill="#0b0f17" stroke="#2496ed" stroke-width="4" filter="url(#glow)"/>
-                <text x="0" y="8" text-anchor="middle" font-size="20">🐳</text>
-              </g>
-
-              <g class="node pulse-4" transform="translate(900, 100)">
-                <circle r="24" fill="#0b0f17" stroke="#326ce5" stroke-width="4" filter="url(#glow)"/>
-                <text x="0" y="8" text-anchor="middle" font-size="20">☸️</text>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Interactive Steps -->
-          <div class="steps-grid">
-            {devopsPath.map(step => (
-              <a href={step.link} class="step-card" style={`--accent: ${step.color}`}>
-                <div class="step-num">{step.step}</div>
-                <h2>{step.icon} {step.title}</h2>
-              </a>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Tech Stack Section (Minimal Grid) -->
-      <section class="stack-section fade-in-up delay-4">
+      <!-- Minimal Tech Stack Grid -->
+      <section class="stack-section fade-in-up delay-3">
         <div class="container text-center">
-          <h3 class="section-title">טכנולוגיות נוספות</h3>
           <div class="tech-grid">
             {topics.map(tech => (
               <a href={tech.link} class="tech-card">
@@ -128,7 +114,7 @@ const topics = [
       </section>
     </main>
 
-    <footer class="text-center fade-in-up delay-5">
+    <footer class="text-center fade-in-up delay-4">
       <p>© 2026 Royi Guides</p>
     </footer>
 
@@ -152,13 +138,13 @@ const topics = [
         font-family: var(--font-sans); overflow-x: hidden;
       }
 
-      .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
       .text-center { text-align: center; }
 
-      /* Background Orbs Animation */
+      /* Background Animations */
       .bg-orb {
         position: absolute; border-radius: 50%; filter: blur(120px);
-        z-index: -1; opacity: 0.4; animation: float 10s infinite ease-in-out alternate;
+        z-index: -1; opacity: 0.3; animation: float 10s infinite ease-in-out alternate;
       }
       .orb-1 {
         width: 400px; height: 400px; background: rgba(0, 229, 255, 0.2);
@@ -190,53 +176,44 @@ const topics = [
       }
       .btn-sm:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(0,229,255,0.2); }
 
-      /* Typography & Hero */
-      .hero { padding: 8rem 0 4rem; position: relative; z-index: 2; }
+      /* Hero Infinity Loop */
+      .hero-infinity { 
+        padding: 4rem 0 2rem; 
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center;
+      }
       .badge {
         display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
         letter-spacing: 2px; color: var(--primary); background: rgba(0, 229, 255, 0.1);
-        padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem;
+        padding: 6px 16px; border-radius: 99px; margin-bottom: 2rem;
         border: 1px solid rgba(0, 229, 255, 0.2);
       }
-      h1 { font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.1; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px; }
-      .gradient-text {
-        background: linear-gradient(to left, #fff, #888);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      }
-      .hero-sub { font-size: 1.25rem; color: var(--text-dim); }
+      .hero-sub { font-size: 1.25rem; color: var(--text-dim); margin-top: -1rem; }
 
-      /* SVG Pipeline Animation */
-      .pipeline-visual { margin: 2rem 0 5rem; position: relative; }
-      .svg-container { width: 100%; overflow: hidden; margin-bottom: 2rem; }
-      .flow-svg { width: 100%; max-height: 180px; display: block; overflow: visible; }
+      /* Infinity SVG Animations */
+      .infinity-wrapper { width: 100%; max-width: 900px; margin: 0 auto 1rem; }
+      .infinity-svg { width: 100%; height: auto; display: block; }
       
-      .track-line { fill: none; stroke: var(--surface-hover); stroke-width: 4; }
-      .data-line {
-        fill: none; stroke: url(#lineGrad); stroke-width: 6;
-        stroke-dasharray: 20 20; animation: flowData 1.5s linear infinite;
-        filter: drop-shadow(0 0 8px rgba(0,229,255,0.5));
+      .inf-path {
+        stroke-dasharray: 400 1600;
+        animation: flowInf 4s linear infinite;
       }
-
-      @keyframes flowData {
-        from { stroke-dashoffset: 40; }
+      
+      @keyframes flowInf {
+        from { stroke-dashoffset: 2000; }
         to { stroke-dashoffset: 0; }
       }
 
-      .node { transition: transform 0.3s ease; }
-      .node:hover { transform: scale(1.2); cursor: pointer; }
-      
-      .pulse-1 circle { animation: pulseNode 2s infinite; }
-      .pulse-2 circle { animation: pulseNode 2s infinite 0.5s; }
-      .pulse-3 circle { animation: pulseNode 2s infinite 1s; }
-      .pulse-4 circle { animation: pulseNode 2s infinite 1.5s; }
-
-      @keyframes pulseNode {
-        0% { filter: drop-shadow(0 0 0px var(--primary)); }
-        50% { filter: drop-shadow(0 0 15px var(--primary)); }
-        100% { filter: drop-shadow(0 0 0px var(--primary)); }
+      .pulse-node circle {
+        animation: pulse 2s infinite alternate;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); filter: brightness(1); }
+        100% { transform: scale(1.3); filter: brightness(1.5); }
       }
 
       /* Step Cards (Glassmorphism) */
+      .pipeline-section { margin-bottom: 5rem; }
       .steps-grid {
         display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
         position: relative; z-index: 5;
@@ -255,11 +232,10 @@ const topics = [
       .step-num { font-family: var(--font-mono); color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.5rem; }
       .step-card h2 { font-size: 1.25rem; font-weight: 600; }
 
-      /* Tech Stack Grid */
-      .stack-section { padding: 2rem 0 6rem; border-top: 1px solid var(--surface-hover); }
-      .section-title { color: var(--text-dim); font-size: 1rem; margin-bottom: 2rem; font-weight: 400; letter-spacing: 1px; }
+      /* Tech Stack Chips */
+      .stack-section { padding: 0 0 6rem; }
       .tech-grid {
-        display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 800px; margin: 0 auto;
       }
       .tech-card {
         display: flex; align-items: center; gap: 0.75rem;
@@ -273,15 +249,14 @@ const topics = [
       .tech-icon { font-size: 1.2rem; }
 
       /* Footer */
-      footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
+      footer { padding: 2rem 0; border-top: 1px solid var(--surface); color: var(--text-dim); font-size: 0.9rem; }
 
       /* Entrance Animations */
       .fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
-      .delay-1 { animation-delay: 0.1s; }
-      .delay-2 { animation-delay: 0.2s; }
-      .delay-3 { animation-delay: 0.4s; }
-      .delay-4 { animation-delay: 0.6s; }
-      .delay-5 { animation-delay: 0.8s; }
+      .delay-1 { animation-delay: 0.2s; }
+      .delay-2 { animation-delay: 0.4s; }
+      .delay-3 { animation-delay: 0.6s; }
+      .delay-4 { animation-delay: 0.8s; }
 
       @keyframes fadeInUp {
         to { opacity: 1; transform: translateY(0); }
@@ -289,12 +264,12 @@ const topics = [
 
       /* Responsive */
       @media (max-width: 900px) {
-        .steps-grid { grid-template-columns: repeat(2, 1fr); }
-        .flow-svg { display: none; /* Hide horizontal SVG on mobile, focus on cards */ }
+        .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
       }
       @media (max-width: 500px) {
         .steps-grid { grid-template-columns: 1fr; }
         .tech-card { width: 100%; justify-content: center; }
+        .infinity-wrapper { padding: 0 1rem; }
       }
     </style>
   </body>
