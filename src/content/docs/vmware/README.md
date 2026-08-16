@@ -1,3 +1,8 @@
+---
+title: VMware Guides
+description: סדרת מדריכים בעברית על VMware vSphere, ESXi, vCenter, HA, vMotion, DRS, Storage, Networking ו-PowerCLI
+---
+
 # VMware Guides — Royi Guides
 
 סדרת 10 מדריכים בעברית, מהבסיס ועד ניהול מתקדם של VMware vSphere.
@@ -15,4 +20,4 @@
 9. Troubleshooting
 10. Performance ו-PowerCLI
 
-הקבצים כוללים Front Matter המתאים ל-Docusaurus.
+הקבצים כוללים Front Matter המתאים ל-Astro Starlight.
