@@ -57,10 +57,10 @@ const features = [
         <div class="hero-inner">
           <div class="hero-content">
             <span class="eyebrow">🚀 DEVOPS & INFRASTRUCTURE</span>
-            <h1>בונים<br /><span>תשתיות עוצמתיות</span></h1>
+            <h1>שיבוט קוד<br /><span>מתוך שניות לפרודקשן</span></h1>
             <p>
-              למדו את עולם DevOps, Cloud ו-Infrastructure עם מדריכים מעשיים בעברית.
-              מ-Git ו-CI/CD ועד Kubernetes וTerraform.
+              אתה כותב קוד, הוא עובד אצלך. אחר כך מה? DevOps הוא התשובה.
+              Git, CI/CD, Docker, Kubernetes - כלים שמהנדסים צריכים להכיר לעבודה אמיתית.
             </p>
             <div class="buttons">
               <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 התחל עם CI/CD</a>
@@ -93,26 +93,132 @@ const features = [
         </div>
       </section>
 
-      <section class="devops-pipeline" aria-label="DevOps Learning Path">
+      <section class="devops-workflow" aria-label="DevOps Workflow">
         <div class="section-header">
-          <span class="eyebrow">📈 מסלול הלימוד</span>
-          <h2>DevOps בשלבים</h2>
-          <p>לימוד מובנה מ-Git ועד Kubernetes</p>
+          <span class="eyebrow">🔄 איך זה עובד בעולם האמיתי</span>
+          <h2>זרימת DevOps</h2>
+          <p>מקוד לפרודקשן - השלבים שמהנדסים עושים בכל יום</p>
         </div>
 
-        <div class="pipeline-container">
-          {
-            devopsPath.map((step, index) => (
-              <a class="pipeline-step" href={step.link} title={`לך ל-${step.title}`}>
-                <div class="pipeline-icon">{step.icon}</div>
-                <div class="pipeline-content">
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                </div>
-                {index < devopsPath.length - 1 && <div class="pipeline-arrow">→</div>}
-              </a>
-            ))
-          }
+        <div class="workflow-container">
+          <svg class="workflow-diagram" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Background -->
+            <defs>
+              <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#ff7a3d;stop-opacity:0.1" />
+                <stop offset="100%" style="stop-color:#00d9a3;stop-opacity:0.1" />
+              </linearGradient>
+              
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Flow line -->
+            <line x1="50" y1="150" x2="950" y2="150" stroke="#2a3f4f" stroke-width="2" />
+            
+            <!-- Step 1: Git Push -->
+            <g class="workflow-step step-1">
+              <circle cx="100" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
+              <text x="100" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">🔀</text>
+              <text x="100" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Git Push</text>
+              <text x="100" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">קוד נחדש</text>
+            </g>
+
+            <!-- Arrow 1 -->
+            <g class="flow-arrow arrow-1">
+              <line x1="145" y1="150" x2="205" y2="150" stroke="#ff7a3d" stroke-width="2" stroke-dasharray="5,5" />
+              <polygon points="210,150 200,145 200,155" fill="#ff7a3d" />
+            </g>
+
+            <!-- Step 2: Build -->
+            <g class="workflow-step step-2">
+              <circle cx="250" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
+              <text x="250" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">🔨</text>
+              <text x="250" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Build</text>
+              <text x="250" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">בנייה וביצוע</text>
+            </g>
+
+            <!-- Arrow 2 -->
+            <g class="flow-arrow arrow-2">
+              <line x1="295" y1="150" x2="355" y2="150" stroke="#ff7a3d" stroke-width="2" stroke-dasharray="5,5" />
+              <polygon points="360,150 350,145 350,155" fill="#ff7a3d" />
+            </g>
+
+            <!-- Step 3: Test -->
+            <g class="workflow-step step-3">
+              <circle cx="400" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
+              <text x="400" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">✓</text>
+              <text x="400" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Test</text>
+              <text x="400" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">בדיקות אוטו</text>
+            </g>
+
+            <!-- Arrow 3 -->
+            <g class="flow-arrow arrow-3">
+              <line x1="445" y1="150" x2="505" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
+              <polygon points="510,150 500,145 500,155" fill="#00d9a3" />
+            </g>
+
+            <!-- Step 4: Image -->
+            <g class="workflow-step step-4">
+              <circle cx="550" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
+              <text x="550" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">🐳</text>
+              <text x="550" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Image</text>
+              <text x="550" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">Docker build</text>
+            </g>
+
+            <!-- Arrow 4 -->
+            <g class="flow-arrow arrow-4">
+              <line x1="595" y1="150" x2="655" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
+              <polygon points="660,150 650,145 650,155" fill="#00d9a3" />
+            </g>
+
+            <!-- Step 5: Deploy -->
+            <g class="workflow-step step-5">
+              <circle cx="700" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
+              <text x="700" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">☸️</text>
+              <text x="700" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Deploy</text>
+              <text x="700" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">Kubernetes</text>
+            </g>
+
+            <!-- Arrow 5 -->
+            <g class="flow-arrow arrow-5">
+              <line x1="745" y1="150" x2="805" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
+              <polygon points="810,150 800,145 800,155" fill="#00d9a3" />
+            </g>
+
+            <!-- Step 6: Monitor -->
+            <g class="workflow-step step-6">
+              <circle cx="850" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
+              <text x="850" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">📊</text>
+              <text x="850" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Monitor</text>
+              <text x="850" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">מעקב סביב</text>
+            </g>
+
+            <!-- Flow stats -->
+            <text x="500" y="280" text-anchor="middle" fill="#7a8f99" font-size="13" font-style="italic">
+              זה קורה בדקות, לא בשבועות 🚀
+            </text>
+          </svg>
+
+          <div class="workflow-steps">
+            {
+              devopsPath.map((step) => (
+                <a class="workflow-card" href={step.link}>
+                  <span class="workflow-icon">{step.icon}</span>
+                  <div class="workflow-info">
+                    <h4>{step.title}</h4>
+                    <p>{step.desc}</p>
+                  </div>
+                  <span class="arrow-accent">→</span>
+                </a>
+              ))
+            }
+          </div>
         </div>
       </section>
 
@@ -177,41 +283,64 @@ const features = [
         </div>
       </section>
 
-      <section class="why-us" aria-label="למה Royi Guides">
+      <section class="why-us" aria-label="למה בחרנו DevOps">
         <div class="section-header why-header">
-          <span class="eyebrow">✨ למה בחרנו DevOps</span>
-          <h2>DevOps הוא העתיד</h2>
+          <span class="eyebrow">💬 למה להיות DevOps Engineer?</span>
+          <h2>כי עבודה בלי DevOps היא כאב ראש</h2>
           <p>
-            תשתיות מודרניות דורשות חשיבה שונה. Royi Guides מלמד את הכלים,
-            ההתנהגויות והתהליכים שמהנדסים דורשים בעולם היום.
+            אתה יודע את ההרגשה? אתה שינית משהו בקוד, זה עבד במחשב שלך,
+            אבל בפרודקשן זה "נשבר" או לקח שעות להעלות את הגרסה החדשה?
+            DevOps פותר את זה.
           </p>
         </div>
 
         <div class="why-grid">
-          <div class="features-list">
-            {
-              features.map((f) => (
-                <div class="feature-item">
-                  <span class="feature-icon">{f.icon}</span>
-                  <div>
-                    <strong>{f.title}</strong>
-                    <p>{f.desc}</p>
-                  </div>
-                </div>
-              ))
-            }
+          <div class="benefits-list">
+            <div class="benefit-card">
+              <span class="benefit-emoji">⏱️</span>
+              <h4>זמן קטן</h4>
+              <p>שעות של עבודה נעשות דקות עם אוטומציה</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-emoji">🛡️</span>
+              <h4>פחות טעויות</h4>
+              <p>תהליכים מובנים = פחות דברים שיכולים להישתבר</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-emoji">🚀</span>
+              <h4>יותר מהירות</h4>
+              <p>מפתחים יכולים להתמקד בקוד, לא בתשתיות</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-emoji">💪</span>
+              <h4>כוח עצום</h4>
+              <p>משימות שנראו בלתי אפשריות הופכות לשגרה</p>
+            </div>
           </div>
 
           <div class="why-content">
-            <div class="benefit-box">
-              <h3>למה DevOps?</h3>
-              <ul>
-                <li>🔄 <strong>Continuous Integration/Deployment</strong> - שינויים מהירים וחוזרים</li>
-                <li>🐳 <strong>Containerization</strong> - תאימות וקנה מידה</li>
-                <li>☸️ <strong>Orchestration</strong> - ניהול עומסים ויעילות</li>
-                <li>♻️ <strong>Infrastructure as Code</strong> - בקרה גרסאות על תשתיות</li>
-                <li>📊 <strong>Monitoring & Observability</strong> - הבנת מה קורה בפרודקשן</li>
-              </ul>
+            <div class="real-world-box">
+              <h3>בעולם האמיתי</h3>
+              <div class="scenario">
+                <p><strong>בלי DevOps:</strong></p>
+                <ul>
+                  <li>📝 כתיבת קוד חדש ימים</li>
+                  <li>🤔 תקווה שהוא יעבוד</li>
+                  <li>😰 ממתין להנהלה לאשר deployment</li>
+                  <li>⏳ שעות או ימים עד ה-rollout</li>
+                  <li>🚨 אם משהו שברוץ - rollback ידני וקשה</li>
+                </ul>
+              </div>
+              <div class="scenario highlight">
+                <p><strong>עם DevOps:</strong></p>
+                <ul>
+                  <li>💻 כתיבת קוד עם בדיקות בנויות</li>
+                  <li>🔄 Pipeline עובד בעצמו כשאתה משלח (push)</li>
+                  <li>✅ בדיקות אוטומטיות מיידיות</li>
+                  <li>🚀 deployment אוטומטי לסטייג'</li>
+                  <li>📊 monitoring ואלרטים בזמן אמת</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -555,84 +684,123 @@ const features = [
         50%, 99% { opacity: 0.3; }
       }
 
-      /* DevOps Pipeline */
-      .devops-pipeline {
+      /* DevOps Workflow */
+      .devops-workflow {
         padding: 5rem 0;
         background: linear-gradient(135deg, rgba(0, 217, 163, 0.04) 0%, rgba(255, 122, 61, 0.04) 100%);
         border-bottom: 1px solid var(--ia-line);
       }
 
-      .pipeline-container {
+      .workflow-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 1.5rem;
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
       }
 
-      .pipeline-step {
+      .workflow-diagram {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto 3rem;
+        display: block;
+        filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+      }
+
+      .workflow-step {
+        animation: fadeInScale 0.6s ease-out forwards;
+        opacity: 0;
+      }
+
+      .step-1 { animation-delay: 0.1s; }
+      .step-2 { animation-delay: 0.2s; }
+      .step-3 { animation-delay: 0.3s; }
+      .step-4 { animation-delay: 0.4s; }
+      .step-5 { animation-delay: 0.5s; }
+      .step-6 { animation-delay: 0.6s; }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .flow-arrow {
+        animation: flowPulse 2s ease-in-out infinite;
+      }
+
+      .arrow-1 { animation-delay: 0.1s; }
+      .arrow-2 { animation-delay: 0.2s; }
+      .arrow-3 { animation-delay: 0.3s; }
+      .arrow-4 { animation-delay: 0.4s; }
+      .arrow-5 { animation-delay: 0.5s; }
+
+      @keyframes flowPulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+
+      .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .workflow-card {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        text-decoration: none;
-        color: inherit;
-        flex: 0 1 200px;
+        gap: 0.8rem;
+        align-items: flex-start;
         padding: 1.5rem;
-        background: var(--ia-panel);
-        border: 2px solid var(--ia-line);
-        border-radius: 12px;
+        background: linear-gradient(135deg, var(--ia-panel) 0%, var(--ia-panel-2) 100%);
+        border: 1px solid var(--ia-line);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--ia-text);
         transition: all 0.3s ease;
         position: relative;
       }
 
-      .pipeline-step:hover {
-        background: var(--ia-panel-2);
+      .workflow-card:hover {
+        transform: translateX(-4px);
         border-color: var(--ia-wire);
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(0, 217, 163, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 217, 163, 0.15);
       }
 
-      .pipeline-icon {
-        font-size: 2.2rem;
+      .workflow-icon {
+        font-size: 1.8rem;
       }
 
-      .pipeline-content h3 {
+      .workflow-info h4 {
         font-family: var(--font-display);
         font-weight: 600;
         font-size: 1.05rem;
         margin: 0;
-        text-align: center;
       }
 
-      .pipeline-content p {
-        font-size: 0.85rem;
-        color: var(--ia-text-faint);
+      .workflow-info p {
+        font-size: 0.9rem;
+        color: var(--ia-text-dim);
         margin: 0;
-        text-align: center;
       }
 
-      .pipeline-arrow {
-        display: none;
-        font-size: 1.5rem;
+      .arrow-accent {
+        position: absolute;
+        inset-inline-end: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
         color: var(--ia-wire);
-        animation: slideRight 1.5s ease-in-out infinite;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
       }
 
-      @media (min-width: 768px) {
-        .pipeline-arrow {
-          display: block;
-          position: absolute;
-          inset-inline-start: -1.75rem;
-        }
-      }
-
-      @keyframes slideRight {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(4px); }
+      .workflow-card:hover .arrow-accent {
+        opacity: 1;
+        transform: translateY(-50%) translateX(4px);
       }
 
       /* Topics Section */
@@ -807,6 +975,108 @@ const features = [
         align-items: start;
       }
 
+      .benefits-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.3rem;
+      }
+
+      .benefit-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+        text-align: center;
+        padding: 1.8rem;
+        background: linear-gradient(135deg, var(--ia-panel) 0%, var(--ia-panel-2) 100%);
+        border: 1px solid var(--ia-line);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .benefit-card:hover {
+        background: var(--ia-panel-2);
+        border-color: var(--ia-wire);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 217, 163, 0.12);
+      }
+
+      .benefit-emoji {
+        font-size: 2rem;
+        display: block;
+      }
+
+      .benefit-card h4 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 0;
+        color: var(--ia-text);
+      }
+
+      .benefit-card p {
+        font-size: 0.9rem;
+        color: var(--ia-text-dim);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .real-world-box {
+        background: linear-gradient(135deg, var(--ia-panel-2), var(--ia-panel));
+        border: 1px solid var(--ia-line);
+        border-radius: 12px;
+        padding: 2rem;
+      }
+
+      .real-world-box h3 {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        margin: 0 0 1.5rem;
+        color: var(--ia-text);
+      }
+
+      .scenario {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--ia-line);
+      }
+
+      .scenario:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .scenario p {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--ia-wire);
+        margin: 0 0 0.8rem 0;
+      }
+
+      .scenario ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .scenario li {
+        font-size: 0.9rem;
+        color: var(--ia-text-dim);
+        text-align: right;
+      }
+
+      .scenario.highlight p {
+        color: var(--ia-signal);
+      }
+
+      .scenario.highlight li {
+        color: var(--ia-text);
+      }
+
       .features-list {
         display: grid;
         gap: 1.3rem;
@@ -969,12 +1239,28 @@ const features = [
           grid-template-columns: 1fr;
         }
 
-        .pipeline-container {
-          gap: 1rem;
+        .workflow-steps {
+          grid-template-columns: 1fr;
         }
 
-        .pipeline-arrow {
-          display: none !important;
+        .benefit-card {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+        }
+
+        .benefit-emoji {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .workflow-diagram {
+          max-width: 100%;
+        }
+
+        .benefits-list {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -992,12 +1278,30 @@ const features = [
           grid-template-columns: 1fr;
         }
 
-        .pipeline-container {
+        .workflow-steps {
           flex-direction: column;
         }
 
         .cta {
           margin: 2rem 1.5rem;
+        }
+
+        .workflow-diagram {
+          transform: scale(0.9);
+          transform-origin: center;
+        }
+
+        .workflow-card {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .workflow-icon {
+          flex-shrink: 0;
+        }
+
+        .workflow-info {
+          text-align: right;
         }
       }
     </style>
