@@ -3,8 +3,6 @@ sidebar_position: 5
 title: "מדריך 5: Terraform State לעומק"
 ---
 
-# מדריך 5: Terraform State לעומק
-
 ## מה זה State ולמה הוא קיים?
 
 **Terraform State** הוא קובץ JSON (בדרך כלל `terraform.tfstate`) שבו Terraform שומר את המיפוי בין המשאבים שהוגדרו בקוד לבין המשאבים בפועל בענן. זהו "מקור האמת" שמאפשר ל-Terraform לדעת:

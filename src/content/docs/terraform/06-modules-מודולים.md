@@ -3,8 +3,6 @@ sidebar_position: 6
 title: "מדריך 6: Modules - קוד לשימוש חוזר"
 ---
 
-# מדריך 6: Modules - קוד לשימוש חוזר
-
 ## מה זה Module?
 
 **Module** הוא אוסף קבצי `.tf` הממוקמים יחד בתיקייה אחת, שיכולים לכלול resources, variables, outputs ואפילו modules נוספים בתוכם. כל קונפיגורציית Terraform היא בעצמה module - נקרא **root module**. כשקוראים ל-module אחר מתוך הקוד, הוא נקרא **child module**.

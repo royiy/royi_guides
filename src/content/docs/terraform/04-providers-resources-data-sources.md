@@ -3,8 +3,6 @@ sidebar_position: 4
 title: "מדריך 4: Providers, Resources ו-Data Sources"
 ---
 
-# מדריך 4: Providers, Resources ו-Data Sources
-
 ## מה זה Provider?
 
 **Provider** הוא פלאגין ש-Terraform מוריד ומשתמש בו כדי "לדבר" עם ה-API של שירות חיצוני - AWS, Azure, GCP, Kubernetes, GitHub, Datadog ואלפי שירותים נוספים. כל ה-providers הרשמיים והקהילתיים מפורסמים ב-[Terraform Registry](https://registry.terraform.io).

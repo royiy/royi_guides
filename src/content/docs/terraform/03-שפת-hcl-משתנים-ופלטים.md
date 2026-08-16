@@ -3,8 +3,6 @@ sidebar_position: 3
 title: "מדריך 3: שפת HCL - משתנים, פלטים ו-Locals"
 ---
 
-# מדריך 3: שפת HCL - משתנים, פלטים ו-Locals
-
 ## מה זה HCL?
 
 **HCL (HashiCorp Configuration Language)** היא שפת התצורה של Terraform - שפה declarative, קריאה לבני אדם, עם תמיכה גם ב-JSON כפורמט חלופי. היא בנויה מ**בלוקים** (blocks), **ארגומנטים** (arguments) ו**ביטויים** (expressions).

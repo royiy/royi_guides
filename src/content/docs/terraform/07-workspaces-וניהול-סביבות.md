@@ -3,8 +3,6 @@ sidebar_position: 7
 title: "מדריך 7: Workspaces וניהול סביבות מרובות"
 ---
 
-# מדריך 7: Workspaces וניהול סביבות מרובות
-
 ## מה זה Workspace?
 
 **Terraform Workspace** הוא מנגנון המאפשר לנהל **מספר מופעי state נפרדים** לאותה קונפיגורציית קוד. כל workspace מקבל קובץ state עצמאי, כך שאותו קוד יכול "לשרת" סביבות שונות (dev, staging, prod) בלי לשכפל את כל הקבצים.

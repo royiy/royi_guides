@@ -3,8 +3,6 @@ sidebar_position: 8
 title: "מדריך 8: Best Practices ואבטחה ב-Terraform"
 ---
 
-# מדריך 8: Best Practices ואבטחה ב-Terraform
-
 ## 1. ניהול סודות (Secrets)
 
 ### הבעיה

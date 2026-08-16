@@ -3,8 +3,6 @@ sidebar_position: 9
 title: "מדריך 9: CI/CD עם Terraform"
 ---
 
-# מדריך 9: CI/CD עם Terraform
-
 ## למה אוטומציה קריטית?
 
 הרצת Terraform ידנית מהמחשב האישי (`terraform apply` בלוקאל) היא אנטי-פטרן בסביבות פרודקשן:
