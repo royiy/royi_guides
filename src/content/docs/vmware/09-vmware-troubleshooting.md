@@ -1,145 +1,229 @@
 ---
 sidebar_position: 9
-title: "מדריך 9 — VMware Troubleshooting"
+title: "VMware #9 — Troubleshooting מעשי"
 ---
 
-# VMware Troubleshooting
+# VMware #9 — Troubleshooting מעשי
 
-## מטרת המדריך
-
-ללמוד לפתור תקלות בצורה שיטתית במקום לנחש.
-
-## 1. שיטת עבודה
+## שיטת העבודה
 
 ```text
-Problem
+Symptom
   ↓
-Collect Data
+Scope
   ↓
-Check Logs
+Evidence
   ↓
-Check Network
+Hypothesis
   ↓
-Check Storage
-  ↓
-Check CPU/RAM
+Test
   ↓
 Root Cause
   ↓
 Fix
   ↓
-Verify
+Validation
+  ↓
+Documentation
 ```
 
-## 2. VM לא נדלקת
+## 1. VM איטית
 
-בדקו:
+### אל תתחיל מלהוסיף CPU.
 
-- Power state
-- Datastore
-- Disk
-- VMX
-- Locks
-- Permissions
-- ISO
-- Host resources
-
-## 3. VM איטית
-
-בדקו:
+בדוק:
 
 ```text
-CPU
-Memory
+Guest
+ ↓
 CPU Ready
+ ↓
+Memory Pressure
+ ↓
 Disk Latency
-IOPS
+ ↓
 Network
+ ↓
 Snapshots
-Guest OS
 ```
 
-## 4. Datastore מלא
+### דוגמה
 
 ```text
-Datastore
-████████████████████ 99%
+CPU Usage       = 22%
+CPU Ready       = High
+Disk Latency    = Normal
+Memory Pressure = Normal
 ```
 
-חפשו:
+הממצא המרכזי הוא CPU contention.
 
-- Snapshots
-- ISO
-- Old VMDKs
-- Logs
-- Thin provisioning
-- קבצים שנשארו אחרי מחיקות
+## 2. Storage latency
 
-## 5. vMotion נכשל
-
-בדקו:
+אם ה-Guest איטית:
 
 ```text
-CPU compatibility
-vMotion VMkernel
-Network
+Guest Disk
+ ↓
+Virtual SCSI
+ ↓
+VMDK
+ ↓
 Datastore
-EVC
-Permissions
-Licensing/features
+ ↓
+Path
+ ↓
+SAN/NAS
+ ↓
+Physical Storage
 ```
 
-## 6. כלים חשובים
+בודקים את כל השרשרת.
+
+## 3. Network
+
+```text
+Guest
+ ↓
+vNIC
+ ↓
+Port Group
+ ↓
+vSwitch/vDS
+ ↓
+vmnic
+ ↓
+Switch
+ ↓
+VLAN
+ ↓
+Gateway
+```
+
+כל תקלה בשכבה יכולה ליצור אותו סימפטום: "אין Network".
+
+## 4. esxtop
 
 ```bash
 esxtop
 ```
 
+למד לעבור בין:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+המעבדה הרשמית של VMware מתרגלת את ארבעת התחומים האלה וגם שמירת Statistics ל-CSV. citeturn0search0
+
+## 5. vmkping
+
 ```bash
 vmkping 192.168.30.12
 ```
+
+בדיקה שימושית ל-VMkernel networking.
+
+## 6. esxcli
 
 ```bash
 esxcli network nic list
 ```
 
 ```bash
+esxcli network ip interface ipv4 get
+```
+
+## 7. vim-cmd
+
+לצפייה ב-VMs:
+
+```bash
 vim-cmd vmsvc/getallvms
 ```
 
-## 7. Logs
+## 8. תרחיש — vMotion נכשל
 
-בפתרון תקלות חשוב לזהות:
+### Step 1
 
-- מתי התקלה התחילה
-- מה השתנה
-- האם התקלה חוזרת
-- אילו Events הופיעו
-- אילו Hosts/VMs מושפעים
+```bash
+vmkping <destination-vmotion-ip>
+```
 
-## 8. תרגילי Troubleshooting
+### Step 2
 
-### תרגיל A
+בדוק VLAN.
 
-VM לא מקבלת Network.
+### Step 3
 
-### תרגיל B
+בדוק MTU.
 
-Datastore כמעט מלא.
+### Step 4
 
-### תרגיל C
+בדוק CPU/EVC.
 
-vMotion נכשל.
+### Step 5
 
-### תרגיל D
+בדוק Datastore.
 
-VM איטית למרות CPU usage נמוך.
+### Step 6
 
-### תרגיל E
+בדוק Destination Port Group.
 
-HA לא הפעיל מחדש VM.
+### Step 7
 
-## 9. קישורים
+בדוק Events.
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — VMware Troubleshooting](https://www.youtube.com/results?search_query=VMware+vSphere+troubleshooting)
+## 9. תרחיש — Datastore מלא
+
+```text
+Capacity = 100%
+```
+
+אל תתחיל ממחיקה אקראית.
+
+בצע:
+
+```text
+Identify largest objects
+ ↓
+Check snapshots
+ ↓
+Check old files
+ ↓
+Check ISO
+ ↓
+Check backup jobs
+ ↓
+Create safe cleanup plan
+ ↓
+Validate
+```
+
+## 10. תרגיל מסכם
+
+צור שלוש תקלות במעבדה:
+
+1. VLAN שגוי.
+2. Snapshot גדול.
+3. vMotion Network לא תקין.
+
+לכל תקלה כתוב:
+
+- Symptom
+- Evidence
+- Root Cause
+- Fix
+- Validation
+
+## 11. שאלות ראיון
+
+1. איך תחקור VM איטית?
+2. איך תבדוק Storage?
+3. איך תבדוק Network?
+4. מהו CPU Ready?
+5. מה עושה esxtop?
+6. מה עושה vmkping?
+7. איך תחקור vMotion?
+8. למה לא מוחקים VMDK ידנית?

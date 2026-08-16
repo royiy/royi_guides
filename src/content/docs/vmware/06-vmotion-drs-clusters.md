@@ -1,88 +1,180 @@
 ---
 sidebar_position: 6
-title: "מדריך 6 — Clusters, vMotion ו-DRS"
+title: "VMware #6 — Cluster, vMotion ו-DRS לעומק"
 ---
 
-# Clusters, vMotion ו-DRS
-
-## מטרת המדריך
-
-להבין כיצד מספר Hosts עובדים כיחידה אחת.
+# VMware #6 — Cluster, vMotion ו-DRS
 
 ## 1. Cluster
 
 ```text
-Cluster
+Production Cluster
 ├── ESXi01
 ├── ESXi02
 └── ESXi03
 ```
 
-## 2. vMotion
+Cluster מאפשר יכולות משותפות כגון HA ו-DRS.
 
-vMotion מאפשר להעביר VM מ-Host אחד לאחר ללא כיבוי, כאשר התנאים הנדרשים מתקיימים.
+## 2. vMotion — מה באמת קורה?
+
+בפשטות:
 
 ```text
-ESXi01                  ESXi02
-  │                       │
-  │       vMotion         │
-  ├──────────────────────►│
-  │                       │
- VM01                    VM01
+VM Memory
+   │
+   ▼
+Pre-copy
+   │
+Dirty Pages
+   │
+   ▼
+Final Switchover
+   │
+   ▼
+VM continues on destination
 ```
 
-## 3. דרישות vMotion
+העברה חיה תלויה בתאימות CPU, Networking, Storage וביכולות הסביבה.
 
-יש לבדוק:
+## 3. VMkernel עבור vMotion
 
-- Networking
-- VMkernel vMotion
-- CPU compatibility
-- Storage
-- Licensing/feature availability
-- EVC במקרה הצורך
+תכנון:
 
-## 4. Storage vMotion
+```text
+VLAN 30
+192.168.30.0/24
 
-ניתן להעביר את הדיסקים של VM בין Datastores בלי להעביר בהכרח את ה-Compute Host.
+ESXi01 vmk1 → 192.168.30.11
+ESXi02 vmk1 → 192.168.30.12
+```
+
+בדיקה:
+
+```bash
+vmkping 192.168.30.12
+```
+
+## 4. Checklist לפני vMotion
+
+- [ ] שני Hosts ב-vCenter
+- [ ] vMotion VMkernel
+- [ ] Network connectivity
+- [ ] MTU תקין
+- [ ] CPU compatibility
+- [ ] EVC במידת הצורך
+- [ ] Datastore/Storage נגיש
+- [ ] Port Group קיים ביעד
+- [ ] הרשאות/Features מתאימים
+
+## 5. Storage vMotion
 
 ```text
 VM01
  │
- ├── Datastore01
+ ├── Compute → ESXi01
  │
- └── Storage vMotion
-          ↓
-     Datastore02
+ └── Disk → Datastore02
 ```
 
-## 5. DRS
+Compute ו-Storage הם שני ממדים שונים.
 
-DRS עוזר לנהל עומסי CPU ו-Memory בתוך Cluster.
+## 6. DRS
+
+DRS מסתכל על עומסים ומשאבים בתוך Cluster.
 
 ```text
-Cluster
-├── ESXi01 → 20%
-├── ESXi02 → 90%
-└── ESXi03 → 30%
+ESXi01 20%
+ESXi02 90%
+ESXi03 30%
 ```
 
-DRS עשוי להמליץ או לבצע פעולות בהתאם להגדרות הסביבה והגרסה.
+בהתאם למדיניות, המערכת יכולה להמליץ או לבצע Migration.
 
-## 6. EVC
+## 7. DRS Rules
 
-EVC מסייע לאפשר תאימות CPU בין Hosts בעלי דורות CPU שונים, בכפוף לתמיכה ולמגבלות הגרסה.
+תרחישים:
 
-## 7. תרגיל
+### Affinity
 
-1. צרו שני Hosts.
-2. צרו Cluster.
-3. חברו Datastore משותף.
-4. הפעילו vMotion.
-5. העבירו VM בין Hosts.
-6. בדקו Events ו-Tasks.
+VMs יחד.
 
-## 8. קישורים
+```text
+APP01 + APP02
+      ↓
+Same Host
+```
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — VMware vMotion](https://www.youtube.com/results?search_query=VMware+vMotion+DRS+tutorial)
+### Anti-Affinity
+
+להפריד VMs:
+
+```text
+DC01 → ESXi01
+DC02 → ESXi02
+```
+
+זה שימושי כדי להקטין Single Point of Failure.
+
+## 8. EVC
+
+EVC מסייע ל-CPU compatibility בין Hosts עם דורות שונים, בהתאם לתמיכה ולמגבלות.
+
+## 9. תרגיל
+
+בנה:
+
+```text
+Cluster01
+├── ESXi01
+│   ├── VM01
+│   └── VM02
+└── ESXi02
+    ├── VM03
+    └── VM04
+```
+
+בצע:
+
+1. vMotion.
+2. בדוק Events.
+3. הפעל DRS.
+4. בדוק Recommendations.
+5. בדוק Rules.
+
+## 10. תרחיש תקלה
+
+vMotion נכשל.
+
+### סימפטום
+
+```text
+Migration failed
+```
+
+### תהליך
+
+```text
+vMotion VMkernel
+ ↓
+vmkping
+ ↓
+MTU
+ ↓
+CPU/EVC
+ ↓
+Datastore
+ ↓
+Port Group
+ ↓
+Events
+```
+
+## 11. שאלות ראיון
+
+1. מה קורה בזמן vMotion?
+2. מה ההבדל בין vMotion ל-Storage vMotion?
+3. מה עושה DRS?
+4. מהו EVC?
+5. מהו DRS Rule?
+6. למה Anti-Affinity שימושי?

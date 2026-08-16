@@ -1,95 +1,105 @@
 ---
 sidebar_position: 3
-title: "מדריך 3 — vCenter Server וניהול מרכזי"
+title: "VMware #3 — vCenter Server"
 ---
 
-# vCenter Server
+# VMware #3 — vCenter Server
+
+> **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## מטרת המדריך
 
-להבין כיצד vCenter מנהל מספר Hosts ויוצר תשתית vSphere מרכזית.
+להקים ולהבין vCenter, Inventory, Datacenter, Cluster, הרשאות ו-Events.
 
-## 1. למה צריך vCenter?
+## 1. למה vCenter?
 
 בלי vCenter:
 
 ```text
-Admin
-├── ESXi01
-├── ESXi02
-└── ESXi03
+Admin → ESXi01
+Admin → ESXi02
+Admin → ESXi03
 ```
 
 עם vCenter:
 
 ```text
-             vCenter
-                │
-       ┌────────┼────────┐
-       ▼        ▼        ▼
-     ESXi01   ESXi02   ESXi03
+Admin
+  ↓
+vCenter
+  ├── ESXi01
+  ├── ESXi02
+  └── ESXi03
 ```
 
 ## 2. VCSA
 
-vCenter Server Appliance הוא appliance מבוסס Linux שמספק את שירותי vCenter.
+vCenter Server Appliance הוא ה-appliance המרכזי לניהול vSphere.
 
-## 3. היררכיית Inventory
+## 3. תכנון DNS
+
+לפני התקנה:
+
+```text
+vcenter01.lab.local → 192.168.10.20
+esxi01.lab.local    → 192.168.10.11
+esxi02.lab.local    → 192.168.10.12
+```
+
+DNS תקין חשוב מאוד.
+
+## 4. תכנון Inventory
 
 ```text
 vCenter
 └── Datacenter
     └── Cluster
         ├── ESXi01
-        ├── ESXi02
-        └── ESXi03
+        └── ESXi02
 ```
 
-## 4. הוספת Host
+## 5. הוספת Host
 
 ב-vSphere Client:
 
-1. יצירת Datacenter.
-2. יצירת Cluster.
+1. Datacenter.
+2. Cluster.
 3. Add Host.
-4. הזנת FQDN/IP.
-5. הזנת Credentials.
-6. אישור Certificate.
-7. סיום.
+4. FQDN/IP.
+5. Credentials.
+6. Certificate.
+7. Finish.
 
-## 5. הרשאות
-
-נלמד:
-
-- Users
-- Groups
-- Roles
-- Permissions
-- Propagation
+## 6. Roles
 
 דוגמה:
 
 ```text
 VMware-Admins → Administrator
 Helpdesk       → Read Only
-Backup         → Backup Role
+VM-Operators   → VM Operator
 ```
 
-## 6. Events ו-Tasks
+עיקרון חשוב: Least Privilege.
 
-כאשר מתרחשת תקלה, בודקים:
+## 7. Tasks ו-Events
+
+בעת תקלה:
 
 ```text
-VM
- └── Monitor
-     ├── Tasks
-     ├── Events
-     └── Performance
+Object
+ ↓
+Monitor
+ ├── Tasks
+ ├── Events
+ └── Performance
 ```
 
-## 7. תרגיל
+אל תסתפק בהודעת שגיאה כללית. בדוק מה קרה לפני התקלה.
 
-הקימו:
+## 8. תרגיל
+
+הקם:
 
 ```text
 vCenter
@@ -99,7 +109,38 @@ vCenter
         └── ESXi02
 ```
 
-## 8. קישורים
+צור משתמש בעל הרשאות מוגבלות ובדוק מה הוא יכול לראות.
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — VMware vCenter](https://www.youtube.com/results?search_query=VMware+vCenter+Server+tutorial)
+## 9. תרחיש תקלה
+
+Host מופיע כ-Not Responding.
+
+בדוק:
+
+```text
+DNS
+ ↓
+Management Network
+ ↓
+Gateway
+ ↓
+ESXi services
+ ↓
+vCenter Events
+```
+
+## 10. מעבדה רשמית
+
+[Virtualization 101 — vCenter, Networking and Storage](https://labs.hol.vmware.com/HOL/catalog/lab/13928)
+
+## 11. YouTube
+
+[VMware vCenter Server Tutorial](https://www.youtube.com/results?search_query=VMware+vCenter+Server+tutorial)
+
+## שאלות ראיון
+
+1. למה צריך vCenter?
+2. מהו VCSA?
+3. מהו Datacenter ב-vCenter?
+4. מהו Cluster?
+5. איך היית פותר Host שהפך ל-Not Responding?

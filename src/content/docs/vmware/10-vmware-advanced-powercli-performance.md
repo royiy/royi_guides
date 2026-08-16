@@ -1,15 +1,83 @@
 ---
 sidebar_position: 10
-title: "מדריך 10 — VMware מתקדם: Performance, PowerCLI ו-Best Practices"
+title: "VMware #10 — Advanced: PowerCLI, Performance ו-Best Practices"
 ---
 
-# VMware מתקדם
+# VMware #10 — Advanced VMware
+
+> **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
 ## מטרת המדריך
 
-לעבור מניהול בסיסי לניהול מקצועי של סביבת vSphere.
+לעבור מניהול ידני לאוטומציה, Performance Analysis ותכנון סביבת Production.
 
-## 1. Performance
+## 1. PowerCLI
+
+PowerCLI הוא כלי מרכזי לאוטומציה של VMware.
+
+### התחברות
+
+```powershell
+Connect-VIServer vcenter01.lab.local
+```
+
+### Hosts
+
+```powershell
+Get-VMHost
+```
+
+### VMs
+
+```powershell
+Get-VM
+```
+
+### Datastores
+
+```powershell
+Get-Datastore
+```
+
+### הפעלת VM
+
+```powershell
+Start-VM "VM01"
+```
+
+### Snapshots
+
+```powershell
+Get-Snapshot -VM "VM01"
+```
+
+## 2. דוח VM
+
+```powershell
+Get-VM |
+Select-Object Name, PowerState, NumCpu, MemoryGB
+```
+
+## 3. CSV
+
+```powershell
+Get-VM |
+Select-Object Name, PowerState, NumCpu, MemoryGB |
+Export-Csv .\vm-report.csv -NoTypeInformation -Encoding UTF8
+```
+
+## 4. VMware Tools
+
+דוגמה לדוח:
+
+```powershell
+Get-VM |
+Select Name,
+       PowerState,
+       @{N="ToolsStatus";E={$_.ExtensionData.Guest.ToolsStatus}}
+```
+
+## 5. Performance
 
 מדדים חשובים:
 
@@ -25,109 +93,71 @@ title: "מדריך 10 — VMware מתקדם: Performance, PowerCLI ו-Best Pract
 - Throughput
 - Network Drops
 
-## 2. CPU Ready
+## 6. esxtop
 
-VM יכולה להציג CPU Usage נמוך ועדיין להיות איטית.
+```bash
+esxtop
+```
 
-לכן בודקים גם CPU Ready.
+התרגל לעבור בין תצוגות CPU, Memory, Disk ו-Network.
+
+VMware Hands-on Labs כוללת מעבדה עדכנית ל-PowerCLI עם Snapshots, Reports, vCenter, ESXi ו-VMware Tools. 
+
+[PowerCLI Hands-on Lab](https://labs.hol.vmware.com/HOL/catalog/)
+
+## 7. Performance Lab
+
+יש גם מעבדה רשמית שמתרגלת esxtop וניתוח CPU, Memory, Storage ו-Network. 
+
+[VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
+
+## 8. Best Practices
+
+### Naming
 
 ```text
-VM
- │
- ├── CPU Usage
- └── CPU Ready
+vcenter01
+esxi01
+esxi02
+dc01
+sql01
+app01
 ```
 
-## 3. PowerCLI
+### DNS
 
-חיבור ל-vCenter:
+כל Host ו-Service קריטי צריך Naming עקבי ו-DNS תקין.
 
-```powershell
-Connect-VIServer vcenter01.lab.local
-```
+### NTP
 
-Hosts:
+זמן נכון חשוב במיוחד בסביבות שבהן קיימים שירותי Authentication, Certificates ו-Logs.
 
-```powershell
-Get-VMHost
-```
+### Security
 
-VMs:
-
-```powershell
-Get-VM
-```
-
-Datastores:
-
-```powershell
-Get-Datastore
-```
-
-הפעלת VM:
-
-```powershell
-Start-VM "VM01"
-```
-
-Snapshots:
-
-```powershell
-Get-Snapshot -VM "VM01"
-```
-
-## 4. דוח VMs
-
-```powershell
-Get-VM |
-Select-Object Name, PowerState, NumCpu, MemoryGB
-```
-
-## 5. CSV
-
-```powershell
-Get-VM |
-Select-Object Name, PowerState, NumCpu, MemoryGB |
-Export-Csv .m-report.csv -NoTypeInformation -Encoding UTF8
-```
-
-## 6. פרויקט PowerCLI
-
-בנו Script שמוציא:
-
-```text
-VM Name
-Power State
-CPU
-RAM
-Host
-Datastore
-IP
-VMware Tools
-Snapshots
-```
-
-ומייצא CSV.
-
-## 7. Best Practices
-
-בכל סביבה יש לבחון:
-
-- Naming
-- DNS
-- NTP
-- Monitoring
-- Backup
-- Security
 - Least Privilege
-- Capacity Planning
-- Patch Management
-- Documentation
-- Disaster Recovery
+- MFA היכן שנתמך ומתאים
+- ניהול הרשאות
+- הפרדת Management Network
+- עדכונים
+- ניטור
 
-## 8. פרויקט מסכם
+### Backup
 
-בנו סביבת:
+תכנן:
+
+```text
+Production
+   ↓
+Backup
+   ↓
+Offsite / Immutable
+   ↓
+Restore Test
+```
+
+## 9. פרויקט מסכם
+
+בנה:
 
 ```text
                     vCenter
@@ -140,7 +170,6 @@ Snapshots
           ESXi01     ESXi02    ESXi03
              │         │         │
             VMs       VMs       VMs
-             │         │         │
              └──── Shared Storage ────┘
                        │
                  ┌─────┼─────┐
@@ -148,21 +177,56 @@ Snapshots
                 HA    DRS  vMotion
 ```
 
-## 9. שאלות ראיון
+לאחר מכן:
 
-1. מה ההבדל בין ESXi ל-vCenter?
-2. מה ההבדל בין HA ל-DRS?
-3. מהו vMotion?
-4. למה Snapshot אינו Backup?
-5. מהו CPU Ready?
-6. מהו Datastore?
-7. מה ההבדל בין vSS ל-vDS?
-8. מהו Admission Control?
-9. איך תחקור VM איטית?
-10. איך תחקור vMotion שנכשל?
+1. צור Template.
+2. צור 3 VMs.
+3. הגדר VLANs.
+4. חבר Storage.
+5. הפעל HA.
+6. הפעל DRS.
+7. בצע vMotion.
+8. צור Snapshot ובצע Cleanup.
+9. הרץ PowerCLI Report.
+10. בצע תרגיל תקלה.
+11. נתח Performance.
+12. תעד את הסביבה.
 
-## 10. קישורים
+## 10. שאלות ראיון מתקדמות
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — VMware PowerCLI](https://www.youtube.com/results?search_query=VMware+PowerCLI+tutorial)
-- [YouTube — VMware Performance](https://www.youtube.com/results?search_query=VMware+vSphere+performance+troubleshooting)
+1. מהו CPU Ready?
+2. איך תבדיל בין CPU bottleneck ל-Storage bottleneck?
+3. מה ההבדל בין HA, DRS ו-vMotion?
+4. איך תתכנן שני Hosts עם Redundancy?
+5. מה תבדוק לפני vMotion?
+6. איך תזהה Snapshot בעייתי?
+7. איך תבנה PowerCLI report?
+8. למה DNS/NTP חשובים?
+9. איך תתכנן Management Network?
+10. איך תבנה תהליך Troubleshooting?
+
+## 11. המשך מתקדם
+
+אחרי 10 המדריכים אפשר להמשיך ל:
+
+- vSAN
+- NSX
+- VCF
+- VCF Operations
+- Automation
+- APIs
+- PowerCLI מתקדם
+- Disaster Recovery
+- Site Recovery
+- Security
+- Capacity Planning
+
+## קישורים
+
+[VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
+
+[PowerCLI Labs](https://labs.hol.vmware.com/HOL/catalog?search=automation)
+
+[YouTube — VMware PowerCLI](https://www.youtube.com/results?search_query=VMware+PowerCLI+tutorial)
+
+[YouTube — VMware Performance](https://www.youtube.com/results?search_query=VMware+vSphere+performance+esxtop)

@@ -1,30 +1,54 @@
 ---
 sidebar_position: 1
-title: "מדריך 1 — וירטואליזציה ו-VMware מהבסיס"
+title: "VMware #1 — וירטואליזציה מהבסיס"
+description: "מדריך מלא למתחילים: Hypervisor, ESXi, vSphere, vCenter, VM, Datastore, Cluster וארכיטקטורה."
 ---
 
-# וירטואליזציה ו-VMware מהבסיס
+# VMware #1 — וירטואליזציה מהבסיס
 
-## מטרת המדריך
+> **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.
 
-במדריך הזה נבין מהי וירטואליזציה, מהו Hypervisor, ומה ההבדל בין ESXi, vSphere ו-vCenter.
+## מה נלמד?
 
-## 1. מהי וירטואליזציה?
+בסוף המדריך תוכל להסביר:
 
-בשרת פיזי רגיל מערכת ההפעלה משתמשת ישירות במשאבי החומרה.
+- מהי וירטואליזציה ולמה משתמשים בה.
+- מה ההבדל בין Hypervisor Type 1 ו-Type 2.
+- מהו ESXi ומהו vSphere.
+- מהו vCenter.
+- מהו Host, VM, Datastore ו-Cluster.
+- איך vMotion, HA ו-DRS משתלבים יחד.
+- איך לתכנן מעבדת VMware ביתית.
+
+## 1. לפני VMware — השרת הפיזי
+
+שרת פיזי מספק ארבעה משאבים מרכזיים:
 
 ```text
-שרת פיזי
-├── CPU
-├── RAM
-├── Storage
-└── Network
-      │
-      ▼
-   Windows / Linux
+                 Physical Server
+        ┌────────────┼────────────┐
+        │            │            │
+       CPU          RAM        Storage
+        │                         │
+        └────────── Network ──────┘
 ```
 
-בוירטואליזציה מוסיפים שכבת Hypervisor:
+בשרת ללא וירטואליזציה, מערכת ההפעלה מקבלת את המשאבים ישירות.
+
+לדוגמה:
+
+```text
+Server 01 → Windows Server
+Server 02 → SQL Server
+Server 03 → Application
+Server 04 → File Server
+```
+
+החיסרון: לעיתים כל שרת משתמש רק בחלק קטן מהחומרה.
+
+## 2. מהי וירטואליזציה?
+
+Hypervisor מחלק משאבים פיזיים למכונות וירטואליות:
 
 ```text
 Physical Server
@@ -32,126 +56,199 @@ Physical Server
        ▼
      ESXi
        │
- ┌─────┼─────┐
- ▼     ▼     ▼
- VM01  VM02  VM03
+ ┌─────┼─────┬─────┐
+ ▼     ▼     ▼     ▼
+DC01  SQL01 APP01 WEB01
 ```
 
-כל VM מקבלת CPU, RAM, דיסק ורשת וירטואליים.
+לכל VM יש:
 
-## 2. Type 1 מול Type 2
+- vCPU
+- vRAM
+- vDisk
+- vNIC
+- Virtual Hardware
+
+## 3. Type 1 לעומת Type 2
 
 ### Type 1
 
-Hypervisor שרץ ישירות על החומרה.
+רץ ישירות על החומרה:
 
-דוגמאות:
+```text
+Hardware
+   ↓
+Hypervisor
+   ↓
+VMs
+```
 
-- VMware ESXi
-- Microsoft Hyper-V
-- Xen
+דוגמאות: VMware ESXi, Microsoft Hyper-V.
 
 ### Type 2
 
-Hypervisor שרץ מעל מערכת הפעלה.
-
-דוגמאות:
-
-- VMware Workstation
-- Oracle VirtualBox
-
-## 3. מהו ESXi?
-
-ESXi הוא ה-Hypervisor של VMware.
-
-הוא מותקן על שרת פיזי ומאפשר להריץ עליו מכונות וירטואליות.
+רץ מעל מערכת הפעלה:
 
 ```text
-Physical Server
-      │
-      ▼
-     ESXi
-      │
- ┌────┼────┐
- ▼    ▼    ▼
-DC01 SQL01 WEB01
+Hardware
+   ↓
+Windows/Linux
+   ↓
+Hypervisor
+   ↓
+VMs
 ```
 
-## 4. מהו vSphere?
+דוגמה: VMware Workstation.
 
-vSphere הוא פלטפורמת הווירטואליזציה של VMware.
+## 4. ESXi
 
-בפועל עובדים עם רכיבים כמו:
+ESXi הוא שכבת ה-Hypervisor שמריצה את המכונות.
+
+```text
+Hardware
+   ↓
+ESXi Host
+   ├── VM01
+   ├── VM02
+   └── VM03
+```
+
+המונח **Host** מתייחס בדרך כלל לשרת שעליו מותקן ESXi.
+
+## 5. vSphere
+
+vSphere הוא שם הפלטפורמה והאקוסיסטם של VMware לווירטואליזציה. במהלך העבודה תפגוש:
 
 - ESXi
 - vCenter
 - vSphere Client
-- vSphere HA
-- vSphere DRS
 - vMotion
+- HA
+- DRS
+- Storage
+- Networking
 
-## 5. מהו vCenter?
+## 6. vCenter
 
-vCenter מאפשר לנהל מספר שרתי ESXi ממקום מרכזי.
+vCenter מאפשר לנהל מספר Hosts במקום אחד:
 
 ```text
-             vCenter
-                │
-       ┌────────┼────────┐
-       ▼        ▼        ▼
-     ESXi01   ESXi02   ESXi03
-       │        │        │
-      VMs      VMs      VMs
+                     vCenter
+                        │
+             ┌──────────┼──────────┐
+             ▼          ▼          ▼
+          ESXi01     ESXi02     ESXi03
+             │          │          │
+            VMs        VMs        VMs
 ```
 
-## 6. מושגים בסיסיים
+vCenter הוא רכיב קריטי כאשר רוצים להשתמש ביכולות Cluster כגון HA, DRS ו-vMotion.
 
-| מושג | הסבר |
-|---|---|
-| Host | שרת ESXi |
-| VM | מכונה וירטואלית |
-| Datastore | מקום אחסון ל-VMs |
-| Cluster | קבוצת Hosts |
-| vMotion | העברת VM בין Hosts |
-| HA | הפעלה מחדש של VM במקרה של כשל Host |
-| DRS | איזון משאבים בין Hosts |
-| Snapshot | נקודת מצב של VM |
-| Template | תבנית ליצירת VMs |
+## 7. Datastore
 
-## 7. תרגיל
+VM מורכבת ממספר קבצים. חלקם נשמרים ב-Datastore:
 
-תכננו מעבדה:
+```text
+Datastore01
+└── VM01
+    ├── VM01.vmx
+    ├── VM01.vmdk
+    ├── VM01.nvram
+    └── logs
+```
+
+## 8. Cluster
+
+Cluster הוא אוסף Hosts שעובדים יחד:
+
+```text
+Production-Cluster
+├── ESXi01
+├── ESXi02
+└── ESXi03
+```
+
+זה הבסיס ל-HA ול-DRS.
+
+## 9. vMotion, HA ו-DRS במשפט אחד
+
+**vMotion:** העברת VM פעילה בין Hosts.
+
+**HA:** התאוששות מ-Host failure באמצעות הפעלה מחדש של VM על Host זמין.
+
+**DRS:** ניהול ואיזון עומסים ומשאבים ב-Cluster.
+
+## 10. תכנון מעבדה
+
+מעבדה קטנה:
 
 ```text
 ESXi01
 ├── DC01
 ├── WIN01
-├── Ubuntu01
-└── TestVM
+└── LINUX01
 ```
 
-ענו:
+מעבדה מתקדמת:
 
-1. כמה CPU צריך לכל VM?
-2. כמה RAM?
-3. איפה יישמרו הדיסקים?
-4. איך ה-VMs יתקשרו ביניהן?
+```text
+                 vCenter
+                    │
+               LAB-Cluster
+          ┌─────────┼─────────┐
+          │         │         │
+       ESXi01    ESXi02    ESXi03
+          │         │         │
+         VMs       VMs       VMs
+                    │
+              Shared Storage
+```
 
-## 8. קישורים וסרטונים
+## 11. תרגיל
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — VMware vSphere basics](https://www.youtube.com/results?search_query=VMware+vSphere+ESXi+vCenter+basics)
+כתוב על דף:
+
+1. מהו Host?
+2. מהי VM?
+3. למה צריך Datastore?
+4. למה צריך vCenter?
+5. מה יקרה אם Host נופל ב-Cluster עם HA?
+
+## 12. מעבדה רשמית
+
+המעבדה **Virtualization 101** של VMware כוללת vCenter, Networking ו-Storage ומיועדת להתחלה. 
+
+[VMware Hands-on Labs — Virtualization 101](https://labs.hol.vmware.com/HOL/catalog/lab/13928)
+
+## 13. סרטוני YouTube
+
+[VMware vSphere — Beginner](https://www.youtube.com/results?search_query=VMware+vSphere+ESXi+vCenter+beginner)
+
+[VMware HA / DRS / vMotion](https://www.youtube.com/watch?v=JZHFefLs0RY)
+
+## שאלות ראיון
+
+1. מה ההבדל בין ESXi ל-vCenter?
+2. מהו Hypervisor?
+3. מהו Datastore?
+4. מה ההבדל בין VM ל-Host?
+5. מה עושה HA?
+6. מה עושה DRS?
+7. מה עושה vMotion?
 
 ## סיכום
 
-אחרי המדריך הזה צריך להבין את ההיררכיה:
+היררכיית הבסיס:
 
 ```text
-Physical Server
+Physical Hardware
       ↓
      ESXi
       ↓
       VM
       ↓
-Windows / Linux / Application
+Guest OS
+      ↓
+Applications
 ```

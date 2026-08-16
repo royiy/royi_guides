@@ -1,68 +1,91 @@
 ---
 sidebar_position: 7
-title: "מדריך 7 — VMware HA לעומק"
+title: "VMware #7 — vSphere HA לעומק: Failure, Isolation ו-Admission Control"
 ---
 
-# VMware HA
+# VMware #7 — vSphere HA לעומק
 
-## מטרת המדריך
+## 1. מטרת HA
 
-להבין מה קורה כאשר ESXi Host נכשל ואיך vSphere HA מסייע להפעיל מחדש VMs.
-
-## 1. לפני הכשל
+HA נועד לסייע בהתאוששות ממצב שבו Host נכשל, באמצעות הפעלה מחדש של VMs על Hosts אחרים ב-Cluster.
 
 ```text
-Cluster
-├── ESXi01
-│   ├── VM01
-│   └── VM02
-└── ESXi02
-    └── VM03
+Before:
+ESXi01 → VM01 VM02
+ESXi02 → VM03
+
+ESXi01 FAILURE
+
+After:
+ESXi02 → VM03 VM01 VM02
 ```
 
-## 2. ESXi01 נופל
+## 2. HA אינו vMotion
+
+| Feature | מה עושה |
+|---|---|
+| vMotion | Migration חי |
+| HA | Restart לאחר כשל |
+| DRS | איזון משאבים |
+
+## 3. Failure Detection
+
+HA צריך להבחין בין:
 
 ```text
-ESXi01
-   X
-   │
-   ▼
-HA detects failure
-   │
-   ▼
-VM01 + VM02
-   │
-   ▼
-Restart on ESXi02
+Host Failure
+Host Isolation
+Network Partition
 ```
 
-## 3. מושגים
-
-- HA Cluster
-- Host Monitoring
-- Admission Control
-- Isolation
-- Heartbeat
-- Datastore Heartbeat
-- VM Monitoring
-- Host failure
-- Network partition
+אלו תרחישים שונים עם השלכות שונות.
 
 ## 4. Admission Control
 
-Admission Control נועד לשמור מספיק משאבים כדי שה-Cluster יוכל להתמודד עם כשל בהתאם למדיניות שהוגדרה.
+Admission Control מוודא שה-Cluster לא יצרוך את כל ה-Capacity כך שלא תישאר יכולת להתאושש בהתאם למדיניות שנבחרה.
 
-## 5. Isolation
+דוגמה רעיונית:
 
-חשוב להבין את ההבדל בין:
+```text
+Total Capacity
+████████████████████
+Reserved for Failure
+████
+Available
+████████████████
+```
 
-- Host failure
-- Host isolation
-- Network partition
+## 5. Restart Priority
 
-## 6. תרגיל מעשי
+VMs שונות יכולות להיות בעלות חשיבות שונה.
 
-מעבדה:
+לדוגמה:
+
+```text
+Critical:
+DC01
+SQL01
+
+Normal:
+APP01
+
+Low:
+TEST01
+```
+
+הגדרות בפועל צריכות להתאים לתכנון העסקי.
+
+## 6. Datastore Heartbeat
+
+בסביבה מתאימה, Datastore Heartbeats יכולים לספק מידע נוסף לגבי מצב Hosts כאשר קיימת בעיית תקשורת.
+
+## 7. VM Monitoring
+
+VM Monitoring יכול לזהות מצב שבו Guest/VM אינה מגיבה ולהפעיל מנגנוני התאוששות בהתאם לתצורה ולתמיכה.
+
+## 8. מעבדת HA
+
+### טופולוגיה
 
 ```text
 Cluster01
@@ -72,26 +95,49 @@ Cluster01
     └── APP01
 ```
 
-הפעילו HA.
+### תרגיל
 
-לאחר מכן, בתנאי מעבדה מבוקרים:
+1. הפעל HA.
+2. ודא שה-VM על ESXi01.
+3. תעד את המצב.
+4. בסביבת Lab בלבד, דמה כשל Host.
+5. בדוק Events.
+6. בדוק Restart.
+7. תעד זמן התאוששות.
 
-1. הפעילו VM.
-2. בדקו שה-VM רצה על ESXi01.
-3. דימו כשל של ESXi01.
-4. בדקו את ESXi02.
-5. בדקו Events.
-6. בדקו שה-VM הופעלה מחדש.
+**אין לבצע Fault Injection כזה ב-Production.**
 
-## 7. שאלות לראיון
+## 9. תחקור HA
 
-- מה ההבדל בין HA ל-vMotion?
-- האם HA מעביר VM בזמן אמת?
-- מהו Admission Control?
-- מהו Host Isolation?
-- מהו Datastore Heartbeat?
+כאשר VM לא הופעלה מחדש:
 
-## 8. קישורים
+```text
+HA Status
+ ↓
+Host State
+ ↓
+Admission Control
+ ↓
+Datastore
+ ↓
+Network
+ ↓
+VM Configuration
+ ↓
+Events
+```
 
-- [VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
-- [YouTube — vSphere HA](https://www.youtube.com/results?search_query=VMware+vSphere+HA+tutorial)
+## 10. שאלות ראיון
+
+1. האם HA עושה vMotion?
+2. מהו Admission Control?
+3. מה ההבדל בין Host Failure ל-Isolation?
+4. למה Shared Storage עשוי להיות חשוב?
+5. מהו Restart Priority?
+6. איך תחקור VM שלא התאוששה?
+
+## 11. מעבדות
+
+[VMware Hands-on Labs](https://labs.hol.vmware.com/HOL/catalog/)
+
+[YouTube — vSphere HA](https://www.youtube.com/results?search_query=VMware+vSphere+HA+deep+dive)
