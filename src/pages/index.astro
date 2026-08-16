@@ -1,29 +1,21 @@
 ---
 // src/pages/index.astro
-// דף בית משופר - Beautiful, Accessible, DevOps-focused
+// Royi Guides — DevOps, Cloud & Infrastructure
 
-// DevOps-ממוקד - לימוד מובנה מ-Git ועד Kubernetes
 const devopsPath = [
-  { icon: "🔀", title: "Git", desc: "Version Control", link: "/devops/git/git-basics/" },
-  { icon: "⚙️", title: "CI/CD", desc: "Automation", link: "/devops/cicd/01-מבוא-ל-cicd/" },
-  { icon: "🐳", title: "Docker", desc: "Containers", link: "/devops/docker/01-מבוא-ל-docker/" },
-  { icon: "☸️", title: "Kubernetes", desc: "Orchestration", link: "/devops/kubernetes/01-mavo-vearchitectura/" },
+  { icon: "🔀", title: "Git", desc: "Version Control & Branching", link: "/devops/git/git-basics/" },
+  { icon: "⚙️", title: "CI/CD", desc: "Automation & Pipelines", link: "/devops/cicd/01-מבוא-ל-cicd/" },
+  { icon: "🐳", title: "Docker", desc: "Containers & Registries", link: "/devops/docker/01-מבוא-ל-docker/" },
+  { icon: "☸️", title: "Kubernetes", desc: "Orchestration & Clusters", link: "/devops/kubernetes/01-mavo-vearchitectura/" },
 ];
 
 const allTopics = [
-  { icon: "☁️", title: "AWS", path: "~/topics/aws", desc: "Cloud", link: "/aws/aws-exam/", category: "Cloud" },
-  { icon: "🐧", title: "Linux", path: "~/topics/linux", desc: "Commands, Permissions", link: "/linux/01-פקודות-בסיסיות/", category: "Infrastructure" },
-  { icon: "🪟", title: "Windows Server", path: "~/topics/win-server", desc: "AD, DNS", link: "/windows-server/intro/", category: "Infrastructure" },
-  { icon: "🏗️", title: "Terraform", path: "~/topics/terraform", desc: "Infrastructure as Code", link: "/terraform/01-מבוא-ויסודות-terraform/", category: "IaC" },
-  { icon: "🖥️", title: "VMware", path: "~/topics/vmware", desc: "Virtualization", link: "/vmware/01-virtualization-vmware-basics/", category: "Virtualization" },
-  { icon: "💻", title: "PowerShell", path: "~/topics/powershell", desc: "Automation", link: "/powershell/01-basics/", category: "Scripting" },
-];
-
-const features = [
-  { icon: "🎯", title: "Focused", desc: "תוכן טכני מדויק ללא רעש" },
-  { icon: "⚡", title: "Practical", desc: "דוגמאות וטרחישים מעולם האמיתי" },
-  { icon: "🇮🇱", title: "Hebrew", desc: "ידע אנגלי בחברה עברית" },
-  { icon: "🚀", title: "DevOps First", desc: "עדיפות ללימוד מודרני של תשתיות" },
+  { icon: "🏗️", title: "Terraform", category: "IaC", desc: "Infrastructure as Code, State ו-Modules", link: "/terraform/01-מבוא-ויסודות-terraform/" },
+  { icon: "☁️", title: "AWS", category: "Cloud", desc: "Cloud Services, EC2, IAM ו-S3", link: "/aws/aws-exam/" },
+  { icon: "🐧", title: "Linux", category: "Infrastructure", desc: "Commands, Permissions ו-Bash", link: "/linux/01-פקודות-בסיסיות/" },
+  { icon: "🪟", title: "Windows Server", category: "Infrastructure", desc: "Active Directory, DNS ו-Group Policy", link: "/windows-server/intro/" },
+  { icon: "🖥️", title: "VMware", category: "Virtualization", desc: "Virtualization, ESXi ו-vSphere", link: "/vmware/01-virtualization-vmware-basics/" },
+  { icon: "💻", title: "PowerShell", category: "Scripting", desc: "Automation, Scripting ו-Modules", link: "/powershell/01-basics/" },
 ];
 ---
 
@@ -35,1283 +27,417 @@ const features = [
     <title>Royi Guides — DevOps, Cloud & Infrastructure בעברית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@500;600;700&family=Heebo:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">לדלג לתוכן ראשי</a>
+    <a href="#main-content" class="skip-link">דילוג לתוכן הראשי</a>
 
-    <header class="nav" role="banner">
-      <div class="nav-inner">
-        <a class="logo" href="/" aria-label="Royi Guides - בית">
-          <span class="logo-badge">📚</span>
-          <span>Royi Guides</span>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="logo" href="/" aria-label="Royi Guides - דף הבית">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Royi<span class="highlight">Guides</span></span>
         </a>
-        <span class="tagline">DevOps • Cloud • Infrastructure</span>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>DevOps Path v2.0</span>
+        </div>
       </div>
     </header>
 
     <main id="main-content">
-      <section class="hero" aria-label="הקדמה">
-        <div class="hero-inner">
-          <div class="hero-content">
-            <span class="eyebrow">🚀 CODE TO PRODUCTION</span>
-            <h1>מקוד לפרודקשן<br /><span>בתוך שניות</span></h1>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-text">
+            <div class="badge">🚀 CODE TO PRODUCTION</div>
+            <h1>מקוד לפרודקשן<br /><span class="gradient-text">בתוך שניות</span></h1>
             <p>
-              Git, CI/CD, Docker, Kubernetes. הכלים שמהנדסים צריכים להכיר.
+              Git, CI/CD, Docker, Kubernetes. הכלים שמהנדסים צריכים להכיר בעולם ה-DevOps והתשתיות המודרניות.
             </p>
-            <div class="buttons">
+            <div class="hero-actions">
               <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 התחל עם CI/CD</a>
               <a class="btn btn-secondary" href="/devops/git/git-basics/">📖 Git & Branching</a>
             </div>
           </div>
 
-          <div class="terminal" role="img" aria-label="דוגמה של טרמינל">
-            <div class="terminal-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="terminal-title">bash — devops-learning</span>
+          <!-- Code Window / Pipeline Preview -->
+          <div class="code-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="window-title">deploy-pipeline.yml</span>
             </div>
-            <div class="terminal-body">
-              <div class="term-line">
-                <span class="term-prompt">ops@royi</span><span class="term-comment">:</span><span class="term-path">~/learning</span><span class="term-comment">$ </span><span class="term-output">git log</span>
-              </div>
-              <div class="term-line" style="color: var(--ia-wire);">commit fa3d9e2 (HEAD → main)</div>
-              <div class="term-line" style="color: var(--ia-text-dim);">DevOps pipeline working ✨</div>
-              <div class="term-line">&nbsp;</div>
-              <div class="term-line">
-                <span class="term-prompt">ops@royi</span><span class="term-comment">:</span><span class="term-path">~/learning</span><span class="term-comment">$ </span><span class="term-output">docker ps</span>
-              </div>
-              <div class="term-line" style="color: var(--ia-wire);">CONTAINER ID  STATUS  NAMES</div>
-              <div class="term-line">e4d5f9a2  Up     kubernetes-pod</div>
-              <div class="term-line">
-                <span class="term-prompt">ops@royi</span><span class="term-comment">:</span><span class="term-path">~/learning</span><span class="term-comment">$ </span><span class="cursor"></span>
-              </div>
+            <div class="window-body">
+              <pre><code><span class="k">name:</span> Production Deploy
+<span class="k">on:</span>
+  <span class="k">push:</span>
+    <span class="k">branches:</span> [ main ]
+<span class="k">jobs:</span>
+  <span class="k">build-and-deploy:</span>
+    <span class="k">runs-on:</span> ubuntu-latest
+    <span class="k">steps:</span>
+      - <span class="k">uses:</span> actions/checkout@v4
+      - <span class="k">name:</span> Build Docker Image
+        <span class="s">run: docker build -t app:v1.0 .</span>
+      - <span class="k">name:</span> Deploy to K8s Cluster
+        <span class="s">run: kubectl apply -f k8s/</span>
+<span class="comment"># Status: All checks passed (0.42s) ✓</span></code></pre>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="devops-workflow" aria-label="DevOps Workflow">
-        <div class="section-header">
-          <span class="eyebrow">🔄 THE PIPELINE</span>
-          <h2>DevOps Workflow</h2>
-          <p>מקוד לפרודקשן</p>
-        </div>
+      <!-- DevOps Pipeline Section -->
+      <section class="pipeline-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="sub-title">🔄 THE PIPELINE</span>
+            <h2>DevOps Workflow</h2>
+            <p>מסלול הלימוד המבוסס מקוד מקור ועד לניהול קונטיינרים ב-Production</p>
+          </div>
 
-        <div class="workflow-container">
-          <svg class="workflow-diagram" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Background -->
-            <defs>
-              <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#ff7a3d;stop-opacity:0.1" />
-                <stop offset="100%" style="stop-color:#00d9a3;stop-opacity:0.1" />
-              </linearGradient>
-              
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-
-            <!-- Flow line -->
-            <line x1="50" y1="150" x2="950" y2="150" stroke="#2a3f4f" stroke-width="2" />
-            
-            <!-- Step 1: Git Push -->
-            <g class="workflow-step step-1">
-              <circle cx="100" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
-              <text x="100" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">🔀</text>
-              <text x="100" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Git Push</text>
-              <text x="100" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">קוד נחדש</text>
-            </g>
-
-            <!-- Arrow 1 -->
-            <g class="flow-arrow arrow-1">
-              <line x1="145" y1="150" x2="205" y2="150" stroke="#ff7a3d" stroke-width="2" stroke-dasharray="5,5" />
-              <polygon points="210,150 200,145 200,155" fill="#ff7a3d" />
-            </g>
-
-            <!-- Step 2: Build -->
-            <g class="workflow-step step-2">
-              <circle cx="250" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
-              <text x="250" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">🔨</text>
-              <text x="250" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Build</text>
-              <text x="250" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">בנייה וביצוע</text>
-            </g>
-
-            <!-- Arrow 2 -->
-            <g class="flow-arrow arrow-2">
-              <line x1="295" y1="150" x2="355" y2="150" stroke="#ff7a3d" stroke-width="2" stroke-dasharray="5,5" />
-              <polygon points="360,150 350,145 350,155" fill="#ff7a3d" />
-            </g>
-
-            <!-- Step 3: Test -->
-            <g class="workflow-step step-3">
-              <circle cx="400" cy="150" r="35" fill="#14202a" stroke="#ff7a3d" stroke-width="2" />
-              <text x="400" y="160" text-anchor="middle" fill="#ff7a3d" font-size="24" font-weight="bold">✓</text>
-              <text x="400" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Test</text>
-              <text x="400" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">בדיקות אוטו</text>
-            </g>
-
-            <!-- Arrow 3 -->
-            <g class="flow-arrow arrow-3">
-              <line x1="445" y1="150" x2="505" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
-              <polygon points="510,150 500,145 500,155" fill="#00d9a3" />
-            </g>
-
-            <!-- Step 4: Image -->
-            <g class="workflow-step step-4">
-              <circle cx="550" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
-              <text x="550" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">🐳</text>
-              <text x="550" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Image</text>
-              <text x="550" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">Docker build</text>
-            </g>
-
-            <!-- Arrow 4 -->
-            <g class="flow-arrow arrow-4">
-              <line x1="595" y1="150" x2="655" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
-              <polygon points="660,150 650,145 650,155" fill="#00d9a3" />
-            </g>
-
-            <!-- Step 5: Deploy -->
-            <g class="workflow-step step-5">
-              <circle cx="700" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
-              <text x="700" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">☸️</text>
-              <text x="700" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Deploy</text>
-              <text x="700" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">Kubernetes</text>
-            </g>
-
-            <!-- Arrow 5 -->
-            <g class="flow-arrow arrow-5">
-              <line x1="745" y1="150" x2="805" y2="150" stroke="#00d9a3" stroke-width="2" stroke-dasharray="5,5" />
-              <polygon points="810,150 800,145 800,155" fill="#00d9a3" />
-            </g>
-
-            <!-- Step 6: Monitor -->
-            <g class="workflow-step step-6">
-              <circle cx="850" cy="150" r="35" fill="#14202a" stroke="#00d9a3" stroke-width="2" />
-              <text x="850" y="160" text-anchor="middle" fill="#00d9a3" font-size="24" font-weight="bold">📊</text>
-              <text x="850" y="220" text-anchor="middle" fill="#a8c5ce" font-size="14" font-weight="600">Monitor</text>
-              <text x="850" y="240" text-anchor="middle" fill="#7a8f99" font-size="12">מעקב סביב</text>
-            </g>
-
-            <!-- Flow stats -->
-            <text x="500" y="280" text-anchor="middle" fill="#7a8f99" font-size="13" font-style="italic">
-              זה קורה בדקות, לא בשבועות 🚀
-            </text>
-          </svg>
-
-          <div class="workflow-steps">
-            {
-              devopsPath.map((step) => (
-                <a class="workflow-card" href={step.link}>
-                  <span class="workflow-icon">{step.icon}</span>
-                  <div class="workflow-info">
-                    <h4>{step.title}</h4>
-                    <p>{step.desc}</p>
-                  </div>
-                  <span class="arrow-accent">→</span>
-                </a>
-              ))
-            }
+          <div class="pipeline-grid">
+            {devopsPath.map((step, index) => (
+              <a href={step.link} class="pipeline-card">
+                <div class="card-top">
+                  <span class="step-num">{String(index + 1).padStart(2, '0')}</span>
+                  <span class="card-icon">{step.icon}</span>
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+                <span class="card-link">למידה והעמקה ←</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      <section class="topics" aria-label="נושאים">
-        <div class="section-header">
-          <span class="eyebrow">📚 LEARN</span>
-          <h2>Topics</h2>
-          <p>בחר נושא והתחל</p>
+      <!-- Topics Section -->
+      <section class="topics-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="sub-title">📚 LEARN</span>
+            <h2>Topics & Guides</h2>
+            <p>בחר נושא והתחל ללמוד מדריכים מעשיים בעברית</p>
+          </div>
+
+          <div class="topics-grid">
+            {allTopics.map((topic) => (
+              <a href={topic.link} class="topic-card">
+                <div class="topic-header">
+                  <span class="topic-icon">{topic.icon}</span>
+                  <span class="topic-category">{topic.category}</span>
+                </div>
+                <h3>{topic.title}</h3>
+                <p>{topic.desc}</p>
+              </a>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div class="topics-wrapper">
-          <!-- DevOps & Automation -->
-          <div class="topics-category">
-            <h3 class="category-title">🚀 DevOps & Automation</h3>
-            <div class="topic-grid">
-              {
-                allTopics.filter(t => t.title === "Terraform").map((t) => (
-                  <a class="topic-card" href={t.link} title={t.desc}>
-                    <div class="topic-icon">{t.icon}</div>
-                    <h4>{t.title}</h4>
-                    <p>{t.desc}</p>
-                    <span class="learn-more">להמשך ←</span>
-                  </a>
-                ))
-              }
-            </div>
+      <!-- Why DevOps / Diff Section -->
+      <section class="diff-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="sub-title">💡 WHY DEVOPS</span>
+            <h2>Automate Everything</h2>
+            <p>בלי DevOps? שבועות. עם DevOps? דקות.</p>
           </div>
 
-          <!-- Infrastructure -->
-          <div class="topics-category">
-            <h3 class="category-title">🏢 Infrastructure</h3>
-            <div class="topic-grid">
-              {
-                allTopics.filter(t => t.category === "Infrastructure").map((t) => (
-                  <a class="topic-card" href={t.link} title={t.desc}>
-                    <div class="topic-icon">{t.icon}</div>
-                    <h4>{t.title}</h4>
-                    <p>{t.desc}</p>
-                    <span class="learn-more">להמשך ←</span>
-                  </a>
-                ))
-              }
+          <div class="diff-container">
+            <div class="diff-box diff-old">
+              <div class="diff-header">❌ No DevOps (עבודה ידנית)</div>
+              <ul>
+                <li><code>-</code> כתיבה ופריסה ידנית לשרתים</li>
+                <li><code>-</code> תקווה שהכל יעבוד ללא בדיקות</li>
+                <li><code>-</code> המתנה איטית לאישורי פריסה</li>
+                <li><code>-</code> תיקון תקלות ידני ומורכב בזמן אמת</li>
+              </ul>
             </div>
-          </div>
 
-          <!-- Cloud & Other -->
-          <div class="topics-category">
-            <h3 class="category-title">☁️ Cloud & Other</h3>
-            <div class="topic-grid">
-              {
-                allTopics.filter(t => t.category === "Cloud" || t.category === "Virtualization" || t.category === "Scripting").map((t) => (
-                  <a class="topic-card" href={t.link} title={t.desc}>
-                    <div class="topic-icon">{t.icon}</div>
-                    <h4>{t.title}</h4>
-                    <p>{t.desc}</p>
-                    <span class="learn-more">להמשך ←</span>
-                  </a>
-                ))
-              }
+            <div class="diff-box diff-new">
+              <div class="diff-header">✅ With DevOps (אוטומציה מלאה)</div>
+              <ul>
+                <li><code>+</code> בדיקות אוטומטיות בכל Push</li>
+                <li><code>+</code> Auto-Deploy רציף ללא Downtime</li>
+                <li><code>+</code> ניטור רציף והתראות בזמן אמת</li>
+                <li><code>+</code> Rollback מיידי בלחיצת כפתור</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="why-us" aria-label="למה בחרנו DevOps">
-        <div class="section-header why-header">
-          <span class="eyebrow">� WHY DEVOPS</span>
-          <h2>Automate Everything</h2>
-          <p>
-            בלי DevOps? שבועות. עם DevOps? דקות.
-          </p>
-        </div>
-
-        <div class="why-grid">
-          <div class="benefits-list">
-            <div class="benefit-card">
-              <span class="benefit-emoji">⏱️</span>
-              <h4>Hours → Minutes</h4>
-              <p>Automate everything</p>
-            </div>
-            <div class="benefit-card">
-              <span class="benefit-emoji">🛡️</span>
-              <h4>Fewer Errors</h4>
-              <p>Structured processes</p>
-            </div>
-            <div class="benefit-card">
-              <span class="benefit-emoji">🚀</span>
-              <h4>Instant Deploy</h4>
-              <p>Code to production</p>
-            </div>
-            <div class="benefit-card">
-              <span class="benefit-emoji">💪</span>
-              <h4>Scale Fast</h4>
-              <p>No manual work</p>
-            </div>
-          </div>
-
-          <div class="why-content">
-            <div class="real-world-box">
-              <h3>The Difference</h3>
-              <div class="scenario">
-                <p><strong>No DevOps</strong></p>
-                <ul>
-                  <li>📝 Code manually</li>
-                  <li>🤔 Hope it works</li>
-                  <li>⏳ Wait for approval</li>
-                  <li>🚨 If broken, fix manually</li>
-                </ul>
-              </div>
-              <div class="scenario highlight">
-                <p><strong>With DevOps</strong></p>
-                <ul>
-                  <li>🤖 Automated testing</li>
-                  <li>🚀 Auto-deploy</li>
-                  <li>📊 Instant alerts</li>
-                  <li>⚡ Instant rollback</li>
-                </ul>
-              </div>
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-box">
+            <h2>Ready to Automate?</h2>
+            <p>בחר נושא מהמדריכים והתחל לבנות תשתיות מודרניות עוד היום.</p>
+            <div class="hero-actions justify-center">
+              <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 להתחיל עכשיו</a>
+              <a class="btn btn-secondary" href="/devops/git/git-basics/">📖 Git Basics</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cta" aria-label="להתחיל">
-        <div class="cta-content">
-          <h2>Ready?</h2>
-          <p>Choose a topic and start learning</p>
-          <div class="buttons">
-            <a class="btn btn-primary" href="/devops/cicd/01-מבוא-ל-cicd/">🚀 Start Now</a>
-            <a class="btn btn-secondary" href="/devops/git/git-basics/">📖 Git Basics</a>
-          </div>
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <div class="container">
+          <p>שאלות, הצעות או משוב?</p>
+          <a class="contact-email" href="mailto:royiyahud@gmail.com">✉️ royiyahud@gmail.com</a>
         </div>
-      </section>
-
-      <section class="contact" aria-label="יצירת קשר">
-        <p>שאלות, הצעות או משוב?</p>
-        <a class="contact-email" href="mailto:royiyahud@gmail.com">✉️ royiyahud@gmail.com</a>
       </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-      <div class="footer-inner">
-        <p>&copy; 2026 <strong>Royi Guides</strong> — DevOps, Cloud & Infrastructure Learning</p>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© 2026 <strong>Royi Guides</strong> — DevOps, Cloud & Infrastructure Learning</p>
         <p class="footer-note">מדריכים בעברית לעולם IT מודרני</p>
       </div>
     </footer>
 
     <style>
       :root {
-        --ia-ink: #0a1217;
-        --ia-ink-soft: #0f1820;
-        --ia-panel: #14202a;
-        --ia-panel-2: #1a2a36;
-        --ia-panel-3: #243545;
-        --ia-line: #2a3f4f;
-        --ia-line-soft: #1f3038;
-        --ia-text: #f5f9fa;
-        --ia-text-dim: #a8c5ce;
-        --ia-text-faint: #7a8f99;
-        --ia-signal: #ff7a3d;
-        --ia-signal-soft: rgba(255, 122, 61, 0.12);
-        --ia-signal-light: rgba(255, 122, 61, 0.25);
-        --ia-wire: #00d9a3;
-        --ia-wire-soft: rgba(0, 217, 163, 0.12);
-        --ia-wire-light: rgba(0, 217, 163, 0.25);
-        --ia-accent-blue: #00c9ff;
-        --font-display: "IBM Plex Sans Hebrew", "Heebo", sans-serif;
-        --font-body: "Heebo", sans-serif;
-        --font-mono: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+        --bg: #0b0f17;
+        --panel: #111827;
+        --panel-hover: #1f293d;
+        --border: #1e293b;
+        --border-light: #334155;
+        
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --text-dim: #64748b;
+        
+        --accent-cyan: #38bdf8;
+        --accent-green: #10b981;
+        --accent-orange: #ff7a3d;
+        --accent-red: #ef4444;
+
+        --font-sans: 'Heebo', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      
       body {
-        margin: 0;
-        background: linear-gradient(135deg, var(--ia-ink) 0%, var(--ia-ink-soft) 100%);
-        color: var(--ia-text);
-        font-family: var(--font-body);
+        background-color: var(--bg);
+        color: var(--text-main);
+        font-family: var(--font-sans);
         line-height: 1.6;
-        transition: background 0.3s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
       }
 
       /* Accessibility */
       .skip-link {
-        position: absolute;
-        top: -40px;
-        right: 0;
-        background: var(--ia-signal);
-        color: var(--ia-ink);
-        padding: 8px 16px;
-        text-decoration: none;
-        z-index: 100;
-        border-radius: 0 0 0 4px;
-        font-weight: 600;
+        position: absolute; top: -40px; right: 10px;
+        background: var(--accent-cyan); color: #000;
+        padding: 8px 16px; font-weight: bold; z-index: 100;
+        border-radius: 4px; text-decoration: none;
       }
+      .skip-link:focus { top: 10px; }
 
-      .skip-link:focus {
-        top: 0;
-      }
-
-      /* Navigation */
-      .nav {
-        border-bottom: 1px solid var(--ia-line);
-        background: rgba(10, 18, 23, 0.92);
+      /* Navbar */
+      .navbar {
+        border-bottom: 1px solid var(--border);
+        background: rgba(11, 15, 23, 0.85);
         backdrop-filter: blur(12px);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        position: sticky; top: 0; z-index: 50;
       }
-
       .nav-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.5rem;
+        height: 64px; display: flex;
+        align-items: center; justify-content: space-between;
       }
-
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: var(--ia-text);
-        text-decoration: none;
-        transition: transform 0.3s ease;
+        display: flex; align-items: center; gap: 8px;
+        text-decoration: none; color: var(--text-main);
+        font-weight: 700; font-size: 1.15rem;
       }
-
-      .logo:hover {
-        transform: scale(1.02);
+      .logo-icon { color: var(--accent-cyan); }
+      .logo .highlight { color: var(--accent-cyan); }
+      .status-badge {
+        display: flex; align-items: center; gap: 8px;
+        font-family: var(--font-mono); font-size: 0.75rem;
+        color: var(--text-muted); background: var(--panel);
+        padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border);
       }
-
-      .logo-badge {
-        display: inline-flex;
-        width: 32px;
-        height: 32px;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--ia-wire-soft), var(--ia-signal-soft));
-        border: 1px solid var(--ia-line);
-        border-radius: 8px;
-        font-size: 1.2rem;
-      }
-
-      .tagline {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
-        color: var(--ia-text-faint);
-      }
-
-      /* Eyebrow */
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--ia-signal);
-        background: var(--ia-signal-light);
-        border: 1px solid rgba(255, 122, 61, 0.4);
-        border-radius: 999px;
-        padding: 0.5rem 1rem;
+      .status-dot {
+        width: 8px; height: 8px; background-color: var(--accent-green);
+        border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);
       }
 
       /* Hero Section */
-      .hero {
-        position: relative;
-        padding: 4.5rem 0;
-        overflow: hidden;
-        border-bottom: 1px solid var(--ia-line);
-        background: 
-          radial-gradient(circle at 20% 30%, rgba(255, 122, 61, 0.12), transparent 45%),
-          radial-gradient(circle at 80% 70%, rgba(0, 217, 163, 0.08), transparent 50%);
-        animation: fadeIn 0.8s ease-out;
+      .hero { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+      .hero-grid {
+        display: grid; grid-template-columns: 1.1fr 0.9fr;
+        gap: 3.5rem; align-items: center;
       }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(var(--ia-line-soft) 1px, transparent 1px),
-          linear-gradient(90deg, var(--ia-line-soft) 1px, transparent 1px);
-        background-size: 50px 50px;
-        opacity: 0.3;
-        pointer-events: none;
+      .badge {
+        display: inline-block; font-family: var(--font-mono); font-size: 0.8rem;
+        color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 12px;
+        border-radius: 99px; margin-bottom: 1rem;
       }
-
-      .hero-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 3rem;
-        align-items: center;
-        position: relative;
-        z-index: 1;
+      .hero-text h1 {
+        font-size: 2.75rem; line-height: 1.2; font-weight: 700; margin-bottom: 1rem;
       }
-
-      .hero-content h1 {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: clamp(2.2rem, 5vw, 3.2rem);
-        line-height: 1.15;
-        margin: 0.5rem 0 1.5rem;
-        letter-spacing: -0.02em;
+      .gradient-text {
+        background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       }
-
-      .hero-content h1 span {
-        background: linear-gradient(135deg, var(--ia-signal), var(--ia-accent-blue));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-content p {
-        font-size: 1.08rem;
-        line-height: 1.8;
-        color: var(--ia-text-dim);
-        max-width: 38rem;
-        margin-bottom: 2rem;
-      }
-
-      .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+      .hero-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+      .hero-actions { display: flex; gap: 1rem; }
+      .justify-center { justify-content: center; }
 
       .btn {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 1rem 1.8rem;
-        border-radius: 8px;
-        border: none;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 12px 24px; border-radius: 8px; font-weight: 600;
+        text-decoration: none; transition: all 0.2s ease; font-size: 0.95rem;
       }
+      .btn-primary { background: var(--accent-cyan); color: #000; }
+      .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+      .btn-secondary { background: var(--panel); color: var(--text-main); border: 1px solid var(--border-light); }
+      .btn-secondary:hover { background: var(--panel-hover); border-color: var(--text-muted); }
 
-      .btn:focus {
-        outline: 2px solid var(--ia-signal);
-        outline-offset: 2px;
+      /* Code Window */
+      .code-window {
+        background: var(--panel); border: 1px solid var(--border-light);
+        border-radius: 12px; overflow: hidden; font-family: var(--font-mono);
+        direction: ltr; text-align: left; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
       }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--ia-signal), #ff5c1f);
-        color: var(--ia-ink);
-        box-shadow: 0 8px 24px rgba(255, 122, 61, 0.2);
+      .window-header {
+        background: #0d121d; padding: 10px 16px; border-bottom: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: space-between;
       }
+      .window-dots { display: flex; gap: 6px; }
+      .dot { width: 10px; height: 10px; border-radius: 50%; }
+      .dot.red { background: #ff5f56; }
+      .dot.yellow { background: #ffbd2e; }
+      .dot.green { background: #27c93f; }
+      .window-title { font-size: 0.75rem; color: var(--text-dim); }
+      .window-body { padding: 1.25rem; font-size: 0.85rem; line-height: 1.7; overflow-x: auto; }
+      .window-body .k { color: var(--accent-cyan); }
+      .window-body .s { color: var(--accent-green); }
+      .window-body .comment { color: var(--text-dim); font-style: italic; display: block; margin-top: 8px; }
 
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 32px rgba(255, 122, 61, 0.3);
+      /* Section Common */
+      .section-header { text-align: center; margin-bottom: 3rem; }
+      .sub-title {
+        font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;
+        color: var(--accent-cyan); display: block; margin-bottom: 0.5rem;
       }
+      .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+      .section-header p { color: var(--text-muted); }
 
-      .btn-secondary {
-        background: transparent;
-        color: var(--ia-text);
-        border: 2px solid var(--ia-line);
+      /* Pipeline Grid */
+      .pipeline-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+      .pipeline-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
       }
-
-      .btn-secondary:hover {
-        border-color: var(--ia-wire);
-        background: rgba(0, 217, 163, 0.08);
+      .pipeline-card {
+        background: var(--panel); border: 1px solid var(--border);
+        border-radius: 12px; padding: 1.75rem; text-decoration: none; color: var(--text-main);
+        transition: all 0.25s ease; display: flex; flex-direction: column;
       }
-
-      /* Terminal */
-      .terminal {
-        background: var(--ia-panel);
-        border: 1px solid var(--ia-line);
-        border-radius: 12px;
-        overflow: hidden;
-        direction: ltr;
-        text-align: left;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      .pipeline-card:hover {
+        border-color: var(--accent-cyan); transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(56, 189, 248, 0.1);
       }
-
-      .terminal-bar {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.9rem 1.2rem;
-        background: var(--ia-panel-2);
-        border-bottom: 1px solid var(--ia-line);
-      }
-
-      .dot {
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: #4a5f6a;
-        display: inline-block;
-      }
-
-      .terminal-title {
-        margin-inline-start: 0.6rem;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--ia-text-faint);
-      }
-
-      .terminal-body {
-        padding: 1.6rem 1.4rem;
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        line-height: 1.95;
-      }
-
-      .term-line {
-        display: block;
-        color: var(--ia-text-dim);
-      }
-
-      .term-prompt {
-        color: var(--ia-wire);
-        font-weight: 600;
-      }
-
-      .term-path {
-        color: var(--ia-signal);
-      }
-
-      .term-output {
-        color: var(--ia-text);
-      }
-
-      .term-comment {
-        color: var(--ia-text-faint);
-      }
-
-      .cursor {
-        display: inline-block;
-        width: 8px;
-        height: 1rem;
-        background: var(--ia-signal);
-        margin-inline-start: 3px;
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%, 49%, 100% { opacity: 1; }
-        50%, 99% { opacity: 0.3; }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* DevOps Workflow */
-      .devops-workflow {
-        padding: 5rem 0;
-        background: linear-gradient(135deg, rgba(0, 217, 163, 0.04) 0%, rgba(255, 122, 61, 0.04) 100%);
-        border-bottom: 1px solid var(--ia-line);
-        animation: fadeIn 0.8s ease-out 0.2s both;
-      }
-
-      .workflow-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      .workflow-diagram {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto 3rem;
-        display: block;
-        filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
-      }
-
-      .workflow-step {
-        animation: fadeInScale 0.6s ease-out forwards;
-        opacity: 0;
-      }
-
-      .step-1 { animation-delay: 0.1s; }
-      .step-2 { animation-delay: 0.2s; }
-      .step-3 { animation-delay: 0.3s; }
-      .step-4 { animation-delay: 0.4s; }
-      .step-5 { animation-delay: 0.5s; }
-      .step-6 { animation-delay: 0.6s; }
-
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .flow-arrow {
-        animation: flowPulse 2s ease-in-out infinite;
-      }
-
-      .arrow-1 { animation-delay: 0.1s; }
-      .arrow-2 { animation-delay: 0.2s; }
-      .arrow-3 { animation-delay: 0.3s; }
-      .arrow-4 { animation-delay: 0.4s; }
-      .arrow-5 { animation-delay: 0.5s; }
-
-      @keyframes flowPulse {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 1; }
-      }
-
-      .workflow-steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .workflow-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        align-items: flex-start;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, var(--ia-panel) 0%, var(--ia-panel-2) 100%);
-        border: 1px solid var(--ia-line);
-        border-radius: 10px;
-        text-decoration: none;
-        color: var(--ia-text);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-      }
-
-      .workflow-card:hover {
-        transform: translateX(-4px);
-        border-color: var(--ia-wire);
-        box-shadow: 0 8px 24px rgba(0, 217, 163, 0.15);
-      }
-
-      .workflow-icon {
-        font-size: 1.8rem;
-      }
-
-      .workflow-info h4 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1.05rem;
-        margin: 0;
-      }
-
-      .workflow-info p {
-        font-size: 0.9rem;
-        color: var(--ia-text-dim);
-        margin: 0;
-      }
-
-      .arrow-accent {
-        position: absolute;
-        inset-inline-end: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--ia-wire);
-        font-size: 1.2rem;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
-
-      .workflow-card:hover .arrow-accent {
-        opacity: 1;
-        transform: translateY(-50%) translateX(4px);
-      }
+      .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+      .step-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: bold; }
+      .card-icon { font-size: 1.5rem; }
+      .pipeline-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+      .pipeline-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
+      .card-link { font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); }
 
       /* Topics Section */
-      .topics {
-        background: var(--ia-ink-soft);
-        padding: 5rem 0;
-        animation: fadeIn 0.8s ease-out 0.4s both;
+      .topics-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+      .topics-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
       }
-
-      .section-header {
-        max-width: 1200px;
-        margin: 0 auto 3rem;
-        padding: 0 1.5rem;
-      }
-
-      .section-header h2 {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: clamp(1.8rem, 3vw, 2.3rem);
-        margin: 0.8rem 0 0.6rem;
-      }
-
-      .section-header p {
-        color: var(--ia-text-dim);
-        font-size: 1rem;
-        margin: 0;
-      }
-
-      .topics-wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 3.5rem;
-      }
-
-      .topics-category {
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .category-title {
-        font-family: var(--font-display);
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0 0 1.5rem 0;
-        color: var(--ia-text);
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-
-      .topic-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-
       .topic-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        background: linear-gradient(135deg, var(--ia-panel) 0%, var(--ia-panel-2) 100%);
-        border: 1px solid var(--ia-line);
-        border-radius: 12px;
-        padding: 2rem 1.8rem;
-        text-decoration: none;
-        color: var(--ia-text);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
+        background: var(--panel); border: 1px solid var(--border);
+        border-radius: 10px; padding: 1.5rem; text-decoration: none; color: var(--text-main);
+        transition: all 0.2s ease;
       }
+      .topic-card:hover { border-color: var(--border-light); background: var(--panel-hover); }
+      .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
+      .topic-icon { font-size: 1.4rem; }
+      .topic-category {
+        font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
+        background: var(--bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
+      }
+      .topic-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+      .topic-card p { color: var(--text-muted); font-size: 0.88rem; }
 
-      .topic-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--ia-wire-soft), var(--ia-signal-soft));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+      /* Diff Section */
+      .diff-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+      .diff-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .diff-box {
+        background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+        padding: 1.75rem; font-family: var(--font-mono); font-size: 0.88rem;
       }
+      .diff-header { font-weight: bold; margin-bottom: 1.25rem; font-size: 1rem; }
+      .diff-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+      .diff-old { border-color: rgba(239, 68, 68, 0.3); }
+      .diff-old .diff-header { color: var(--accent-red); }
+      .diff-old code { color: var(--accent-red); font-weight: bold; margin-left: 6px; }
+      .diff-old li { color: #fca5a5; }
 
-      .topic-card:hover {
-        transform: translateY(-6px);
-        border-color: var(--ia-wire);
-        box-shadow: 0 16px 40px rgba(0, 217, 163, 0.15);
-      }
-
-      .topic-card:hover::before {
-        opacity: 0.05;
-      }
-
-      .topic-card:focus-within {
-        outline: 2px solid var(--ia-signal);
-        outline-offset: -1px;
-      }
-
-      .topic-icon {
-        font-size: 2rem;
-        width: 3.2rem;
-        height: 3.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--ia-panel-3), var(--ia-line));
-        border: 1px solid var(--ia-line);
-        border-radius: 10px;
-      }
-
-      .topic-card h4 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin: 0;
-        position: relative;
-        z-index: 1;
-      }
-
-      .topic-card p {
-        color: var(--ia-text-dim);
-        font-size: 0.95rem;
-        line-height: 1.65;
-        margin: 0;
-        flex-grow: 1;
-        position: relative;
-        z-index: 1;
-      }
-
-      .learn-more {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--ia-wire);
-        position: relative;
-        z-index: 1;
-        transition: transform 0.3s ease;
-      }
-
-      .topic-card:hover .learn-more {
-        transform: translateX(-4px);
-      }
-
-      /* Why Us / Features */
-      .why-us {
-        padding: 5.5rem 0;
-        border-top: 1px solid var(--ia-line);
-        background: linear-gradient(180deg, rgba(0, 217, 163, 0.04) 0%, transparent 100%);
-        animation: fadeIn 0.8s ease-out 0.6s both;
-      }
-
-      .why-header {
-        max-width: 600px;
-      }
-
-      .why-grid {
-        max-width: 1200px;
-        margin: 3rem auto 0;
-        padding: 0 1.5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3.5rem;
-        align-items: start;
-      }
-
-      .benefits-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.3rem;
-      }
-
-      .benefit-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        align-items: center;
-        text-align: center;
-        padding: 1.8rem;
-        background: linear-gradient(135deg, var(--ia-panel) 0%, var(--ia-panel-2) 100%);
-        border: 1px solid var(--ia-line);
-        border-radius: 10px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .benefit-card:hover {
-        background: var(--ia-panel-2);
-        border-color: var(--ia-wire);
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0, 217, 163, 0.12);
-      }
-
-      .benefit-emoji {
-        font-size: 2rem;
-        display: block;
-      }
-
-      .benefit-card h4 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1.1rem;
-        margin: 0;
-        color: var(--ia-text);
-      }
-
-      .benefit-card p {
-        font-size: 0.9rem;
-        color: var(--ia-text-dim);
-        margin: 0;
-        line-height: 1.5;
-      }
-
-      .real-world-box {
-        background: linear-gradient(135deg, var(--ia-panel-2), var(--ia-panel));
-        border: 1px solid var(--ia-line);
-        border-radius: 12px;
-        padding: 2rem;
-      }
-
-      .real-world-box h3 {
-        font-family: var(--font-display);
-        font-size: 1.3rem;
-        margin: 0 0 1.5rem;
-        color: var(--ia-text);
-      }
-
-      .scenario {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid var(--ia-line);
-      }
-
-      .scenario:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-
-      .scenario p {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--ia-wire);
-        margin: 0 0 0.8rem 0;
-      }
-
-      .scenario ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-
-      .scenario li {
-        font-size: 0.9rem;
-        color: var(--ia-text-dim);
-        text-align: right;
-      }
-
-      .scenario.highlight p {
-        color: var(--ia-signal);
-      }
-
-      .scenario.highlight li {
-        color: var(--ia-text);
-      }
-
-      .features-list {
-        display: grid;
-        gap: 1.3rem;
-      }
-
-      .feature-item {
-        display: flex;
-        gap: 1.2rem;
-        padding: 1.4rem;
-        background: var(--ia-panel);
-        border: 1px solid var(--ia-line);
-        border-radius: 10px;
-        transition: all 0.3s ease;
-      }
-
-      .feature-item:hover {
-        background: var(--ia-panel-2);
-        border-color: var(--ia-wire);
-      }
-
-      .feature-icon {
-        font-size: 1.8rem;
-        flex-shrink: 0;
-      }
-
-      .feature-item strong {
-        font-family: var(--font-display);
-        font-size: 1rem;
-        color: var(--ia-text);
-        display: block;
-      }
-
-      .feature-item p {
-        color: var(--ia-text-dim);
-        font-size: 0.9rem;
-        margin: 0.4rem 0 0;
-      }
-
-      .benefit-box {
-        background: linear-gradient(135deg, var(--ia-panel-2), var(--ia-panel));
-        border: 1px solid var(--ia-line);
-        border-radius: 12px;
-        padding: 2rem;
-      }
-
-      .benefit-box h3 {
-        font-family: var(--font-display);
-        font-size: 1.3rem;
-        margin: 0 0 1.5rem;
-        color: var(--ia-text);
-      }
-
-      .benefit-box ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .benefit-box li {
-        color: var(--ia-text-dim);
-        line-height: 1.7;
-        padding-inline-start: 1.2rem;
-        position: relative;
-      }
-
-      .benefit-box strong {
-        color: var(--ia-wire);
-      }
+      .diff-new { border-color: rgba(16, 185, 129, 0.3); }
+      .diff-new .diff-header { color: var(--accent-green); }
+      .diff-new code { color: var(--accent-green); font-weight: bold; margin-left: 6px; }
+      .diff-new li { color: #6ee7b7; }
 
       /* CTA Section */
-      .cta {
-        max-width: 1200px;
-        margin: 5rem auto;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, var(--ia-signal-light) 0%, var(--ia-wire-light) 100%);
-        border: 2px solid var(--ia-line);
-        border-radius: 16px;
-        text-align: center;
+      .cta-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+      .cta-box {
+        background: var(--panel); border: 1px solid var(--border-light);
+        border-radius: 16px; padding: 3.5rem 2rem; text-align: center;
       }
+      .cta-box h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+      .cta-box p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
 
-      .cta-content h2 {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 2rem;
-        margin: 0 0 1rem;
-        color: var(--ia-text);
-      }
-
-      .cta-content p {
-        color: var(--ia-text-dim);
-        font-size: 1.1rem;
-        margin: 0 0 2rem;
-        max-width: 500px;
-        margin-inline: auto;
-      }
-
-      /* Contact */
-      .contact {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem;
-        text-align: center;
-      }
-
-      .contact p {
-        color: var(--ia-text-dim);
-        font-size: 1rem;
-        margin: 0 0 0.8rem;
-      }
-
-      .contact-email {
-        color: var(--ia-wire);
-        font-family: var(--font-display);
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.3s ease;
-      }
-
-      .contact-email:hover {
-        transform: translateY(-2px);
-        text-decoration: underline;
-      }
+      /* Contact Section */
+      .contact-section { padding: 3rem 0; text-align: center; }
+      .contact-section p { color: var(--text-muted); margin-bottom: 0.5rem; }
+      .contact-email { color: var(--accent-cyan); font-weight: 600; text-decoration: none; font-size: 1.1rem; }
+      .contact-email:hover { text-decoration: underline; }
 
       /* Footer */
-      .site-footer {
-        border-top: 1px solid var(--ia-line);
-        background: var(--ia-panel);
-        padding: 3rem 1.5rem;
-        color: var(--ia-text-dim);
+      .footer {
+        border-top: 1px solid var(--border); padding: 2.5rem 0;
+        color: var(--text-dim); font-size: 0.88rem; text-align: center;
       }
+      .footer-inner { display: flex; flex-direction: column; gap: 0.4rem; align-items: center; }
+      .footer strong { color: var(--text-muted); }
+      .footer-note { font-size: 0.8rem; }
 
-      .footer-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
+      /* Responsive Media Queries */
+      @media (max-width: 900px) {
+        .hero-grid, .diff-container { grid-template-columns: 1fr; }
+        .hero-text h1 { font-size: 2.2rem; }
       }
-
-      .site-footer p {
-        margin: 0.5rem 0;
-        font-size: 0.95rem;
-      }
-
-      .footer-note {
-        color: var(--ia-text-faint);
-        font-size: 0.85rem;
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .hero-inner {
-          grid-template-columns: 1fr;
-        }
-
-        .why-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .workflow-steps {
-          grid-template-columns: 1fr;
-        }
-
-        .benefit-card {
-          flex-direction: row;
-          text-align: left;
-          align-items: flex-start;
-        }
-
-        .benefit-emoji {
-          font-size: 2.5rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .workflow-diagram {
-          max-width: 100%;
-        }
-
-        .benefits-list {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .buttons {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-          justify-content: center;
-        }
-
-        .topic-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .workflow-steps {
-          flex-direction: column;
-        }
-
-        .cta {
-          margin: 2rem 1.5rem;
-        }
-
-        .workflow-diagram {
-          transform: scale(0.9);
-          transform-origin: center;
-        }
-
-        .workflow-card {
-          flex-direction: row;
-          align-items: center;
-        }
-
-        .workflow-icon {
-          flex-shrink: 0;
-        }
-
-        .workflow-info {
-          text-align: right;
-        }
+      @media (max-width: 600px) {
+        .hero-actions { flex-direction: column; }
+        .btn { width: 100%; }
       }
     </style>
   </body>
