@@ -22,6 +22,12 @@ export default defineConfig({
 						{ autogenerate: { directory: 'devops' } },
 					],
 				},
+				{
+					label: 'AWS',
+					items: [
+						{ autogenerate: { directory: 'aws' } },
+					],
+				},
 			],
 		}),
 	],
