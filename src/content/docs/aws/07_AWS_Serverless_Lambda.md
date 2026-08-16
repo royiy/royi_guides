@@ -1,3 +1,8 @@
+---
+title: "מדריך 7: מחשוב ללא שרת (Serverless)"
+description: "פיתוח אפליקציות באמצעות AWS Lambda ו-API Gateway"
+---
+
 # מדריך 7: מחשוב ללא שרת (Serverless - Lambda, API Gateway)
 
 ## מבוא

@@ -1,3 +1,8 @@
+---
+title: "מדריך 1: מבוא ל-AWS ותשתית גלובלית"
+description: "היכרות עם אזורים (Regions) ו-Availability Zones"
+---
+
 # מדריך 1: מבוא ל-AWS ותשתית גלובלית (Global Infrastructure)
 
 ## מבוא

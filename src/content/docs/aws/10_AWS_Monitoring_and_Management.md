@@ -1,3 +1,8 @@
+---
+title: "מדריך 10: ניטור, לוגים וניהול עלויות"
+description: "שימוש ב-CloudWatch, CloudTrail וכלים לניהול תקציב"
+---
+
 # מדריך 10: ניטור, לוגים וניהול עלויות (CloudWatch, CloudTrail, Billing)
 
 ## מבוא

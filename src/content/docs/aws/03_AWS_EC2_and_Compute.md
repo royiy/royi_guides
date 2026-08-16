@@ -1,3 +1,8 @@
+---
+title: "מדריך 3: ניהול שרתים וחישוב (EC2)"
+description: "הקמה וניהול של שרתים וירטואליים בענן"
+---
+
 # מדריך 3: ניהול שרתים וחישוב (EC2 - Elastic Compute Cloud)
 
 ## מבוא
@@ -25,7 +30,7 @@ aws ec2 stop-instances --instance-ids i-1234567890abcdef0
 aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId"
 
 # שינוי גודל של שרת (חובה לכבות קודם)
-aws ec2 modify-instance-attribute --instance-id i-1234567890abcdef0 --instance-type "{"Value": "m5.large"}"
+aws ec2 modify-instance-attribute --instance-id i-1234567890abcdef0 --instance-type '{"Value": "m5.large"}'
 ```
 
 ## טיפים וטריקים

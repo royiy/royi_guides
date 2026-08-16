@@ -1,3 +1,8 @@
+---
+title: "מדריך 9: תשתית כקוד (IaC)"
+description: "אוטומציה וניהול משאבים דרך CloudFormation ו-CDK"
+---
+
 # מדריך 9: תשתית כקוד (IaC - CloudFormation & CDK)
 
 ## מבוא

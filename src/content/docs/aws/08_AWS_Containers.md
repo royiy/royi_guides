@@ -1,3 +1,8 @@
+---
+title: "מדריך 8: קונטיינרים ב-AWS (ECS, EKS)"
+description: "הרצה וניהול של Docker Containers בענן"
+---
+
 # מדריך 8: קונטיינרים ב-AWS (ECS, EKS, Fargate)
 
 ## מבוא
