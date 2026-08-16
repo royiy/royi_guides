@@ -1,3 +1,7 @@
+---
+title: "מדריך 6: רשתות, תקשורת ו-Windows Firewall"
+description: "תפיסות רשת, NIC Teaming וחומת האש של Windows."
+---
 # מדריך 6: רשתות, תקשורת ו-Windows Firewall 🌐🛡️
 
 ## מבוא

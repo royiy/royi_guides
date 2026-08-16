@@ -1,3 +1,7 @@
+---
+title: "מדריך 7: ניהול ואוטומציה של שרתים באמצעות PowerShell"
+description: "אוטומציה, Pipeline ו-Remoting בעזרת PowerShell."
+---
 # מדריך 7: ניהול ואוטומציה של שרתים באמצעות PowerShell ⚡
 
 ## מבוא

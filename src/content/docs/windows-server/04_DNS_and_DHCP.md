@@ -1,3 +1,7 @@
+---
+title: "מדריך 4: שירותי DNS ו-DHCP"
+description: "הגדרת וניהול שירותי הליבה של הרשת DNS ו-DHCP."
+---
 # מדריך 4: שירותי DNS ו-DHCP ב-Windows Server 🌐
 
 ## מבוא

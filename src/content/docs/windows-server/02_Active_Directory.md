@@ -1,3 +1,7 @@
+---
+title: "מדריך 2: ניהול Active Directory Domain Services"
+description: "הבנת AD, ניהול אובייקטים, קבוצות, הרשאות ותפקידי FSMO."
+---
 # מדריך 2: ניהול Active Directory Domain Services (AD DS) 🗄️
 
 ## מבוא

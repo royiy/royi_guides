@@ -1,3 +1,7 @@
+---
+title: "מדריך 3: ניהול Group Policy (GPO)"
+description: "ניהול פוליסות ארגוניות באמצעות GPO ב-Windows Server."
+---
 # מדריך 3: ניהול Group Policy (GPO) 📜
 
 ## מבוא
