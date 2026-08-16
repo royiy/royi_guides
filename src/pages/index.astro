@@ -13,10 +13,10 @@ const topics = [
 ];
 
 const features = [
-  { flag: "--focused", desc: "תוכן" },
+  { flag: "--focused", desc: "תוכן בלי רעש מיותר" },
   { flag: "--practical", desc: "דוגמאות ותרחישים מהעולם האמיתי" },
-  { flag: "--hebrew", desc: "ידע טכני לקהל הישראלי" },
-  { flag: "--growing", desc: "תוכן חדש ונושאים נוספים" },
+  { flag: "--hebrew", desc: "ידע טכני נגיש לקהל הישראלי" },
+  { flag: "--growing", desc: "תוכן חדש ונושאים נוספים לאורך הדרך" },
 ];
 ---
 
@@ -24,7 +24,7 @@ const features = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Royi Guides — לומדים DevOps</title>
+    <title>Royi Guides — לומדים IT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@500;600;700&family=Heebo:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
@@ -39,8 +39,8 @@ const features = [
           <span>Royi Guides</span>
         </a>
         <nav class="nav-links">
-          <a href="/guides">מדריכים</a>
-          <a href="/articles">מאמרים</a>
+          <a href="/devops/git-basics/">מדריכים</a>
+          <a href="/devops/git-basics/">מאמרים</a>
         </nav>
       </div>
     </header>
@@ -52,11 +52,12 @@ const features = [
             <span class="eyebrow">IT • CLOUD • DEVOPS</span>
             <h1>לומדים IT.<br /><span>בונים ידע. מתקדמים.</span></h1>
             <p>
-              מדריכים ומאמרים מעשיים בעברית לעולם ה - IT, Cloud, Infrastructure ו-DevOps
+              מדריכים ומאמרים מעשיים בעברית לעולם ה-IT, Cloud, Infrastructure
+              ו-DevOps — בלי מים, עם דוגמאות אמיתיות.
             </p>
             <div class="buttons">
-              <a class="btn btn-primary" href="/guides">🚀 התחל ללמוד</a>
-              <a class="btn btn-secondary" href="/articles">📚 למאמרים</a>
+              <a class="btn btn-primary" href="/devops/git-basics/">🚀 התחל ללמוד</a>
+              <a class="btn btn-secondary" href="/devops/git-basics/">📚 למאמרים</a>
             </div>
           </div>
 
@@ -90,7 +91,7 @@ const features = [
         <div class="section-header">
           <span class="eyebrow">נושאים</span>
           <h2>נושאים מרכזיים</h2>
-          <p>בחר נושא והתחל ללמוד</p>
+          <p>בחר נושא והתחל ללמוד בקצב שלך</p>
         </div>
 
         <div class="topic-grid">
@@ -133,7 +134,7 @@ const features = [
       </section>
 
       <section class="contact">
-        <p>שאלות או הצעות? ניתן לפנות במייל</p>
+        <p>שאלות או הצעות? נשמח שתפנו אלינו במייל</p>
         <a class="contact-email" href="mailto:royiyahud@gmail.com">royiyahud@gmail.com</a>
       </section>
     </main>
