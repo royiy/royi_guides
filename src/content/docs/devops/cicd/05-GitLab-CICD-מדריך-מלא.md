@@ -1,4 +1,8 @@
-# מדריך 5: GitLab CI/CD – מדריך מלא
+---
+title: "GitLab CI/CD – מדריך מלא"
+category: DevOps/CI-CD
+part: 5/10
+---
 
 ## מה זה GitLab CI/CD?
 

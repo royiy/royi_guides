@@ -1,4 +1,8 @@
-# מדריך 4: GitHub Actions – מדריך מלא
+---
+title: "GitHub Actions – מדריך מלא"
+category: DevOps/CI-CD
+part: 4/10
+---
 
 ## מה זה GitHub Actions?
 

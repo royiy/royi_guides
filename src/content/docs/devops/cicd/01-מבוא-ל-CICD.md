@@ -1,4 +1,8 @@
-# מדריך 1: מבוא ל-CI/CD – מושגי יסוד
+---
+title: "מבוא ל-CI/CD – מושגי יסוד"
+category: DevOps/CI-CD
+part: 1/10
+---
 
 ## מה זה CI/CD?
 

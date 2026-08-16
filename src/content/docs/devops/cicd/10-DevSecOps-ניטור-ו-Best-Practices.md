@@ -1,4 +1,8 @@
-# מדריך 10: DevSecOps, ניטור ו-Best Practices ב-CI/CD
+---
+title: "DevSecOps, ניטור ו-Best Practices ב-CI/CD"
+category: DevOps/CI-CD
+part: 10/10
+---
 
 ## מה זה DevSecOps?
 

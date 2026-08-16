@@ -1,4 +1,8 @@
-# מדריך 3: Jenkins – מדריך מלא
+---
+title: "Jenkins – מדריך מלא"
+category: DevOps/CI-CD
+part: 3/10
+---
 
 ## מה זה Jenkins?
 

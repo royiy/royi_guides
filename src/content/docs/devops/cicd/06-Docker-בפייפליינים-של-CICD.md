@@ -1,4 +1,8 @@
-# מדריך 6: Docker בפייפליינים של CI/CD
+---
+title: "Docker בפייפליינים של CI/CD"
+category: DevOps/CI-CD
+part: 6/10
+---
 
 ## למה Docker כל כך מרכזי ב-CI/CD?
 

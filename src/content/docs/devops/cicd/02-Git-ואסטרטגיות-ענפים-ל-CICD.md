@@ -1,4 +1,8 @@
-# מדריך 2: Git ואסטרטגיות ענפים (Branching) כבסיס ל-CI/CD
+---
+title: "Git ואסטרטגיות ענפים כבסיס ל-CI/CD"
+category: DevOps/CI-CD
+part: 2/10
+---
 
 ## למה Git הוא הבסיס של כל CI/CD?
 

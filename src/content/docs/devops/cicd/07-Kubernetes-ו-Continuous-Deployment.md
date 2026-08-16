@@ -1,4 +1,8 @@
-# מדריך 7: Kubernetes ו-Continuous Deployment
+---
+title: "Kubernetes ו-Continuous Deployment"
+category: DevOps/CI-CD
+part: 7/10
+---
 
 ## תפקיד Kubernetes ב-CI/CD
 

@@ -1,4 +1,8 @@
-# מדריך 8: אוטומציית בדיקות (Testing) בפייפליין CI/CD
+---
+title: "אוטומציית בדיקות בפייפליין CI/CD"
+category: DevOps/CI-CD
+part: 8/10
+---
 
 ## פירמידת הבדיקות (Test Pyramid)
 

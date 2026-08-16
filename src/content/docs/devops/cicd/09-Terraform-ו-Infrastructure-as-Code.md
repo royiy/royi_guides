@@ -1,4 +1,8 @@
-# מדריך 9: Infrastructure as Code – Terraform ב-CI/CD
+---
+title: "Infrastructure as Code – Terraform ב-CI/CD"
+category: DevOps/CI-CD
+part: 9/10
+---
 
 ## מה זה Infrastructure as Code (IaC)?
 
