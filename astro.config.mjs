@@ -41,7 +41,26 @@ export default defineConfig({
 					label: 'DevOps',
 					collapsed: true,
 					items: [
-						{ autogenerate: { directory: 'devops' } },
+						{
+							label: 'Git',
+							collapsed: true,
+							autogenerate: { directory: 'devops/git' },
+						},
+						{
+							label: 'CI/CD',
+							collapsed: true,
+							autogenerate: { directory: 'devops/cicd' },
+						},
+						{
+							label: 'Docker',
+							collapsed: true,
+							autogenerate: { directory: 'devops/docker' },
+						},
+						{
+							label: 'Kubernetes',
+							collapsed: true,
+							autogenerate: { directory: 'devops/kubernetes' },
+						},
 					],
 				},
 				{
