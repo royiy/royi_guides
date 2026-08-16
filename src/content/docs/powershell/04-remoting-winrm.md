@@ -5,8 +5,6 @@ title: "מדריך 04 — PowerShell Remoting, WinRM ו-ניהול מרחוק"
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 04 — PowerShell Remoting, WinRM ו-ניהול מרחוק
-
 ## 1. למה Remoting חשוב?
 System Administrator לא אמור להתחבר ידנית לכל שרת. Remoting מאפשר לבצע בדיקות ופעולות על שרתים מרחוק.
 

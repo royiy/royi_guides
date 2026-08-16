@@ -5,8 +5,6 @@ title: "מדריך 06 — PowerShell מתקדם: Functions, Modules, Objects, Cl
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 06 — PowerShell מתקדם: Functions, Modules, Objects, Classes ו-Pipeline
-
 ## 1. פונקציות Advanced
 ```powershell
 function Get-ServerHealth {

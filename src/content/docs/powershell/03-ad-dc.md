@@ -5,8 +5,6 @@ title: "מדריך 03 — Active Directory, Domain Controllers ומשתמשים"
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 03 — Active Directory, Domain Controllers ומשתמשים
-
 ## מטרת המדריך
 PowerShell עבור System Administrator בסביבת Active Directory.
 

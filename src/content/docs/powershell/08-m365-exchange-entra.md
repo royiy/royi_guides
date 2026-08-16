@@ -5,8 +5,6 @@ title: "מדריך 08 — Microsoft 365, Exchange Online ו-Microsoft Entra עם
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 08 — Microsoft 365, Exchange Online ו-Microsoft Entra עם PowerShell
-
 ## 1. למה זה חשוב?
 בסביבת System/Cloud Administrator, PowerShell מאפשר לבצע פעולות Bulk, Auditing ו-Troubleshooting שאינן יעילות דרך GUI.
 

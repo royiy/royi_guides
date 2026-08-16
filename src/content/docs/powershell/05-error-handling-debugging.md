@@ -5,8 +5,6 @@ title: "מדריך 05 — Error Handling, Debugging, Logging וכתיבת סקר
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 05 — Error Handling, Debugging, Logging וכתיבת סקריפטים Production
-
 ## 1. למה שגיאות הן חלק מהקוד?
 סקריפט Production צריך להניח שדברים ייכשלו:
 - שרת לא זמין

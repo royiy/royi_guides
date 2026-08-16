@@ -5,8 +5,6 @@ title: "מדריך 07 — PowerShell לרשתות, DNS, HTTP, TCP ו-Troubleshoo
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 07 — PowerShell לרשתות, DNS, HTTP, TCP ו-Troubleshooting
-
 ## 1. למה PowerShell חשוב לרשת?
 System Administrator צריך לא רק "Ping". צריך לדעת להפריד בין:
 DNS → TCP → TLS → HTTP → Authentication → Application.

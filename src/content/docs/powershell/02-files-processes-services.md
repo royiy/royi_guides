@@ -5,8 +5,6 @@ title: "מדריך 02 — קבצים, תהליכים, Services, Registry ו-Even
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 02 — קבצים, תהליכים, Services, Registry ו-Event Logs
-
 ## מטרת המדריך
 להפוך את PowerShell לארגז כלים יומיומי של System Administrator.
 

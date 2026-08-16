@@ -5,8 +5,6 @@ title: "מדריך 09 — PowerShell לענן: Azure, AWS ו-GCP"
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->
 
-# מדריך 09 — PowerShell לענן: Azure, AWS ו-GCP
-
 ## 1. עיקרון
 PowerShell בענן הוא לא רק "עוד CLI". הוא מאפשר אוטומציה, Inventory, Reporting, Governance ו-Remediation.
 
