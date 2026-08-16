@@ -4,8 +4,6 @@ category: DevOps/Docker
 part: 9/10
 ---
 
-# ניהול שרתים, Docker Swarm ופרודקשן
-
 ## מ-Compose לניהול Cluster אמיתי
 
 `docker compose` מצוין למארח (host) יחיד, אבל בפרודקשן אמיתי לרוב צריך:

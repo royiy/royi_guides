@@ -4,8 +4,6 @@ category: DevOps/Docker
 part: 4/10
 ---
 
-# Dockerfile ובניית Images
-
 ## מה זה Dockerfile?
 
 קובץ טקסט עם רשימת הוראות (instructions) שמתארות איך לבנות Docker Image - החל מ-image בסיס, דרך התקנת תלויות, ועד העתקת הקוד והגדרת פקודת ההרצה.

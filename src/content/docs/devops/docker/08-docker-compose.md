@@ -4,8 +4,6 @@ category: DevOps/Docker
 part: 8/10
 ---
 
-# Docker Compose - ניהול שירותים מרובים
-
 ## למה צריך Docker Compose?
 
 הרצת אפליקציה אמיתית לרוב דורשת כמה שירותים (backend, database, cache, frontend) שרצים יחד, על אותה רשת, עם תלויות ביניהם. במקום להריץ עשרות פקודות `docker run` ארוכות, Docker Compose מאפשר להגדיר את כל הסטאק בקובץ YAML אחד ולהרים אותו בפקודה אחת.

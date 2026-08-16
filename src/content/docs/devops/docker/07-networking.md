@@ -4,8 +4,6 @@ category: DevOps/Docker
 part: 7/10
 ---
 
-# Docker Networking
-
 ## סוגי רשתות ב-Docker
 
 Docker מגיע עם כמה **network drivers** מובנים:
