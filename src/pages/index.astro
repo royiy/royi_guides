@@ -13,7 +13,7 @@ const topics = [
   { icon: "🏗️", title: "Terraform", link: "/terraform/01-מבוא-ויסודות-terraform/" },
   { icon: "☁️", title: "AWS", link: "/aws/aws-exam/" },
   { icon: "🐧", title: "Linux", link: "/linux/01-פקודות-בסיסיות/" },
-  { icon: "🪟", title: "Windows", link: "/windows-server/intro/" },
+  { icon: "🪟", title: "Windows Server", link: "/windows-server/" }, // תוקן כדי למנוע שגיאת 404
   { icon: "🖥️", title: "VMware", link: "/vmware/01-virtualization-vmware-basics/" },
   { icon: "💻", title: "PowerShell", link: "/powershell/01-basics/" },
 ];
@@ -23,7 +23,7 @@ const topics = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Royi Guides | DevOps Loop</title>
+    <title>Royi Guides - מדריכים בעברית ב DEVOPS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
@@ -35,7 +35,8 @@ const topics = [
     <header class="navbar">
       <div class="container nav-inner">
         <a class="logo" href="/">
-          <span class="logo-icon">⚡</span> Royi<span class="highlight">Guides</span>
+          <span>Royi<span class="highlight">Guides</span></span>
+          <span class="logo-desc">- מדריכים בעברית ב DEVOPS</span>
         </a>
       </div>
     </header>
@@ -134,11 +135,19 @@ const topics = [
           </div>
         </div>
       </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section fade-in-up delay-3">
+        <div class="container text-center">
+          <p class="contact-text">
+            ליצירת קשר ניתן לפנות במייל <a href="mailto:royiyahud@gmail.com" class="contact-email">royiyahud@gmail.com</a>
+          </p>
+        </div>
+      </section>
     </main>
 
-    <footer class="text-center fade-in-up delay-3">
+    <footer class="text-center fade-in-up delay-4">
       <p>© 2026 Royi Guides</p>
-      <a href="mailto:royiyahud@gmail.com" class="footer-email">royiyahud@gmail.com</a>
     </footer>
 
     <style>
@@ -189,9 +198,13 @@ const topics = [
         border-bottom: 1px solid var(--border);
         background: rgba(5, 5, 5, 0.5); backdrop-filter: blur(10px);
       }
-      .nav-inner { display: flex; align-items: center; }
-      .logo { font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+      .nav-inner { display: flex; align-items: center; justify-content: center; }
+      .logo { 
+        display: flex; align-items: center; gap: 8px;
+        font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; 
+      }
       .logo .highlight { color: var(--primary); }
+      .logo-desc { font-weight: 400; font-size: 1rem; color: var(--text-dim); margin-right: 4px; }
 
       /* Hero Infinity Loop */
       .hero-infinity { 
@@ -262,7 +275,7 @@ const topics = [
       .step-card h2 { font-size: 1.25rem; font-weight: 600; }
 
       /* Tech Stack Chips */
-      .stack-section { padding: 0 0 6rem; }
+      .stack-section { padding: 0 0 4rem; }
       .tech-grid {
         display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 800px; margin: 0 auto;
       }
@@ -277,18 +290,34 @@ const topics = [
       }
       .tech-icon { font-size: 1.2rem; }
 
-      /* Footer */
-      footer { padding: 2rem 0 3rem; border-top: 1px solid var(--surface); color: var(--text-dim); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
-      
-      .footer-email {
+      /* Contact Section */
+      .contact-section {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+      }
+      .contact-text {
+        font-size: 1.1rem;
         color: var(--text-dim);
+      }
+      .contact-email {
+        color: var(--primary);
         font-family: var(--font-mono);
         text-decoration: none;
-        transition: color 0.3s ease;
-        letter-spacing: 0.5px;
+        font-weight: 700;
+        margin-right: 5px;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
       }
-      .footer-email:hover {
-        color: var(--primary);
+      .contact-email:hover {
+        color: #ffffff;
+        text-shadow: 0 0 10px var(--primary);
+      }
+
+      /* Footer */
+      footer { 
+        padding: 2rem 0; 
+        border-top: 1px solid var(--surface); 
+        color: var(--text-dim); 
+        font-size: 0.9rem; 
       }
 
       /* Entrance Animations */
@@ -296,6 +325,7 @@ const topics = [
       .delay-1 { animation-delay: 0.2s; }
       .delay-2 { animation-delay: 0.4s; }
       .delay-3 { animation-delay: 0.6s; }
+      .delay-4 { animation-delay: 0.8s; }
 
       @keyframes fadeInUp {
         to { opacity: 1; transform: translateY(0); }
@@ -304,6 +334,10 @@ const topics = [
       /* Responsive */
       @media (max-width: 900px) {
         .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      }
+      @media (max-width: 600px) {
+        .logo { flex-direction: column; gap: 4px; text-align: center; }
+        .logo-desc { margin-right: 0; font-size: 0.9rem; }
       }
       @media (max-width: 500px) {
         .steps-grid { grid-template-columns: 1fr; }
