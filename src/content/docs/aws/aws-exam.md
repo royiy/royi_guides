@@ -1,42 +1,24 @@
-\---
-
+---
 title: מבחן AWS - תרגול לקראת ההסמכה
-
 description: קישורים לאתרי תרגול שאלות בחינם לקראת מבחני הסמכת AWS
+---
 
-\---
-
-
-
-\## אתרי תרגול מומלצים
-
-
+## אתרי תרגול מומלצים
 
 אוסף כלים חיצוניים לתרגול שאלות אמת/שקר ורב-ברירה בסגנון מבחני ההסמכה של AWS.
 
-
-
-\### ExamTopics Quiz
-
-
+### ExamTopics Quiz
 
 כלי תרגול עם שאלות בסגנון המבחנים הרשמיים, כולל הסברים לתשובות.
 
+🔗 [examtopics-quiz.netlify.app](https://examtopics-quiz.netlify.app/#)
 
-
-🔗 \[examtopics-quiz.netlify.app](https://examtopics-quiz.netlify.app/#)
-
-
-
-\### AWS Exams
-
-
+### AWS Exams
 
 אוסף שאלות תרגול נוסף, מאורגן לפי נושאים ורמות קושי.
 
+🔗 [aws-exams.matthewntsiful.com](https://aws-exams.matthewntsiful.com/)
 
+## טיפ לתרגול
 
-🔗 \[aws-exams.matthewntsiful.com](https://aws-exams.matthewntsiful.com/)
-
-
-
+מומלץ לעבור על השאלות מספר פעמים ולא רק פעם אחת - ברוב הכלים האלה השאלות חוזרות על עצמן ממאגר קבוע, כך שחזרה תעזור לך לזהות דפוסים ולזכור את ההסברים לטעויות.
