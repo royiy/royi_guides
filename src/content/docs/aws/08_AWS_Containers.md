@@ -3,8 +3,6 @@ title: "מדריך 8: קונטיינרים ב-AWS (ECS, EKS)"
 description: "הרצה וניהול של Docker Containers בענן"
 ---
 
-# מדריך 8: קונטיינרים ב-AWS (ECS, EKS, Fargate)
-
 ## מבוא
 קונטיינרים (כמו Docker) אורזים אפליקציה ואת כל התלויות שלה יחד. AWS מספקת מספר שירותים חזקים לניהול קונטיינרים (Orchestration) בענן.
 

@@ -3,8 +3,6 @@ title: "מדריך 3: ניהול שרתים וחישוב (EC2)"
 description: "הקמה וניהול של שרתים וירטואליים בענן"
 ---
 
-# מדריך 3: ניהול שרתים וחישוב (EC2 - Elastic Compute Cloud)
-
 ## מבוא
 Amazon EC2 מאפשר השכרת שרתים וירטואליים (Instances) בענן. זהו שירות הליבה של עולם ה-IaaS (Infrastructure as a Service) ב-AWS.
 
