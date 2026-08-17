@@ -1,4 +1,8 @@
-# מדריך 2: התקנת ArgoCD – שלב אחר שלב
+---
+title: "התקנת ArgoCD – שלב אחר שלב"
+category: DevOps/ArgoCD
+part: 2/10
+---
 
 ## דרישות מקדימות
 

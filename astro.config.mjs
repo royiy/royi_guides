@@ -31,6 +31,21 @@ export default defineConfig({
 
 			sidebar: [
 				// =========================
+				// AI
+				// =========================
+				{
+					label: 'AI',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'AI',
+							},
+						},
+					],
+				},
+
+				// =========================
 				// AWS
 				// =========================
 				{
@@ -222,6 +237,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'ArgoCD',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/argocd',
+									},
+								},
+							],
+						},
 					],
 				},
 
@@ -280,6 +307,36 @@ export default defineConfig({
 						{
 							autogenerate: {
 								directory: 'sql',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// Veeam
+				// =========================
+				{
+					label: 'Veeam',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'veeam',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// Bash
+				// =========================
+				{
+					label: 'Bash',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'Bash',
 							},
 						},
 					],

@@ -1,4 +1,8 @@
-# מדריך 6: Sync Policies, Sync Hooks ו-Health Checks
+---
+title: "Sync Policies, Sync Hooks ו-Health Checks"
+category: DevOps/ArgoCD
+part: 6/10
+---
 
 ## Sync Policies – הבדלים בין האופציות
 

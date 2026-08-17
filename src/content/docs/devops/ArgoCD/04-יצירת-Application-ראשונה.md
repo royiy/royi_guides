@@ -1,4 +1,8 @@
-# מדריך 4: יצירת Application ראשונה – מדריך מעשי מלא
+---
+title: "יצירת Application ראשונה – מדריך מעשי מלא"
+category: DevOps/ArgoCD
+part: 4/10
+---
 
 ## הכנה: Repo לדוגמה
 

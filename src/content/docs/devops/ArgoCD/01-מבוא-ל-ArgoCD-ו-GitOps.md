@@ -1,4 +1,8 @@
-# מדריך 1: מבוא ל-ArgoCD ו-GitOps
+---
+title: "מבוא ל-ArgoCD ו-GitOps"
+category: DevOps/ArgoCD
+part: 1/10
+---
 
 ## מה זה בכלל GitOps?
 

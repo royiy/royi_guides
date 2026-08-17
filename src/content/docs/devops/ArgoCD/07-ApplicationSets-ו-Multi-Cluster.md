@@ -1,4 +1,8 @@
-# מדריך 7: ArgoCD ApplicationSets ו-Multi-Cluster
+---
+title: "ArgoCD ApplicationSets ו-Multi-Cluster"
+category: DevOps/ArgoCD
+part: 7/10
+---
 
 ## הבעיה: כשיש הרבה Applications
 

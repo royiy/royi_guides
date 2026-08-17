@@ -1,4 +1,8 @@
-# מדריך 3: ארכיטקטורה ורכיבים של ArgoCD
+---
+title: "ארכיטקטורה ורכיבים של ArgoCD"
+category: DevOps/ArgoCD
+part: 3/10
+---
 
 ## סקירה כללית
 

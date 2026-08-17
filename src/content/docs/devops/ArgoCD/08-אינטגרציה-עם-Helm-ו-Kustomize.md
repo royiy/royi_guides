@@ -1,4 +1,8 @@
-# מדריך 8: ArgoCD + Helm / Kustomize – אינטגרציה מעמיקה
+---
+title: "ArgoCD + Helm / Kustomize – אינטגרציה מעמיקה"
+category: DevOps/ArgoCD
+part: 8/10
+---
 
 ## שיטות ניהול מניפסטים ב-ArgoCD
 

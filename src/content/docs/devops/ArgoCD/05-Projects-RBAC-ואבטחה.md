@@ -1,4 +1,8 @@
-# מדריך 5: ArgoCD Projects, RBAC ואבטחה
+---
+title: "ArgoCD Projects, RBAC ואבטחה"
+category: DevOps/ArgoCD
+part: 5/10
+---
 
 ## למה צריך Projects?
 

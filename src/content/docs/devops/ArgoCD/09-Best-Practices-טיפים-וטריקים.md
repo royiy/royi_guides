@@ -1,4 +1,8 @@
-# מדריך 9: Best Practices, טיפים וטריקים, Troubleshooting
+---
+title: "Best Practices, טיפים וטריקים, Troubleshooting"
+category: DevOps/ArgoCD
+part: 9/10
+---
 
 ## App of Apps Pattern
 
