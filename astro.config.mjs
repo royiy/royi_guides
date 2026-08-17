@@ -46,6 +46,21 @@ export default defineConfig({
 				},
 
 				// =========================
+				// API
+				// =========================
+				{
+					label: 'API',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'api',
+							},
+						},
+					],
+				},
+
+				// =========================
 				// AWS
 				// =========================
 				{
@@ -130,6 +145,36 @@ export default defineConfig({
 						{
 							autogenerate: {
 								directory: 'networking',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// Check Point
+				// =========================
+				{
+					label: 'Check Point',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'checkpoint',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// Fortinet
+				// =========================
+				{
+					label: 'Fortinet',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'fortinet',
 							},
 						},
 					],
