@@ -280,4 +280,4 @@ tasks:
 - TechWorld with Nana - Ansible: https://www.youtube.com/channel/UCdngmbVKX1Tgre699-XLlUA
 
 ---
-⬅️ [חזרה למדריך 5](./05-modules.md) | ➡️ [המדריך הבא: 07-roles.md](./07-roles.md)
+⬅️ [חזרה למדריך 5](/devops/ansible/05-modules/) | ➡️ [המדריך הבא: 07-roles.md](/devops/ansible/07-roles/)

@@ -293,4 +293,4 @@ kubectl rollout status statefulset/postgres-cluster
 
 ---
 
-**הקודם:** [מדריך 4 - ConfigMaps ו-Secrets](./04-configmaps-secrets.md) | **הבא:** [מדריך 6 - Helm](./06-helm.md)
+**הקודם:** [מדריך 4 - ConfigMaps ו-Secrets](/devops/kubernetes/04-configmaps-secrets/) | **הבא:** [מדריך 6 - Helm](/devops/kubernetes/06-helm/)

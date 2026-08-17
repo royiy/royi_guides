@@ -195,5 +195,5 @@ helm upgrade my-release ./my-chart
 4. מתי כדאי להשתמש ב-Helm Hook לעומת init container?
 
 ---
-**המדריך הקודם:** [מדריך 5 - Repositories](./05-repositories.md)
-**המשך למדריך הבא:** [מדריך 7 - Dependencies ו-Subcharts](./07-dependencies-subcharts.md)
+**המדריך הקודם:** [מדריך 5 - Repositories](/devops/helm/05-repositories/)
+**המשך למדריך הבא:** [מדריך 7 - Dependencies ו-Subcharts](/devops/helm/07-dependencies-subcharts/)

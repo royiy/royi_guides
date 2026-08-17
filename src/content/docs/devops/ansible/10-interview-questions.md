@@ -163,19 +163,19 @@ ansible-playbook site.yml --limit @site.retry
 - TechWorld with Nana - ערוץ DevOps מוביל הכולל סדרת Ansible מלאה: https://www.youtube.com/channel/UCdngmbVKX1Tgre699-XLlUA
 
 ---
-⬅️ [חזרה למדריך 9](./09-advanced-devops.md) | 🏠 [חזרה למדריך 1 - מבוא](./01-mavo-veyesodot.md)
+⬅️ [חזרה למדריך 9](/devops/ansible/09-advanced-devops/) | 🏠 [חזרה למדריך 1 - מבוא](/devops/ansible/01-mavo-veyesodot/)
 
 ---
 
 ## אינדקס כל 10 המדריכים
 
-1. [מבוא ל-Ansible, ארכיטקטורה והתקנה](./01-mavo-veyesodot.md)
-2. [Inventory - ניהול שרתים וקבוצות](./02-inventory.md)
-3. [Playbooks - כתיבה ומבנה](./03-playbooks.md)
-4. [Variables ו-Facts](./04-variables-facts.md)
-5. [מודולים נפוצים](./05-modules.md)
-6. [Templates (Jinja2) ו-Handlers](./06-templates-handlers.md)
-7. [Roles - ארגון קוד לשימוש חוזר](./07-roles.md)
-8. [Ansible Vault - ניהול סודות ואבטחה](./08-vault-security.md)
-9. [Ansible ב-DevOps - CI/CD, AWX/Tower](./09-advanced-devops.md)
-10. [שאלות ראיון עבודה מקיפות + טיפים וטריקים](./10-interview-questions.md) (המדריך הנוכחי)
+1. [מבוא ל-Ansible, ארכיטקטורה והתקנה](/devops/ansible/01-mavo-veyesodot/)
+2. [Inventory - ניהול שרתים וקבוצות](/devops/ansible/02-inventory/)
+3. [Playbooks - כתיבה ומבנה](/devops/ansible/03-playbooks/)
+4. [Variables ו-Facts](/devops/ansible/04-variables-facts/)
+5. [מודולים נפוצים](/devops/ansible/05-modules/)
+6. [Templates (Jinja2) ו-Handlers](/devops/ansible/06-templates-handlers/)
+7. [Roles - ארגון קוד לשימוש חוזר](/devops/ansible/07-roles/)
+8. [Ansible Vault - ניהול סודות ואבטחה](/devops/ansible/08-vault-security/)
+9. [Ansible ב-DevOps - CI/CD, AWX/Tower](/devops/ansible/09-advanced-devops/)
+10. [שאלות ראיון עבודה מקיפות + טיפים וטריקים](/devops/ansible/10-interview-questions/) (המדריך הנוכחי)

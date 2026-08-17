@@ -1,20 +1,7 @@
-# מדריך 8: עבודה עם Docker ו-Containers ב-GitHub Actions
-
-> מדריך 8 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [שני שימושים שונים ב-Docker ב-Actions](#שני-שימושים-שונים-ב-docker-ב-actions)
-2. [בניית ודחיפת Docker Image](#בניית-ודחיפת-docker-image)
-3. [רישום ל-registries שונים](#רישום-ל-registries-שונים)
-4. [הרצת Job בתוך Container](#הרצת-job-בתוך-container)
-5. [Service Containers - מסדי נתונים לבדיקות](#service-containers---מסדי-נתונים-לבדיקות)
-6. [Multi-stage build ו-Caching של שכבות](#multi-stage-build-ו-caching-של-שכבות)
-7. [Multi-architecture builds](#multi-architecture-builds)
-8. [טיפים וטריקים](#טיפים-וטריקים)
-9. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-10. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "עבודה עם Docker ו-Containers ב-GitHub Actions"
+category: DevOps/GitHub Actions
+part: 8/10
 ---
 
 ## שני שימושים שונים ב-Docker ב-Actions

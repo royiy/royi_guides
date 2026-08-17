@@ -244,5 +244,5 @@ helm install my-release ./fullstack-app
 4. למה חשוב קובץ `Chart.lock`?
 
 ---
-**המדריך הקודם:** [מדריך 6 - Hooks](./06-hooks.md)
-**המשך למדריך הבא:** [מדריך 8 - ניהול Releases](./08-release-management.md)
+**המדריך הקודם:** [מדריך 6 - Hooks](/devops/helm/06-hooks/)
+**המשך למדריך הבא:** [מדריך 8 - ניהול Releases](/devops/helm/08-release-management/)

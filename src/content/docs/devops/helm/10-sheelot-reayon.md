@@ -208,5 +208,5 @@ helm diff revision my-release <good-rev> <bad-rev>
 בראיונות ברמת Senior, לרוב לא בודקים רק "מה זה X" אלא **"למה בחרת בפתרון הזה ולא באחר"**. תרגלו להסביר **trade-offs**: מתי Hook ולא init container, מתי OCI registry ולא HTTP repo, מתי `--force` שווה את הסיכון, ומתי עדיף GitOps על פני helm CLI ידני.
 
 ---
-**המדריך הקודם:** [מדריך 9 - טיפים וטריקים](./09-tips-tricks-best-practices.md)
-**חזרה למדריך הראשון:** [מדריך 1 - מבוא ל-Helm](./01-mavo-le-helm.md)
+**המדריך הקודם:** [מדריך 9 - טיפים וטריקים](/devops/helm/09-tips-tricks-best-practices/)
+**חזרה למדריך הראשון:** [מדריך 1 - מבוא ל-Helm](/devops/helm/01-mavo-le-helm/)

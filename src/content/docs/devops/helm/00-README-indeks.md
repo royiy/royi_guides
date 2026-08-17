@@ -10,16 +10,16 @@ part: 0/10
 
 | # | קובץ | נושא |
 |---|---|---|
-| 1 | [01-mavo-le-helm.md](./01-mavo-le-helm.md) | מבוא ל-Helm, ארכיטקטורה, Helm 2 מול Helm 3 |
-| 2 | [02-hatkana-vehagdara.md](./02-hatkana-vehagdara.md) | התקנה, הגדרה, repos, plugins |
-| 3 | [03-mivne-chart.md](./03-mivne-chart.md) | מבנה Chart, Chart.yaml, values.yaml |
-| 4 | [04-templates-values.md](./04-templates-values.md) | מנוע Templates, פונקציות, helpers |
-| 5 | [05-repositories.md](./05-repositories.md) | Repositories, Artifact Hub, OCI |
-| 6 | [06-hooks.md](./06-hooks.md) | Hooks — pre/post install/upgrade/delete |
-| 7 | [07-dependencies-subcharts.md](./07-dependencies-subcharts.md) | Dependencies, Subcharts, Global Values |
-| 8 | [08-release-management.md](./08-release-management.md) | Install, Upgrade, Rollback, Uninstall |
-| 9 | [09-tips-tricks-best-practices.md](./09-tips-tricks-best-practices.md) | 20 טיפים וטריקים מקצועיים |
-| 10 | [10-sheelot-reayon.md](./10-sheelot-reayon.md) | שאלות ראיון עבודה מלאות עם תשובות |
+| 1 | [01-mavo-le-helm.md](/devops/helm/01-mavo-le-helm/) | מבוא ל-Helm, ארכיטקטורה, Helm 2 מול Helm 3 |
+| 2 | [02-hatkana-vehagdara.md](/devops/helm/02-hatkana-vehagdara/) | התקנה, הגדרה, repos, plugins |
+| 3 | [03-mivne-chart.md](/devops/helm/03-mivne-chart/) | מבנה Chart, Chart.yaml, values.yaml |
+| 4 | [04-templates-values.md](/devops/helm/04-templates-values/) | מנוע Templates, פונקציות, helpers |
+| 5 | [05-repositories.md](/devops/helm/05-repositories/) | Repositories, Artifact Hub, OCI |
+| 6 | [06-hooks.md](/devops/helm/06-hooks/) | Hooks — pre/post install/upgrade/delete |
+| 7 | [07-dependencies-subcharts.md](/devops/helm/07-dependencies-subcharts/) | Dependencies, Subcharts, Global Values |
+| 8 | [08-release-management.md](/devops/helm/08-release-management/) | Install, Upgrade, Rollback, Uninstall |
+| 9 | [09-tips-tricks-best-practices.md](/devops/helm/09-tips-tricks-best-practices/) | 20 טיפים וטריקים מקצועיים |
+| 10 | [10-sheelot-reayon.md](/devops/helm/10-sheelot-reayon/) | שאלות ראיון עבודה מלאות עם תשובות |
 
 ## איך להשתמש בסדרה
 

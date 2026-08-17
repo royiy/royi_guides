@@ -191,5 +191,5 @@ roleRef:
 נסו להתקין קלאסטר מקומי עם `kind` או `minikube`, להוסיף repository של Bitnami, ולהתקין Chart של `nginx`. בדקו עם `kubectl get pods` שה-Pods עלו בהצלחה.
 
 ---
-**המדריך הקודם:** [מדריך 1 - מבוא ל-Helm](./01-mavo-le-helm.md)
-**המשך למדריך הבא:** [מדריך 3 - מבנה Chart](./03-mivne-chart.md)
+**המדריך הקודם:** [מדריך 1 - מבוא ל-Helm](/devops/helm/01-mavo-le-helm/)
+**המשך למדריך הבא:** [מדריך 3 - מבנה Chart](/devops/helm/03-mivne-chart/)

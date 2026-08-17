@@ -241,4 +241,4 @@ docker exec mycontainer netstat -tulpn
 
 ---
 
-**בחלק הקודם:** [Volumes וניהול אחסון](./06-volumes-ואחסון.md) | **בחלק הבא:** [Docker Compose - ניהול שירותים מרובים](./08-docker-compose.md)
+**בחלק הקודם:** [Volumes וניהול אחסון](/devops/docker/06-volumes-ואחסון/) | **בחלק הבא:** [Docker Compose - ניהול שירותים מרובים](/devops/docker/08-docker-compose/)

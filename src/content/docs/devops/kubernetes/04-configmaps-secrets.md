@@ -296,4 +296,4 @@ kubectl delete secret db-credentials
 
 ---
 
-**הקודם:** [מדריך 3 - Services](./03-services-networking.md) | **הבא:** [מדריך 5 - אחסון ו-Volumes](./05-storage-volumes.md)
+**הקודם:** [מדריך 3 - Services](/devops/kubernetes/03-services-networking/) | **הבא:** [מדריך 5 - אחסון ו-Volumes](/devops/kubernetes/05-storage-volumes/)

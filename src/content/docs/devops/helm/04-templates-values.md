@@ -241,5 +241,5 @@ helm install my-release ./my-app --dry-run --debug
 4. איך אפשר לחייב ערך מסוים בלי ברירת מחדל, כך שההתקנה תיכשל אם הוא לא סופק?
 
 ---
-**המדריך הקודם:** [מדריך 3 - מבנה Chart](./03-mivne-chart.md)
-**המשך למדריך הבא:** [מדריך 5 - Repositories](./05-repositories.md)
+**המדריך הקודם:** [מדריך 3 - מבנה Chart](/devops/helm/03-mivne-chart/)
+**המשך למדריך הבא:** [מדריך 5 - Repositories](/devops/helm/05-repositories/)

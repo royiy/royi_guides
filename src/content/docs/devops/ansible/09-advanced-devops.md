@@ -303,4 +303,4 @@ control_path = /tmp/ansible-ssh-%%h-%%p-%%r
 - Ansible Full Course - Edureka: https://www.youtube.com/watch?v=9Ua2b06oAr4
 
 ---
-⬅️ [חזרה למדריך 8](./08-vault-security.md) | ➡️ [המדריך הבא: 10-interview-questions.md](./10-interview-questions.md)
+⬅️ [חזרה למדריך 8](/devops/ansible/08-vault-security/) | ➡️ [המדריך הבא: 10-interview-questions.md](/devops/ansible/10-interview-questions/)

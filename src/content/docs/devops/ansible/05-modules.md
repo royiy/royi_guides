@@ -347,4 +347,4 @@ ansible-doc -l | grep docker    # חיפוש מודולים הקשורים ל-do
 - Ansible Full Course - Edureka (כולל דוגמאות מודולים): https://www.youtube.com/watch?v=9Ua2b06oAr4
 
 ---
-⬅️ [חזרה למדריך 4](./04-variables-facts.md) | ➡️ [המדריך הבא: 06-templates-handlers.md](./06-templates-handlers.md)
+⬅️ [חזרה למדריך 4](/devops/ansible/04-variables-facts/) | ➡️ [המדריך הבא: 06-templates-handlers.md](/devops/ansible/06-templates-handlers/)

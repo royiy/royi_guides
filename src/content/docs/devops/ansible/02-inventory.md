@@ -264,4 +264,4 @@ ansible webservers -i inventory.ini --list-hosts
 - Ansible Full Course - Simplilearn (כולל הסבר Inventory): https://www.youtube.com/watch?v=EcnqJbxBcM0
 
 ---
-⬅️ [חזרה למדריך 1](./01-mavo-veyesodot.md) | ➡️ [המדריך הבא: 03-playbooks.md](./03-playbooks.md)
+⬅️ [חזרה למדריך 1](/devops/ansible/01-mavo-veyesodot/) | ➡️ [המדריך הבא: 03-playbooks.md](/devops/ansible/03-playbooks/)

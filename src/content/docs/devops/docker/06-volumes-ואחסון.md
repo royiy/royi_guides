@@ -206,4 +206,4 @@ sudo chown -R 1000:1000 /path/to/mounted/folder
 
 ---
 
-**בחלק הקודם:** [ניהול הרשאות ואבטחה](./05-ניהול-הרשאות-ואבטחה.md) | **בחלק הבא:** [Docker Networking](./07-networking.md)
+**בחלק הקודם:** [ניהול הרשאות ואבטחה](/devops/docker/05-ניהול-הרשאות-ואבטחה/) | **בחלק הבא:** [Docker Networking](/devops/docker/07-networking/)

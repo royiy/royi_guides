@@ -229,4 +229,4 @@ ansible web1.example.com -i inventory.ini -m setup -a "filter=ansible_distributi
 - Ansible Online Course Part 1 - KnowledgeHut: https://www.youtube.com/watch?v=WQ6KRSkh0rM
 
 ---
-⬅️ [חזרה למדריך 3](./03-playbooks.md) | ➡️ [המדריך הבא: 05-modules.md](./05-modules.md)
+⬅️ [חזרה למדריך 3](/devops/ansible/03-playbooks/) | ➡️ [המדריך הבא: 05-modules.md](/devops/ansible/05-modules/)

@@ -1,20 +1,7 @@
-# מדריך 7: בניית Pipeline מלא של CI/CD
-
-> מדריך 7 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [עקרונות ה-CI/CD](#עקרונות-ה-cicd)
-2. [שלב 1: Continuous Integration (CI)](#שלב-1-continuous-integration-ci)
-3. [שלב 2: Continuous Delivery/Deployment (CD)](#שלב-2-continuous-deliverydeployment-cd)
-4. [Pipeline מלא: Node.js לפרודקשן](#pipeline-מלא-nodejs-לפרודקשן)
-5. [אסטרטגיות פריסה: Staging → Production](#אסטרטגיות-פריסה-staging--production)
-6. [Reusable Workflows לצמצום כפילות](#reusable-workflows-לצמצום-כפילות)
-7. [Rollback אוטומטי במקרה כישלון](#rollback-אוטומטי-במקרה-כישלון)
-8. [טיפים וטריקים](#טיפים-וטריקים)
-9. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-10. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "בניית Pipeline מלא של CI/CD"
+category: DevOps/GitHub Actions
+part: 7/10
 ---
 
 ## עקרונות ה-CI/CD

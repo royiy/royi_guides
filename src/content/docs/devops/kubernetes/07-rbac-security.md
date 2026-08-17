@@ -311,4 +311,4 @@ kubectl create token ci-pipeline-sa -n dev
 
 ---
 
-**הקודם:** [מדריך 6 - Helm](./06-helm.md) | **הבא:** [מדריך 8 - Ingress](./08-ingress.md)
+**הקודם:** [מדריך 6 - Helm](/devops/kubernetes/06-helm/) | **הבא:** [מדריך 8 - Ingress](/devops/kubernetes/08-ingress/)

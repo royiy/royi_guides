@@ -193,4 +193,4 @@ become_ask_pass = False
 - Ansible Course for Beginners (שעה אחת, תמציתי): https://www.youtube.com/watch?v=s4cXrNEDYiw
 
 ---
-⬅️ המדריך הבא: [02-inventory.md](./02-inventory.md) — ניהול Inventory וקבוצות שרתים
+⬅️ המדריך הבא: [02-inventory.md](/devops/ansible/02-inventory/) — ניהול Inventory וקבוצות שרתים

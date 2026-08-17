@@ -1,18 +1,7 @@
-# מדריך 5: Actions מוכנים ו-GitHub Marketplace
-
-> מדריך 5 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [מה זה GitHub Marketplace](#מה-זה-github-marketplace)
-2. [Actions חיוניים שכל מפתח צריך להכיר](#actions-חיוניים-שכל-מפתח-צריך-להכיר)
-3. [איך לבחור Action בבטחה](#איך-לבחור-action-בבטחה)
-4. [דרכי שימוש שונות ב-uses](#דרכי-שימוש-שונות-ב-uses)
-5. [דוגמת CI מלאה עם Actions מה-Marketplace](#דוגמת-ci-מלאה-עם-actions-מה-marketplace)
-6. [טיפים וטריקים](#טיפים-וטריקים)
-7. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-8. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "Actions מוכנים ו-GitHub Marketplace"
+category: DevOps/GitHub Actions
+part: 5/10
 ---
 
 ## מה זה GitHub Marketplace

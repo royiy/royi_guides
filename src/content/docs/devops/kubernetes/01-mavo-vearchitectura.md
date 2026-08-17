@@ -253,4 +253,4 @@ kubectl delete -f namespace.yaml
 
 ---
 
-**המשך למדריך הבא:** [מדריך 2 - Pods, Deployments ו-ReplicaSets](./02-pods-deployments-replicasets.md)
+**המשך למדריך הבא:** [מדריך 2 - Pods, Deployments ו-ReplicaSets](/devops/kubernetes/02-pods-deployments-replicasets/)

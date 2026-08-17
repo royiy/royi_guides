@@ -310,4 +310,4 @@ ansible-playbook site.yml --list-tasks
 - Ansible Course for Beginners (שעה אחת): https://www.youtube.com/watch?v=s4cXrNEDYiw
 
 ---
-⬅️ [חזרה למדריך 2](./02-inventory.md) | ➡️ [המדריך הבא: 04-variables-facts.md](./04-variables-facts.md)
+⬅️ [חזרה למדריך 2](/devops/ansible/02-inventory/) | ➡️ [המדריך הבא: 04-variables-facts.md](/devops/ansible/04-variables-facts/)

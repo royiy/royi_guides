@@ -306,4 +306,4 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml config
 
 ---
 
-**בחלק הקודם:** [Docker Networking](./07-networking.md) | **בחלק הבא:** [ניהול שרתים ו-Docker Swarm](./09-ניהול-שרתים-ו-swarm.md)
+**בחלק הקודם:** [Docker Networking](/devops/docker/07-networking/) | **בחלק הבא:** [ניהול שרתים ו-Docker Swarm](/devops/docker/09-ניהול-שרתים-ו-swarm/)

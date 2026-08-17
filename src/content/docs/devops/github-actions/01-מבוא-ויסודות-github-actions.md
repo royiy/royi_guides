@@ -1,19 +1,7 @@
-# מדריך 1: מבוא ויסודות ל-GitHub Actions
-
-> מדריך 1 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [מה זה GitHub Actions](#מה-זה-github-actions)
-2. [המושגים המרכזיים](#המושגים-המרכזיים)
-3. [מבנה תיקיות ותחביר בסיסי](#מבנה-תיקיות-ותחביר-בסיסי)
-4. [ה-Workflow הראשון שלכם](#ה-workflow-הראשון-שלכם)
-5. [GitHub-hosted מול Self-hosted runners](#github-hosted-מול-self-hosted-runners)
-6. [למה GitHub Actions ולא כלי אחר](#למה-github-actions-ולא-כלי-אחר)
-7. [טיפים וטריקים](#טיפים-וטריקים)
-8. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-9. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "מבוא ויסודות ל-GitHub Actions"
+category: DevOps/GitHub Actions
+part: 1/10
 ---
 
 ## מה זה GitHub Actions

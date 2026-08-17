@@ -200,5 +200,5 @@ jobs:
 4. אילו שלושה קבצים נדרשים כדי ליצור repository מבוסס GitHub Pages?
 
 ---
-**המדריך הקודם:** [מדריך 4 - Templates ו-Values](./04-templates-values.md)
-**המשך למדריך הבא:** [מדריך 6 - Hooks](./06-hooks.md)
+**המדריך הקודם:** [מדריך 4 - Templates ו-Values](/devops/helm/04-templates-values/)
+**המשך למדריך הבא:** [מדריך 6 - Hooks](/devops/helm/06-hooks/)

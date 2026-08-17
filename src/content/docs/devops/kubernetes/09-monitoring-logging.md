@@ -311,4 +311,4 @@ kubectl get hpa -w
 
 ---
 
-**הקודם:** [מדריך 8 - Ingress](./08-ingress.md) | **הבא:** [מדריך 10 - שאלות ראיון עבודה וטיפים](./10-interview-questions-tips.md)
+**הקודם:** [מדריך 8 - Ingress](/devops/kubernetes/08-ingress/) | **הבא:** [מדריך 10 - שאלות ראיון עבודה וטיפים](/devops/kubernetes/10-interview-questions-tips/)

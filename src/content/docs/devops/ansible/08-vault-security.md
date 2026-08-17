@@ -224,4 +224,4 @@ ansible-galaxy collection install community.hashi_vault
 - TechWorld with Nana - Ansible: https://www.youtube.com/channel/UCdngmbVKX1Tgre699-XLlUA
 
 ---
-⬅️ [חזרה למדריך 7](./07-roles.md) | ➡️ [המדריך הבא: 09-advanced-devops.md](./09-advanced-devops.md)
+⬅️ [חזרה למדריך 7](/devops/ansible/07-roles/) | ➡️ [המדריך הבא: 09-advanced-devops.md](/devops/ansible/09-advanced-devops/)

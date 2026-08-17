@@ -1,20 +1,7 @@
-# מדריך 9: יצירת Custom Actions - JavaScript, Docker ו-Composite
-
-> מדריך 9 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [שלושת סוגי ה-Custom Actions](#שלושת-סוגי-ה-custom-actions)
-2. [קובץ action.yml - המטא-דאטה המשותפת](#קובץ-actionyml---המטא-דאטה-המשותפת)
-3. [Composite Action - השילוב הפשוט ביותר](#composite-action---השילוב-הפשוט-ביותר)
-4. [JavaScript Action - מהיר וחוצה פלטפורמות](#javascript-action---מהיר-וחוצה-פלטפורמות)
-5. [Docker Action - שליטה מלאה בסביבה](#docker-action---שליטה-מלאה-בסביבה)
-6. [השוואה בין שלושת הסוגים](#השוואה-בין-שלושת-הסוגים)
-7. [פרסום Action ל-Marketplace](#פרסום-action-ל-marketplace)
-8. [טיפים וטריקים](#טיפים-וטריקים)
-9. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-10. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "יצירת Custom Actions - JavaScript, Docker ו-Composite"
+category: DevOps/GitHub Actions
+part: 9/10
 ---
 
 ## שלושת סוגי ה-Custom Actions

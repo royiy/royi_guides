@@ -284,4 +284,4 @@ kubectl exec -it <pod-name> -- nslookup backend-svc
 
 ---
 
-**הקודם:** [מדריך 2 - Pods, Deployments](./02-pods-deployments-replicasets.md) | **הבא:** [מדריך 4 - ConfigMaps ו-Secrets](./04-configmaps-secrets.md)
+**הקודם:** [מדריך 2 - Pods, Deployments](/devops/kubernetes/02-pods-deployments-replicasets/) | **הבא:** [מדריך 4 - ConfigMaps ו-Secrets](/devops/kubernetes/04-configmaps-secrets/)

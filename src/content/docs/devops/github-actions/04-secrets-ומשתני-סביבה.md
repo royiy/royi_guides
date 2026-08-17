@@ -1,20 +1,7 @@
-# מדריך 4: ניהול Secrets ומשתני סביבה (Variables)
-
-> מדריך 4 מתוך 10 בסדרת המדריכים המקיפה ל-GitHub Actions בעברית.
-
-## תוכן עניינים
-
-1. [Secrets מול Variables - מה ההבדל](#secrets-מול-variables---מה-ההבדל)
-2. [שלוש רמות: Repository, Environment, Organization](#שלוש-רמות-repository-environment-organization)
-3. [יצירה ושימוש ב-Secrets](#יצירה-ושימוש-ב-secrets)
-4. [יצירה ושימוש ב-Variables](#יצירה-ושימוש-ב-variables)
-5. [GITHUB_TOKEN - הסוד המובנה](#github_token---הסוד-המובנה)
-6. [OpenID Connect (OIDC) - אימות ללא סודות](#openid-connect-oidc---אימות-ללא-סודות)
-7. [Environments ואישורים ידניים](#environments-ואישורים-ידניים)
-8. [טיפים וטריקים](#טיפים-וטריקים)
-9. [שאלות ראיון עבודה](#שאלות-ראיון-עבודה)
-10. [קישורים חיצוניים](#קישורים-חיצוניים)
-
+---
+title: "ניהול Secrets ומשתני סביבה (Variables)"
+category: DevOps/GitHub Actions
+part: 4/10
 ---
 
 ## Secrets מול Variables - מה ההבדל

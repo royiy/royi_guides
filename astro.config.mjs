@@ -4,9 +4,12 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://royi-guides.vercel.app',
+
 	integrations: [
 		starlight({
 			title: 'Royi Guides',
+			description: 'מדריכים מקיפים בעברית ל-DevOps, Cloud, Linux, Windows Server ותשתיות IT - Ansible, Kubernetes, Docker, Terraform, AWS, Azure, GCP ועוד.',
 
 			defaultLocale: 'root',
 
@@ -43,6 +46,36 @@ export default defineConfig({
 				},
 
 				// =========================
+				// Azure
+				// =========================
+				{
+					label: 'Azure',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'azure',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// GCP
+				// =========================
+				{
+					label: 'GCP',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'gcp',
+							},
+						},
+					],
+				},
+
+				// =========================
 				// Linux
 				// =========================
 				{
@@ -67,6 +100,21 @@ export default defineConfig({
 						{
 							autogenerate: {
 								directory: 'windows-server',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// Networking
+				// =========================
+				{
+					label: 'Networking',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'networking',
 							},
 						},
 					],
@@ -162,6 +210,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'GitHub Actions',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/github-actions',
+									},
+								},
+							],
+						},
 					],
 				},
 
@@ -205,6 +265,21 @@ export default defineConfig({
 						{
 							autogenerate: {
 								directory: 'powershell',
+							},
+						},
+					],
+				},
+
+				// =========================
+				// SQL
+				// =========================
+				{
+					label: 'SQL',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'sql',
 							},
 						},
 					],

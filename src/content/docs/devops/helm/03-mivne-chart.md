@@ -248,5 +248,5 @@ Charts אחרים יכולים להשתמש בו כתלות ולקרוא ל-temp
 4. איזו פקודה משתמשים בה כדי לבדוק שגיאות תחביר ב-Chart לפני התקנה?
 
 ---
-**המדריך הקודם:** [מדריך 2 - התקנה והגדרה](./02-hatkana-vehagdara.md)
-**המשך למדריך הבא:** [מדריך 4 - Templates ו-Values](./04-templates-values.md)
+**המדריך הקודם:** [מדריך 2 - התקנה והגדרה](/devops/helm/02-hatkana-vehagdara/)
+**המשך למדריך הבא:** [מדריך 4 - Templates ו-Values](/devops/helm/04-templates-values/)

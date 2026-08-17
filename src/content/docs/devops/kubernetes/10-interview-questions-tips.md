@@ -271,19 +271,19 @@ kubectl describe resourcequota -n <namespace>
 
 ---
 
-**הקודם:** [מדריך 9 - Monitoring & Logging](./09-monitoring-logging.md) | **חזרה להתחלה:** [מדריך 1 - מבוא וארכיטקטורה](./01-mavo-vearchitectura.md)
+**הקודם:** [מדריך 9 - Monitoring & Logging](/devops/kubernetes/09-monitoring-logging/) | **חזרה להתחלה:** [מדריך 1 - מבוא וארכיטקטורה](/devops/kubernetes/01-mavo-vearchitectura/)
 
 ---
 
 ## סיכום כל 10 המדריכים
 
-1. [מבוא וארכיטקטורה](./01-mavo-vearchitectura.md)
-2. [Pods, Deployments, ReplicaSets](./02-pods-deployments-replicasets.md)
-3. [Services ו-Networking](./03-services-networking.md)
-4. [ConfigMaps ו-Secrets](./04-configmaps-secrets.md)
-5. [אחסון ו-Volumes](./05-storage-volumes.md)
-6. [Helm](./06-helm.md)
-7. [RBAC ואבטחה](./07-rbac-security.md)
-8. [Ingress](./08-ingress.md)
-9. [Monitoring & Logging](./09-monitoring-logging.md)
-10. [שאלות ראיון עבודה, טיפים ופתרון תקלות](./10-interview-questions-tips.md)
+1. [מבוא וארכיטקטורה](/devops/kubernetes/01-mavo-vearchitectura/)
+2. [Pods, Deployments, ReplicaSets](/devops/kubernetes/02-pods-deployments-replicasets/)
+3. [Services ו-Networking](/devops/kubernetes/03-services-networking/)
+4. [ConfigMaps ו-Secrets](/devops/kubernetes/04-configmaps-secrets/)
+5. [אחסון ו-Volumes](/devops/kubernetes/05-storage-volumes/)
+6. [Helm](/devops/kubernetes/06-helm/)
+7. [RBAC ואבטחה](/devops/kubernetes/07-rbac-security/)
+8. [Ingress](/devops/kubernetes/08-ingress/)
+9. [Monitoring & Logging](/devops/kubernetes/09-monitoring-logging/)
+10. [שאלות ראיון עבודה, טיפים ופתרון תקלות](/devops/kubernetes/10-interview-questions-tips/)

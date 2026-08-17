@@ -301,4 +301,4 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/component=controller -f
 
 ---
 
-**הקודם:** [מדריך 7 - RBAC ואבטחה](./07-rbac-security.md) | **הבא:** [מדריך 9 - Monitoring & Logging](./09-monitoring-logging.md)
+**הקודם:** [מדריך 7 - RBAC ואבטחה](/devops/kubernetes/07-rbac-security/) | **הבא:** [מדריך 9 - Monitoring & Logging](/devops/kubernetes/09-monitoring-logging/)

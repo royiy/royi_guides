@@ -322,4 +322,4 @@ helm search hub wordpress
 
 ---
 
-**הקודם:** [מדריך 5 - אחסון](./05-storage-volumes.md) | **הבא:** [מדריך 7 - RBAC ואבטחה](./07-rbac-security.md)
+**הקודם:** [מדריך 5 - אחסון](/devops/kubernetes/05-storage-volumes/) | **הבא:** [מדריך 7 - RBAC ואבטחה](/devops/kubernetes/07-rbac-security/)

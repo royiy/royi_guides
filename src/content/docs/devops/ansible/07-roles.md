@@ -294,4 +294,4 @@ ansible-galaxy collection install ansible.posix
 - Ansible Full Course - Simplilearn (כולל Roles): https://www.youtube.com/watch?v=EcnqJbxBcM0
 
 ---
-⬅️ [חזרה למדריך 6](./06-templates-handlers.md) | ➡️ [המדריך הבא: 08-vault-security.md](./08-vault-security.md)
+⬅️ [חזרה למדריך 6](/devops/ansible/06-templates-handlers/) | ➡️ [המדריך הבא: 08-vault-security.md](/devops/ansible/08-vault-security/)

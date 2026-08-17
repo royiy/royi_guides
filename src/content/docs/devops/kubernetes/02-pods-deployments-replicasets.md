@@ -358,4 +358,4 @@ kubectl delete pods -l app=nginx
 
 ---
 
-**הקודם:** [מדריך 1 - מבוא וארכיטקטורה](./01-mavo-vearchitectura.md) | **הבא:** [מדריך 3 - Services ו-Networking](./03-services-networking.md)
+**הקודם:** [מדריך 1 - מבוא וארכיטקטורה](/devops/kubernetes/01-mavo-vearchitectura/) | **הבא:** [מדריך 3 - Services ו-Networking](/devops/kubernetes/03-services-networking/)

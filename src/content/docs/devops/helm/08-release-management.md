@@ -218,5 +218,5 @@ helm install my-release ./my-chart --wait --wait-for-jobs --timeout 5m
 4. מה ההבדל בין `--wait` ל-`--wait-for-jobs`?
 
 ---
-**המדריך הקודם:** [מדריך 7 - Dependencies ו-Subcharts](./07-dependencies-subcharts.md)
-**המשך למדריך הבא:** [מדריך 9 - טיפים, טריקים ו-Best Practices](./09-tips-tricks-best-practices.md)
+**המדריך הקודם:** [מדריך 7 - Dependencies ו-Subcharts](/devops/helm/07-dependencies-subcharts/)
+**המשך למדריך הבא:** [מדריך 9 - טיפים, טריקים ו-Best Practices](/devops/helm/09-tips-tricks-best-practices/)
