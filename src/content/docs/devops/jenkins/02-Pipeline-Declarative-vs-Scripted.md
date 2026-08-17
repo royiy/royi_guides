@@ -1,4 +1,8 @@
-# מדריך 2: Jenkins Pipeline - Declarative מול Scripted
+---
+title: "Jenkins Pipeline - Declarative מול Scripted"
+category: DevOps/Jenkins
+part: 2/10
+---
 
 ## מבוא
 Pipeline הוא הפיצ'ר המרכזי המודרני של Jenkins - דרך להגדיר את כל תהליך ה-CI/CD כקוד (Pipeline-as-Code), בדרך כלל בקובץ בשם `Jenkinsfile` שנשמר יחד עם קוד הפרויקט ב-Git.

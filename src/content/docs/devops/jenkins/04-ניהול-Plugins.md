@@ -1,4 +1,8 @@
-# מדריך 4: ניהול Plugins ותוספים חיוניים ב-Jenkins
+---
+title: "ניהול Plugins ותוספים חיוניים ב-Jenkins"
+category: DevOps/Jenkins
+part: 4/10
+---
 
 ## מבוא
 אחד הכוחות הגדולים של Jenkins הוא מערכת ה-Plugins העשירה שלו - יש מעל 1800 plugins רשמיים. במדריך הזה נעבור על ניהול plugins, איך להתקין/לעדכן/להסיר, ורשימת plugins חיוניים לכל סביבת עבודה.

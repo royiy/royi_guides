@@ -1,4 +1,8 @@
-# מדריך 6: Jenkins ו-Docker - אינטגרציה מלאה
+---
+title: "Jenkins ו-Docker - אינטגרציה מלאה"
+category: DevOps/Jenkins
+part: 6/10
+---
 
 ## מבוא
 שילוב Jenkins עם Docker הוא סטנדרט בתעשייה כיום - הן להרצת agents/build environments עקביים, והן לבניית ופריסת images. במדריך הזה נכסה את כל הדרכים לשלב בין השניים.

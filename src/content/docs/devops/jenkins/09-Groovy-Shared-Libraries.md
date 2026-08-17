@@ -1,4 +1,8 @@
-# מדריך 9: Groovy Scripting ו-Shared Libraries ב-Jenkins
+---
+title: "Groovy Scripting ו-Shared Libraries ב-Jenkins"
+category: DevOps/Jenkins
+part: 9/10
+---
 
 ## מבוא
 כש-Jenkinsfiles מתחילים לחזור על עצמם בין פרויקטים, הפתרון הוא **Shared Libraries** - קוד Groovy משותף שנטען לתוך כל pipeline. זה מאפשר DRY (Don't Repeat Yourself) ברמת ארגון שלם.

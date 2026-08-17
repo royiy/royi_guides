@@ -150,6 +150,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'Jenkins',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/jenkins',
+									},
+								},
+							],
+						},
 					],
 				},
 

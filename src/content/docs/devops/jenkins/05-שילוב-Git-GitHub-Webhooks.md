@@ -1,4 +1,8 @@
-# מדריך 5: שילוב Jenkins עם Git, GitHub ו-Webhooks
+---
+title: "שילוב Jenkins עם Git, GitHub ו-Webhooks"
+category: DevOps/Jenkins
+part: 5/10
+---
 
 ## מבוא
 שילוב Jenkins עם מערכת בקרת גרסאות הוא הבסיס לכל תהליך CI/CD. במדריך הזה נעבור על חיבור Jenkins ל-Git/GitHub/GitLab, הגדרת Webhooks להפעלה אוטומטית, ו-Multibranch Pipelines.

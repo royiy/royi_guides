@@ -1,4 +1,8 @@
-# מדריך 3: Jenkinsfile - דוגמאות מעשיות מקצה לקצה
+---
+title: "Jenkinsfile - דוגמאות מעשיות מקצה לקצה"
+category: DevOps/Jenkins
+part: 3/10
+---
 
 ## מבוא
 במדריך הזה נעבור על דוגמאות Jenkinsfile מלאות ומעשיות לפרויקטים מסוגים שונים: Node.js, Java/Maven, Python, ו-Multibranch Pipeline. המטרה - לתת template שאפשר לקחת ולהתאים ישירות.

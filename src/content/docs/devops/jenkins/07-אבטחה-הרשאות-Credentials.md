@@ -1,4 +1,8 @@
-# מדריך 7: אבטחה, הרשאות וניהול Credentials ב-Jenkins
+---
+title: "אבטחה, הרשאות וניהול Credentials ב-Jenkins"
+category: DevOps/Jenkins
+part: 7/10
+---
 
 ## מבוא
 Jenkins הוא לרוב מערכת בעלת גישה רחבה - לקוד המקור, ל-secrets, לתשתית production. אבטחה לא נכונה של Jenkins היא אחד הווקטורים הנפוצים ביותר לתקיפות אספקת שרשרת (supply chain). במדריך הזה נכסה RBAC, ניהול credentials, ו-hardening.

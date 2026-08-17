@@ -1,4 +1,8 @@
-# מדריך 8: ארכיטקטורת Master/Agent (Controller/Agent) ו-Distributed Builds
+---
+title: "ארכיטקטורת Master/Agent (Controller/Agent) ו-Distributed Builds"
+category: DevOps/Jenkins
+part: 8/10
+---
 
 ## מבוא
 בסביבות production אמיתיות, כמעט אף פעם לא מריצים builds ישירות על ה-Jenkins master (היום נקרא "Controller"). במקום זאת, משתמשים בארכיטקטורת Controller-Agent כדי לפזר עומס, לתמוך במגוון פלטפורמות, ולבודד builds.
