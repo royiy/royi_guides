@@ -1,4 +1,8 @@
-# מדריך 5: מודולים נפוצים (Modules)
+---
+title: "מודולים נפוצים (Modules)"
+category: DevOps/Ansible
+part: 5/10
+---
 
 ## מה זה מודול?
 

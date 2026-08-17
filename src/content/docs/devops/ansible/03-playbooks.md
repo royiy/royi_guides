@@ -1,4 +1,8 @@
-# מדריך 3: Playbooks - כתיבה ומבנה
+---
+title: "Playbooks - כתיבה ומבנה"
+category: DevOps/Ansible
+part: 3/10
+---
 
 ## מה זה Playbook?
 

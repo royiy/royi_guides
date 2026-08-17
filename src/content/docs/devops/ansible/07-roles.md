@@ -1,4 +1,8 @@
-# מדריך 7: Roles - ארגון קוד לשימוש חוזר
+---
+title: "Roles - ארגון קוד לשימוש חוזר"
+category: DevOps/Ansible
+part: 7/10
+---
 
 ## מה זה Role?
 

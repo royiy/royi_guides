@@ -1,4 +1,8 @@
-# מדריך 4: Variables ו-Facts
+---
+title: "Variables ו-Facts"
+category: DevOps/Ansible
+part: 4/10
+---
 
 ## מה זה משתנה (Variable) ב-Ansible?
 

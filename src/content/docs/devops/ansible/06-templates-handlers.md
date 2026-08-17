@@ -1,4 +1,8 @@
-# מדריך 6: Templates (Jinja2) ו-Handlers מתקדם
+---
+title: "Templates (Jinja2) ו-Handlers מתקדם"
+category: DevOps/Ansible
+part: 6/10
+---
 
 ## מה זה Jinja2?
 

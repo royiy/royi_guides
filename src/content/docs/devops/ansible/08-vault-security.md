@@ -1,4 +1,8 @@
-# מדריך 8: Ansible Vault - ניהול סודות ואבטחה
+---
+title: "Ansible Vault - ניהול סודות ואבטחה"
+category: DevOps/Ansible
+part: 8/10
+---
 
 ## מה זה Ansible Vault?
 

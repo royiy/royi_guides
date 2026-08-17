@@ -1,4 +1,8 @@
-# מדריך 2: Inventory - ניהול שרתים וקבוצות
+---
+title: "Inventory - ניהול שרתים וקבוצות"
+category: DevOps/Ansible
+part: 2/10
+---
 
 ## מה זה Inventory?
 

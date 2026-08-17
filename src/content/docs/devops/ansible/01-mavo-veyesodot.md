@@ -1,4 +1,8 @@
-# מדריך 1: מבוא ל-Ansible, ארכיטקטורה והתקנה
+---
+title: "מבוא ל-Ansible, ארכיטקטורה והתקנה"
+category: DevOps/Ansible
+part: 1/10
+---
 
 ## מה זה Ansible?
 

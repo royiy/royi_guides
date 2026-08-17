@@ -1,4 +1,8 @@
-# מדריך 9: Ansible ב-DevOps - CI/CD, AWX/Tower ופרקטיקות מתקדמות
+---
+title: "Ansible ב-DevOps - CI/CD, AWX/Tower ופרקטיקות מתקדמות"
+category: DevOps/Ansible
+part: 9/10
+---
 
 ## Ansible בתהליכי CI/CD
 

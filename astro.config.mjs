@@ -138,6 +138,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'Ansible',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/ansible',
+									},
+								},
+							],
+						},
 					],
 				},
 
