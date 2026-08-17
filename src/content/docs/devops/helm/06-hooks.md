@@ -1,4 +1,8 @@
-# מדריך 6: Helm Hooks — הרצת פעולות בנקודות זמן מוגדרות
+---
+title: "Helm Hooks — הרצת פעולות בנקודות זמן מוגדרות"
+category: DevOps/Helm
+part: 6/10
+---
 
 ## מהם Hooks?
 

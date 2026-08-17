@@ -1,4 +1,8 @@
-# מדריך 3: מבנה Helm Chart ויצירת Chart ראשון
+---
+title: "מבנה Helm Chart ויצירת Chart ראשון"
+category: DevOps/Helm
+part: 3/10
+---
 
 ## יצירת Chart חדש
 

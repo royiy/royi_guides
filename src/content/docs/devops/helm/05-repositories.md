@@ -1,4 +1,8 @@
-# מדריך 5: Helm Repositories — ניהול והפצת Charts
+---
+title: "Helm Repositories — ניהול והפצת Charts"
+category: DevOps/Helm
+part: 5/10
+---
 
 ## מהו Repository ב-Helm?
 

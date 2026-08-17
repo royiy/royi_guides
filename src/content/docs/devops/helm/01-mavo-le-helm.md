@@ -1,4 +1,8 @@
-# מדריך 1: מבוא ל-Helm — מנהל החבילות של Kubernetes
+---
+title: "מבוא ל-Helm — מנהל החבילות של Kubernetes"
+category: DevOps/Helm
+part: 1/10
+---
 
 ## מה זה Helm?
 

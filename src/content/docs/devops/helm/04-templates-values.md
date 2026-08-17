@@ -1,4 +1,8 @@
-# מדריך 4: מנוע ה-Templates ו-Values ב-Helm
+---
+title: "מנוע ה-Templates ו-Values ב-Helm"
+category: DevOps/Helm
+part: 4/10
+---
 
 ## מנוע התבניות של Helm
 

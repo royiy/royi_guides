@@ -1,4 +1,8 @@
-# מדריך 8: ניהול Releases — Install, Upgrade, Rollback, Uninstall
+---
+title: "ניהול Releases — Install, Upgrade, Rollback, Uninstall"
+category: DevOps/Helm
+part: 8/10
+---
 
 ## מחזור החיים של Release
 

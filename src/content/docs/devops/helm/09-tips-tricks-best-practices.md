@@ -1,4 +1,8 @@
-# מדריך 9: טיפים, טריקים ו-Best Practices ל-Helm
+---
+title: "טיפים, טריקים ו-Best Practices ל-Helm"
+category: DevOps/Helm
+part: 9/10
+---
 
 ## 1. תמיד השתמשו ב-`helm lint` וב-`helm template` לפני commit
 

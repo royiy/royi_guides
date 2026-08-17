@@ -1,4 +1,8 @@
-# מדריך 7: Dependencies ו-Subcharts ב-Helm
+---
+title: "Dependencies ו-Subcharts ב-Helm"
+category: DevOps/Helm
+part: 7/10
+---
 
 ## מהי תלות (Dependency) ב-Helm?
 

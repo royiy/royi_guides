@@ -126,6 +126,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'Helm',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/helm',
+									},
+								},
+							],
+						},
 					],
 				},
 

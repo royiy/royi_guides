@@ -1,4 +1,8 @@
-# מדריך 10: שאלות ראיון עבודה על Helm — עם תשובות מלאות
+---
+title: "שאלות ראיון עבודה על Helm — עם תשובות מלאות"
+category: DevOps/Helm
+part: 10/10
+---
 
 מדריך זה מרכז שאלות שנשאלות בפועל בראיונות עבודה לתפקידי DevOps, SRE, Platform Engineer ו-Kubernetes Administrator, ברמות קושי שונות.
 
