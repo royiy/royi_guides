@@ -21,7 +21,7 @@ Terraform הפך לכלי סטנדרטי בתפקידי DevOps, Cloud Engineer, 
 **Imperative (איך לעשות):**
 ```bash
 aws ec2 run-instances --image-id ami-12345 --instance-type t2.micro
-# אח"כ צריך לזכור למחוק, לעדכן ידנית וכו'
+# צריך לזכור למחוק, לעדכן ידנית וכו'
 ```
 
 **Declarative (מה אני רוצה):**
