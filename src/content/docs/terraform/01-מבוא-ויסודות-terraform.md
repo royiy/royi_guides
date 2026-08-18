@@ -151,6 +151,7 @@ my-project/
 ## שאלות נפוצות
 
 **1. מה ההבדל בין Terraform ל-Ansible/Chef/Puppet?**
+
 Terraform מתמחה ב-**provisioning** (יצירת תשתית - VMs, רשתות, בסיסי נתונים), בעוד Ansible/Chef/Puppet מתמחים ב-**configuration management** (התקנת תוכנה והגדרתה בתוך שרתים קיימים). Terraform הוא declarative ו-immutable-oriented; Ansible הוא לרוב procedural.
 
 **2. למה Terraform הוא "declarative"?**
