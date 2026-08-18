@@ -11,8 +11,6 @@ export default defineConfig({
 			title: 'Royi Guides',
 			description: 'מדריכים מקיפים בעברית ל-DevOps, Cloud, Linux, Windows Server ותשתיות IT - Ansible, Kubernetes, Docker, Terraform, AWS, Azure, GCP ועוד.',
 
-			customCss: ['./src/styles/custom.css'],
-
 			defaultLocale: 'root',
 
 			locales: {
