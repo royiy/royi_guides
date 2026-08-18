@@ -9,7 +9,7 @@ Terraform הוא כלי **Infrastructure as Code (IaC)** בקוד פתוח שפ�
 
 במקום ללחוץ על כפתורים בקונסולת AWS/Azure/GCP, אתם כותבים קוד שמתאר **מה** אתם רוצים שיהיה קיים (declarative), ו-Terraform דואג ל**איך** להגיע לשם.
 
-### למה זה חשוב לראיונות עבודה?
+### למה זה טוב?
 
 Terraform הפך לכלי סטנדרטי בתפקידי DevOps, Cloud Engineer, SRE ו-Platform Engineer. כמעט כל ראיון בתחומים האלה כולל שאלות על Terraform - מהיסודות ועד תרחישים מורכבים של ניהול state, מודולים ו-CI/CD.
 
