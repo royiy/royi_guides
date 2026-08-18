@@ -11,7 +11,23 @@ export default defineConfig({
 			title: 'Royi Guides',
 			description: 'מדריכים מקיפים בעברית ל-DevOps, Cloud, Linux, Windows Server ותשתיות IT - Ansible, Kubernetes, Docker, Terraform, AWS, Azure, GCP ועוד.',
 
-			customCss: ['./src/styles/custom.css'],
+			// NOTE: intentionally NOT using `customCss` here - registering it
+			// (with ANY content) reproducibly breaks the table-of-contents
+			// sidebar on this Starlight version. Using `head` to inject a raw
+			// <style> tag instead, which avoids that code path entirely.
+			head: [
+				{
+					tag: 'style',
+					content: `
+						@media (min-width: 72rem) {
+							.right-sidebar-panel .sl-container {
+								max-width: calc(var(--sl-sidebar-width) - 2 * var(--sl-sidebar-pad-x));
+								margin-inline-start: auto;
+							}
+						}
+					`,
+				},
+			],
 
 			defaultLocale: 'root',
 
