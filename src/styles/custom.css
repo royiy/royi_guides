@@ -1,0 +1,11 @@
+/* Custom Starlight overrides */
+
+/* The page is RTL, so the table-of-contents ("right sidebar") renders on the
+   left of the screen. On wide viewports (>=72rem) Starlight shrinks that
+   panel and leaves it hugging the content side, which visually reads as
+   "not far enough to the left". Push it toward the outer (left) edge. */
+@media (min-width: 72rem) {
+	.sl-container {
+		margin-inline-start: auto;
+	}
+}
