@@ -11,7 +11,7 @@ Terraform הוא כלי **Infrastructure as Code (IaC)** בקוד פתוח שפ�
 
 ### למה זה טוב?
 
-Terraform הפך לכלי סטנדרטי בתפקידי DevOps, Cloud Engineer, SRE ו-Platform Engineer. כמעט כל ראיון בתחומים האלה כולל שאלות על Terraform - מהיסודות ועד תרחישים מורכבים של ניהול state, מודולים ו-CI/CD.
+Terraform הפך לכלי סטנדרטי בתפקידי DevOps, Cloud Engineer, SRE ו-Platform Engineer. מהיסודות ועד תרחישים מורכבים של ניהול state, מודולים ו-CI/CD.
 
 ---
 
