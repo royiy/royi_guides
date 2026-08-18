@@ -190,10 +190,16 @@ const topics = [
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      
+
+      html {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
       body {
         background: var(--bg); color: var(--text);
         font-family: var(--font-sans); overflow-x: hidden;
+        width: 100%; max-width: 100vw; position: relative;
       }
 
       .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
