@@ -155,12 +155,15 @@ my-project/
 Terraform מתמחה ב-**provisioning** (יצירת תשתית - VMs, רשתות, בסיסי נתונים), בעוד Ansible/Chef/Puppet מתמחים ב-**configuration management** (התקנת תוכנה והגדרתה בתוך שרתים קיימים). Terraform הוא declarative ו-immutable-oriented; Ansible הוא לרוב procedural.
 
 **2. למה Terraform הוא "declarative"?**
+
 כי מגדירים את המצב הסופי הרצוי, לא את הצעדים להגיע אליו. Terraform מחשב את ה-execution plan בעצמו על סמך גרף התלויות (DAG) בין המשאבים.
 
 **3. מה זה Idempotency ולמה זה קריטי ל-Terraform?**
+
 הרצה חוזרת של `terraform apply` על אותו קוד לא אמורה לשנות דבר אם כלום לא השתנה בפועל - זו תכונת idempotency. היא מבטיחה עקביות והיא הבסיס לכך שאפשר להריץ את אותו קוד שוב ושוב בבטחה.
 
 **4. מה קורה אם מוחקים ידנית משאב מהענן בלי לעדכן את הקוד?**
+
 נוצר "drift" - פער בין ה-state לבין המציאות. בפעם הבאה ש-`terraform plan` ירוץ, הוא יזהה שהמשאב לא קיים ויציע ליצור אותו מחדש.
 
 ---
