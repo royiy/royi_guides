@@ -1,0 +1,29 @@
+---
+// עוטף את ה-Footer המקורי של Starlight (Pagination, Edit Link, Last Updated וכו')
+// ומוסיף מתחתיו שורת חתימה עדינה שמופיעה בתחתית כל עמוד מדריך באתר.
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default />
+
+<p class="site-watermark">
+  Royi Guides &middot; <a href="mailto:royiyahud@gmail.com">royiyahud@gmail.com</a>
+</p>
+
+<style>
+  .site-watermark {
+    text-align: center;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-4);
+    margin: 1rem 0 0.5rem;
+    opacity: 0.8;
+  }
+  .site-watermark a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .site-watermark a:hover {
+    color: var(--sl-color-text-accent);
+    text-decoration: underline;
+  }
+</style>

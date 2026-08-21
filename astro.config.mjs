@@ -31,6 +31,10 @@ export default defineConfig({
 				},
 			],
 
+			components: {
+				Footer: './src/components/Footer.astro',
+			},
+
 			head: [
 				{
 					tag: 'meta',
