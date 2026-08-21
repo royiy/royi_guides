@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://royi-guides.vercel.app',
 
 	integrations: [
+		sitemap(),
 		starlight({
 			title: 'Royi Guides',
 			description: 'מדריכים מקיפים בעברית ל-DevOps, Cloud, Linux, Windows Server ותשתיות IT - Ansible, Kubernetes, Docker, Terraform, AWS, Azure, GCP ועוד.',
@@ -26,6 +28,21 @@ export default defineConfig({
 					icon: 'github',
 					label: 'GitHub',
 					href: 'https://github.com/royiy/royi_guides',
+				},
+			],
+
+			head: [
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image', content: 'https://royi-guides.vercel.app/og-image.png' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:card', content: 'summary_large_image' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:image', content: 'https://royi-guides.vercel.app/og-image.png' },
 				},
 			],
 

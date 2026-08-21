@@ -1,0 +1,28 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+---
+
+<StarlightPage
+  frontmatter={{
+    title: '404 - הדף לא נמצא',
+    template: 'splash',
+    hasSidebar: false,
+  }}
+>
+  <div style="text-align: center; padding: 2rem 0 4rem;">
+    <p style="font-size: 4rem; margin: 0 0 1rem;" aria-hidden="true">🧭</p>
+    <p style="font-size: 1.15rem; margin-bottom: 0.5rem;">
+      נראה שהקישור שחיפשת לא קיים, או שהעמוד הועבר למקום אחר.
+    </p>
+    <p style="margin-bottom: 2rem;">
+      אפשר לחפש את הנושא שרצית דרך סרגל החיפוש למעלה, או לחזור לאחת מהאפשרויות הבאות:
+    </p>
+    <p>
+      <a href="/">🏠 חזרה לדף הבית</a>
+      &nbsp;·&nbsp;
+      <a href="/devops/git/git-01-מבוא-ומושגי-יסוד/">🔀 מדריך Git</a>
+      &nbsp;·&nbsp;
+      <a href="/devops/kubernetes/01-mavo-vearchitectura/">☸️ מדריך Kubernetes</a>
+    </p>
+  </div>
+</StarlightPage>

@@ -47,9 +47,14 @@ const topics = [
     <meta property="og:description" content="מדריכים מקיפים בעברית ל-DevOps, Cloud ותשתיות IT: Git, CI/CD, Docker, Kubernetes, Helm, Ansible, Jenkins, Terraform, AWS, Azure, GCP, Linux, Windows Server, VMware ו-PowerShell." />
     <meta property="og:url" content="https://royi-guides.vercel.app/" />
     <meta property="og:locale" content="he_IL" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://royi-guides.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Royi Guides - מדריכים ל DEVOPS בעברית" />
     <meta name="twitter:description" content="מדריכים מקיפים בעברית ל-DevOps, Cloud ותשתיות IT." />
+    <meta name="twitter:image" content="https://royi-guides.vercel.app/og-image.png" />
+    <meta name="theme-color" content="#050505" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
@@ -90,7 +95,7 @@ const topics = [
             
             <!-- Shadow/Background Track -->
             <path d="M400,150 C300,300 100,300 100,150 C100,0 300,0 400,150 C500,300 700,300 700,150 C700,0 500,0 400,150 Z" 
-                  fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="20" stroke-linecap="round" />
+                  fill="none" stroke="var(--inf-track)" stroke-width="20" stroke-linecap="round" />
             
             <!-- Animated Flowing Beam -->
             <path d="M400,150 C300,300 100,300 100,150 C100,0 300,0 400,150 C500,300 700,300 700,150 C700,0 500,0 400,150 Z" 
@@ -99,37 +104,37 @@ const topics = [
 
             <!-- DEV CYCLE (Left Side) -->
             <g class="stage-node pulse-1" transform="translate(250, 53)">
-              <circle r="8" fill="#050505" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="-18" text-anchor="middle" class="stage-text">PLAN</text>
             </g>
             <g class="stage-node pulse-2" transform="translate(100, 150)">
-              <circle r="8" fill="#050505" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#f14e32" stroke-width="3" filter="url(#glow)"/>
               <text x="-18" y="5" text-anchor="end" class="stage-text">CODE</text>
             </g>
             <g class="stage-node pulse-3" transform="translate(250, 247)">
-              <circle r="8" fill="#050505" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="30" text-anchor="middle" class="stage-text">BUILD</text>
             </g>
             <g class="stage-node pulse-4" transform="translate(340, 150)">
-              <circle r="8" fill="#050505" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#2088ff" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="-18" text-anchor="middle" class="stage-text">TEST</text>
             </g>
 
             <!-- OPS CYCLE (Right Side) -->
             <g class="stage-node pulse-5" transform="translate(550, 53)">
-              <circle r="8" fill="#050505" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="-18" text-anchor="middle" class="stage-text">RELEASE</text>
             </g>
             <g class="stage-node pulse-6" transform="translate(700, 150)">
-              <circle r="8" fill="#050505" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
               <text x="18" y="5" text-anchor="start" class="stage-text">DEPLOY</text>
             </g>
             <g class="stage-node pulse-7" transform="translate(550, 247)">
-              <circle r="8" fill="#050505" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#326ce5" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="30" text-anchor="middle" class="stage-text">OPERATE</text>
             </g>
             <g class="stage-node pulse-8" transform="translate(460, 150)">
-              <circle r="8" fill="#050505" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
+              <circle r="8" class="node-dot" stroke="#2496ed" stroke-width="3" filter="url(#glow)"/>
               <text x="0" y="30" text-anchor="middle" class="stage-text">MONITOR</text>
             </g>
           </svg>
@@ -142,7 +147,7 @@ const topics = [
           {devopsPath.map(step => (
             <a href={step.link} class="step-card" style={`--accent: ${step.color}`}>
               <div class="step-num">{step.step}</div>
-              <h2>{step.icon} {step.title}</h2>
+              <h2><span aria-hidden="true">{step.icon}</span> {step.title}</h2>
             </a>
           ))}
         </div>
@@ -154,7 +159,7 @@ const topics = [
           <div class="tech-grid">
             {topics.map(tech => (
               <a href={tech.link} class="tech-card">
-                <span class="tech-icon">{tech.icon}</span>
+                <span class="tech-icon" aria-hidden="true">{tech.icon}</span>
                 <span class="tech-name">{tech.title}</span>
               </a>
             ))}
@@ -185,8 +190,29 @@ const topics = [
         --text: #ffffff;
         --text-dim: #888888;
         --primary: #00e5ff;
+        --inf-track: rgba(255, 255, 255, 0.08);
+        --orb-opacity: 0.3;
+        --navbar-bg: rgba(5, 5, 5, 0.5);
         --font-sans: 'Heebo', sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
+      }
+
+      /* Light mode — follows the visitor's OS/browser preference, matching
+         the rest of the site (Starlight docs pages already support this;
+         this custom homepage previously ignored it and stayed dark-only). */
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f7f8fa;
+          --surface: rgba(0, 0, 0, 0.035);
+          --surface-hover: rgba(0, 0, 0, 0.07);
+          --border: rgba(0, 0, 0, 0.14);
+          --text: #14181f;
+          --text-dim: #5b6270;
+          --primary: #0086a8;
+          --inf-track: rgba(0, 0, 0, 0.08);
+          --orb-opacity: 0.15;
+          --navbar-bg: rgba(247, 248, 250, 0.6);
+        }
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -208,7 +234,7 @@ const topics = [
       /* Background Animations */
       .bg-orb {
         position: absolute; border-radius: 50%; filter: blur(120px);
-        z-index: -1; opacity: 0.3; animation: float 10s infinite ease-in-out alternate;
+        z-index: -1; opacity: var(--orb-opacity); animation: float 10s infinite ease-in-out alternate;
       }
       .orb-1 {
         width: 400px; height: 400px; background: rgba(0, 229, 255, 0.2);
@@ -228,7 +254,7 @@ const topics = [
       .navbar {
         padding: 1.5rem 0; position: relative; z-index: 10;
         border-bottom: 1px solid var(--border);
-        background: rgba(5, 5, 5, 0.5); backdrop-filter: blur(10px);
+        background: var(--navbar-bg); backdrop-filter: blur(10px);
       }
       .nav-inner { display: flex; align-items: center; justify-content: center; }
       .logo { 
@@ -264,8 +290,10 @@ const topics = [
         to { stroke-dashoffset: 0; }
       }
 
+      .node-dot { fill: var(--bg); }
+
       .stage-text {
-        fill: #ffffff;
+        fill: var(--text);
         font-family: var(--font-mono);
         font-size: 14px;
         font-weight: 700;
@@ -340,7 +368,7 @@ const topics = [
         transition: color 0.3s ease, text-shadow 0.3s ease;
       }
       .contact-email:hover {
-        color: #ffffff;
+        color: var(--text);
         text-shadow: 0 0 10px var(--primary);
       }
 
