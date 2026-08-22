@@ -15,4 +15,12 @@
   .right-sidebar-panel .sl-container {
     width: calc(var(--sl-sidebar-width) - 2 * var(--sl-sidebar-pad-x));
   }
+
+  /* Starlight מרחיב את עמודת התוכן הראשי (main-pane) לפי נוסחה נפרדת שמניחה
+     שעמודת ה-TOC משתמשת בנוסחת ה-max() המקורית שלה. עכשיו שנעלנו את ה-TOC
+     לרוחב קבוע, צריך לנעול גם את התוכן הראשי לרוחב המשלים המדויק
+     (100% פחות רוחב ה-TOC), אחרת נשאר רווח ריק לא-מוסבר בפריסה. */
+  [data-has-sidebar][data-has-toc] .main-pane {
+    width: calc(100% - var(--sl-sidebar-width));
+  }
 }
