@@ -35,6 +35,8 @@ export default defineConfig({
 				Footer: './src/components/Footer.astro',
 			},
 
+			customCss: ['/src/styles/custom.css'],
+
 			head: [
 				{
 					tag: 'meta',

@@ -1,0 +1,20 @@
+/* התאמות עיצוב גלובליות מעל ברירת המחדל של Starlight. */
+
+/* צמצום רוחב עמודת "בעמוד זה" (Table of Contents) בלבד - באתר RTL זו העמודה
+   שנמצאת בפועל בצד שמאל של העמוד. Starlight לא חושף משתנה CSS ייעודי לעמודה
+   הזו בנפרד מהסיידבר הראשי (שניהם חולקים ברירת מחדל את --sl-sidebar-width),
+   ולכן דורסים כאן ישירות את הסלקטורים הרלוונטיים במקום לשנות את המשתנה
+   הגלובלי (ששינוי שלו היה מצמצם גם את תפריט הניווט הראשי מימין). */
+:root {
+  --sl-guide-toc-width: 13rem;
+}
+
+@media (min-width: 72rem) {
+  .right-sidebar-container {
+    width: var(--sl-guide-toc-width);
+  }
+
+  .right-sidebar-panel .sl-container {
+    width: calc(var(--sl-guide-toc-width) - 2 * var(--sl-sidebar-pad-x));
+  }
+}
