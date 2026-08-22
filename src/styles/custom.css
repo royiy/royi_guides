@@ -22,5 +22,12 @@
      (100% פחות רוחב ה-TOC), אחרת נשאר רווח ריק לא-מוסבר בפריסה. */
   [data-has-sidebar][data-has-toc] .main-pane {
     width: calc(100% - var(--sl-sidebar-width));
+
+    /* Starlight קובע כאן במקור margin-inline: auto 0 (לא ממורכז בכוונה -
+       דוחף את התוכן קרוב לעמודת ה-TOC, כי במקור היא זו שספגה את השטח הפנוי).
+       עכשיו כשה-main-pane תמיד ממלא בדיוק את השטח הנותר, התוכן הפנימי
+       (ContentPanel, מוגבל ל-var(--sl-content-width)) צריך למרכז את עצמו בפועל -
+       לכן דורסים בחזרה למרכוז symmetric רגיל. */
+    --sl-content-margin-inline: auto;
   }
 }
