@@ -1,20 +1,18 @@
 /* התאמות עיצוב גלובליות מעל ברירת המחדל של Starlight. */
 
-/* צמצום רוחב עמודת "בעמוד זה" (Table of Contents) בלבד - באתר RTL זו העמודה
-   שנמצאת בפועל בצד שמאל של העמוד. Starlight לא חושף משתנה CSS ייעודי לעמודה
-   הזו בנפרד מהסיידבר הראשי (שניהם חולקים ברירת מחדל את --sl-sidebar-width),
-   ולכן דורסים כאן ישירות את הסלקטורים הרלוונטיים במקום לשנות את המשתנה
-   הגלובלי (ששינוי שלו היה מצמצם גם את תפריט הניווט הראשי מימין). */
-:root {
-  --sl-guide-toc-width: 13rem;
-}
-
+/* עמודת "בעמוד זה" (Table of Contents) - באתר RTL זו העמודה שנמצאת בפועל
+   בצד שמאל של העמוד. Starlight מגדיר לה כברירת מחדל נוסחת רוחב "גמישה"
+   שמתנפחת ומתרחבת על מסכים רחבים כדי למלא שטח פנוי (TwoColumnContent.astro),
+   בזמן שתפריט הניווט הראשי מימין נשאר ברוחב קבוע - וכך בפועל העמודה השמאלית
+   נראית רחבה בהרבה מהימנית. התיקון: לנעול את שתי העמודות לאותו ערך רוחב קבוע
+   (--sl-sidebar-width, אותו משתנה שכבר קובע את רוחב הסיידבר הימני) בכל רוחב
+   מסך, כדי שיהיו זהות. */
 @media (min-width: 72rem) {
   .right-sidebar-container {
-    width: var(--sl-guide-toc-width);
+    width: var(--sl-sidebar-width);
   }
 
   .right-sidebar-panel .sl-container {
-    width: calc(var(--sl-guide-toc-width) - 2 * var(--sl-sidebar-pad-x));
+    width: calc(var(--sl-sidebar-width) - 2 * var(--sl-sidebar-pad-x));
   }
 }
