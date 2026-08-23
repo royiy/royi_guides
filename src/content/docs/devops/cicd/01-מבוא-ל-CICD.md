@@ -43,6 +43,24 @@ part: 1/10
 | Integration/E2E Tests | בדיקות מקצה לקצה | Selenium, Cypress, Playwright |
 | Deploy to Production | פריסה לסביבת ייצור | ArgoCD, Spinnaker, Helm |
 
+## תרשים זרימה מלא: מ-Push ועד לפרודקשן (דוגמה מבוססת AWS + Kubernetes)
+
+מעבר לאנטומיה הגנרית שלמעלה, כך נראית זרימה מלאה של פרויקט אמיתי שרץ על Docker, Kubernetes ו-AWS:
+
+1. **מפתח** – כותב קוד בסביבת הפיתוח (IDE) ומבצע commit לשינויים במאגר ה-Git המקומי.
+2. **GitHub** – הקוד נדחף (push) למאגר; GitHub שומר את הקוד ומנהל גרסאות, ענפים (branches) ובקשות משיכה (Pull Requests).
+3. **GitHub Actions / Jenkins** – צינור ה-CI מופעל אוטומטית בכל push או Pull Request, ומריץ את שלבי הבנייה והבדיקה.
+4. **אימות קוד** – מספר שערי איכות רצים, לרוב במקביל: **Unit Tests** (תקינות), **SonarQube** (איכות קוד וחוב טכני), **Trivy** (סריקת פרצות אבטחה בתלויות ובתמונות).
+5. **בניית Docker** – נבנית תמונת Docker לאפליקציה לפי הוראות ה-Dockerfile.
+6. **Amazon ECR** – תמונת ה-Docker נדחפת ל-Amazon ECR, מאגר קונטיינרים פרטי ומאובטח.
+7. **Terraform + Ansible** – Terraform מקצה תשתית בענן (VPC, אשכול EKS, IAM וכו'), ו-Ansible מגדיר את השרתים. בפועל שלב זה רץ בתדירות נמוכה בהרבה משלבי ה-CI של האפליקציה עצמה, ולרוב מנוהל בפייפליין IaC נפרד ולא בכל push.
+8. **Amazon EKS** – אשכול Kubernetes מנוהל, עם worker nodes, רשת ו-RBAC מוכנים להרצת קונטיינרים.
+9. **Helm / Argo CD** – האפליקציה נפרסת לאשכול באמצעות Helm charts, או בגישת GitOps עם Argo CD (שמסנכרן אוטומטית בין המצב הרצוי שמוגדר ב-Git למצב בפועל באשכול).
+10. **משתמשים** – ניגשים לאפליקציה דרך Load Balancer, בכתובת (URL) מאובטחת (HTTPS).
+11. **Observability** – Prometheus אוסף מדדים (metrics) מהאפליקציה ומהתשתית, ו-Grafana מציג אותם בלוחות בקרה עם התראות. חשוב לדייק: Prometheus/Grafana לבדם לא אוספים לוגים או traces "מהקופסה" – לכך נדרשים כלים נוספים כמו Loki/ELK ללוגים ו-Jaeger/Tempo למעקבים (tracing). התראות מבוססות אנומליה (למשל Grafana ML) הן תוספת אופציונלית ולא חלק מברירת המחדל.
+
+> 💡 זוהי דוגמה קונקרטית אחת (Stack מבוסס AWS + Kubernetes) ליישום העקרונות הגנריים שתוארו למעלה. הכלים הספציפיים (Jenkins מול GitHub Actions, ECR מול Docker Hub, EKS מול אשכול K8s עצמאי) משתנים בין ארגונים, אך שלבי הזרימה נשארים דומים.
+
 ## דוגמה מינימלית – GitHub Actions
 
 ```yaml
