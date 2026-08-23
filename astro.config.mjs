@@ -312,7 +312,7 @@ export default defineConfig({
 							items: [
 								{
 									autogenerate: {
-										directory: 'devops/argocd',
+										directory: 'devops/ArgoCD',
 									},
 								},
 							],
@@ -324,7 +324,7 @@ export default defineConfig({
 							items: [
 								{
 									autogenerate: {
-										directory: 'devops/openshift',
+										directory: 'devops/OpenShift',
 									},
 								},
 							],
