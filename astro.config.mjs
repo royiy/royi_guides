@@ -317,6 +317,18 @@ export default defineConfig({
 								},
 							],
 						},
+
+						{
+							label: 'OpenShift',
+							collapsed: true,
+							items: [
+								{
+									autogenerate: {
+										directory: 'devops/openshift',
+									},
+								},
+							],
+						},
 					],
 				},
 
