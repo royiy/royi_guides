@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 2/10
 ---
 
-# מדריך 2: התקנה, oc CLI וניהול פרויקטים ומשתמשים
-
 ## התקנת ה-CLI (oc)
 
 ### macOS

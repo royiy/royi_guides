@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 7/10
 ---
 
-# מדריך 7: אבטחה - RBAC, SCC, ServiceAccounts ו-Secrets
-
 ## RBAC - Role-Based Access Control
 
 RBAC קובע **מי** (משתמש/ServiceAccount) יכול לעשות **מה** (get/list/create/delete) על **אילו** משאבים (pods, deployments, secrets).

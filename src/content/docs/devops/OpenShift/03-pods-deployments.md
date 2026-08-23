@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 3/10
 ---
 
-# מדריך 3: Pods, Deployments, DeploymentConfigs ו-ReplicaSets
-
 ## מה זה Pod?
 
 Pod הוא היחידה הקטנה ביותר שניתן לפרוס ב-OpenShift/Kubernetes. הוא עוטף קונטיינר אחד או יותר שחולקים:

@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 5/10
 ---
 
-# מדריך 5: BuildConfigs, ImageStreams, S2I ו-CI/CD
-
 ## מבוא - מה ייחודי ב-OpenShift בתחום ה-Build?
 
 בעוד ש-Kubernetes וניל לא כולל שום מנגנון build (צריך Jenkins/GitLab CI חיצוני שיוצר את התמונה ודוחף ל-registry), ל-OpenShift יש מנגנון **build מובנה בתוך הקלאסטר עצמו**: BuildConfig, ImageStream, ו-S2I (Source-to-Image).

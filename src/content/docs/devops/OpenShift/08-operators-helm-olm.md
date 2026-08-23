@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 8/10
 ---
 
-# מדריך 8: Operators, Helm ו-OLM (Operator Lifecycle Manager)
-
 ## מה זה Operator?
 
 Operator הוא דפוס תכנון (pattern) שמרחיב את Kubernetes API כדי לנהל אפליקציה מורכבת **כאילו יש לה מנהל מערכת אנושי אוטומטי**. הוא עוקב אחרי מצב היעד הרצוי (Desired State) ופועל כל הזמן להתאים את המצב בפועל אליו (Reconciliation Loop) - כולל התקנה, שדרוגים, גיבויים, ותיקון תקלות אוטומטי.

@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 9/10
 ---
 
-# מדריך 9: Monitoring, Logging, Troubleshooting ו-Autoscaling
-
 ## Monitoring - הערימה המובנית
 
 OpenShift מגיע עם ערימת monitoring מובנית ומופעלת כברירת מחדל (**Cluster Monitoring Operator**), המבוססת על:

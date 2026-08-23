@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 1/10
 ---
 
-# מדריך 1: מבוא ל-OpenShift וארכיטקטורה
-
 ## מה זה OpenShift?
 
 OpenShift Container Platform (OCP) הוא פלטפורמת קונטיינרים ארגונית (Enterprise Kubernetes Distribution) שפותחה על ידי Red Hat. בבסיסה נמצא **Kubernetes**, אך OpenShift מוסיף עליו שכבות משמעותיות: קונסולת ניהול גרפית (Web Console), מנגנוני אבטחה מחמירים יותר (SCC), מערכת build מובנית (S2I), Operators, רישות מובנה (Routes), ועוד כלים שהופכים אותו למוצר "batteries included" מוכן לסביבות production ארגוניות.

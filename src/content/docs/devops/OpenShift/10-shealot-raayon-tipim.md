@@ -4,8 +4,6 @@ category: DevOps/OpenShift
 part: 10/10
 ---
 
-# מדריך 10: שאלות ראיון עבודה ב-OpenShift + טיפים וטריקים כלליים
-
 ## חלק א': שאלות ראיון עבודה - יסודות (Junior/Mid)
 
 ### 1. מה ההבדל בין OpenShift ל-Kubernetes?
