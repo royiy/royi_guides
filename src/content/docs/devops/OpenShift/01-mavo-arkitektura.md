@@ -1,3 +1,9 @@
+---
+title: "מבוא ל-OpenShift וארכיטקטורה"
+category: DevOps/OpenShift
+part: 1/10
+---
+
 # מדריך 1: מבוא ל-OpenShift וארכיטקטורה
 
 ## מה זה OpenShift?

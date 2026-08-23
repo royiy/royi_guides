@@ -1,3 +1,9 @@
+---
+title: "Operators, Helm ו-OLM (Operator Lifecycle Manager)"
+category: DevOps/OpenShift
+part: 8/10
+---
+
 # מדריך 8: Operators, Helm ו-OLM (Operator Lifecycle Manager)
 
 ## מה זה Operator?

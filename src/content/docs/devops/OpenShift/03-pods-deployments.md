@@ -1,3 +1,9 @@
+---
+title: "Pods, Deployments, DeploymentConfigs ו-ReplicaSets"
+category: DevOps/OpenShift
+part: 3/10
+---
+
 # מדריך 3: Pods, Deployments, DeploymentConfigs ו-ReplicaSets
 
 ## מה זה Pod?

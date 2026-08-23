@@ -1,3 +1,9 @@
+---
+title: "Services, Routes, Ingress ורשתות"
+category: DevOps/OpenShift
+part: 4/10
+---
+
 # מדריך 4: Services, Routes, Ingress ורשתות
 
 ## למה בכלל צריך Service?

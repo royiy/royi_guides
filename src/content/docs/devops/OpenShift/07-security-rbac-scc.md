@@ -1,3 +1,9 @@
+---
+title: "אבטחה - RBAC, SCC, ServiceAccounts ו-Secrets"
+category: DevOps/OpenShift
+part: 7/10
+---
+
 # מדריך 7: אבטחה - RBAC, SCC, ServiceAccounts ו-Secrets
 
 ## RBAC - Role-Based Access Control

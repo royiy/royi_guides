@@ -1,3 +1,9 @@
+---
+title: "BuildConfigs, ImageStreams, S2I ו-CI/CD"
+category: DevOps/OpenShift
+part: 5/10
+---
+
 # מדריך 5: BuildConfigs, ImageStreams, S2I ו-CI/CD
 
 ## מבוא - מה ייחודי ב-OpenShift בתחום ה-Build?

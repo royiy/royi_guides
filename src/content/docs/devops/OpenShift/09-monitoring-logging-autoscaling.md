@@ -1,3 +1,9 @@
+---
+title: "Monitoring, Logging, Troubleshooting ו-Autoscaling"
+category: DevOps/OpenShift
+part: 9/10
+---
+
 # מדריך 9: Monitoring, Logging, Troubleshooting ו-Autoscaling
 
 ## Monitoring - הערימה המובנית

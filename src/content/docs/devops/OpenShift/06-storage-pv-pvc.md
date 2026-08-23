@@ -1,3 +1,9 @@
+---
+title: "אחסון - PV, PVC, StorageClass ו-CSI"
+category: DevOps/OpenShift
+part: 6/10
+---
+
 # מדריך 6: אחסון - PV, PVC, StorageClass ו-CSI
 
 ## למה בכלל צריך ניהול אחסון מיוחד?
