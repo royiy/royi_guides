@@ -16,6 +16,72 @@
   --sl-content-width: 65rem;
 }
 
+/* כרטיס הורדה (עמוד הנספחים) - קישור בלוקי לקובץ להורדה, שנראה כמו כרטיס
+   ולא כמו לינק טקסטואלי רגיל בתוך גוף המדריך. */
+.download-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background-color: var(--sl-color-gray-6);
+  text-decoration: none;
+  color: var(--sl-color-white);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.download-card:hover,
+.download-card:focus-visible {
+  border-color: var(--sl-color-accent);
+  background-color: var(--sl-color-gray-5);
+}
+
+.download-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.download-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.download-card-title {
+  font-size: var(--sl-text-lg);
+}
+
+.download-card-meta {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}
+
+.download-card-action {
+  flex-shrink: 0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.375rem;
+  background-color: var(--sl-color-accent);
+  color: var(--sl-color-white);
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* במסך צר הכרטיס נשבר לשתי שורות והכפתור עובר לרוחב מלא מתחת לטקסט. */
+@media (max-width: 30rem) {
+  .download-card {
+    flex-wrap: wrap;
+  }
+
+  .download-card-action {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 @media (min-width: 72rem) {
   .right-sidebar-container {
     width: var(--sl-sidebar-width);
