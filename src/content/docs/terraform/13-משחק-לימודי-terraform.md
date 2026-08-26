@@ -533,4 +533,766 @@ description: "משחק אינטראקטיבי ללימוד Terraform - חמיש�
       w: '<code>sensitive</code> הוא מנגנון <em>תצוגה</em> בלבד - הוא מונע דליפה ללוגים של טרמינל/CI. ה-state עדיין שומר את כל ה-attributes בטקסט גלוי, ולכן ההגנה האמיתית היא הצפנת ה-backend והרשאות least privilege אליו.'
     }
   ];
+
+  /* ============================================================
+     מצב 2 - ניחוש Plan: קטע קוד + מה יראה terraform plan
+     ============================================================ */
+  var PLAN_GUESS = [
+    {
+      code: 'resource "aws_instance" "web" {\n  ami           = "ami-0abcdef1234567890"\n  instance_type = "t3.small" # היה t3.micro\n}',
+      q: 'שיניתם instance_type מ-t3.micro ל-t3.small. באיזה סימן זה יסומן ב-plan?',
+      o: ['<code>~</code> עדכון במקום', '<code>+</code> יצירה', '<code>-</code> מחיקה', '<code>-/+</code> החלפה'],
+      a: 0,
+      w: 'שינוי instance_type על aws_instance אינו ForceNew - AWS תומכת בשינוי מסוג המכונה תוך שמירה על אותו ID (עם עצירה/הפעלה של המכונה), ולכן זהו עדכון במקום (<code>~</code>) ולא replace.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  ami           = "ami-0new111222333" # היה ami-0old999888777\n  instance_type = "t3.micro"\n}',
+      q: 'הפעם שיניתם את ה-ami. באיזה סימן זה יסומן?',
+      o: ['<code>-/+</code> החלפה', '<code>~</code> עדכון במקום', '<code>+</code> יצירה בלבד', 'אין שינוי'],
+      a: 0,
+      w: 'בניגוד ל-instance_type, השדה <code>ami</code> הוא ForceNew - אי אפשר "להחליף תמונת מערכת" למכונה חיה, אז Terraform חייב להרוס וליצור מחדש.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  ami           = "ami-123"\n  instance_type = "t3.micro"\n  tags = {\n    Owner = "devops-team" # שורה חדשה\n  }\n}',
+      q: 'הוספתם בלוק tags חדש למשאב שכבר קיים ב-state. מה יקרה?',
+      o: ['עדכון במקום (<code>~</code>) - המשאב כבר קיים, רק attribute מתווסף', 'יצירה של משאב חדש (<code>+</code>)', 'המשאב יימחק ויקום מחדש', 'שגיאה - אי אפשר להוסיף tags אחרי היצירה'],
+      a: 0,
+      w: 'הוספת attribute למשאב קיים היא עדכון רגיל. Terraform לא יוצר or מוחק את המשאב עצמו - רק מעדכן את השדה החדש.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  count = 2 # היה 3\n  ami   = "ami-123"\n}',
+      q: 'הקטנתם count מ-3 ל-2. מה Terraform יציע?',
+      o: ['מחיקה (<code>-</code>) רק של <code>web[2]</code>, השאר ללא שינוי', 'מחיקת כל השלושה ויצירה מחדש של שניים', 'עדכון במקום של כל שלושת המשאבים', 'שגיאה - אי אפשר להקטין count'],
+      a: 0,
+      w: 'עם <code>count</code> המשאבים מזוהים לפי אינדקס. הקטנת המספר פשוט מוחקת את האינדקסים העודפים מהסוף (<code>web[2]</code>), בלי לגעת ב-<code>web[0]</code> וב-<code>web[1]</code>.'
+    },
+    {
+      code: 'Plan: 3 to add, 1 to change, 2 to destroy.',
+      q: 'כמה פעולות בסך הכול מתוכננות בשורת הסיכום הזו?',
+      o: ['6', '4', '3', 'אי אפשר לדעת בלי apply'],
+      a: 0,
+      w: 'שלושת המספרים מתייחסים לפעולות נפרדות: 3+1+2=6. חשוב לזכור ש-Replacement (destroy+create של אותו משאב) נספר גם ב-"to add" וגם ב-"to destroy" - הוא לא מקבל קטגוריה נפרדת משלו.'
+    },
+    {
+      code: 'data "aws_ami" "latest" {\n  most_recent = true\n  # ...filters...\n}\n\nresource "aws_instance" "web" {\n  ami = data.aws_ami.latest.id\n}',
+      q: 'למה מומלץ להריץ <code>terraform plan -out=tfplan</code> ואז <code>terraform apply tfplan</code>, במקום סתם "apply"?',
+      o: ['מבטיח ש-apply יבצע בדיוק את מה שנבדק ב-plan (כולל ערכי data sources), בלי race condition', 'זה תמיד מהיר יותר', 'זה חובה בכל סביבה', 'זה משנה את סדר היצירה'],
+      a: 0,
+      w: 'קובץ plan שמור "מקפיא" גם את ערכי ה-data sources. בלי קובץ שמור, apply רגיל קורא data sources וקונפיגורציית ענן מחדש - אם משהו השתנה בינתיים (כמו AMI חדש), התוצאה בפועל עלולה לסטות ממה שסקרתם.'
+    },
+    {
+      code: '# terraform plan -refresh=false',
+      q: 'מה עושה הדגל <code>-refresh=false</code>?',
+      o: ['מדלג על בדיקת המצב האמיתי בענן מול ה-state, ומשתמש רק בערכים השמורים', 'מוחק את קובץ ה-state', 'מונע מ-plan ליצור משאבים חדשים', 'מרענן providers אוטומטית'],
+      a: 0,
+      w: 'שימושי להאצת plan בתשתית ענקית ב-CI, אבל מסוכן אם יש drift אמיתי בענן - אתם עלולים לתכנן על בסיס מידע לא מעודכן.'
+    },
+    {
+      code: 'moved {\n  from = aws_instance.old_name\n  to   = aws_instance.new_name\n}',
+      q: 'הוספתם בלוק moved כזה, והמשאב עצמו לא השתנה בפועל. מה יראה ה-plan?',
+      o: ['"X will be moved to Y" - שינוי שם ב-state בלבד, בלי destroy/create', 'המשאב הישן יימחק והחדש ייווצר', 'שגיאת syntax', 'אין שום שינוי בפלט בכלל'],
+      a: 0,
+      w: 'בלוק <code>moved</code> (מ-Terraform 1.1) אומר ל-Terraform "זה אותו משאב, רק שיניתי לו שם/כתובת בקוד" - הוא ממפה מחדש ב-state בלי לגעת במשאב האמיתי בענן.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  # ...\n  lifecycle {\n    ignore_changes = [tags]\n  }\n}',
+      q: 'מישהו שינה tag ידנית בקונסולת AWS. מה יראה terraform plan אחרי זה?',
+      o: ['לא יראה שום שינוי בשדה tags, גם אם הוא שונה בפועל', 'יתריע ששדה tags השתנה וידרוש עדכון', 'ימחק את המשאב', 'יכשל בשגיאת drift'],
+      a: 0,
+      w: '<code>ignore_changes</code> אומר ל-Terraform "אל תשווה את השדה הזה בכלל" - שינויים ידניים בו פשוט לא ייראו ב-plan, לטוב ולרע.'
+    },
+    {
+      code: '# ~ resource "aws_launch_template" "app" {\n#     ~ image_id = "ami-old" -> "ami-new" # forces replacement\n# }',
+      q: 'מה המשמעות של ההערה "# forces replacement" ליד שדה ספציפי?',
+      o: ['שינוי הערך הספציפי הזה הוא הסיבה שכל המשאב יוחלף (destroy+create), לא רק השדה', 'שהשדה הזה בלבד יעודכן במקום', 'שיש קונפליקט ב-state שצריך לפתור', 'שהשדה deprecated ויוסר בגרסה הבאה'],
+      a: 0,
+      w: 'זו ההערה שהכי חשוב לחפש לפני apply בפרודקשן - היא מצביעה בדיוק על השדה ה"אשם" בכך שהמשאב כולו עומד להיהרס וליקום מחדש.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  # ...\n}\n\n# בפלט plan:\n# + arn = (known after apply)',
+      q: 'מתי plan מציג ערך "(known after apply)"?',
+      o: ['כשהערך נקבע ע"י הענן/provider רק בזמן היצירה בפועל (כמו ARN או ID אוטומטי) ולא ניתן לחזות אותו מראש', 'כשיש שגיאה בקוד שצריך לתקן', 'רק במשאבים שמוגדרים עם count', 'כשחסר קובץ .terraform.lock.hcl'],
+      a: 0,
+      w: 'שדות שה-API של הענן מייצר (ARN, ID, IP דינמי) לא קיימים עדיין בזמן plan - Terraform מציג placeholder כדי לומר "זה יתמלא רק אחרי apply בפועל".'
+    },
+    {
+      code: 'resource "aws_db_instance" "main" {\n  identifier              = "prod-db"\n  skip_final_snapshot     = false # היה true\n  final_snapshot_identifier = "prod-db-final"\n}',
+      q: 'שיניתם skip_final_snapshot מ-true ל-false על מסד נתונים production. מה זה משפיע בזמן destroy עתידי?',
+      o: ['destroy עתידי ייצור snapshot אחרון של המסד לפני המחיקה בפועל', 'זה לא משפיע על destroy בכלל', 'זה מונע destroy לחלוטין', 'זה מוחק snapshots קיימים'],
+      a: 0,
+      w: 'זה לא שינוי שרואים כ-Replacement, אבל הוא קריטי מבחינת בטיחות: כש-skip_final_snapshot=false, פקודת destroy עתידית תיצור גיבוי אחרון אוטומטית לפני שהיא הורסת את המסד.'
+    }
+  ];
+
+  /* ============================================================
+     מצב 3 - השלמת קוד HCL: קוד עם חלק חסר, לבחור מה משלים אותו
+     ============================================================ */
+  var HCL_COMPLETE = [
+    {
+      code: 'variable "environment" {\n  type    = string\n  ___\n  validation {\n    condition     = contains(["dev", "staging", "prod"], var.environment)\n    error_message = "Must be dev, staging, or prod."\n  }\n}',
+      q: 'מה משלים את הקוד כך שלמשתנה יהיה ערך ברירת מחדל "dev"?',
+      o: ['<code>default = "dev"</code>', '<code>value = "dev"</code>', '<code>init = "dev"</code>', '<code>set "dev"</code>'],
+      a: 0,
+      w: 'הארגומנט הנכון להגדרת ערך ברירת מחדל בבלוק <code>variable</code> הוא <code>default</code>.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  count = 3\n  ami   = "ami-123"\n  tags = {\n    Name = "web-___"\n  }\n}',
+      q: 'מה משלים את השם כך שכל instance יקבל שם ייחודי (web-0, web-1, web-2)?',
+      o: ['<code>${count.index}</code>', '<code>${each.key}</code>', '<code>${terraform.index}</code>', '<code>${self.index}</code>'],
+      a: 0,
+      w: '<code>count.index</code> זמין רק בתוך משאב שמוגדר עם <code>count</code>. <code>each.key</code> הוא המקביל לכשמשתמשים ב-<code>for_each</code>.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  for_each      = toset(["a", "b", "c"])\n  ami           = "ami-123"\n  instance_type = "t3.micro"\n  subnet_id     = ___\n}',
+      q: 'בתוך בלוק עם for_each, איך ניגשים לערך הנוכחי באיטרציה?',
+      o: ['<code>each.value</code>', '<code>each.index</code>', '<code>count.index</code>', '<code>this.value</code>'],
+      a: 0,
+      w: 'עם <code>for_each</code> יש שני משתנים זמינים: <code>each.key</code> (המפתח) ו-<code>each.value</code> (הערך). אין <code>each.index</code> - זו לא הסמנטיקה של for_each.'
+    },
+    {
+      code: '___ {\n  instance_name = "web-server"\n}\n\noutput "full_name" {\n  value = local.instance_name\n}',
+      q: 'איזו מילת מפתח פותחת את הבלוק שבו מגדירים instance_name?',
+      o: ['<code>locals</code>', '<code>variable</code>', '<code>local</code>', '<code>const</code>'],
+      a: 0,
+      w: 'בלוק <code>locals</code> (ברבים) הוא שבו מגדירים ערכים מחושבים פנימיים. הגישה אליהם היא דרך <code>local.</code> (ביחיד) - הבדל שמבלבל המון מתחילים.'
+    },
+    {
+      code: 'data "aws_ami" "ubuntu" {\n  most_recent = true\n  ___ {\n    name   = "name"\n    values = ["ubuntu/images/*"]\n  }\n}',
+      q: 'איזו מילת מפתח משלימה את הבלוק לסינון תוצאות ה-data source?',
+      o: ['<code>filter</code>', '<code>condition</code>', '<code>match</code>', '<code>where</code>'],
+      a: 0,
+      w: 'בלוקי <code>filter</code> (אפשר כמה) הם הדרך הסטנדרטית לצמצם תוצאות data source לפי שם, tag או attribute אחר.'
+    },
+    {
+      code: 'resource "aws_security_group_rule" "https" {\n  ___\n  from_port         = 443\n  to_port           = 443\n  protocol          = "tcp"\n  cidr_blocks       = ["0.0.0.0/0"]\n  security_group_id = aws_security_group.web.id\n}',
+      q: 'מה משלים כדי להגדיר שזהו כלל כניסה (ingress)?',
+      o: ['<code>type = "ingress"</code>', '<code>direction = "ingress"</code>', '<code>ingress = true</code>', '<code>rule = "in"</code>'],
+      a: 0,
+      w: 'המשאב <code>aws_security_group_rule</code> מבחין בין ingress ל-egress דרך הארגומנט <code>type</code>.'
+    },
+    {
+      code: 'resource "aws_instance" "web" {\n  ami           = "ami-123"\n  instance_type = "t3.micro"\n\n  ___ "ebs_block_device" {\n    for_each = var.extra_volumes\n    content {\n      device_name = each.key\n      volume_size = each.value\n    }\n  }\n}',
+      q: 'איזו מילת מפתח מאפשרת ליצור מספר תת-בלוקים (ebs_block_device) באופן דינמי לפי משתנה?',
+      o: ['<code>dynamic</code>', '<code>foreach</code>', '<code>repeat</code>', '<code>loop</code>'],
+      a: 0,
+      w: 'בלוק <code>dynamic "שם_הבלוק"</code> עם <code>for_each</code> ו-<code>content { }</code> בפנים הוא הדרך היחידה לייצר תת-בלוקים (nested blocks, לא ארגומנטים רגילים) דינמית.'
+    },
+    {
+      code: 'terraform {\n  required_providers {\n    aws = {\n      source  = "hashicorp/aws"\n      ___ = "~> 5.0"\n    }\n  }\n}',
+      q: 'מה משלים את בלוק ה-provider כדי להגביל את טווח הגרסה?',
+      o: ['<code>version</code>', '<code>constraint</code>', '<code>release</code>', '<code>tag</code>'],
+      a: 0,
+      w: 'בתוך <code>required_providers</code>, כל provider מקבל <code>source</code> (מאיפה להוריד) ו-<code>version</code> (איזה טווח גרסאות מותר).'
+    },
+    {
+      code: 'output "db_password" {\n  value     = random_password.db.result\n  ___ = true\n}',
+      q: 'מה מונע מהסיסמה להופיע בפלט הטרמינל של plan/apply?',
+      o: ['<code>sensitive</code>', '<code>hidden</code>', '<code>secret</code>', '<code>private</code>'],
+      a: 0,
+      w: '<code>sensitive = true</code> על output (או variable) מסתיר את הערך מה-CLI. חשוב לזכור: זו הגנת תצוגה בלבד, לא הצפנה של ה-state.'
+    },
+    {
+      code: 'resource "aws_db_instance" "main" {\n  identifier = "prod-db"\n  # ...\n\n  lifecycle {\n    ___ = true\n  }\n}',
+      q: 'מה משלים את הבלוק כדי למנוע בטעות מחיקה של המשאב (למשל דאטהבייס פרודקשן)?',
+      o: ['<code>prevent_destroy</code>', '<code>protect</code>', '<code>no_delete</code>', '<code>immutable</code>'],
+      a: 0,
+      w: '<code>prevent_destroy = true</code> גורם ל-plan/apply להיכשל בשגיאה על כל ניסיון מחיקה של המשאב - כולל דרך destroy מלא. חשוב: הוא חוסם גם Replacement, לכן צריך להסיר אותו זמנית אם באמת רוצים להחליף.'
+    },
+    {
+      code: 'variable "instance_count" {\n  type = number\n  ___ {\n    condition     = var.instance_count > 0 && var.instance_count <= 10\n    error_message = "Must be between 1 and 10."\n  }\n}',
+      q: 'איזה בלוק מאפשר לאכוף כלל תקינות על ערך המשתנה כבר בזמן plan?',
+      o: ['<code>validation</code>', '<code>check</code>', '<code>assert</code>', '<code>rule</code>'],
+      a: 0,
+      w: 'בלוק <code>validation</code> בתוך <code>variable</code> עוצר את הריצה מוקדם עם הודעת שגיאה ברורה, במקום לגלות בעיה רק אחרי apply כושל בענן.'
+    },
+    {
+      code: 'import {\n  to = ___\n  id = "prod-db"\n}',
+      q: 'מה משלים את בלוק ה-import (Terraform 1.5+) כדי לייבא משאב RDS קיים בשם "prod-db" לתוך ה-state כ-aws_db_instance.main?',
+      o: ['<code>aws_db_instance.main</code>', '<code>"aws_db_instance.main"</code>', '<code>resource.aws_db_instance.main</code>', '<code>state.aws_db_instance.main</code>'],
+      a: 0,
+      w: 'הארגומנט <code>to</code> מקבל address של משאב (בלי מרכאות - זו הפניה, לא string), בעוד <code>id</code> הוא ה-identifier האמיתי בענן, ולכן כן במרכאות.'
+    }
+  ];
+
+  /* ============================================================
+     מצב 4 - התאמת פקודות: סבבים של זוגות פקודה + תיאור
+     ============================================================ */
+  var MATCH_ROUNDS = [
+    {
+      title: 'פקודות ליבה',
+      pairs: [
+        { l: '<code>terraform init</code>', r: 'מוריד providers/modules ומכינה את תיקיית העבודה' },
+        { l: '<code>terraform plan</code>', r: 'מציגה תוכנית שינויים בלי לבצע אותם בפועל' },
+        { l: '<code>terraform apply</code>', r: 'מבצעת בפועל את השינויים שתוכננו' },
+        { l: '<code>terraform destroy</code>', r: 'מוחקת את כל המשאבים המנוהלים ב-state' },
+        { l: '<code>terraform validate</code>', r: 'בודקת תקינות תחבירית וסמנטית בלי לגעת בענן' }
+      ]
+    },
+    {
+      title: 'ניהול State',
+      pairs: [
+        { l: '<code>terraform state list</code>', r: 'מציגה את כל המשאבים הרשומים ב-state' },
+        { l: '<code>terraform state show</code>', r: 'מציגה את הפרטים המלאים של משאב ספציפי ב-state' },
+        { l: '<code>terraform state mv</code>', r: 'מזיזה/משנה שם משאב בתוך ה-state בלי הרס ויצירה' },
+        { l: '<code>terraform state rm</code>', r: 'מסירה משאב מה-state בלי למחוק אותו בפועל בענן' },
+        { l: '<code>terraform import</code>', r: 'מכניסה משאב קיים בענן תחת ניהול Terraform' }
+      ]
+    },
+    {
+      title: 'Workspaces ותצוגה',
+      pairs: [
+        { l: '<code>terraform fmt</code>', r: 'מסדרת את פורמט הקוד לפי הסטנדרט הרשמי' },
+        { l: '<code>terraform workspace list</code>', r: 'מציגה את כל ה-workspaces הקיימים' },
+        { l: '<code>terraform workspace new</code>', r: 'יוצרת workspace חדש עם state נפרד משלו' },
+        { l: '<code>terraform graph</code>', r: 'מייצרת גרף תלויות בין המשאבים בפורמט DOT' },
+        { l: '<code>terraform output</code>', r: 'מציגה את ערכי ה-outputs שהוגדרו בקוד' }
+      ]
+    },
+    {
+      title: 'כלים מתקדמים ודיבוג',
+      pairs: [
+        { l: '<code>terraform console</code>', r: 'פותחת REPL אינטראקטיבי לבדיקת expressions' },
+        { l: '<code>terraform apply -replace=...</code>', r: 'מכריחה הרס ויצירה מחדש של משאב ספציפי' },
+        { l: '<code>terraform refresh</code> (חלק מ-plan)', r: 'מסנכרנת את ה-state מול המצב האמיתי בענן' },
+        { l: '<code>terraform providers</code>', r: 'מציגה אילו providers נדרשים ומאיפה הם מגיעים' },
+        { l: '<code>TF_LOG=DEBUG terraform apply</code>', r: 'מפעילה לוגים מפורטים לצורך דיבוג' }
+      ]
+    }
+  ];
+
+  /* ============================================================
+     מצב 5 - סידור Workflow: סבבים של שלבים שצריך לסדר בסדר הנכון
+     ============================================================ */
+  var ORDER_ROUNDS = [
+    {
+      title: 'זרימת עבודה סטנדרטית - מקוד חדש עד production',
+      steps: [
+        'כתיבה/עדכון של קוד Terraform (קבצי .tf)',
+        'הרצת terraform fmt לסידור הקוד',
+        'הרצת terraform init (בפעם הראשונה, או אחרי שינוי providers/modules)',
+        'הרצת terraform validate',
+        'הרצת terraform plan וסקירת התוכנית',
+        'הרצת terraform apply לאחר אישור',
+        'commit ו-push של הקוד וקובץ ה-lock ל-Git'
+      ]
+    },
+    {
+      title: 'מעבר מ-state מקומי ל-remote backend',
+      steps: [
+        'הוספת בלוק backend (למשל S3) לקובץ terraform {}',
+        'הרצת terraform init',
+        'אישור ההודעה שמציעה להעתיק (migrate) את ה-state הקיים',
+        'אימות שה-state הועתק בהצלחה עם terraform state list',
+        'גיבוי/מחיקה של קובץ terraform.tfstate המקומי הישן'
+      ]
+    },
+    {
+      title: 'טיפול במשאב פגום עם -replace',
+      steps: [
+        'זיהוי שהמשאב במצב לא תקין (drift או קורפציה)',
+        'הרצת terraform plan -replace="aws_instance.web"',
+        'סקירת התוכנית לוודא שרק המשאב הרצוי יוחלף',
+        'אישור terraform apply',
+        'וידוא שהמשאב החדש בריא (health check)'
+      ]
+    },
+    {
+      title: 'פרסום Module חדש לשימוש חוזר',
+      steps: [
+        'חילוץ הקוד המשותף לתיקיית modules/ נפרדת',
+        'הגדרת variables ו-outputs ברורים למודול',
+        'הפניית root module לקרוא למודול עם source מקומי לבדיקה',
+        'כתיבת README עם דוגמת שימוש',
+        'פרסום ל-Git repo/registry עם git tag גרסה (semver)',
+        'עדכון source בפרויקטים צורכים להפניה עם גרסה נעולה (?ref=vX.Y.Z)'
+      ]
+    }
+  ];
+
+  /* ============================================================
+     הגדרת מצבי המשחק
+     ============================================================ */
+  var MODES = [
+    { key: 'rapid', icon: '⚡', name: 'קרב מהיר', desc: 'שאלות ידע כלליות על Terraform - כמה תספיקו לפני שהזמן נגמר?', type: 'quiz', data: RAPID, sample: 8, time: 20000 },
+    { key: 'plan', icon: '🔮', name: 'ניחוש Plan', desc: 'קטע קוד HCL - מה בדיוק terraform plan יראה?', type: 'quiz', data: PLAN_GUESS, sample: 8, time: 28000, showCode: true },
+    { key: 'hcl', icon: '🧩', name: 'השלמת קוד HCL', desc: 'קוד עם חלק חסר - בחרו מה משלים אותו נכון', type: 'quiz', data: HCL_COMPLETE, sample: 8, time: 28000, showCode: true },
+    { key: 'match', icon: '🔗', name: 'התאמת פקודות', desc: 'התאימו כל פקודת Terraform לתיאור הנכון שלה', type: 'match', data: MATCH_ROUNDS, sample: 2 },
+    { key: 'order', icon: '📋', name: 'סידור Workflow', desc: 'סדרו את שלבי התהליך לפי הסדר הנכון', type: 'order', data: ORDER_ROUNDS, sample: 2 }
+  ];
+
+  /* ============================================================
+     מנוע המשחק
+     ============================================================ */
+  var $ = function (id) { return document.getElementById(id); };
+
+  var els = {
+    modes: $('tfg-modes'),
+    quit: $('tfg-quit'),
+    modeName: $('tfg-mode-name'),
+    lives: $('tfg-lives'),
+    score: $('tfg-score'),
+    streak: $('tfg-streak'),
+    progress: $('tfg-progress'),
+    timerWrap: $('tfg-timer-wrap'),
+    timer: $('tfg-timer'),
+    stage: $('tfg-stage'),
+    feedback: $('tfg-feedback'),
+    next: $('tfg-next'),
+    result: $('tfg-result'),
+    again: $('tfg-again'),
+    menuBtn: $('tfg-menu')
+  };
+
+  var root = $('tfg');
+  var screens = {};
+  Array.prototype.forEach.call(root.querySelectorAll('.tfg-screen'), function (el) {
+    screens[el.getAttribute('data-screen')] = el;
+  });
+
+  function showScreen(name) {
+    Object.keys(screens).forEach(function (k) {
+      screens[k].classList.toggle('is-active', k === name);
+    });
+  }
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function sampleN(arr, n) {
+    var shuffled = shuffle(arr);
+    return shuffled.slice(0, Math.min(n, shuffled.length));
+  }
+
+  function bestKey(modeKey) { return 'tfg-best-' + modeKey; }
+
+  function getBest(modeKey) {
+    try {
+      var raw = localStorage.getItem(bestKey(modeKey));
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function setBest(modeKey, score) {
+    try {
+      var cur = getBest(modeKey);
+      if (!cur || score > cur.score) {
+        localStorage.setItem(bestKey(modeKey), JSON.stringify({ score: score }));
+        return true;
+      }
+    } catch (e) { /* private mode / storage disabled - ignore */ }
+    return false;
+  }
+
+  var state = null;
+
+  function renderMenu() {
+    els.modes.innerHTML = '';
+    MODES.forEach(function (mode) {
+      var best = getBest(mode.key);
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tfg-mode';
+      btn.innerHTML =
+        '<span class="tfg-mode-icon">' + mode.icon + '</span>' +
+        '<span class="tfg-mode-body">' +
+          '<span class="tfg-mode-name">' + esc(mode.name) + '</span>' +
+          '<span class="tfg-mode-desc">' + esc(mode.desc) + '</span>' +
+        '</span>' +
+        (best ? '<span class="tfg-mode-best">שיא: ' + best.score + '</span>' : '');
+      btn.addEventListener('click', function () { startMode(mode); });
+      els.modes.appendChild(btn);
+    });
+  }
+
+  function startMode(mode) {
+    var order;
+    if (mode.type === 'quiz') {
+      order = sampleN(mode.data.map(function (_, i) { return i; }), mode.sample);
+    } else {
+      order = sampleN(mode.data.map(function (_, i) { return i; }), mode.sample);
+    }
+
+    state = {
+      mode: mode,
+      order: order,
+      qi: 0,
+      score: 0,
+      streak: 0,
+      bestStreak: 0,
+      lives: 3,
+      wrongLog: [],
+      answered: false,
+      timerId: null,
+      timeLimit: mode.time || 0,
+      matchSel: null,
+      matchDone: 0,
+      orderPicked: []
+    };
+
+    els.modeName.textContent = mode.icon + ' ' + mode.name;
+    updateHud();
+    showScreen('play');
+    renderStage();
+  }
+
+  function updateHud() {
+    var hearts = '';
+    for (var i = 0; i < 3; i++) {
+      hearts += '<span class="tfg-heart' + (i < state.lives ? '' : ' is-lost') + '">' + (i < state.lives ? '❤️' : '🖤') + '</span>';
+    }
+    els.lives.innerHTML = hearts;
+    els.score.textContent = state.score;
+    els.streak.textContent = state.streak;
+  }
+
+  function updateProgress() {
+    var pct = state.order.length ? (state.qi / state.order.length) * 100 : 0;
+    els.progress.style.width = pct + '%';
+  }
+
+  function clearTimer() {
+    if (state.timerId) {
+      clearInterval(state.timerId);
+      state.timerId = null;
+    }
+  }
+
+  function startTimer(onTimeout) {
+    clearTimer();
+    if (!state.timeLimit) {
+      els.timerWrap.hidden = true;
+      return;
+    }
+    els.timerWrap.hidden = false;
+    els.timer.classList.remove('is-low');
+    els.timer.style.width = '100%';
+    var start = Date.now();
+    var duration = state.timeLimit;
+    state.timerId = setInterval(function () {
+      var elapsed = Date.now() - start;
+      var remaining = Math.max(0, duration - elapsed);
+      var pct = (remaining / duration) * 100;
+      els.timer.style.width = pct + '%';
+      els.timer.classList.toggle('is-low', pct < 30);
+      if (remaining <= 0) {
+        clearTimer();
+        onTimeout();
+      }
+    }, 100);
+  }
+
+  function setFeedback(kind, headText, whyHtml) {
+    if (!headText) {
+      els.feedback.className = 'tfg-feedback';
+      els.feedback.innerHTML = '';
+      return;
+    }
+    els.feedback.className = 'tfg-feedback is-' + kind;
+    els.feedback.innerHTML =
+      '<div class="tfg-fb-head">' + esc(headText) + '</div>' +
+      (whyHtml ? '<div class="tfg-fb-why">' + whyHtml + '</div>' : '');
+  }
+
+  function renderStage() {
+    updateProgress();
+    setFeedback(null);
+    els.next.hidden = true;
+    els.stage.innerHTML = '';
+    state.answered = false;
+
+    var mode = state.mode;
+    if (mode.type === 'quiz') renderQuiz();
+    else if (mode.type === 'match') renderMatch();
+    else if (mode.type === 'order') renderOrder();
+  }
+
+  /* ---------- מצבי שאלה (quiz) ---------- */
+  function renderQuiz() {
+    var mode = state.mode;
+    var q = mode.data[state.order[state.qi]];
+    var html = '<div class="tfg-qnum">שאלה ' + (state.qi + 1) + ' מתוך ' + state.order.length + '</div>';
+    if (mode.showCode && q.code) {
+      html += '<pre class="tfg-code">' + esc(q.code) + '</pre>';
+    }
+    html += '<div class="tfg-q">' + q.q + '</div>';
+    html += '<div class="tfg-opts">';
+    q.o.forEach(function (opt, i) {
+      html += '<button type="button" class="tfg-opt" data-i="' + i + '"><span class="tfg-key">' + (i + 1) + '</span><span>' + opt + '</span></button>';
+    });
+    html += '</div>';
+    els.stage.innerHTML = html;
+
+    Array.prototype.forEach.call(els.stage.querySelectorAll('.tfg-opt'), function (btn) {
+      btn.addEventListener('click', function () {
+        answerQuiz(parseInt(btn.getAttribute('data-i'), 10));
+      });
+    });
+
+    startTimer(function () { answerQuiz(-1); });
+  }
+
+  function answerQuiz(idx) {
+    if (state.answered) return;
+    state.answered = true;
+    clearTimer();
+
+    var mode = state.mode;
+    var q = mode.data[state.order[state.qi]];
+    var correct = idx === q.a;
+    var opts = els.stage.querySelectorAll('.tfg-opt');
+
+    Array.prototype.forEach.call(opts, function (btn) {
+      var i = parseInt(btn.getAttribute('data-i'), 10);
+      btn.disabled = true;
+      if (i === q.a) btn.classList.add('is-right');
+      else if (i === idx) btn.classList.add('is-wrong');
+    });
+
+    registerAnswer(correct, q.q.replace(/<[^>]+>/g, ''), q.o[q.a].replace(/<[^>]+>/g, ''), q.w, idx === -1);
+  }
+
+  /* ---------- מצב התאמה (match) ---------- */
+  function renderMatch() {
+    var mode = state.mode;
+    var round = mode.data[state.order[state.qi]];
+    state.matchSel = null;
+    state.matchDone = 0;
+
+    var leftOrder = shuffle(round.pairs.map(function (_, i) { return i; }));
+    var rightOrder = shuffle(round.pairs.map(function (_, i) { return i; }));
+
+    var html = '<div class="tfg-qnum">סבב ' + (state.qi + 1) + ' מתוך ' + state.order.length + ' - ' + esc(round.title) + '</div>';
+    html += '<div class="tfg-q">בחרו פקודה, ואז את התיאור המתאים לה</div>';
+    html += '<div class="tfg-match">';
+    html += '<div class="tfg-match-col" id="tfg-match-left">';
+    leftOrder.forEach(function (pi) {
+      html += '<button type="button" class="tfg-mi" data-pi="' + pi + '" data-side="l">' + round.pairs[pi].l + '</button>';
+    });
+    html += '</div><div class="tfg-match-col" id="tfg-match-right">';
+    rightOrder.forEach(function (pi) {
+      html += '<button type="button" class="tfg-mi" data-pi="' + pi + '" data-side="r">' + esc(round.pairs[pi].r) + '</button>';
+    });
+    html += '</div></div>';
+    els.stage.innerHTML = html;
+
+    Array.prototype.forEach.call(els.stage.querySelectorAll('.tfg-mi'), function (btn) {
+      btn.addEventListener('click', function () { handleMatchClick(btn, round); });
+    });
+  }
+
+  function handleMatchClick(btn, round) {
+    var side = btn.getAttribute('data-side');
+    var pi = parseInt(btn.getAttribute('data-pi'), 10);
+
+    if (side === 'l') {
+      var prevSel = els.stage.querySelector('.tfg-mi.is-sel');
+      if (prevSel) prevSel.classList.remove('is-sel');
+      state.matchSel = { btn: btn, pi: pi };
+      btn.classList.add('is-sel');
+      return;
+    }
+
+    // side === 'r'
+    if (!state.matchSel) return;
+    var leftBtn = state.matchSel.btn;
+    var correct = state.matchSel.pi === pi;
+
+    if (correct) {
+      leftBtn.classList.remove('is-sel');
+      leftBtn.classList.add('is-done');
+      leftBtn.disabled = true;
+      btn.classList.add('is-done');
+      btn.disabled = true;
+      state.matchSel = null;
+      state.matchDone++;
+      state.score += 60 + state.streak * 10;
+      state.streak++;
+      state.bestStreak = Math.max(state.bestStreak, state.streak);
+      updateHud();
+
+      if (state.matchDone >= round.pairs.length) {
+        setFeedback('right', '🎉 הסבב הושלם!', 'התאמתם נכון את כל ' + round.pairs.length + ' הזוגות.');
+        els.next.hidden = false;
+      }
+    } else {
+      btn.classList.add('tfg-shake');
+      setTimeout(function () { btn.classList.remove('tfg-shake'); }, 300);
+      state.streak = 0;
+      state.lives--;
+      updateHud();
+      if (checkGameOver()) return;
+    }
+  }
+
+  /* ---------- מצב סידור (order) ---------- */
+  function renderOrder() {
+    var mode = state.mode;
+    var round = mode.data[state.order[state.qi]];
+    state.orderPicked = [];
+
+    var poolOrder = shuffle(round.steps.map(function (_, i) { return i; }));
+
+    var html = '<div class="tfg-qnum">סבב ' + (state.qi + 1) + ' מתוך ' + state.order.length + ' - ' + esc(round.title) + '</div>';
+    html += '<div class="tfg-q">לחצו על השלבים לפי הסדר הנכון</div>';
+    html += '<ol class="tfg-picked" id="tfg-order-picked"></ol>';
+    html += '<div class="tfg-pool" id="tfg-order-pool">';
+    poolOrder.forEach(function (si) {
+      html += '<button type="button" class="tfg-step" data-si="' + si + '">' + esc(round.steps[si]) + '</button>';
+    });
+    html += '</div>';
+    els.stage.innerHTML = html;
+
+    Array.prototype.forEach.call(els.stage.querySelectorAll('.tfg-step'), function (btn) {
+      btn.addEventListener('click', function () { handleOrderClick(btn, round); });
+    });
+  }
+
+  function handleOrderClick(btn, round) {
+    if (btn.disabled) return;
+    var si = parseInt(btn.getAttribute('data-si'), 10);
+    var expected = state.orderPicked.length;
+
+    if (si === expected) {
+      btn.disabled = true;
+      state.orderPicked.push(si);
+      var picked = $('tfg-order-picked');
+      var li = document.createElement('li');
+      li.className = 'tfg-picked-item';
+      li.textContent = round.steps[si];
+      picked.appendChild(li);
+
+      state.score += 60 + state.streak * 10;
+      state.streak++;
+      state.bestStreak = Math.max(state.bestStreak, state.streak);
+      updateHud();
+
+      if (state.orderPicked.length >= round.steps.length) {
+        setFeedback('right', '🎉 הרצף הושלם!', 'סידרתם נכון את כל ' + round.steps.length + ' השלבים.');
+        els.next.hidden = false;
+      }
+    } else {
+      btn.classList.add('tfg-shake');
+      setTimeout(function () { btn.classList.remove('tfg-shake'); }, 300);
+      state.streak = 0;
+      state.lives--;
+      updateHud();
+      checkGameOver();
+    }
+  }
+
+  /* ---------- לוגיקה משותפת ---------- */
+  function registerAnswer(correct, questionText, correctText, whyHtml, timedOut) {
+    if (correct) {
+      state.score += 100 + state.streak * 20;
+      state.streak++;
+      state.bestStreak = Math.max(state.bestStreak, state.streak);
+      setFeedback('right', '✅ נכון!', whyHtml);
+    } else {
+      state.streak = 0;
+      state.lives--;
+      setFeedback('wrong', timedOut ? '⏱️ נגמר הזמן' : '❌ לא נכון', 'התשובה הנכונה: ' + esc(correctText) + (whyHtml ? '<br>' + whyHtml : ''));
+      state.wrongLog.push({ q: questionText, a: correctText, w: whyHtml });
+    }
+    updateHud();
+    if (!checkGameOver()) {
+      els.next.hidden = false;
+    }
+  }
+
+  function checkGameOver() {
+    if (state.lives <= 0) {
+      clearTimer();
+      setTimeout(function () { endGame(false); }, 700);
+      return true;
+    }
+    return false;
+  }
+
+  function nextStep() {
+    state.qi++;
+    if (state.qi >= state.order.length) {
+      endGame(true);
+    } else {
+      renderStage();
+    }
+  }
+
+  function rankFor(finished) {
+    if (!finished) {
+      return { icon: '🔄', name: 'כדאי לחזור על החומר', note: 'נגמרו לכם הלבבות - אבל זה בדיוק מה שהמשחק נועד להראות. עברו שוב על ההסברים למטה ונסו שוב.' };
+    }
+    var lost = 3 - state.lives;
+    if (lost === 0) return { icon: '🏆', name: 'מומחה Terraform', note: 'סבב מושלם בלי אף טעות. מרשים!' };
+    if (lost === 1) return { icon: '💪', name: 'שולט היטב', note: 'כמעט מושלם - טעות אחת בלבד.' };
+    return { icon: '📘', name: 'בדרך הנכונה', note: 'יש עוד קצת ללמוד, אבל הכיוון טוב.' };
+  }
+
+  function endGame(finished) {
+    clearTimer();
+    showScreen('result');
+    var rank = rankFor(finished);
+    var isNewBest = setBest(state.mode.key, state.score);
+    var best = getBest(state.mode.key);
+
+    var html = '<div class="tfg-rank">' +
+      '<span class="tfg-rank-icon">' + rank.icon + '</span>' +
+      '<span class="tfg-rank-name">' + esc(rank.name) + '</span>' +
+      '<span class="tfg-rank-note">' + esc(rank.note) + '</span>' +
+      '</div>';
+
+    html += '<div class="tfg-stats">' +
+      '<div class="tfg-stat"><span class="tfg-stat-v">' + state.score + '</span><span class="tfg-stat-k">ניקוד</span></div>' +
+      '<div class="tfg-stat"><span class="tfg-stat-v">' + state.bestStreak + '</span><span class="tfg-stat-k">רצף שיא</span></div>' +
+      '<div class="tfg-stat"><span class="tfg-stat-v">' + state.lives + ' / 3</span><span class="tfg-stat-k">לבבות שנותרו</span></div>' +
+      '<div class="tfg-stat"><span class="tfg-stat-v">' + state.wrongLog.length + '</span><span class="tfg-stat-k">טעויות</span></div>' +
+      '</div>';
+
+    if (isNewBest) {
+      html += '<div class="tfg-record">🎉 שיא חדש במצב הזה: ' + state.score + ' נקודות!</div>';
+    } else if (best) {
+      html += '<div class="tfg-record tfg-record--muted">השיא שלכם במצב הזה: ' + best.score + ' נקודות</div>';
+    }
+
+    if (state.wrongLog.length) {
+      html += '<div class="tfg-review"><h3 class="tfg-review-h">מה כדאי לחזור עליו</h3>';
+      state.wrongLog.forEach(function (item) {
+        html += '<div class="tfg-review-item">' +
+          '<div class="tfg-review-q">' + item.q + '</div>' +
+          '<div class="tfg-review-a">✔️ ' + esc(item.a) + '</div>' +
+          (item.w ? '<div class="tfg-review-a">' + item.w + '</div>' : '') +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    els.result.innerHTML = html;
+  }
+
+  /* ---------- מאזיני אירועים כלליים ---------- */
+  els.next.addEventListener('click', nextStep);
+  els.quit.addEventListener('click', function () { clearTimer(); showScreen('menu'); renderMenu(); });
+  els.again.addEventListener('click', function () { startMode(state.mode); });
+  els.menuBtn.addEventListener('click', function () { showScreen('menu'); renderMenu(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!screens.play.classList.contains('is-active')) return;
+    if (!state || state.mode.type !== 'quiz') return;
+
+    if (!state.answered && e.key >= '1' && e.key <= '9') {
+      var idx = parseInt(e.key, 10) - 1;
+      var opts = els.stage.querySelectorAll('.tfg-opt');
+      if (idx < opts.length) answerQuiz(idx);
+    } else if (state.answered && e.key === 'Enter' && !els.next.hidden) {
+      nextStep();
+    }
+  });
+
+  renderMenu();
+})();
 </script>
