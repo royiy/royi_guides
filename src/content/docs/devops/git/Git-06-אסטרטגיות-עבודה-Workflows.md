@@ -1,5 +1,6 @@
 ---
 title: "אסטרטגיות עבודה - Git Workflows"
+description: "השוואה בין אסטרטגיות branching מרכזיות - Centralized Workflow, Feature Branch, Git Flow, GitHub Flow ו-Trunk-Based Development, ומתי כדאי לבחור בכל אחת."
 category: DevOps/Git
 part: 6/10
 ---

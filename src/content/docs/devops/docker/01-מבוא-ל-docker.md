@@ -1,5 +1,6 @@
 ---
 title: מבוא ל-Docker - מה זה ולמה צריך את זה
+description: "הסבר יסודי על קונטיינריזציה, ההבדל בין Container ל-VM, Namespaces ו-cgroups, ארכיטקטורת Docker ומונחי היסוד Image, Container ו-Registry."
 category: DevOps/Docker
 part: 1/10
 ---

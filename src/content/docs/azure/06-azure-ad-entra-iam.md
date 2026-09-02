@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Entra ID, RBAC, Managed Identities ו-Service Principals"
+description: "ניהול זהויות והרשאות עם Microsoft Entra ID, מנגנון Azure RBAC, Service Principals מול Managed Identities, ואבטחת גישה עם Conditional Access ו-MFA."
 category: Azure
 part: 6/10
 ---

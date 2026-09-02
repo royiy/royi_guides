@@ -1,5 +1,6 @@
 ---
 title: Docker Networking
+description: "סוגי הרשתות ב-Docker (bridge, host, none, overlay, macvlan), DNS resolution ברשתות user-defined, מיפוי פורטים, בידוד רשתי ודיבוג תקשורת בין קונטיינרים."
 category: DevOps/Docker
 part: 7/10
 ---

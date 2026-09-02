@@ -1,5 +1,6 @@
 ---
 title: "מבוא לרשתות תקשורת, מודל OSI ומודל TCP/IP"
+description: "הכרות עם יסודות רשתות תקשורת, שכבות מודל OSI ומודל TCP/IP, תהליך ה-Encapsulation, וכלי אבחון בסיסיים כמו ping, traceroute ו-ARP."
 category: Networking
 part: 1/10
 ---

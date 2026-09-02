@@ -1,5 +1,6 @@
 ---
 title: "Jobs, Steps ו-Runners לעומק"
+description: "תלות בין Jobs עם needs, שיתוף נתונים בין Jobs ו-Steps, שימוש ב-Artifacts להעברת קבצים, וסוגי Runners כולל Container jobs ו-Self-hosted."
 category: DevOps/GitHub Actions
 part: 3/10
 ---

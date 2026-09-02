@@ -1,5 +1,6 @@
 ---
 title: "Jenkins Pipeline - Declarative מול Scripted"
+description: "השוואה מפורטת בין Declarative Pipeline ל-Scripted Pipeline ב-Jenkins, כולל שילוב ביניהם, Parallel Stages ו-Matrix Builds."
 category: DevOps/Jenkins
 part: 2/10
 ---

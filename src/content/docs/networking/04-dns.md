@@ -1,5 +1,6 @@
 ---
 title: "DNS - ארכיטקטורה, סוגי רשומות ופקודות אבחון"
+description: "ארכיטקטורת ה-DNS ההיררכית, סוגי רשומות (A, MX, PTR ועוד), ההבדל בין Recursive ל-Iterative Query, ופקודות אבחון כמו dig ו-nslookup."
 category: Networking
 part: 4/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "אוטומציית בדיקות בפייפליין CI/CD"
+description: "פירמידת הבדיקות וסוגי הבדיקות ב-pipeline (Unit, Integration, E2E, Contract), בניית pipeline מרובד עם GitHub Actions, Code Coverage Gate והתמודדות עם Flaky Tests."
 category: DevOps/CI-CD
 part: 8/10
 ---

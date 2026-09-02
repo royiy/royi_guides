@@ -1,5 +1,6 @@
 ---
 title: "ארכיטקטורת Master/Agent (Controller/Agent) ו-Distributed Builds"
+description: "חיבור Agents דרך SSH ו-JNLP, הרצת Agents דינמיים ב-Docker וב-Kubernetes, שימוש ב-Labels, ניהול Executors וניטור Agents ב-Jenkins."
 category: DevOps/Jenkins
 part: 8/10
 ---

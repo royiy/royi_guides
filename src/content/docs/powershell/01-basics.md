@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "מדריך 01 — PowerShell מהבסיס עד עבודה מקצועית"
+description: "יסודות PowerShell - Pipeline, אובייקטים, Get-Command/Help/Member, משתנים, לולאות ופונקציות, עם תרחישי אבחון שרת מהחיים האמיתיים."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

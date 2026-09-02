@@ -1,5 +1,6 @@
 ---
 title: "Roles - ארגון קוד לשימוש חוזר"
+description: "מבנה תיקיות סטנדרטי של Role ב-Ansible, יצירתו עם ansible-galaxy, import_role מול include_role, תלויות בין Roles, ושימוש ב-Collections ו-Galaxy."
 category: DevOps/Ansible
 part: 7/10
 ---

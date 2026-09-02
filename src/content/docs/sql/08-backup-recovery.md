@@ -1,5 +1,6 @@
 ---
 title: "Backup & Recovery, Point-in-Time Recovery ו-Replication"
+description: "אסטרטגיות גיבוי ושחזור של מסדי נתונים - Full/Incremental/Differential Backup, מדדי RPO ו-RTO, שחזור לנקודת זמן (Point-in-Time Recovery) ומנגנוני Replication."
 category: SQL
 part: 8/10
 ---

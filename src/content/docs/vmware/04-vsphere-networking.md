@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: "VMware #4 — Networking לעומק: vSwitch, vDS, VLAN ו-VMkernel"
+description: "צלילה לעומק ברשת vSphere: vSwitch מול vDS, Port Groups, VLAN, VMkernel adapters, NIC Teaming ותהליך שיטתי לאיתור תקלת רשת ב-VM."
 ---
 
 ## מטרת המדריך

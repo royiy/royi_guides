@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה"
+description: "מבחן אינטראקטיבי של 10 שאלות חזרה על כל מדריכי ה-Ansible - ארכיטקטורה, Inventory, Playbooks, משתנים, מודולים, Templates, Roles, Vault ו-CI/CD, עם משוב מיידי."
 category: DevOps/Ansible
 part: 11/10
 ---

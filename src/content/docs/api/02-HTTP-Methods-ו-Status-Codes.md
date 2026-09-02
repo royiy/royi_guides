@@ -1,5 +1,6 @@
 ---
 title: "HTTP Methods ו-Status Codes"
+description: "מבנה בקשת HTTP, ה-Methods המרכזיים (כולל ההבדל בין PUT ל-PATCH), קטגוריות קודי הסטטוס החשובים, וטיפול בשגיאות ב-JavaScript."
 category: API
 part: 2/10
 ---

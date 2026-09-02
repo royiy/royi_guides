@@ -1,5 +1,6 @@
 ---
 title: "עקרונות לתכנון API - Design Best Practices"
+description: "עקרונות Design-First, מוסכמות שמות, Filtering/Sorting/Pagination, מבנה תשובת שגיאה עקבי, HATEOAS, Richardson Maturity Model ו-Idempotency Keys."
 category: API
 part: 4/10
 ---

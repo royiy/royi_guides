@@ -1,5 +1,6 @@
 ---
 title: "ניהול מדיניות אבטחה (Security Policies) ב-FortiGate"
+description: "בניית Security Policies מבוקרות ב-FortiGate - מבנה Match/Action, Address Objects, מדיניות מבוססת משתמשים וכללי סדר."
 category: Fortinet
 part: 3/10
 ---

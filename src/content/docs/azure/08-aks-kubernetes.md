@@ -1,5 +1,6 @@
 ---
 title: "Azure Kubernetes Service (AKS) - ארכיטקטורה ואינטגרציה עם ACR"
+description: "ארכיטקטורת AKS ויצירת קלאסטר, Cluster Autoscaler, אינטגרציה עם Azure Container Registry, Networking, RBAC ואבטחת זהויות, ושדרוג גרסאות."
 category: Azure
 part: 8/10
 ---

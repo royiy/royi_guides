@@ -1,5 +1,6 @@
 ---
 title: "ArgoCD Projects, RBAC ואבטחה"
+description: "הפרדת הרשאות בין צוותים עם ArgoCD AppProject, הגדרת RBAC גלובלי מבוסס Casbin, חיבור SSO דרך Dex, וניהול נכון של Secrets ב-GitOps."
 category: DevOps/ArgoCD
 part: 5/10
 ---

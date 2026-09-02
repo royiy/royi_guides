@@ -1,5 +1,6 @@
 ---
 title: "יצירת Custom Actions - JavaScript, Docker ו-Composite"
+description: "בניית Custom Actions משלושה סוגים - Composite, JavaScript ו-Docker - כולל מבנה action.yml, השוואה בין הסוגים ופרסום ל-GitHub Marketplace."
 category: DevOps/GitHub Actions
 part: 9/10
 ---

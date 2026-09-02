@@ -1,5 +1,6 @@
 ---
 title: "התקנה והגדרה ראשונית של FortiGate"
+description: "חיבור ראשוני ל-FortiGate, אשף ההתקנה, הגדרת ממשקים ו-Default Route, ומדיניות בסיסית לגישה לאינטרנט."
 category: Fortinet
 part: 2/10
 ---

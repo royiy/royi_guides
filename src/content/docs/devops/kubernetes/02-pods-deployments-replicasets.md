@@ -1,5 +1,6 @@
 ---
 title: "Pods, Deployments ו-ReplicaSets"
+description: "הבדלים בין Pod, ReplicaSet ו-Deployment, אסטרטגיות עדכון כמו RollingUpdate, בדיקות בריאות Liveness/Readiness/Startup Probes, והגדרת Resource Requests ו-Limits."
 category: DevOps/Kubernetes
 part: 2/10
 ---

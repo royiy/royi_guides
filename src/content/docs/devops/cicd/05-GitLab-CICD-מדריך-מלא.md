@@ -1,5 +1,6 @@
 ---
 title: "GitLab CI/CD – מדריך מלא"
+description: "בניית pipeline ב-.gitlab-ci.yml עם stages ו-jobs, Docker build ופריסה ל-Kubernetes, ההבדל בין rules ל-only/except, ושיתוף קונפיגורציה עם include."
 category: DevOps/CI-CD
 part: 5/10
 ---

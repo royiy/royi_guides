@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: "מדריך 03 — Active Directory, Domain Controllers ומשתמשים"
+description: "ניהול משתמשים, קבוצות ומחשבים ב-Active Directory עם מודול ADUser/ADGroup, בדיקת Domain Controllers ורפליקציה, ותרחישי חקירת התחברות כושלת."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

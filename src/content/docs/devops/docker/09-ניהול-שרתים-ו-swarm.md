@@ -1,5 +1,6 @@
 ---
 title: ניהול שרתים, Docker Swarm ופרודקשן
+description: "הקמת Docker Swarm cluster, ניהול services וstacks, Docker Secrets, rolling updates ו-blue-green deployment, מוניטורינג, Reverse Proxy עם Traefik וChecklist לפרודקשן."
 category: DevOps/Docker
 part: 9/10
 ---

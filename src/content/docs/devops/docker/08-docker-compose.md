@@ -1,5 +1,6 @@
 ---
 title: Docker Compose - ניהול שירותים מרובים
+description: "בניית docker-compose.yml עם מספר שירותים, פקודות ניהול מרכזיות, משתני סביבה, depends_on עם healthcheck, קבצי override לסביבות dev/prod."
 category: DevOps/Docker
 part: 8/10
 ---

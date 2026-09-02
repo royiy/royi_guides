@@ -1,5 +1,6 @@
 ---
 title: "מבנה Helm Chart ויצירת Chart ראשון"
+description: "פירוט מבנה התיקיות של Helm Chart שנוצר עם helm create, הסבר על Chart.yaml ו-values.yaml, יצירת Chart מותאם אישית מאפס, וההבדל בין Application ל-Library Chart."
 category: DevOps/Helm
 part: 3/10
 ---

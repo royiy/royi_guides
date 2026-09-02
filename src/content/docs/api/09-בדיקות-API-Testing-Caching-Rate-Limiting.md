@@ -1,5 +1,6 @@
 ---
 title: "בדיקות API - Testing, Caching ו-Rate Limiting"
+description: "סוגי בדיקות ל-API עם Postman, Jest+Supertest ו-pytest, Load Testing עם k6, מנגנוני Caching (Cache-Control, ETag) ואלגוריתמי Rate Limiting."
 category: API
 part: 9/10
 ---

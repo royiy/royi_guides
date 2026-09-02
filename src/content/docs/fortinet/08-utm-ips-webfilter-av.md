@@ -1,5 +1,6 @@
 ---
 title: "אבטחת רשת מתקדמת — UTM, IPS, Web Filtering, Antivirus"
+description: "הגדרת Security Profiles ב-FortiGate - Antivirus, IPS, Web Filtering, Application Control ו-SSL Deep Inspection."
 category: Fortinet
 part: 8/10
 ---

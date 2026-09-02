@@ -1,5 +1,6 @@
 ---
 title: "BigQuery, Cloud SQL ו-Firestore - מסדי נתונים מנוהלים"
+description: "השוואת מסדי הנתונים המנוהלים ב-GCP - BigQuery ל-OLAP, Cloud SQL ל-OLTP ו-Firestore ל-NoSQL, כולל שאילתות ו-Partitioning."
 category: GCP
 part: 8/10
 ---

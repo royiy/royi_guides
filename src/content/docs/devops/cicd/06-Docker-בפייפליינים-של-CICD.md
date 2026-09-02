@@ -1,5 +1,6 @@
 ---
 title: "Docker בפייפליינים של CI/CD"
+description: "בניית images עם multi-stage Dockerfile, שילוב Docker Build ב-GitHub Actions, אסטרטגיות תיוג נכונות, בדיקות אינטגרציה עם Docker Compose וסריקת אבטחה עם Trivy."
 category: DevOps/CI-CD
 part: 6/10
 ---

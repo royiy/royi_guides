@@ -1,5 +1,6 @@
 ---
 title: "מניפולציה על מחרוזות ו-Regex ב-Bash"
+description: "מניפולציה על מחרוזות ב-Bash: חיתוך והחלפת טקסט, הסרת prefix/suffix, שינוי אותיות, ביטויים רגולריים עם =~ ו-BASH_REMATCH, ושילוב עם grep, sed ו-awk."
 category: Bash
 part: 7/10
 ---

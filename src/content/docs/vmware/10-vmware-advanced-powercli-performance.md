@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: "VMware #10 — Advanced: PowerCLI, Performance ו-Best Practices"
+description: "אוטומציה עם PowerCLI ליצירת דוחות VM, ניתוח מדדי ביצועים מתקדמים ועקרונות Best Practices לתכנון סביבת Production."
 ---
 
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.

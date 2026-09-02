@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: "VMware #7 — vSphere HA לעומק: Failure, Isolation ו-Admission Control"
+description: "מנגנוני vSphere HA: זיהוי Host Failure מול Isolation, מדיניות Admission Control, סדרי עדיפות להפעלה מחדש ותחקור VM שלא התאוששה."
 ---
 
 ## 1. מטרת HA

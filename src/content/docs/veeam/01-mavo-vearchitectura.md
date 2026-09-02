@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Veeam Backup & Replication וארכיטקטורה"
+description: "היכרות עם רכיבי הליבה של Veeam VBR (Backup Server, Proxy, Repository, SOBR), סוגי קבצי גיבוי (VBK/VIB/VRB) ותרשים זרימה כללי של הארכיטקטורה."
 category: Veeam
 part: 1/10
 ---

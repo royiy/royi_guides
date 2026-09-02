@@ -1,5 +1,6 @@
 ---
 title: "ArgoCD + Helm / Kustomize – אינטגרציה מעמיקה"
+description: "שימוש ב-Helm וב-Kustomize כמנועי רינדור ב-ArgoCD, כולל Multiple Sources, שינוי Image Tags דינמי, השוואה בין הכלים, ו-Config Management Plugins."
 category: DevOps/ArgoCD
 part: 8/10
 ---

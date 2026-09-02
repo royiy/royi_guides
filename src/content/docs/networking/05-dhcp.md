@@ -1,5 +1,6 @@
 ---
 title: "DHCP - תהליך DORA, DHCP Relay והגדרת שרת"
+description: "תהליך ה-DORA להקצאת כתובות IP אוטומטית, DHCP Relay בין רשתות, הגדרת שרת ISC DHCP בלינוקס, ופקודות לשחרור וחידוש Lease."
 category: Networking
 part: 5/10
 ---

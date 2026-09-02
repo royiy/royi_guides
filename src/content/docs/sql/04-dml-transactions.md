@@ -1,5 +1,6 @@
 ---
 title: "DML - INSERT/UPDATE/DELETE, Transactions ו-ACID"
+description: "פקודות DML לשינוי נתונים - INSERT, UPDATE, DELETE, ניהול Transactions עם COMMIT ו-ROLLBACK, ותכונות ACID המבטיחות אמינות ועקביות של עסקאות במסד הנתונים."
 category: SQL
 part: 4/10
 ---

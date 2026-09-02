@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Helm — מנהל החבילות של Kubernetes"
+description: "הסבר מהו Helm, הבעיות שהוא פותר בפריסת אפליקציות ל-Kubernetes, מושגי היסוד (Chart, Release, Repository, Values) וההבדלים הארכיטקטוניים בין Helm 2 ל-Helm 3."
 category: DevOps/Helm
 part: 1/10
 ---

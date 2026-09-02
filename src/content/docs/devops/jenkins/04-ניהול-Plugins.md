@@ -1,5 +1,6 @@
 ---
 title: "ניהול Plugins ותוספים חיוניים ב-Jenkins"
+description: "ניהול Plugins ב-Jenkins דרך UI ו-CLI, בניית Docker image עם plugins מוגדרים מראש, רשימת Plugins חיוניים לפי קטגוריה ועדכון בטוח."
 category: DevOps/Jenkins
 part: 4/10
 ---

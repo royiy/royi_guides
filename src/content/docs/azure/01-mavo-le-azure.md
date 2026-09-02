@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Azure, מודל השירותים ותשתית הענן"
+description: "מודל השירותים IaaS/PaaS/SaaS ב-Azure, מבנה Regions ו-Availability Zones, ודרכי עבודה עם Azure Portal, CLI ו-PowerShell."
 category: Azure
 part: 1/10
 ---

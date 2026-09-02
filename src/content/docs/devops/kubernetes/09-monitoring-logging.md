@@ -1,5 +1,6 @@
 ---
 title: "Monitoring ו-Logging ב-Kubernetes"
+description: "ניטור ולוגים ב-Kubernetes - Metrics Server, ארכיטקטורת Prometheus ו-Grafana, Horizontal Pod Autoscaler, ואיסוף לוגים מרוכז עם EFK/Loki stack."
 category: DevOps/Kubernetes
 part: 9/10
 ---

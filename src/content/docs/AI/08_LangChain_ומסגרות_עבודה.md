@@ -1,5 +1,6 @@
 ---
 title: "LangChain ומסגרות עבודה לבניית אפליקציות AI"
+description: "השוואת מסגרות עבודה - LangChain, LangGraph, LlamaIndex, Anthropic Agent SDK ו-Semantic Kernel, עם דוגמאות קוד ל-LCEL, בניית סוכן ב-LangGraph ו-RAG ב-LlamaIndex."
 category: AI
 part: 8/10
 ---

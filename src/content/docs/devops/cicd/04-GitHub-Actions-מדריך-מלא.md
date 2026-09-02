@@ -1,5 +1,6 @@
 ---
 title: "GitHub Actions – מדריך מלא"
+description: "מושגי היסוד של GitHub Actions, בניית pipeline מלא עם matrix builds ו-Docker push, Reusable Workflows, Composite Actions וניהול secrets לפי סביבה."
 category: DevOps/CI-CD
 part: 4/10
 ---

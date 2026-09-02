@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-MCP (Model Context Protocol)"
+description: "מהו MCP, בעיית האינטגרציה N×M שהוא פותר, ארכיטקטורת שרת-לקוח שלו, ובניית שרת MCP בפייתון וב-TypeScript כולל הגדרתו ב-Claude Desktop."
 category: AI
 part: 4/10
 ---

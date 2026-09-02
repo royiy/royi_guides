@@ -1,5 +1,6 @@
 ---
 title: "ConfigMaps ו-Secrets"
+description: "ניהול הגדרות וסודות באפליקציה - יצירת ConfigMap ו-Secret ושימוש בהם כמשתני סביבה או Volumes, הצפנת Secrets ב-etcd וכלים חיצוניים כמו Vault."
 category: DevOps/Kubernetes
 part: 4/10
 ---

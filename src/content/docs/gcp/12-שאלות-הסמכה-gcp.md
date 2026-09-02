@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (GCP Associate Cloud Engineer)"
+description: "מבחן אינטראקטיבי מתקדם בסגנון הסמכת ACE - 10 שאלות מטעות על IAM Inheritance, VPC Peering, Firewall Rules ו-Storage Classes."
 category: GCP
 part: 12/10
 ---

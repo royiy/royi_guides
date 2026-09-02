@@ -1,5 +1,6 @@
 ---
 title: "Subscriptions, Resource Groups ו-Infrastructure as Code עם ARM ו-Bicep"
+description: "היררכיית הניהול ב-Azure (Management Groups, Subscriptions, Resource Groups) ובניית תשתית כקוד עם ARM Templates ו-Bicep."
 category: Azure
 part: 2/10
 ---

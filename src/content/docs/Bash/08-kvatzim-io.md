@@ -1,5 +1,6 @@
 ---
 title: "קבצים, הפניות (Redirection) ו-Pipes ב-Bash"
+description: "הפניות (redirection) ו-pipes ב-Bash: ניתוב stdout/stderr, heredoc ו-here string, קריאת קבצים שורה-שורה, process substitution, tee, xargs וניהול file descriptors."
 category: Bash
 part: 8/10
 ---

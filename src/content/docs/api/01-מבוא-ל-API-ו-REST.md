@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-API ו-REST"
+description: "מהו API ועקרונות היסוד של REST, עיצוב Resources ו-URIs, ודוגמאות קריאה מלאות ב-cURL, JavaScript ו-Python."
 category: API
 part: 1/10
 ---

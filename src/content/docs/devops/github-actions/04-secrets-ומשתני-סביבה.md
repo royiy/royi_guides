@@ -1,5 +1,6 @@
 ---
 title: "ניהול Secrets ומשתני סביבה (Variables)"
+description: "שמירה בטוחה של סודות ב-GitHub Actions עם Secrets, ההבדל מ-Variables, רמות Repository/Environment/Organization, GITHUB_TOKEN ו-OIDC."
 category: DevOps/GitHub Actions
 part: 4/10
 ---

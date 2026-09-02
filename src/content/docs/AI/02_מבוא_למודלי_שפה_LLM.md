@@ -1,5 +1,6 @@
 ---
 title: "מבוא למודלי שפה גדולים (LLM — Large Language Models)"
+description: "איך LLM עובד - Tokenization, Embeddings ו-Self-Attention בארכיטקטורת Transformer, שלבי אימון, דוגמאות קוד ל-API של Claude ו-OpenAI, והמודלים המובילים ב-2026."
 category: AI
 part: 2/10
 ---

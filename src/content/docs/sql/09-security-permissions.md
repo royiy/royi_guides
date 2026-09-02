@@ -1,5 +1,6 @@
 ---
 title: "ניהול הרשאות, GRANT/REVOKE ומניעת SQL Injection"
+description: "ניהול משתמשים והרשאות במסד הנתונים באמצעות GRANT ו-REVOKE, עקרון ה-Least Privilege ו-RBAC, ושיטות להגנה מפני התקפות SQL Injection מכיוון האפליקציה."
 category: SQL
 part: 9/10
 ---

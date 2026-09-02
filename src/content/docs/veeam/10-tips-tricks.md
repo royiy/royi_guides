@@ -1,5 +1,6 @@
 ---
 title: "טיפים, טריקים ופרקטיקות מומלצות (Best Practices)"
+description: "המלצות אבטחה וביצועים ל-Veeam, אוטומציה עם PowerShell ו-REST API, חיסכון בעלויות אחסון, Checklist לפני ייצור, SureBackup וטעויות נפוצות להימנע מהן."
 category: Veeam
 part: 10/10
 ---

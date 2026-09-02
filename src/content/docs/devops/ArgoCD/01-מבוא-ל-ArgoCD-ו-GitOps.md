@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-ArgoCD ו-GitOps"
+description: "הסבר עקרונות היסוד של GitOps (הצהרתי, Pull-based, Self-Healing), ההבדל מ-CI/CD מסורתי, ומושגי הבסיס של ArgoCD כמו Application, Sync ו-Drift."
 category: DevOps/ArgoCD
 part: 1/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "ארכיטקטורה ורכיבים של ArgoCD"
+description: "פירוט תפקיד כל רכיב פנימי ב-ArgoCD - server, repo-server, application-controller, dex-server ו-redis - וה-CRDs המרכזיים, כולל טיפים ל-Scaling."
 category: DevOps/ArgoCD
 part: 3/10
 ---

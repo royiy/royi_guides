@@ -1,5 +1,6 @@
 ---
 title: "Remotes, Pull Requests ושיתוף פעולה"
+description: "עבודה עם remotes, ההבדל בין fetch ל-pull, זרימת עבודה עם Pull Request ו-Fork, טיפים ל-code review, שימוש ב-diff ו-blame, וניהול submodules."
 category: DevOps/Git
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Monitoring, Logging, Troubleshooting ו-Autoscaling"
+description: "ערימת המוניטורינג המובנית עם Prometheus ו-PromQL, Logging עם Loki ו-LogQL, זרימת עבודה לאבחון תקלות production, ו-Autoscaling עם HPA/VPA/Cluster Autoscaler."
 category: DevOps/OpenShift
 part: 9/10
 ---

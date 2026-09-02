@@ -1,5 +1,6 @@
 ---
 title: "התקנה, oc CLI וניהול פרויקטים ומשתמשים"
+description: "התקנת כלי ה-oc במערכות השונות, התחברות לקלאסטר, ניהול Projects וקווטות משאבים, הרשאות משתמשים בסיסיות ופקודות oc יומיומיות כולל oc explain."
 category: DevOps/OpenShift
 part: 2/10
 ---

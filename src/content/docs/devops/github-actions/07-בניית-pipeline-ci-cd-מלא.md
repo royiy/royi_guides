@@ -1,5 +1,6 @@
 ---
 title: "בניית Pipeline מלא של CI/CD"
+description: "בניית pipeline מלא של CI/CD לפרויקט Node.js עם שלבי בנייה ובדיקות, פריסה מ-Staging ל-Production, Reusable Workflows ו-Rollback אוטומטי."
 category: DevOps/GitHub Actions
 part: 7/10
 ---

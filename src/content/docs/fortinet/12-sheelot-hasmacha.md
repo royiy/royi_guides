@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (NSE 4)"
+description: "מבחן אינטראקטיבי מאתגר בסגנון NSE 4, עם 10 שאלות מטעות על Central NAT, HA, VDOMs, VPN ו-Security Profiles."
 category: Fortinet
 part: 12/10
 ---

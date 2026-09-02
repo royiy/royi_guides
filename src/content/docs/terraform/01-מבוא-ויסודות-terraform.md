@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "מדריך 1: מבוא ויסודות Terraform"
+description: "מבוא ל-Terraform: מהי גישת Infrastructure as Code, ההבדל בין Declarative ל-Imperative, שלבי init/plan/apply, התקנה ופרויקט Hello World ראשון."
 ---
 
 ## מה זה Terraform?

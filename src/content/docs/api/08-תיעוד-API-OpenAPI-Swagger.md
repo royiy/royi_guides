@@ -1,5 +1,6 @@
 ---
 title: "תיעוד API - OpenAPI ו-Swagger"
+description: "מהו OpenAPI (Swagger), דוגמת קובץ YAML בסיסי, הכלים המרכזיים בתחום, הפעלת Swagger UI ב-Express.js וההבדל בין Design-First ל-Code-First."
 category: API
 part: 8/10
 ---

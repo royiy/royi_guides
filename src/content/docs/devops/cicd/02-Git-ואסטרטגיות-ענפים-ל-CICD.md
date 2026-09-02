@@ -1,5 +1,6 @@
 ---
 title: "Git ואסטרטגיות ענפים כבסיס ל-CI/CD"
+description: "השוואה בין GitHub Flow, Git Flow ו-Trunk-Based Development, איך אסטרטגיית הענפים קובעת מתי pipeline רץ, וטיפים כמו Semantic Versioning ו-Branch Protection."
 category: DevOps/CI-CD
 part: 2/10
 ---

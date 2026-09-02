@@ -1,5 +1,6 @@
 ---
 title: "אבטחה, הרשאות וניהול Credentials ב-Jenkins"
+description: "הפעלת אבטחה ו-RBAC ב-Jenkins, ניהול Credentials וה-Scoping שלהם, Secrets Masking, Script Security Sandbox ורשימת Hardening Checklist."
 category: DevOps/Jenkins
 part: 7/10
 ---

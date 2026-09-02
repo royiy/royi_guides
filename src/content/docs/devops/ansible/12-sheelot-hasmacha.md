@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (Red Hat EX294)"
+description: "מבחן אינטראקטיבי מתקדם בסגנון הסמכת Red Hat EX294 - 10 שאלות מטעות על סדר עדיפויות משתנים, Handlers, delegate_to, Blocks, Vault ו-serial, עם הסברים מפורטים."
 category: DevOps/Ansible
 part: 12/10
 ---

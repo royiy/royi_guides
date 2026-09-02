@@ -1,5 +1,6 @@
 ---
 title: "מנוע ה-Templates ו-Values ב-Helm"
+description: "הסבר מעמיק על מנוע ה-templating של Helm מבוסס Go: אובייקטים מובנים, תנאים ולולאות, שליטה ברווחים, פונקציות Sprig, ו-Named Templates בקובץ _helpers.tpl."
 category: DevOps/Helm
 part: 4/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Fortinet ו-FortiGate"
+description: "היכרות עם Fortinet ו-FortiGate כפיירוול NGFW - שבב ה-SPU, מערכת FortiOS ומשפחת המוצרים המרכזית של החברה."
 category: Fortinet
 part: 1/10
 ---

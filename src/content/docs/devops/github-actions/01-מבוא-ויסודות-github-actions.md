@@ -1,5 +1,6 @@
 ---
 title: "מבוא ויסודות ל-GitHub Actions"
+description: "היכרות עם GitHub Actions - מושגי יסוד, מבנה קובץ workflow ראשון, ההבדל בין GitHub-hosted ל-Self-hosted runners, וטיפים לשאלות ראיון."
 category: DevOps/GitHub Actions
 part: 1/10
 ---

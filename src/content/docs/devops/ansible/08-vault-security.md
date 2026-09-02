@@ -1,5 +1,6 @@
 ---
 title: "Ansible Vault - ניהול סודות ואבטחה"
+description: "הצפנה ופענוח של סודות עם Ansible Vault - יצירה, עריכה, encrypt_string, ניהול מספר Vault IDs לסביבות שונות, ושיטת vars.yml+vault.yml ל-Best Practices."
 category: DevOps/Ansible
 part: 8/10
 ---

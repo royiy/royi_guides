@@ -1,5 +1,6 @@
 ---
 title: "Azure App Service, Azure Functions ו-Deployment Slots"
+description: "רמות ה-App Service Plans, פריסה בלי השבתה עם Deployment Slots ו-Auto Scaling, מחשוב Serverless עם Azure Functions, וההבדלים בין App Service ל-Functions."
 category: Azure
 part: 7/10
 ---

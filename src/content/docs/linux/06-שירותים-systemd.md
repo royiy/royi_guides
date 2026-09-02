@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: "מדריך 6: ניהול שירותים עם systemd"
+description: "ניהול שירותים עם systemd - systemctl (start/stop/enable), לוגים עם journalctl, יצירת קובצי unit מותאמים אישית, timers מול cron, ו-targets."
 ---
 
 ## מבוא

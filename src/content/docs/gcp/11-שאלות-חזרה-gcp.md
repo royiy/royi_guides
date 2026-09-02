@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה מקיפות על כל סדרת ה-GCP"
+description: "מבחן חזרה אינטראקטיבי בן 10 שאלות עם ניקוד ומשוב מיידי, המכסה את כל נושאי סדרת ה-GCP מ-Regions ועד Cloud Monitoring."
 category: GCP
 part: 11/10
 ---

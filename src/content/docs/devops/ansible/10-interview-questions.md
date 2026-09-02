@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה מקיפות + טיפים וטריקים"
+description: "אוסף שאלות ראיון עבודה על Ansible לרמות Junior עד Senior עם תשובות תמציתיות, תרחיש Scenario-Based, טבלת שגיאות נפוצות ורשימת טיפים לעבודה יומיומית."
 category: DevOps/Ansible
 part: 10/10
 ---

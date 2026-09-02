@@ -1,5 +1,6 @@
 ---
 title: "מערכים (Arrays) ב-Bash"
+description: "מערכים ב-Bash: מערכים אינדקסיים ואסוציאטיביים עם declare -A, הוספה ומחיקה של איברים, חיתוך (slicing), מיון, המרה למחרוזת ומילוי מערך מקובץ עם mapfile."
 category: Bash
 part: 6/10
 ---

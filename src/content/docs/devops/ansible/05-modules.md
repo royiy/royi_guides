@@ -1,5 +1,6 @@
 ---
 title: "מודולים נפוצים (Modules)"
+description: "סקירת מודולי Ansible נפוצים - ניהול חבילות, קבצים, שירותים, משתמשים, firewall, Git, cron, Docker וענן, עם דוגמאות שימוש והשוואה למול command/shell."
 category: DevOps/Ansible
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "VPN ב-Fortinet — IPsec ו-SSL VPN"
+description: "הקמת IPsec Site-to-Site VPN (Phase 1/2) ו-SSL VPN לגישה מרחוק ב-FortiGate, כולל אבטחה מומלצת ופקודות אבחון."
 category: Fortinet
 part: 4/10
 ---

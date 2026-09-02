@@ -1,5 +1,6 @@
 ---
 title: "משתנים, פרמטרים ו-Environment ב-Bash"
+description: "משתנים ב-Bash: הגדרה ושימוש, היקף local מול global, משתני סביבה, readonly, command substitution, חשבון אריתמטי, פרמטרים מיוחדים וערכי ברירת מחדל."
 category: Bash
 part: 2/10
 ---

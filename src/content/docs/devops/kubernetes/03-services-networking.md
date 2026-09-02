@@ -1,5 +1,6 @@
 ---
 title: "Services ו-Networking ב-Kubernetes"
+description: "מודל הרשת של Kubernetes וסוגי Service - ClusterIP, NodePort, LoadBalancer ו-ExternalName, DNS פנימי, Headless Services והגבלת תעבורה עם NetworkPolicy."
 category: DevOps/Kubernetes
 part: 3/10
 ---

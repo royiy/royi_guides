@@ -1,6 +1,7 @@
 ---
 sidebar_position: 12
 title: "VMware #12 — שאלות קשות ברמת הסמכה (VCP-DCV)"
+description: "מבחן אינטראקטיבי ברמת קושי VCP-DCV עם 10 שאלות מטעות על HA Admission Control, DRS Rules, vSAN Fault Domains ו-vDS, כולל הסברים מפורטים."
 ---
 
 מבחן אינטראקטיבי ברמת קושי גבוהה, בסגנון שאלות הסמכת **VMware Certified Professional – Data Center Virtualization (VCP-DCV)** - בניגוד למבחן החזרה הכללי בפרק הקודם, כאן כל שאלה בודקת נקודה עדינה ומטעה שדורשת הבנה אמיתית של מנגנוני הפנים של vSphere (HA, DRS, vSAN, Networking, Storage ועוד), לא רק שינון. בחרו תשובה ותקבלו מיד משוב עם הסבר מפורט.

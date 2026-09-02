@@ -1,5 +1,6 @@
 ---
 title: "SQL בסיסי - SELECT, WHERE, ORDER BY ו-JOINs"
+description: "שאילתות SELECT בסיסיות, סינון עם WHERE, מיון עם ORDER BY וסוגי JOIN (INNER, LEFT, RIGHT, FULL, CROSS, SELF) עם דוגמאות על טבלאות employees ו-departments."
 category: SQL
 part: 2/10
 ---

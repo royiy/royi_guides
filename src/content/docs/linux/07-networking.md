@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: "מדריך 7: Networking בלינוקס"
+description: "רשתות בלינוקס - בדיקת חיבוריות עם ping/traceroute/dig, ניהול ממשקי IP עם ip/ifconfig, פורטים עם ss, חומת אש (ufw/firewalld/iptables), SSH ו-tcpdump."
 ---
 
 ## מבוא

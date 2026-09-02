@@ -1,5 +1,6 @@
 ---
 title: "Storage Accounts, Blob/File/Queue/Table ו-Redundancy"
+description: "מבנה Storage Account ב-Azure, עומק ה-Blob Storage ו-Access Tiers, אפשרויות שכפול נתונים (Redundancy), Azure Files/Queue Storage ושיטות אימות."
 category: Azure
 part: 5/10
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: "VMware #8 — Snapshot, Template, Clone וניהול משאבים"
+description: "ניהול מחזור חיי VM: Snapshots וניקוים, בניית Templates ו-Clones, והקצאת משאבי CPU/Memory כולל Shares, Reservation, Limit ו-CPU Ready."
 ---
 
 > **הערת גרסאות:** VMware נמצאת כיום תחת Broadcom, ולכן שמות המוצרים והמעבדות משתנים עם הזמן. המדריכים מתמקדים בעקרונות vSphere/ESXi/vCenter שהם הבסיס, ובמקומות רלוונטיים מציינים גם את VCF.

@@ -1,5 +1,6 @@
 ---
 title: "GraphQL - מבוא והשוואה ל-REST"
+description: "מהו GraphQL ואיך הוא פותר Over-fetching ו-Under-fetching, Query/Mutation/Subscription, Schema ו-Types, ודוגמת שרת עם Apollo Server מול REST."
 category: API
 part: 6/10
 ---

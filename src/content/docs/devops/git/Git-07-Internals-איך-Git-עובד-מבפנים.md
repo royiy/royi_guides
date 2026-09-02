@@ -1,5 +1,6 @@
 ---
 title: "Git Internals - איך Git עובד מבפנים"
+description: "מבנה תיקיית .git, ארבעת סוגי האובייקטים הפנימיים, חישוב SHA-1, המשמעות האמיתית של HEAD, garbage collection ודחיסת נתונים עם packfiles."
 category: DevOps/Git
 part: 7/10
 ---

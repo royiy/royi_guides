@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה על Veeam Backup & Replication"
+description: "חידון אינטראקטיבי בן 10 שאלות חזרה על כל נושאי סדרת מדריכי Veeam - ארכיטקטורה, Backup Jobs, כלל 3-2-1-1-0, Replication, VMware/Hyper-V וטיפים - עם משוב מיידי."
 category: Veeam
 part: 11/10
 ---

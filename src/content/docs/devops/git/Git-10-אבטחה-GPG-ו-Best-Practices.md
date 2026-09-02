@@ -1,5 +1,6 @@
 ---
 title: "אבטחה, חתימה דיגיטאלית ו-Best Practices"
+description: "חתימת commits ו-tags עם GPG/SSH, מניעת דליפת secrets, ההבדל בין SSH ל-HTTPS, שימוש ב-Personal Access Tokens ו-2FA, gitattributes ו-Git LFS."
 category: DevOps/Git
 part: 10/10
 ---

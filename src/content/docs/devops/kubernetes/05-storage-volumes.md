@@ -1,5 +1,6 @@
 ---
 title: "אחסון (Storage) ו-Volumes ב-Kubernetes"
+description: "פתרונות אחסון ב-Kubernetes - emptyDir ו-hostPath, PersistentVolume ו-PersistentVolumeClaim, Dynamic Provisioning עם StorageClass, ו-StatefulSet לאפליקציות stateful."
 category: DevOps/Kubernetes
 part: 5/10
 ---

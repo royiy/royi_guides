@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: "VMware #9 — Troubleshooting מעשי"
+description: "מתודולוגיית איתור תקלות ב-vSphere: תרחישי VM איטי, Storage latency, בעיות רשת ו-vMotion שנכשל, בעזרת esxtop, esxcli ו-vmkping."
 ---
 
 ## שיטת העבודה

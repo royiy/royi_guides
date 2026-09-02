@@ -1,5 +1,6 @@
 ---
 title: "תחביר Workflow מלא וכל סוגי הטריגרים (Events)"
+description: "מבנה מלא של קובץ workflow, כל סוגי הטריגרים (push, cron, workflow_dispatch ועוד), סינון ענפים ונתיבים, Expressions, תנאי if ו-Concurrency."
 category: DevOps/GitHub Actions
 part: 2/10
 ---

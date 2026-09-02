@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-OpenShift וארכיטקטורה"
+description: "היכרות עם OpenShift כהפצת Kubernetes ארגונית - מה מוסיף מעבר לוניל, מבנה שכבות הארכיטקטורה (Control Plane, Worker Nodes) והתקנת CRC ללימוד מקומי."
 category: DevOps/OpenShift
 part: 1/10
 ---

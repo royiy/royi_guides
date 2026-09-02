@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes ו-Continuous Deployment"
+description: "אסטרטגיות פריסה ב-Kubernetes - Rolling Update, Blue-Green ו-Canary, מודל GitOps עם ArgoCD, עדכון Deployment מפייפליין קלאסי, וניהול releases עם Helm."
 category: DevOps/CI-CD
 part: 7/10
 ---

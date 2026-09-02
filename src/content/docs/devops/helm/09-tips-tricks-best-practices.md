@@ -1,5 +1,6 @@
 ---
 title: "טיפים, טריקים ו-Best Practices ל-Helm"
+description: "20 טיפים וכללי Best Practice לעבודה עם Helm: helm-diff, תיוג סטנדרטי, values.schema.json, ניהול secrets, GitOps עם ArgoCD/FluxCD, ובדיקות אבטחה על Charts."
 category: DevOps/Helm
 part: 9/10
 ---

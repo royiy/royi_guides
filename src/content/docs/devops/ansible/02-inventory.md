@@ -1,5 +1,6 @@
 ---
 title: "Inventory - ניהול שרתים וקבוצות"
+description: "בניית Inventory בפורמט INI ו-YAML, קבוצות מקוננות, host_vars ו-group_vars, ושימוש ב-Dynamic Inventory לסביבות ענן כמו AWS ו-Azure."
 category: DevOps/Ansible
 part: 2/10
 ---

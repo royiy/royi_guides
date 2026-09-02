@@ -1,5 +1,6 @@
 ---
 title: "Jenkinsfile - דוגמאות מעשיות מקצה לקצה"
+description: "אוסף דוגמאות Jenkinsfile מלאות לפרויקטי Node.js, Java/Maven ו-Python, כולל Multibranch Pipeline, Parameters ו-Retry/Error Handling."
 category: DevOps/Jenkins
 part: 3/10
 ---

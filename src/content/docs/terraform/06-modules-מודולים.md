@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: "מדריך 6: Modules - קוד לשימוש חוזר"
+description: "בניית ושימוש ב-Modules ב-Terraform: מבנה מודול, קריאה למודול וסוגי מקורות, מטא-ארגומנטים, Terraform Registry, הרכבת מודולים ובדיקה עם terraform test."
 ---
 
 ## מה זה Module?

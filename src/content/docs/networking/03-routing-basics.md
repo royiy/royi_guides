@@ -1,5 +1,6 @@
 ---
 title: "יסודות Routing וטבלאות ניתוב"
+description: "עקרונות הניתוב, מבנה טבלת הניתוב, ההבדל בין Static ל-Dynamic Routing, Administrative Distance, ופקודות אבחון כמו traceroute ו-ip route."
 category: Networking
 part: 3/10
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: "מדריך 04 — PowerShell Remoting, WinRM ו-ניהול מרחוק"
+description: "הרצת פקודות מרוחקות עם Invoke-Command ו-PSSession, בדיקת WinRM, שימוש ב-$using ו-Credential, וניהול מספר שרתים במקביל עם ThrottleLimit."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

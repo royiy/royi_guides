@@ -1,5 +1,6 @@
 ---
 title: "Infrastructure as Code – Terraform ב-CI/CD"
+description: "מושגי יסוד ב-Terraform, שילוב ב-pipeline לפי עקרון Plan on PR / Apply on Merge, Remote State עם S3 ו-Locking, Modules לשימוש חוזר ו-Workspaces לניהול סביבות."
 category: DevOps/CI-CD
 part: 9/10
 ---

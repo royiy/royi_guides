@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: "מדריך 08 — Microsoft 365, Exchange Online ו-Microsoft Entra עם PowerShell"
+description: "חיבור וניהול משתמשים דרך Microsoft Graph, תיבות דואר עם Exchange Online Management, דוחות Bulk ל-CSV ותרחישי חקירת מייל שלא מגיע."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

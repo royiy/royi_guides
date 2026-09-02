@@ -1,5 +1,6 @@
 ---
 title: "מדיניות אבטחה (Security Policy) ו-NAT"
+description: "בניית Rule Base - Cleanup Rule, Stealth Rule, Implied Rules, וסוגי NAT: Automatic (Hide/Static) מול Manual NAT."
 category: Check Point
 part: 3/10
 ---
