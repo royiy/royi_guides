@@ -1,10 +1,6 @@
 ---
-<<<<<<< HEAD
 title: "בחן את עצמך על Veeam Backup & Replication"
-=======
-title: "שאלות חזרה על Veeam Backup & Replication"
 description: "חידון אינטראקטיבי בן 10 שאלות חזרה על כל נושאי סדרת מדריכי Veeam - ארכיטקטורה, Backup Jobs, כלל 3-2-1-1-0, Replication, VMware/Hyper-V וטיפים - עם משוב מיידי."
->>>>>>> 9cee1adc8fa20025a44d845aa1571f3c3de98d76
 category: Veeam
 part: 11/10
 ---
