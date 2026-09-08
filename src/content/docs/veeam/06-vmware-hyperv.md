@@ -29,7 +29,7 @@ Backup Infrastructure → Managed Servers → Add Server → VMware vSphere → 
 
 ## CBT - Changed Block Tracking
 
-VMware CBT הוא מנגנון שמאפשר ל-Veeam לזהות אילו בלוקים בדיסק השתנו מאז הגיבוי הקודם, ללא צורך לסרוק את כל הדיסק - זה הבסיס לגיבויים אינקרementליים מהירים.
+VMware CBT הוא מנגנון שמאפשר ל-Veeam לזהות אילו בלוקים בדיסק השתנו מאז הגיבוי הקודם, ללא צורך לסרוק את כל הדיסק - זה הבסיס לגיבויים אינקרמנטליים מהירים.
 
 ```
 טיפ: אם ה-CBT "נשבר" (corrupted), Veeam יזהה זאת אוטומטית ויבצע "Reset CBT" 

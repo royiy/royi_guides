@@ -12,7 +12,7 @@ description: "מבחן אמריקאי אינטראקטיבי ברמת הסמכה
   <div class="quiz-options">
     <button class="quiz-option" type="button" data-choice="א">א. כל תהליכי האימות (Authentication) בדומיין נעצרים לחלוטין עד שהתפקיד יועבר</button>
     <button class="quiz-option" type="button" data-choice="ב">ב. משתמשים ממשיכים להתחבר דרך בקרי דומיין אחרים כרגיל, אך נפגעים סנכרון השעון בדומיין (שמבוסס היררכית על ה-PDC Emulator), עדכון דחוף של שינויי סיסמה בין DCs, ועיבוד נעילות חשבון - עד שהתפקיד ייתפס (Seize) ידנית לבקר אחר</button>
-    <button class="quiz-option" type="button" data-choice="ג">ג. Active Directory מוחק אוטומטית את כל האובייקטים בפורest אם ה-PDC Emulator לא זמין מעל שעה</button>
+    <button class="quiz-option" type="button" data-choice="ג">ג. Active Directory מוחק אוטומטית את כל האובייקטים ב-Forest אם ה-PDC Emulator לא זמין מעל שעה</button>
     <button class="quiz-option" type="button" data-choice="ד">ד. שאר בקרי הדומיין הופכים אוטומטית ל-Read-Only עד לתיקון התקלה</button>
   </div>
   <div class="quiz-result" aria-live="polite"></div>
@@ -28,7 +28,7 @@ description: "מבחן אמריקאי אינטראקטיבי ברמת הסמכה
     <button class="quiz-option" type="button" data-choice="ד">ד. <code>Secondary Zone</code> קיימת רק ב-Zones המשולבות ב-AD (AD-Integrated) בעוד <code>Stub Zone</code> קיימת רק ב-Zones רגילות</button>
   </div>
   <div class="quiz-result" aria-live="polite"></div>
-  <div class="quiz-explain"><strong>הסבר:</strong> שתי הזונות הן קריאה-בלבד ומתעדכנות דרך <code>Zone Transfer</code> (AXFR מלא או IXFR תוספתי) מה-Primary, אבל בהיקף שונה לגמרי: <code>Secondary Zone</code> מיועדת לשרידות/עומס ומחזיקה עותק מלא של כל הרשומות. <code>Stub Zone</code>, לעומת זאת, מחזיקה רק "כתובת ליצירת קשר" - NS, SOA ו-Glue Records - כדי שהשרת ידע להפנות שאילתות ישירות לשרתים המוסמכים לאותה זונה, בלי לשכפל את כל תוכן הזונה עצמה. זה שימושי במיוחד לשמירה על מסלולי הפניה עדכניים בין דומיינים/פורests בלי עומס רפליקציה מיותר.</div>
+  <div class="quiz-explain"><strong>הסבר:</strong> שתי הזונות הן קריאה-בלבד ומתעדכנות דרך <code>Zone Transfer</code> (AXFR מלא או IXFR תוספתי) מה-Primary, אבל בהיקף שונה לגמרי: <code>Secondary Zone</code> מיועדת לשרידות/עומס ומחזיקה עותק מלא של כל הרשומות. <code>Stub Zone</code>, לעומת זאת, מחזיקה רק "כתובת ליצירת קשר" - NS, SOA ו-Glue Records - כדי שהשרת ידע להפנות שאילתות ישירות לשרתים המוסמכים לאותה זונה, בלי לשכפל את כל תוכן הזונה עצמה. זה שימושי במיוחד לשמירה על מסלולי הפניה עדכניים בין דומיינים/Forests בלי עומס רפליקציה מיותר.</div>
 </div>
 
 <div class="quiz-card" data-answer="ב">
@@ -116,15 +116,15 @@ description: "מבחן אמריקאי אינטראקטיבי ברמת הסמכה
 </div>
 
 <div class="quiz-card" data-answer="ב">
-  <p class="quiz-question"><strong>10. מדוע ה-Replication בין <code>RODC (Read-Only Domain Controller)</code> לשאר בקרי הדומיין בפורest הוא Unidirectional (חד-כיווני) בלבד - כלומר אף DC כתיב אחר לעולם לא "מושך" שינויים מה-RODC?</strong></p>
+  <p class="quiz-question"><strong>10. מדוע ה-Replication בין <code>RODC (Read-Only Domain Controller)</code> לשאר בקרי הדומיין ב-Forest הוא Unidirectional (חד-כיווני) בלבד - כלומר אף DC כתיב אחר לעולם לא "מושך" שינויים מה-RODC?</strong></p>
   <div class="quiz-options">
     <button class="quiz-option" type="button" data-choice="א">א. זו מגבלת רוחב פס בלבד, וניתן לשנות זאת בהגדרות הרפליקציה</button>
-    <button class="quiz-option" type="button" data-choice="ב">ב. כדי למנוע מצב שבו נתונים פגומים או זדוניים שהוזרקו ל-RODC (למשל בעקבות פריצה פיזית בסניף מרוחק) יופצו הלאה לשאר בקרי הדומיין הכתיבים בפורest - שינויים זורמים רק מ-DC כתיב אל ה-RODC, לעולם לא בכיוון ההפוך</button>
+    <button class="quiz-option" type="button" data-choice="ב">ב. כדי למנוע מצב שבו נתונים פגומים או זדוניים שהוזרקו ל-RODC (למשל בעקבות פריצה פיזית בסניף מרוחק) יופצו הלאה לשאר בקרי הדומיין הכתיבים ב-Forest - שינויים זורמים רק מ-DC כתיב אל ה-RODC, לעולם לא בכיוון ההפוך</button>
     <button class="quiz-option" type="button" data-choice="ג">ג. RODC כלל לא תומך בפרוטוקול הרפליקציה של Active Directory</button>
     <button class="quiz-option" type="button" data-choice="ד">ד. זו מגבלה זמנית בלבד שתוסר בעדכון גרסה עתידי</button>
   </div>
   <div class="quiz-result" aria-live="polite"></div>
-  <div class="quiz-explain"><strong>הסבר:</strong> ה-RODC נועד בדיוק לתרחיש של סניף מרוחק עם אבטחה פיזית חלשה: הוא מחזיק עותק לקריאה-בלבד של מסד הנתונים, בדרך כלל בלי סיסמאות משתמשים בפועל (למעט אלו שהוגדרו במפורש ב-Password Replication Policy), ולא יכול להחזיק תפקידי FSMO. כדי להבטיח ששום שינוי - זדוני או תקין - שנעשה ישירות מול ה-RODC לא יזהם את שאר הפורest, הרפליקציה מוגדרת חד-כיוונית בלבד: מ-DC כתיב אל ה-RODC. כך גם אם ה-RODC נפרץ פיזית בסניף, הנזק נשאר מבודד ולא מתפשט לשאר בקרי הדומיין.</div>
+  <div class="quiz-explain"><strong>הסבר:</strong> ה-RODC נועד בדיוק לתרחיש של סניף מרוחק עם אבטחה פיזית חלשה: הוא מחזיק עותק לקריאה-בלבד של מסד הנתונים, בדרך כלל בלי סיסמאות משתמשים בפועל (למעט אלו שהוגדרו במפורש ב-Password Replication Policy), ולא יכול להחזיק תפקידי FSMO. כדי להבטיח ששום שינוי - זדוני או תקין - שנעשה ישירות מול ה-RODC לא יזהם את שאר ה-Forest, הרפליקציה מוגדרת חד-כיוונית בלבד: מ-DC כתיב אל ה-RODC. כך גם אם ה-RODC נפרץ פיזית בסניף, הנזק נשאר מבודד ולא מתפשט לשאר בקרי הדומיין.</div>
 </div>
 
 <button type="button" id="quiz-reset-all" class="quiz-reset-all">אפס את כל המבחן</button>

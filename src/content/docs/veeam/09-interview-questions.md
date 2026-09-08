@@ -19,7 +19,7 @@ Backup Job יוצר קבצי גיבוי (VBK/VIB) לצורך שמירה ושחז
 <details class="qa">
 <summary>מהם VBK, VIB ו-VRB?</summary>
 
-VBK = קובץ גיבוי מלא (Full). VIB = קובץ אינקרementלי קדימה (Forward Incremental). VRB = קובץ אינקרementלי הפוך (Reverse Incremental) שנוצר בשיטת Reverse Incremental Backup.
+VBK = קובץ גיבוי מלא (Full). VIB = קובץ אינקרמנטלי קדימה (Forward Incremental). VRB = קובץ אינקרמנטלי הפוך (Reverse Incremental) שנוצר בשיטת Reverse Incremental Backup.
 
 </details>
 
@@ -33,7 +33,7 @@ VBK = קובץ גיבוי מלא (Full). VIB = קובץ אינקרementלי קד
 <details class="qa">
 <summary>מה ההבדל בין Forward Incremental ל-Reverse Incremental?</summary>
 
-ב-Forward Incremental, ה-Full נשאר קבוע וכל האינקרементלים נוספים אליו לאורך זמן (עם Merge של הישן ביותר). ב-Reverse Incremental, ה-VBK תמיד מייצג את המצב העדכני ביותר, וקבצי VRB "מזיזים אחורה" בזמן.
+ב-Forward Incremental, ה-Full נשאר קבוע וכל האינקרמנטלים נוספים אליו לאורך זמן (עם Merge של הישן ביותר). ב-Reverse Incremental, ה-VBK תמיד מייצג את המצב העדכני ביותר, וקבצי VRB "מזיזים אחורה" בזמן.
 
 </details>
 
@@ -70,7 +70,7 @@ SOBR מאחד מספר repositories לאחסון יחיד לוגי, עם אפש�
 <details class="qa">
 <summary>מה ההבדל בין CBT ל-RCT?</summary>
 
-CBT (Changed Block Tracking) הוא מנגנון VMware לזיהוי בלוקים שהשתנו. RCT (Resilient Change Tracking) הוא המקבילה ב-Hyper-V. שניהם מאפשרים גיבוי אינקרementלי מהיר ללא סריקה מלאה.
+CBT (Changed Block Tracking) הוא מנגנון VMware לזיהוי בלוקים שהשתנו. RCT (Resilient Change Tracking) הוא המקבילה ב-Hyper-V. שניהם מאפשרים גיבוי אינקרמנטלי מהיר ללא סריקה מלאה.
 
 </details>
 

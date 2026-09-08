@@ -15,7 +15,7 @@ part: 8/10
 - **Label** - תגית שמשייכת agent ליכולות מסוימות (למשל `linux`, `docker`, `gpu`)
 
 ## למה לא להריץ הכל על ה-Controller?
-1. **ביצועים** - הControlller אחראי על UI ו-scheduling, לא כדאי להעמיס עליו builds כבדים
+1. **ביצועים** - ה-Controller אחראי על UI ו-scheduling, לא כדאי להעמיס עליו builds כבדים
 2. **בידוד** - כל build צריך סביבה נקייה, לא לזהם את ה-controller
 3. **סקיילביליות** - אפשר להוסיף agents לפי דרישה
 4. **גיוון פלטפורמות** - agents שונים ל-Windows/Linux/macOS/ARM
