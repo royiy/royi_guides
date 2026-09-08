@@ -131,23 +131,47 @@ git shortlog -sn                             # סטטיסטיקת commits לפי
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: איך תשחזר branch שנמחק בטעות?**
-ת: דרך `git reflog`, שמאתר את ה-commit האחרון שהיה על אותו branch לפני המחיקה, ואז `git branch <name> <hash>` יוצר מחדש את ה-branch מאותה נקודה.
+<details class="qa">
+<summary>איך תשחזר branch שנמחק בטעות?</summary>
 
-**ש: מה ההבדל בין `git checkout --ours` ל-`--theirs` בזמן פתרון קונפליקט?**
-ת: `--ours` שומר את הגרסה מהbranch שאתה נמצא עליו (בdרך כלל ה-target של המיזוג). `--theirs` שומר את הגרסה מה-branch שממזגים אליו. שימושי כשרוצים לפתור קונפליקט בבחירה גורפת של צד אחד, בלי merge ידני שורה-שורה.
+דרך `git reflog`, שמאתר את ה-commit האחרון שהיה על אותו branch לפני המחיקה, ואז `git branch <name> <hash>` יוצר מחדש את ה-branch מאותה נקודה.
 
-**ש: איך מחפשים באיזה commit הוצג/הוסר קטע קוד מסוים בהיסטוריה?**
-ת: `git log -S "text"` (Pickaxe) מחפש commits שבהם מספר המופעים של המחרוזת השתנה. `git log -G "regex"` מחפש לפי regex בdiff עצמו. שימושי מאוד למציאת מתי בדיוק פונקציה נוספה/הוסרה.
+</details>
 
-**ש: איך מסירים קובץ גדול/רגיש מכל היסטוריית ה-Git, לא רק מה-commit הנוכחי?**
-ת: באמצעות `git filter-repo` (הכלי המומלץ כיום, מחליף את `filter-branch` הישן והאיטי) שכותב מחדש את כל ההיסטוריה בלי הקובץ, ולאחר מכן דורש `push --force` מתואם עם כל הצוות, כי כל ה-hashes משתנים.
+<details class="qa">
+<summary>מה ההבדל בין <code>git checkout --ours</code> ל-<code>--theirs</code> בזמן פתרון קונפליקט?</summary>
 
-**ש: מה זה `git worktree` ומתי הוא שימושי יותר מ-`git stash`?**
-ת: `worktree` מאפשר לפתוח כמה תיקיות עבודה במקביל מאותו repository, כל אחת על branch אחר, בלי לעשות switch/stash. שימושי כשצריך לעבוד ממש בו-זמנית על שני דברים (למשל hotfix דחוף תוך כדי feature ארוך שלא רוצים "להקפיא").
+`--ours` שומר את הגרסה מהbranch שאתה נמצא עליו (בdרך כלל ה-target של המיזוג). `--theirs` שומר את הגרסה מה-branch שממזגים אליו. שימושי כשרוצים לפתור קונפליקט בבחירה גורפת של צד אחד, בלי merge ידני שורה-שורה.
 
-**ש: מה תעשה אם `git push` נכשל עם השגיאה "rejected - non-fast-forward"?**
-ת: זה אומר שהרימוט מכיל commits שאין לך מקומית. הפתרון הנכון הוא `git pull` (או `git fetch` + `merge`/`rebase`) כדי לשלב את השינויים החדשים קודם, ורק אז `push`. **אין** להשתמש ב-`push --force` כפתרון ברירת מחדל, כי זה עלול למחוק עבודה של אחרים.
+</details>
+
+<details class="qa">
+<summary>איך מחפשים באיזה commit הוצג/הוסר קטע קוד מסוים בהיסטוריה?</summary>
+
+`git log -S "text"` (Pickaxe) מחפש commits שבהם מספר המופעים של המחרוזת השתנה. `git log -G "regex"` מחפש לפי regex בdiff עצמו. שימושי מאוד למציאת מתי בדיוק פונקציה נוספה/הוסרה.
+
+</details>
+
+<details class="qa">
+<summary>איך מסירים קובץ גדול/רגיש מכל היסטוריית ה-Git, לא רק מה-commit הנוכחי?</summary>
+
+באמצעות `git filter-repo` (הכלי המומלץ כיום, מחליף את `filter-branch` הישן והאיטי) שכותב מחדש את כל ההיסטוריה בלי הקובץ, ולאחר מכן דורש `push --force` מתואם עם כל הצוות, כי כל ה-hashes משתנים.
+
+</details>
+
+<details class="qa">
+<summary>מה זה <code>git worktree</code> ומתי הוא שימושי יותר מ-<code>git stash</code>?</summary>
+
+`worktree` מאפשר לפתוח כמה תיקיות עבודה במקביל מאותו repository, כל אחת על branch אחר, בלי לעשות switch/stash. שימושי כשצריך לעבוד ממש בו-זמנית על שני דברים (למשל hotfix דחוף תוך כדי feature ארוך שלא רוצים "להקפיא").
+
+</details>
+
+<details class="qa">
+<summary>מה תעשה אם <code>git push</code> נכשל עם השגיאה "rejected - non-fast-forward"?</summary>
+
+זה אומר שהרימוט מכיל commits שאין לך מקומית. הפתרון הנכון הוא `git pull` (או `git fetch` + `merge`/`rebase`) כדי לשלב את השינויים החדשים קודם, ורק אז `push`. **אין** להשתמש ב-`push --force` כפתרון ברירת מחדל, כי זה עלול למחוק עבודה של אחרים.
+
+</details>
 
 ## קישורים חיצוניים
 

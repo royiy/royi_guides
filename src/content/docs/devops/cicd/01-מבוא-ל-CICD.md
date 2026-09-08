@@ -456,20 +456,40 @@ jobs:
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Continuous Delivery ל-Continuous Deployment?**
-ת: ב-Delivery יש אישור ידני לפני הפריסה לפרודקשן, ואילו ב-Deployment הפריסה אוטומטית לחלוטין ללא מגע יד אדם, בתנאי שכל הבדיקות עברו.
+<details class="qa">
+<summary>מה ההבדל בין Continuous Delivery ל-Continuous Deployment?</summary>
 
-**ש: מהו "Pipeline as Code" ולמה זה חשוב?**
-ת: הגדרת שלבי ה-CI/CD כקובץ קוד (למשל `Jenkinsfile` או `.github/workflows/*.yml`) שנשמר יחד עם הקוד ב-Git. זה מאפשר גרסאות, code review על השינויים בפייפליין עצמו, ושחזור קל.
+ב-Delivery יש אישור ידני לפני הפריסה לפרודקשן, ואילו ב-Deployment הפריסה אוטומטית לחלוטין ללא מגע יד אדם, בתנאי שכל הבדיקות עברו.
 
-**ש: מהם היתרונות של CI/CD מבחינת עסקית?**
-ת: זמן שחרור (time-to-market) מהיר יותר, פחות באגים בפרודקשן, יכולת rollback מהירה, ושיפור שיתוף הפעולה בין Dev ל-Ops.
+</details>
 
-**ש: מה זה "Shift Left" בהקשר של CI/CD?**
-ת: הזזת בדיקות (איכות, אבטחה) לשלב מוקדם ככל האפשר בתהליך הפיתוח, כדי לתפוס בעיות מוקדם וזול יותר.
+<details class="qa">
+<summary>מהו "Pipeline as Code" ולמה זה חשוב?</summary>
 
-**ש: תאר תרחיש שבו pipeline נכשל – איך היית מנפה (debug) אותו?**
-ת: בדיקת ה-logs של השלב שנכשל, שחזור מקומי (local reproduction) של הפקודה שנכשלה, בדיקת גרסאות תלויות, ווידוא שאין הבדל סביבתי (env vars, secrets) בין המקומי ל-CI.
+הגדרת שלבי ה-CI/CD כקובץ קוד (למשל `Jenkinsfile` או `.github/workflows/*.yml`) שנשמר יחד עם הקוד ב-Git. זה מאפשר גרסאות, code review על השינויים בפייפליין עצמו, ושחזור קל.
+
+</details>
+
+<details class="qa">
+<summary>מהם היתרונות של CI/CD מבחינת עסקית?</summary>
+
+זמן שחרור (time-to-market) מהיר יותר, פחות באגים בפרודקשן, יכולת rollback מהירה, ושיפור שיתוף הפעולה בין Dev ל-Ops.
+
+</details>
+
+<details class="qa">
+<summary>מה זה "Shift Left" בהקשר של CI/CD?</summary>
+
+הזזת בדיקות (איכות, אבטחה) לשלב מוקדם ככל האפשר בתהליך הפיתוח, כדי לתפוס בעיות מוקדם וזול יותר.
+
+</details>
+
+<details class="qa">
+<summary>תאר תרחיש שבו pipeline נכשל – איך היית מנפה (debug) אותו?</summary>
+
+בדיקת ה-logs של השלב שנכשל, שחזור מקומי (local reproduction) של הפקודה שנכשלה, בדיקת גרסאות תלויות, ווידוא שאין הבדל סביבתי (env vars, secrets) בין המקומי ל-CI.
+
+</details>
 
 ## קישורים חיצוניים
 

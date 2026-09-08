@@ -192,17 +192,37 @@ pipeline {
 
 ## שאלות ראיון עבודה בנושא Git/GitHub Integration
 
-**ש: מה ההבדל בין Polling ל-Webhooks בהפעלת builds?**
-ת: Polling הוא בדיקה תקופתית יזומה של Jenkins מול ה-repo (עומס מיותר, עיכוב). Webhook הוא push התראה מה-Git server ל-Jenkins ברגע שקורה אירוע - מיידי ויעיל יותר, אבל דורש ש-Jenkins יהיה נגיש מהאינטרנט.
+<details class="qa">
+<summary>מה ההבדל בין Polling ל-Webhooks בהפעלת builds?</summary>
 
-**ש: איך מגדירים Jenkins להריץ build אוטומטית על כל Pull Request?**
-ת: באמצעות Multibranch Pipeline או GitHub Organization folder, עם Behavior "Discover pull requests from origin/forks", יחד עם webhook או polling.
+Polling הוא בדיקה תקופתית יזומה של Jenkins מול ה-repo (עומס מיותר, עיכוב). Webhook הוא push התראה מה-Git server ל-Jenkins ברגע שקורה אירוע - מיידי ויעיל יותר, אבל דורש ש-Jenkins יהיה נגיש מהאינטרנט.
 
-**ש: מה זה Multibranch Pipeline ומה היתרון שלו?**
-ת: פיצ'ר שסורק אוטומטית repository ויוצר job נפרד לכל branch שמכיל Jenkinsfile - חוסך יצירת jobs ידנית לכל branch, ומנקה jobs אוטומטית כש-branch נמחק.
+</details>
 
-**ש: איך שומרים credentials של Git בצורה מאובטחת ב-Jenkins?**
-ת: דרך Jenkins Credentials Store (מוצפן ב-JENKINS_HOME), עם scope מוגבל, לרוב SSH key ייעודי (Deploy Key) עם הרשאות read-only, ולא שימוש בפרטי המשתמש האישיים.
+<details class="qa">
+<summary>איך מגדירים Jenkins להריץ build אוטומטית על כל Pull Request?</summary>
 
-**ש: מה זה `env.CHANGE_ID` ומתי הוא זמין?**
-ת: משתנה סביבה שזמין ב-Multibranch Pipeline כאשר ה-build רץ על Pull Request, מכיל את מספר ה-PR.
+באמצעות Multibranch Pipeline או GitHub Organization folder, עם Behavior "Discover pull requests from origin/forks", יחד עם webhook או polling.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Multibranch Pipeline ומה היתרון שלו?</summary>
+
+פיצ'ר שסורק אוטומטית repository ויוצר job נפרד לכל branch שמכיל Jenkinsfile - חוסך יצירת jobs ידנית לכל branch, ומנקה jobs אוטומטית כש-branch נמחק.
+
+</details>
+
+<details class="qa">
+<summary>איך שומרים credentials של Git בצורה מאובטחת ב-Jenkins?</summary>
+
+דרך Jenkins Credentials Store (מוצפן ב-JENKINS_HOME), עם scope מוגבל, לרוב SSH key ייעודי (Deploy Key) עם הרשאות read-only, ולא שימוש בפרטי המשתמש האישיים.
+
+</details>
+
+<details class="qa">
+<summary>מה זה <code>env.CHANGE_ID</code> ומתי הוא זמין?</summary>
+
+משתנה סביבה שזמין ב-Multibranch Pipeline כאשר ה-build רץ על Pull Request, מכיל את מספר ה-PR.
+
+</details>

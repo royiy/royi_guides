@@ -171,20 +171,40 @@ done
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה הבעיה ב-`for line in $(cat file.txt)`?**
-ת: הפקודה מבצעת word splitting לפי IFS (בדרך כלל רווח/טאב/newline), כך שכל מילה (לא שורה!) הופכת לאיטרציה נפרדת, וגם עוברת glob expansion. הדרך הנכונה היא `while IFS= read -r line; do ... done < file.txt`.
+<details class="qa">
+<summary>מה הבעיה ב-<code>for line in $(cat file.txt)</code>?</summary>
 
-**ש: מה ההבדל בין `break` ל-`continue`?**
-ת: `break` יוצא לגמרי מהלולאה. `continue` מדלג על שאר הקוד באיטרציה הנוכחית וממשיך לאיטרציה הבאה.
+הפקודה מבצעת word splitting לפי IFS (בדרך כלל רווח/טאב/newline), כך שכל מילה (לא שורה!) הופכת לאיטרציה נפרדת, וגם עוברת glob expansion. הדרך הנכונה היא `while IFS= read -r line; do ... done < file.txt`.
 
-**ש: איך יוצאים משתי לולאות מקוננות בבת אחת?**
-ת: `break 2` (או `continue 2` כדי לדלג לרמה החיצונית).
+</details>
 
-**ש: מה ההבדל בין `while` ל-`until`?**
-ת: `while` ממשיך לרוץ כל עוד התנאי אמת. `until` ממשיך לרוץ כל עוד התנאי שקר (כלומר רץ עד שהתנאי הופך לאמת).
+<details class="qa">
+<summary>מה ההבדל בין <code>break</code> ל-<code>continue</code>?</summary>
 
-**ש: איך אפשר ליצור לולאה אינסופית ב-Bash?**
-ת: `while true; do ... done` או `while :; do ... done` (`:` היא פקודה מובנית שתמיד מחזירה 0).
+`break` יוצא לגמרי מהלולאה. `continue` מדלג על שאר הקוד באיטרציה הנוכחית וממשיך לאיטרציה הבאה.
+
+</details>
+
+<details class="qa">
+<summary>איך יוצאים משתי לולאות מקוננות בבת אחת?</summary>
+
+`break 2` (או `continue 2` כדי לדלג לרמה החיצונית).
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>while</code> ל-<code>until</code>?</summary>
+
+`while` ממשיך לרוץ כל עוד התנאי אמת. `until` ממשיך לרוץ כל עוד התנאי שקר (כלומר רץ עד שהתנאי הופך לאמת).
+
+</details>
+
+<details class="qa">
+<summary>איך אפשר ליצור לולאה אינסופית ב-Bash?</summary>
+
+`while true; do ... done` או `while :; do ... done` (`:` היא פקודה מובנית שתמיד מחזירה 0).
+
+</details>
 
 ## תרגילים לתרגול עצמי
 

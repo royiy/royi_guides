@@ -256,17 +256,37 @@ post {
 
 ## שאלות ראיון עבודה בנושא Jenkins ו-Docker
 
-**ש: מה ההבדל בין שיתוף docker.sock לבין Docker-in-Docker אמיתי?**
-ת: שיתוף socket מריץ containers "אחים" ל-Jenkins על ה-host daemon עצמו - פשוט ומהיר אבל עם השלכות אבטחה (גישה מלאה ל-daemon). DinD אמיתי מריץ Docker daemon נפרד בתוך container, עם בידוד טוב יותר אך דורש privileged mode ולעיתים בעיות ביצועים.
+<details class="qa">
+<summary>מה ההבדל בין שיתוף docker.sock לבין Docker-in-Docker אמיתי?</summary>
 
-**ש: איך הייתם מנקים images ישנים כדי לא למלא את הדיסק?**
-ת: הוספת stage או job מתוזמן שמריץ `docker image prune` ומגביל את מספר הגרסאות השמורות לכל image, בנוסף ל-`post { always { ... } }` בכל pipeline לניקוי images שנוצרו בבילד הנוכחי.
+שיתוף socket מריץ containers "אחים" ל-Jenkins על ה-host daemon עצמו - פשוט ומהיר אבל עם השלכות אבטחה (גישה מלאה ל-daemon). DinD אמיתי מריץ Docker daemon נפרד בתוך container, עם בידוד טוב יותר אך דורש privileged mode ולעיתים בעיות ביצועים.
 
-**ש: מה היתרון בשימוש ב-Kubernetes plugin להרצת Jenkins agents?**
-ת: מאפשר agents דינמיים ואפמריים (ephemeral) שנוצרים per-build ונמחקים אחרי, מה שנותן scaling אלסטי, בידוד מלא בין builds, וניצול משאבים יעיל יותר מאשר agents סטטיים.
+</details>
 
-**ש: איך מבטיחים שה-image שנבנה זהה ל-image שנבדק ונפרס?**
-ת: על ידי תיוג ה-image בבנייה אחת (למשל עם commit hash), והשימוש באותו tag בכל שלבי הבדיקה והפריסה, ללא re-build בין השלבים ("build once, deploy everywhere").
+<details class="qa">
+<summary>איך הייתם מנקים images ישנים כדי לא למלא את הדיסק?</summary>
 
-**ש: מהו Multi-stage Dockerfile ולמה הוא שימושי ב-CI?**
-ת: מאפשר להשתמש בכמה שלבי build ב-Dockerfile אחד (למשל build עם כלים כבדים, ואז runtime image קליל) - מקטין את גודל ה-image הסופי ומשפר אבטחה על ידי הסרת כלי build מיותרים מה-production image.
+הוספת stage או job מתוזמן שמריץ `docker image prune` ומגביל את מספר הגרסאות השמורות לכל image, בנוסף ל-`post { always { ... } }` בכל pipeline לניקוי images שנוצרו בבילד הנוכחי.
+
+</details>
+
+<details class="qa">
+<summary>מה היתרון בשימוש ב-Kubernetes plugin להרצת Jenkins agents?</summary>
+
+מאפשר agents דינמיים ואפמריים (ephemeral) שנוצרים per-build ונמחקים אחרי, מה שנותן scaling אלסטי, בידוד מלא בין builds, וניצול משאבים יעיל יותר מאשר agents סטטיים.
+
+</details>
+
+<details class="qa">
+<summary>איך מבטיחים שה-image שנבנה זהה ל-image שנבדק ונפרס?</summary>
+
+על ידי תיוג ה-image בבנייה אחת (למשל עם commit hash), והשימוש באותו tag בכל שלבי הבדיקה והפריסה, ללא re-build בין השלבים ("build once, deploy everywhere").
+
+</details>
+
+<details class="qa">
+<summary>מהו Multi-stage Dockerfile ולמה הוא שימושי ב-CI?</summary>
+
+מאפשר להשתמש בכמה שלבי build ב-Dockerfile אחד (למשל build עם כלים כבדים, ואז runtime image קליל) - מקטין את גודל ה-image הסופי ומשפר אבטחה על ידי הסרת כלי build מיותרים מה-production image.
+
+</details>

@@ -152,23 +152,47 @@ git bisect reset     # יציאה מתהליך ה-bisect
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין `git stash` ל-`git commit`?**
-ת: Stash שומר שינויים זמנית **מחוץ להיסטוריית ה-commits**, כדי לעבור branch או לעבוד על משהו אחר בלי ליצור commit לא-גמור. Commit הוא שמירה קבועה בהיסטוריה. Stash הוא זמני ומיועד להעברה מהירה בין הקשרים עבודה.
+<details class="qa">
+<summary>מה ההבדל בין <code>git stash</code> ל-<code>git commit</code>?</summary>
 
-**ש: מתי תשתמש ב-`cherry-pick` במקום `merge`?**
-ת: כשרוצים להעביר commit ספציפי אחד (או כמה) מ-branch אחד לאחר, בלי להביא את כל שאר ההיסטוריה של ה-branch המקורי. שימושי במיוחד ל-hotfixes דחופים שצריך להעביר ל-production מבלי למזג branch פיתוח שלם שעדיין לא מוכן.
+Stash שומר שינויים זמנית **מחוץ להיסטוריית ה-commits**, כדי לעבור branch או לעבוד על משהו אחר בלי ליצור commit לא-גמור. Commit הוא שמירה קבועה בהיסטוריה. Stash הוא זמני ומיועד להעברה מהירה בין הקשרים עבודה.
 
-**ש: מה ההבדל בין Lightweight Tag ל-Annotated Tag?**
-ת: Lightweight tag הוא רק שם המצביע לcommit, ללא metadata נוסף. Annotated tag (`-a`) הוא אובייקט מלא בGit עם מחבר, תאריך, הודעה, וניתן אף לחתום עליו דיגיטלית (`-s`) – מומלץ ל-releases רשמיים.
+</details>
 
-**ש: איך `git bisect` עוזר למצוא באג?**
-ת: הוא מבצע חיפוש בינארי על היסטוריית ה-commits בין נקודה ידועה כתקינה לנקודה ידועה כמקולקלת, ומבקש ממך (או מסקריפט אוטומטי) לבדוק בכל שלב האם הcommit הנוכחי תקין – כך מגיעים ל-commit המדויק שהכניס את הבאג ב-log(n) בדיקות במקום O(n).
+<details class="qa">
+<summary>מתי תשתמש ב-<code>cherry-pick</code> במקום <code>merge</code>?</summary>
 
-**ש: מה קורה אם יש קונפליקט בזמן `cherry-pick`?**
-ת: בדיוק כמו ב-merge – Git עוצר, מסמן את הקונפליקט בקובץ, ומחכה שתפתור ידנית, תעשה `git add` על הקובץ הפתור, ואז `git cherry-pick --continue`. אפשר גם `git cherry-pick --abort` לביטול מלא.
+כשרוצים להעביר commit ספציפי אחד (או כמה) מ-branch אחד לאחר, בלי להביא את כל שאר ההיסטוריה של ה-branch המקורי. שימושי במיוחד ל-hotfixes דחופים שצריך להעביר ל-production מבלי למזג branch פיתוח שלם שעדיין לא מוכן.
 
-**ש: מה ההבדל בין Branch ל-Tag מבחינה טכנית?**
-ת: שניהם בעצם pointers לcommit. ההבדל: Branch הוא **נייד** – מתעדכן אוטומטית לכל commit חדש שנוצר עליו. Tag הוא **קבוע** – מצביע לתמיד לאותו commit ספציפי, ולא נועד לזוז.
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Lightweight Tag ל-Annotated Tag?</summary>
+
+Lightweight tag הוא רק שם המצביע לcommit, ללא metadata נוסף. Annotated tag (`-a`) הוא אובייקט מלא בGit עם מחבר, תאריך, הודעה, וניתן אף לחתום עליו דיגיטלית (`-s`) – מומלץ ל-releases רשמיים.
+
+</details>
+
+<details class="qa">
+<summary>איך <code>git bisect</code> עוזר למצוא באג?</summary>
+
+הוא מבצע חיפוש בינארי על היסטוריית ה-commits בין נקודה ידועה כתקינה לנקודה ידועה כמקולקלת, ומבקש ממך (או מסקריפט אוטומטי) לבדוק בכל שלב האם הcommit הנוכחי תקין – כך מגיעים ל-commit המדויק שהכניס את הבאג ב-log(n) בדיקות במקום O(n).
+
+</details>
+
+<details class="qa">
+<summary>מה קורה אם יש קונפליקט בזמן <code>cherry-pick</code>?</summary>
+
+בדיוק כמו ב-merge – Git עוצר, מסמן את הקונפליקט בקובץ, ומחכה שתפתור ידנית, תעשה `git add` על הקובץ הפתור, ואז `git cherry-pick --continue`. אפשר גם `git cherry-pick --abort` לביטול מלא.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Branch ל-Tag מבחינה טכנית?</summary>
+
+שניהם בעצם pointers לcommit. ההבדל: Branch הוא **נייד** – מתעדכן אוטומטית לכל commit חדש שנוצר עליו. Tag הוא **קבוע** – מצביע לתמיד לאותו commit ספציפי, ולא נועד לזוז.
+
+</details>
 
 ## קישורים חיצוניים
 

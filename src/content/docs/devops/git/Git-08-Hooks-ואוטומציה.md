@@ -139,23 +139,47 @@ git push --no-verify
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Client-Side Hooks ל-Server-Side Hooks?**
-ת: Client-side hooks (כמו `pre-commit`, `pre-push`) רצים על המחשב של המפתח וניתנים לעקיפה בקלות (`--no-verify`). Server-side hooks (כמו `pre-receive`) רצים על שרת ה-Git עצמו ולא ניתן לעקוף אותם – אכיפה אמיתית וחזקה יותר, אך דורשת ניהול שרת.
+<details class="qa">
+<summary>מה ההבדל בין Client-Side Hooks ל-Server-Side Hooks?</summary>
 
-**ש: למה Git Hooks לא "נשלחים" אוטומטית עם `git clone`?**
-ת: כי `.git/hooks/` נמצא בתוך תיקיית המטא-דאטה של Git עצמה, ולא חלק מהworking tree שנעקב ע"י Git. לכן כלים כמו Husky פותרים את זה על ידי שמירת ה-hooks בתיקייה נעקבת (`.husky/`) והתקנתם אוטומטית דרך script ב-`package.json` שרץ ב-`npm install`.
+Client-side hooks (כמו `pre-commit`, `pre-push`) רצים על המחשב של המפתח וניתנים לעקיפה בקלות (`--no-verify`). Server-side hooks (כמו `pre-receive`) רצים על שרת ה-Git עצמו ולא ניתן לעקוף אותם – אכיפה אמיתית וחזקה יותר, אך דורשת ניהול שרת.
 
-**ש: מהו Conventional Commits ואיך Git Hooks עוזרים לאכוף אותו?**
-ת: תקן לכתיבת הודעות commit בפורמט מובנה (`feat:`, `fix:`, `chore:`) שמאפשר יצירה אוטומטית של CHANGELOG וקביעת גרסת SemVer הבאה. `commit-msg` hook (בעזרת commitlint) בודק שההודעה עומדת בפורמט, ודוחה את הcommit אם לא.
+</details>
 
-**ש: מה ההבדל בין `pre-commit` ל-`pre-push` hooks, ומתי תשתמש בכל אחד?**
-ת: `pre-commit` רץ על כל commit בודד – מיועד לבדיקות מהירות מאוד (lint, format) כדי לא להאט את זרימת העבודה. `pre-push` רץ רק לפני שליחה לרימוט – מקום טוב יותר לבדיקות איטיות יותר (unit tests מלאים), כי push קורה בתדירות נמוכה יותר מ-commit.
+<details class="qa">
+<summary>למה Git Hooks לא "נשלחים" אוטומטית עם <code>git clone</code>?</summary>
 
-**ש: איך אפשר להשתמש ב-Git Hook כדי למנוע דליפת secrets לrepository?**
-ת: שילוב כלי כמו `gitleaks` או `detect-secrets` כ-`pre-commit` hook שסורק את השינויים המוסטגים לדפוסים של API keys/tokens/passwords, ודוחה את ה-commit אם נמצא משהו חשוד – לפני שהסוד בכלל נכנס להיסטוריית Git.
+כי `.git/hooks/` נמצא בתוך תיקיית המטא-דאטה של Git עצמה, ולא חלק מהworking tree שנעקב ע"י Git. לכן כלים כמו Husky פותרים את זה על ידי שמירת ה-hooks בתיקייה נעקבת (`.husky/`) והתקנתם אוטומטית דרך script ב-`package.json` שרץ ב-`npm install`.
 
-**ש: מהם החסרונות של הסתמכות בלעדית על client-side hooks לאכיפת סטנדרטים?**
-ת: הם ניתנים לעקיפה בקלות (`git commit --no-verify`) על ידי כל מפתח, וגם לא כל מפתח מתקין אותם נכון. לכן תמיד צריך גם שכבת אכיפה בשרת – CI checks חובה ו-branch protection rules – כרשת ביטחון אמיתית.
+</details>
+
+<details class="qa">
+<summary>מהו Conventional Commits ואיך Git Hooks עוזרים לאכוף אותו?</summary>
+
+תקן לכתיבת הודעות commit בפורמט מובנה (`feat:`, `fix:`, `chore:`) שמאפשר יצירה אוטומטית של CHANGELOG וקביעת גרסת SemVer הבאה. `commit-msg` hook (בעזרת commitlint) בודק שההודעה עומדת בפורמט, ודוחה את הcommit אם לא.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>pre-commit</code> ל-<code>pre-push</code> hooks, ומתי תשתמש בכל אחד?</summary>
+
+`pre-commit` רץ על כל commit בודד – מיועד לבדיקות מהירות מאוד (lint, format) כדי לא להאט את זרימת העבודה. `pre-push` רץ רק לפני שליחה לרימוט – מקום טוב יותר לבדיקות איטיות יותר (unit tests מלאים), כי push קורה בתדירות נמוכה יותר מ-commit.
+
+</details>
+
+<details class="qa">
+<summary>איך אפשר להשתמש ב-Git Hook כדי למנוע דליפת secrets לrepository?</summary>
+
+שילוב כלי כמו `gitleaks` או `detect-secrets` כ-`pre-commit` hook שסורק את השינויים המוסטגים לדפוסים של API keys/tokens/passwords, ודוחה את ה-commit אם נמצא משהו חשוד – לפני שהסוד בכלל נכנס להיסטוריית Git.
+
+</details>
+
+<details class="qa">
+<summary>מהם החסרונות של הסתמכות בלעדית על client-side hooks לאכיפת סטנדרטים?</summary>
+
+הם ניתנים לעקיפה בקלות (`git commit --no-verify`) על ידי כל מפתח, וגם לא כל מפתח מתקין אותם נכון. לכן תמיד צריך גם שכבת אכיפה בשרת – CI checks חובה ו-branch protection rules – כרשת ביטחון אמיתית.
+
+</details>
 
 ## קישורים חיצוניים
 

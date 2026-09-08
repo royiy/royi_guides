@@ -77,13 +77,19 @@ Veeam היא אחת מפלטפורמות הגיבוי וה-DR (Disaster Recovery
 
 ## שאלות נפוצות (FAQ)
 
-**ש: האם אפשר להתקין את כל הרכיבים על 
-שרת אחד?**
-ת: כן, בסביבות קטנות ניתן להריץ הכול (Backup Server + Proxy + Repository) על שרת יחיד, אך בסביבות בינוניות-גדולות מומלץ להפריד לצורכי ביצועים וזמינות.
+<details class="qa">
+<summary>האם אפשר להתקין את כל הרכיבים על שרת אחד?</summary>
 
-**ש: מהו Veeam Community Edition?**
+כן, בסביבות קטנות ניתן להריץ הכול (Backup Server + Proxy + Repository) על שרת יחיד, אך בסביבות בינוניות-גדולות מומלץ להפריד לצורכי ביצועים וזמינות.
+
+</details>
+
+<details class="qa">
+<summary>מהו Veeam Community Edition?</summary>
 
 גרסה חינמית עם עד 10 מכונות, מצוינת ללימוד ותרגול.
+
+</details>
 
 ## קישורים חיצוניים
 

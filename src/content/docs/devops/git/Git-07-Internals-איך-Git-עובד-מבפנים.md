@@ -123,23 +123,47 @@ Git שומר commits "יתומים" (unreachable) למשך זמן מה (בריר
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מהם ארבעת סוגי האובייקטים הבסיסיים ב-Git?**
-ת: Blob (תוכן קובץ), Tree (מבנה תיקייה – רשימת blobs/trees), Commit (מצביע ל-tree + הורה + metadata), ו-Tag (annotated tag – מצביע לcommit עם metadata נוסף).
+<details class="qa">
+<summary>מהם ארבעת סוגי האובייקטים הבסיסיים ב-Git?</summary>
 
-**ש: מה זה Detached HEAD state ולמה הוא מסוכן?**
-ת: מצב שבו `HEAD` מצביע ישירות לcommit במקום דרך branch. מסוכן כי אם עושים commits חדשים במצב הזה ואז עוברים ל-branch אחר, ה-commits עלולים "ללכת לאיבוד" – הם לא מקושרים לאף branch, ורק reflog (לזמן מוגבל) יכול לשחזר אותם.
+Blob (תוכן קובץ), Tree (מבנה תיקייה – רשימת blobs/trees), Commit (מצביע ל-tree + הורה + metadata), ו-Tag (annotated tag – מצביע לcommit עם metadata נוסף).
 
-**ש: איך Git משיג יעילות אחסון כל כך גבוהה, גם בפרויקטים עם היסטוריה ענקית?**
-ת: דרך שילוב של content-addressable storage (תוכן זהה = hash זהה = אחסון פעם אחת בלבד), ו-packfiles שדוחסים אובייקטים דומים באמצעות deltas (הפרשים) במקום העתקות מלאות.
+</details>
 
-**ש: מה ההבדל בין Blob ל-Tree ב-Git?**
-ת: Blob מכיל רק את התוכן הגולמי של קובץ (בייטים), ללא שם או metadata. Tree הוא כמו "תיקייה" – מבנה שממפה שמות קבצים והרשאות ל-blobs (או trees מקוננים לתת-תיקיות).
+<details class="qa">
+<summary>מה זה Detached HEAD state ולמה הוא מסוכן?</summary>
 
-**ש: מה קורה בפועל כשעושים `git commit`?**
-ת: Git יוצר אובייקט tree חדש שמייצג את מצב ה-staging area, ואז אובייקט commit חדש שמצביע לאותו tree ולcommit ההורה (הcommit הנוכחי לפני השינוי), ולבסוף מזיז את מצביע ה-branch הנוכחי (למשל `main`) לcommit החדש.
+מצב שבו `HEAD` מצביע ישירות לcommit במקום דרך branch. מסוכן כי אם עושים commits חדשים במצב הזה ואז עוברים ל-branch אחר, ה-commits עלולים "ללכת לאיבוד" – הם לא מקושרים לאף branch, ורק reflog (לזמן מוגבל) יכול לשחזר אותם.
 
-**ש: איך `git gc` ו-reflog קשורים זה לזה?**
-ת: `reflog` שומר תיעוד של תזוזות HEAD, כולל לcommits ש"אבדו" (unreachable). `git gc` (garbage collection) הוא מה שבסופו של דבר מוחק לצמיתות אובייקטים unreachable, אבל רק אחרי פרק זמן ברירת מחדל (בדרך כלל 30-90 יום) – זו הסיבה שיש חלון זמן לשחזר "טעויות" באמצעות reflog לפני שהן נמחקות באמת.
+</details>
+
+<details class="qa">
+<summary>איך Git משיג יעילות אחסון כל כך גבוהה, גם בפרויקטים עם היסטוריה ענקית?</summary>
+
+דרך שילוב של content-addressable storage (תוכן זהה = hash זהה = אחסון פעם אחת בלבד), ו-packfiles שדוחסים אובייקטים דומים באמצעות deltas (הפרשים) במקום העתקות מלאות.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Blob ל-Tree ב-Git?</summary>
+
+Blob מכיל רק את התוכן הגולמי של קובץ (בייטים), ללא שם או metadata. Tree הוא כמו "תיקייה" – מבנה שממפה שמות קבצים והרשאות ל-blobs (או trees מקוננים לתת-תיקיות).
+
+</details>
+
+<details class="qa">
+<summary>מה קורה בפועל כשעושים <code>git commit</code>?</summary>
+
+Git יוצר אובייקט tree חדש שמייצג את מצב ה-staging area, ואז אובייקט commit חדש שמצביע לאותו tree ולcommit ההורה (הcommit הנוכחי לפני השינוי), ולבסוף מזיז את מצביע ה-branch הנוכחי (למשל `main`) לcommit החדש.
+
+</details>
+
+<details class="qa">
+<summary>איך <code>git gc</code> ו-reflog קשורים זה לזה?</summary>
+
+`reflog` שומר תיעוד של תזוזות HEAD, כולל לcommits ש"אבדו" (unreachable). `git gc` (garbage collection) הוא מה שבסופו של דבר מוחק לצמיתות אובייקטים unreachable, אבל רק אחרי פרק זמן ברירת מחדל (בדרך כלל 30-90 יום) – זו הסיבה שיש חלון זמן לשחזר "טעויות" באמצעות reflog לפני שהן נמחקות באמת.
+
+</details>
 
 ## קישורים חיצוניים
 

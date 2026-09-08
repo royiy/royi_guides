@@ -123,23 +123,47 @@ services:
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: למה Multi-Stage Build חשוב ב-CI/CD?**
-ת: הוא מפריד בין סביבת הבנייה (עם compiler, devDependencies) לסביבת הריצה, כך ה-image הסופי קטן, נקי ומאובטח יותר – רק מה שצריך כדי להריץ את האפליקציה.
+<details class="qa">
+<summary>למה Multi-Stage Build חשוב ב-CI/CD?</summary>
 
-**ש: מהי אסטרטגיית התיוג הנכונה ל-Docker images בפייפליין CI/CD?**
-ת: להשתמש ב-Git SHA (או semver לגרסאות רשמיות) כדי להבטיח traceability מדויק וreproducibility, ולהימנע מ-`latest` בלבד עבור deployments לפרודקשן.
+הוא מפריד בין סביבת הבנייה (עם compiler, devDependencies) לסביבת הריצה, כך ה-image הסופי קטן, נקי ומאובטח יותר – רק מה שצריך כדי להריץ את האפליקציה.
 
-**ש: מה זה "Build Once, Deploy Everywhere" ולמה זה עקרון חשוב?**
-ת: בונים image אחד פעם אחת ב-pipeline, ומעבירים בדיוק אותו artifact (עם config שונה per environment) דרך staging ועד production – כדי להבטיח שמה שנבדק הוא בדיוק מה שרץ בפרודקשן.
+</details>
 
-**ש: איך מריצים בדיקות אינטגרציה שדורשות מסד נתונים בתוך CI?**
-ת: באמצעות Docker Compose (או services מובנים ב-GitLab/GitHub Actions) שמרימים container של DB לצד האפליקציה, כך שהבדיקות רצות מול מסד אמיתי בסביבה מבודדת וזמנית.
+<details class="qa">
+<summary>מהי אסטרטגיית התיוג הנכונה ל-Docker images בפייפליין CI/CD?</summary>
 
-**ש: מה ההבדל בין Container Scanning ל-SAST?**
-ת: SAST (Static Application Security Testing) בודק את קוד המקור עצמו לפגיעויות. Container Scanning (כמו Trivy, Grype) בודק את שכבות ה-image המוכן – כולל תלויות מערכת ההפעלה וספריות – לפגיעויות ידועות (CVEs).
+להשתמש ב-Git SHA (או semver לגרסאות רשמיות) כדי להבטיח traceability מדויק וreproducibility, ולהימנע מ-`latest` בלבד עבור deployments לפרודקשן.
 
-**ש: מה היתרון בשימוש ב-BuildKit / Docker Buildx בפייפליין?**
-ת: תמיכה ב-cache mounts מתקדם, build מקבילי של שכבות, תמיכה ב-multi-platform builds (ARM/AMD64), ואינטגרציה עם cache מרוחק (כמו GitHub Actions cache) שמאיצה משמעותית זמני build.
+</details>
+
+<details class="qa">
+<summary>מה זה "Build Once, Deploy Everywhere" ולמה זה עקרון חשוב?</summary>
+
+בונים image אחד פעם אחת ב-pipeline, ומעבירים בדיוק אותו artifact (עם config שונה per environment) דרך staging ועד production – כדי להבטיח שמה שנבדק הוא בדיוק מה שרץ בפרודקשן.
+
+</details>
+
+<details class="qa">
+<summary>איך מריצים בדיקות אינטגרציה שדורשות מסד נתונים בתוך CI?</summary>
+
+באמצעות Docker Compose (או services מובנים ב-GitLab/GitHub Actions) שמרימים container של DB לצד האפליקציה, כך שהבדיקות רצות מול מסד אמיתי בסביבה מבודדת וזמנית.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Container Scanning ל-SAST?</summary>
+
+SAST (Static Application Security Testing) בודק את קוד המקור עצמו לפגיעויות. Container Scanning (כמו Trivy, Grype) בודק את שכבות ה-image המוכן – כולל תלויות מערכת ההפעלה וספריות – לפגיעויות ידועות (CVEs).
+
+</details>
+
+<details class="qa">
+<summary>מה היתרון בשימוש ב-BuildKit / Docker Buildx בפייפליין?</summary>
+
+תמיכה ב-cache mounts מתקדם, build מקבילי של שכבות, תמיכה ב-multi-platform builds (ARM/AMD64), ואינטגרציה עם cache מרוחק (כמו GitHub Actions cache) שמאיצה משמעותית זמני build.
+
+</details>
 
 ## קישורים חיצוניים
 

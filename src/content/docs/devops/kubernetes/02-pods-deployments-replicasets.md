@@ -320,26 +320,54 @@ kubectl delete pods -l app=nginx
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין Pod, ReplicaSet ו-Deployment?**
-ת: Pod הוא יחידת הריצה הבסיסית. ReplicaSet מוודא שרץ מספר קבוע של עותקי Pod. Deployment הוא שכבה מעל ReplicaSet שמוסיפה rolling updates, rollback והיסטוריית גרסאות - וזהו הרכיב שבו כמעט תמיד עובדים בפועל.
+<details class="qa">
+<summary>מה ההבדל בין Pod, ReplicaSet ו-Deployment?</summary>
 
-**ש: מה קורה כשמוחקים Pod שנוצר על ידי Deployment?**
-ת: ה-ReplicaSet שמנוהל על ידי ה-Deployment מזהה שיש פחות Pods מהרצוי, ומיד יוצר Pod חדש כדי לחזור למספר ה-replicas המוגדר.
+Pod הוא יחידת הריצה הבסיסית. ReplicaSet מוודא שרץ מספר קבוע של עותקי Pod. Deployment הוא שכבה מעל ReplicaSet שמוסיפה rolling updates, rollback והיסטוריית גרסאות - וזהו הרכיב שבו כמעט תמיד עובדים בפועל.
 
-**ש: מה ההבדל בין livenessProbe ל-readinessProbe?**
-ת: livenessProbe בודק אם הקונטיינר בכלל "חי" - כישלון גורם להפעלה מחדש. readinessProbe בודק אם הוא "מוכן לקבל תעבורה" - כישלון רק מסיר אותו זמנית מה-Service בלי להרוג אותו.
+</details>
 
-**ש: מה ההבדל בין requests ל-limits?**
-ת: requests הם המשאבים שה-Scheduler מבטיח שיהיו זמינים כשמשבץ Pod ל-Node. limits הם התקרה המקסימלית - חריגה ב-CPU גורמת ל-throttling, וחריגה ב-memory גורמת ל-OOMKill.
+<details class="qa">
+<summary>מה קורה כשמוחקים Pod שנוצר על ידי Deployment?</summary>
 
-**ש: איך מבצעים rollback לגרסה קודמת של Deployment?**
-ת: `kubectl rollout undo deployment/<name>`, ואפשר גם לחזור לגרסה ספציפית עם `--to-revision=N`, בהתבסס על ההיסטוריה שנשמרת אוטומטית.
+ה-ReplicaSet שמנוהל על ידי ה-Deployment מזהה שיש פחות Pods מהרצוי, ומיד יוצר Pod חדש כדי לחזור למספר ה-replicas המוגדר.
 
-**ש: מהו Multi-Container Pod ומתי משתמשים בו?**
-ת: Pod שמכיל כמה קונטיינרים שחולקים רשת ואחסון. נפוץ בדפוס Sidecar - למשל קונטיינר ראשי + proxy רשת (Envoy), אגרגטור לוגים, או Init Container שמכין את הסביבה לפני עליית האפליקציה הראשית.
+</details>
 
-**ש: מה ההבדל בין maxSurge ל-maxUnavailable ב-RollingUpdate?**
-ת: maxSurge קובע כמה Pods נוספים (מעבר למספר הרצוי) מותר ליצור זמנית בזמן העדכון. maxUnavailable קובע כמה Pods מותר שיהיו לא זמינים בו-זמנית בזמן העדכון.
+<details class="qa">
+<summary>מה ההבדל בין livenessProbe ל-readinessProbe?</summary>
+
+livenessProbe בודק אם הקונטיינר בכלל "חי" - כישלון גורם להפעלה מחדש. readinessProbe בודק אם הוא "מוכן לקבל תעבורה" - כישלון רק מסיר אותו זמנית מה-Service בלי להרוג אותו.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין requests ל-limits?</summary>
+
+requests הם המשאבים שה-Scheduler מבטיח שיהיו זמינים כשמשבץ Pod ל-Node. limits הם התקרה המקסימלית - חריגה ב-CPU גורמת ל-throttling, וחריגה ב-memory גורמת ל-OOMKill.
+
+</details>
+
+<details class="qa">
+<summary>איך מבצעים rollback לגרסה קודמת של Deployment?</summary>
+
+`kubectl rollout undo deployment/<name>`, ואפשר גם לחזור לגרסה ספציפית עם `--to-revision=N`, בהתבסס על ההיסטוריה שנשמרת אוטומטית.
+
+</details>
+
+<details class="qa">
+<summary>מהו Multi-Container Pod ומתי משתמשים בו?</summary>
+
+Pod שמכיל כמה קונטיינרים שחולקים רשת ואחסון. נפוץ בדפוס Sidecar - למשל קונטיינר ראשי + proxy רשת (Envoy), אגרגטור לוגים, או Init Container שמכין את הסביבה לפני עליית האפליקציה הראשית.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין maxSurge ל-maxUnavailable ב-RollingUpdate?</summary>
+
+maxSurge קובע כמה Pods נוספים (מעבר למספר הרצוי) מותר ליצור זמנית בזמן העדכון. maxUnavailable קובע כמה Pods מותר שיהיו לא זמינים בו-זמנית בזמן העדכון.
+
+</details>
 
 ---
 

@@ -289,23 +289,47 @@ helm search hub wordpress
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה זה Helm ומה הבעיה שהוא פותר?**
-ת: Helm הוא מנהל חבילות ל-Kubernetes שמאפשר לארוז אוספי YAML קשורים כ-Chart אחד עם templating (משתנים), במקום לכתוב ולנהל ידנית עשרות קבצי YAML לכל סביבה. הוא גם מספק ניהול מחזור חיים מלא - install, upgrade, rollback.
+<details class="qa">
+<summary>מה זה Helm ומה הבעיה שהוא פותר?</summary>
 
-**ש: מה ההבדל בין Chart ל-Release?**
-ת: Chart הוא החבילה עצמה (התבנית) - כמו קוד מקור. Release הוא מופע מותקן ומוגדר בפועל של Chart בקלאסטר, עם שם ייחודי משלו - אפשר להתקין את אותו Chart כמה פעמים כ-Releases נפרדים.
+Helm הוא מנהל חבילות ל-Kubernetes שמאפשר לארוז אוספי YAML קשורים כ-Chart אחד עם templating (משתנים), במקום לכתוב ולנהל ידנית עשרות קבצי YAML לכל סביבה. הוא גם מספק ניהול מחזור חיים מלא - install, upgrade, rollback.
 
-**ש: איך מבצעים rollback ב-Helm?**
-ת: `helm rollback <release-name> <revision-number>` - Helm שומר היסטוריית revisions אוטומטית לכל Release, כך שאפשר לחזור לכל גרסה קודמת בפקודה אחת.
+</details>
 
-**ש: מה ההבדל בין `helm install` ל-`helm upgrade --install`?**
-ת: `helm install` נכשל אם ה-Release כבר קיים. `helm upgrade --install` הוא idempotent - יתקין אם לא קיים, ויעדכן אם כן קיים. זה מומלץ מאוד לשימוש בפייפליינים אוטומטיים של CI/CD.
+<details class="qa">
+<summary>מה ההבדל בין Chart ל-Release?</summary>
 
-**ש: מה זה Helm Hook ולמה משתמשים בו?**
-ת: מנגנון שמאפשר להריץ משאבים (בדרך כלל Jobs) בנקודות מוגדרות במחזור החיים של Release, כמו pre-install או pre-upgrade - שימושי למשל להרצת migrations למסד נתונים לפני עדכון האפליקציה עצמה.
+Chart הוא החבילה עצמה (התבנית) - כמו קוד מקור. Release הוא מופע מותקן ומוגדר בפועל של Chart בקלאסטר, עם שם ייחודי משלו - אפשר להתקין את אותו Chart כמה פעמים כ-Releases נפרדים.
 
-**ש: איך אפשר לדרוס ערכים ב-Chart בלי לערוך את values.yaml הראשי?**
-ת: אפשר להעביר `--set key=value` בשורת הפקודה, או קובץ values נפרד עם `-f values-custom.yaml` - הערכים החדשים מתמזגים (merge) מעל ברירות המחדל.
+</details>
+
+<details class="qa">
+<summary>איך מבצעים rollback ב-Helm?</summary>
+
+`helm rollback <release-name> <revision-number>` - Helm שומר היסטוריית revisions אוטומטית לכל Release, כך שאפשר לחזור לכל גרסה קודמת בפקודה אחת.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>helm install</code> ל-<code>helm upgrade --install</code>?</summary>
+
+`helm install` נכשל אם ה-Release כבר קיים. `helm upgrade --install` הוא idempotent - יתקין אם לא קיים, ויעדכן אם כן קיים. זה מומלץ מאוד לשימוש בפייפליינים אוטומטיים של CI/CD.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Helm Hook ולמה משתמשים בו?</summary>
+
+מנגנון שמאפשר להריץ משאבים (בדרך כלל Jobs) בנקודות מוגדרות במחזור החיים של Release, כמו pre-install או pre-upgrade - שימושי למשל להרצת migrations למסד נתונים לפני עדכון האפליקציה עצמה.
+
+</details>
+
+<details class="qa">
+<summary>איך אפשר לדרוס ערכים ב-Chart בלי לערוך את values.yaml הראשי?</summary>
+
+אפשר להעביר `--set key=value` בשורת הפקודה, או קובץ values נפרד עם `-f values-custom.yaml` - הערכים החדשים מתמזגים (merge) מעל ברירות המחדל.
+
+</details>
 
 ---
 

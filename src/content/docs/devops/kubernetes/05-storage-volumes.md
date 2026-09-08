@@ -259,23 +259,47 @@ kubectl rollout status statefulset/postgres-cluster
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין emptyDir ל-PersistentVolume?**
-ת: emptyDir הוא אחסון זמני שקיים רק כל עוד ה-Pod קיים, ונמחק לצמיתות כשה-Pod נהרס. PersistentVolume הוא אחסון בעל מחזור חיים עצמאי מה-Pod - הוא נשאר קיים גם אחרי שה-Pod שהשתמש בו נמחק.
+<details class="qa">
+<summary>מה ההבדל בין emptyDir ל-PersistentVolume?</summary>
 
-**ש: מה תפקידו של PVC, ולמה לא פשוט להשתמש ב-PV ישירות?**
-ת: PVC מפריד בין המפתח (שרק מבקש "כמה אחסון ובאיזה access mode") לבין מנהל התשתית (שמספק את ה-PV בפועל, עם כל הפרטים הטכניים כמו סוג הדיסק, אזור וכו'). זו הפרדת אחריות (separation of concerns) שמאפשרת ניידות טובה יותר בין סביבות.
+emptyDir הוא אחסון זמני שקיים רק כל עוד ה-Pod קיים, ונמחק לצמיתות כשה-Pod נהרס. PersistentVolume הוא אחסון בעל מחזור חיים עצמאי מה-Pod - הוא נשאר קיים גם אחרי שה-Pod שהשתמש בו נמחק.
 
-**ש: מה זה Dynamic Provisioning ואיך הוא עובד?**
-ת: במקום שמנהל מערכת ייצור PVs מראש ידנית, StorageClass מגדיר "provisioner" (למשל AWS EBS CSI driver) שיוצר אוטומטית PV חדש בכל פעם שנוצר PVC המפנה אליו.
+</details>
 
-**ש: למה משתמשים ב-StatefulSet במקום Deployment עבור מסד נתונים?**
-ת: StatefulSet מספק לכל Pod זהות רשת יציבה (`pod-0`, `pod-1`...), סדר עלייה/כיבוי צפוי, ו-PVC נפרד וקבוע לכל Pod (דרך volumeClaimTemplates) - כל אלו קריטיים למערכות stateful מבוזרות שבהן לכל node תפקיד וזהות שונים.
+<details class="qa">
+<summary>מה תפקידו של PVC, ולמה לא פשוט להשתמש ב-PV ישירות?</summary>
 
-**ש: מה ההבדל בין reclaimPolicy: Retain ל-Delete?**
-ת: Delete מוחק אוטומטית את משאב האחסון בפועל (למשל את דיסק ה-EBS) כשה-PVC נמחק. Retain משאיר את הדאטה הפיזי גם אחרי מחיקת ה-PVC, ומעביר את ה-PV למצב "Released" - נדרשת התערבות ידנית כדי לשחזר או לנקות אותו.
+PVC מפריד בין המפתח (שרק מבקש "כמה אחסון ובאיזה access mode") לבין מנהל התשתית (שמספק את ה-PV בפועל, עם כל הפרטים הטכניים כמו סוג הדיסק, אזור וכו'). זו הפרדת אחריות (separation of concerns) שמאפשרת ניידות טובה יותר בין סביבות.
 
-**ש: מה ההבדל בין ReadWriteOnce ל-ReadWriteMany?**
-ת: ReadWriteOnce מאפשר mount לקריאה/כתיבה מ-Node יחיד בלבד, בעוד ReadWriteMany מאפשר mount מקביל מכמה Nodes - לא כל סוגי האחסון תומכים ב-RWX (לדוגמה AWS EBS לא תומך, אבל EFS כן).
+</details>
+
+<details class="qa">
+<summary>מה זה Dynamic Provisioning ואיך הוא עובד?</summary>
+
+במקום שמנהל מערכת ייצור PVs מראש ידנית, StorageClass מגדיר "provisioner" (למשל AWS EBS CSI driver) שיוצר אוטומטית PV חדש בכל פעם שנוצר PVC המפנה אליו.
+
+</details>
+
+<details class="qa">
+<summary>למה משתמשים ב-StatefulSet במקום Deployment עבור מסד נתונים?</summary>
+
+StatefulSet מספק לכל Pod זהות רשת יציבה (`pod-0`, `pod-1`...), סדר עלייה/כיבוי צפוי, ו-PVC נפרד וקבוע לכל Pod (דרך volumeClaimTemplates) - כל אלו קריטיים למערכות stateful מבוזרות שבהן לכל node תפקיד וזהות שונים.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין reclaimPolicy: Retain ל-Delete?</summary>
+
+Delete מוחק אוטומטית את משאב האחסון בפועל (למשל את דיסק ה-EBS) כשה-PVC נמחק. Retain משאיר את הדאטה הפיזי גם אחרי מחיקת ה-PVC, ומעביר את ה-PV למצב "Released" - נדרשת התערבות ידנית כדי לשחזר או לנקות אותו.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין ReadWriteOnce ל-ReadWriteMany?</summary>
+
+ReadWriteOnce מאפשר mount לקריאה/כתיבה מ-Node יחיד בלבד, בעוד ReadWriteMany מאפשר mount מקביל מכמה Nodes - לא כל סוגי האחסון תומכים ב-RWX (לדוגמה AWS EBS לא תומך, אבל EFS כן).
+
+</details>
 
 ---
 

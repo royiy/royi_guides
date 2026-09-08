@@ -106,20 +106,40 @@ Ctrl+D                 # יציאה מה-shell / EOF
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Bash ל-sh?**
-ת: sh הוא ה-POSIX shell המקורי (Bourne Shell), בעוד Bash הוא הרחבה שלו עם תכונות נוספות (arrays, string manipulation מתקדם, [[ ]], וכו'). לא כל סקריפט bash תקין כ-sh.
+<details class="qa">
+<summary>מה ההבדל בין Bash ל-sh?</summary>
 
-**ש: מה ההבדל בין `./script.sh` לבין `source script.sh`?**
-ת: `./script.sh` מריץ את הסקריפט בתת-תהליך (subshell) נפרד - שינויי משתנים לא ישפיעו על ה-shell הנוכחי. `source script.sh` (או `. script.sh`) מריץ אותו באותו תהליך shell, כך ששינויים במשתנים או ב-cd יישארו בתוקף גם אחרי שהסקריפט מסתיים.
+sh הוא ה-POSIX shell המקורי (Bourne Shell), בעוד Bash הוא הרחבה שלו עם תכונות נוספות (arrays, string manipulation מתקדם, [[ ]], וכו'). לא כל סקריפט bash תקין כ-sh.
 
-**ש: מהו exit code, ומה משמעות הערך 0?**
-ת: exit code הוא מספר בין 0 ל-255 שכל פקודה מחזירה בסיום ריצתה. 0 מציין הצלחה, כל ערך אחר מציין כישלון או קוד שגיאה ספציפי.
+</details>
 
-**ש: מה עושה `set -e`?**
-ת: גורם לסקריפט לעצור מיד ברגע שפקודה כלשהי נכשלת (מחזירה קוד חזרה שונה מ-0), במקום להמשיך לרוץ כאילו כלום לא קרה.
+<details class="qa">
+<summary>מה ההבדל בין <code>./script.sh</code> לבין <code>source script.sh</code>?</summary>
 
-**ש: איך בודקים אם קובץ קיים בסקריפט?**
-ת: `if [ -f "/path/to/file" ]; then echo "exists"; fi`
+`./script.sh` מריץ את הסקריפט בתת-תהליך (subshell) נפרד - שינויי משתנים לא ישפיעו על ה-shell הנוכחי. `source script.sh` (או `. script.sh`) מריץ אותו באותו תהליך shell, כך ששינויים במשתנים או ב-cd יישארו בתוקף גם אחרי שהסקריפט מסתיים.
+
+</details>
+
+<details class="qa">
+<summary>מהו exit code, ומה משמעות הערך 0?</summary>
+
+exit code הוא מספר בין 0 ל-255 שכל פקודה מחזירה בסיום ריצתה. 0 מציין הצלחה, כל ערך אחר מציין כישלון או קוד שגיאה ספציפי.
+
+</details>
+
+<details class="qa">
+<summary>מה עושה <code>set -e</code>?</summary>
+
+גורם לסקריפט לעצור מיד ברגע שפקודה כלשהי נכשלת (מחזירה קוד חזרה שונה מ-0), במקום להמשיך לרוץ כאילו כלום לא קרה.
+
+</details>
+
+<details class="qa">
+<summary>איך בודקים אם קובץ קיים בסקריפט?</summary>
+
+`if [ -f "/path/to/file" ]; then echo "exists"; fi`
+
+</details>
 
 ## תרגילים לתרגול עצמי
 

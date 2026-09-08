@@ -152,23 +152,47 @@ helm upgrade --install myapp ./helm-chart \
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Blue-Green ל-Canary Deployment?**
-ת: Blue-Green מעביר 100% מהתעבורה בבת אחת בין שתי סביבות זהות – rollback מיידי אך דורש כפול משאבים. Canary מעביר אחוז הולך וגדל מהתעבורה בהדרגה תוך ניטור מטריקות – מסוכן פחות אך איטי יותר ומורכב יותר למימוש.
+<details class="qa">
+<summary>מה ההבדל בין Blue-Green ל-Canary Deployment?</summary>
 
-**ש: מה זה GitOps ומה היתרון שלו על פני `kubectl` ישיר מ-CI?**
-ת: GitOps הופך את Git למקור אמת יחיד למצב ה-cluster; כלי כמו ArgoCD מסנכרן באופן רציף. זה נותן audit trail מלא, אפשרות rollback על ידי `git revert`, והפרדת הרשאות (ה-CI לא צריך גישת כתיבה ישירה לcluster).
+Blue-Green מעביר 100% מהתעבורה בבת אחת בין שתי סביבות זהות – rollback מיידי אך דורש כפול משאבים. Canary מעביר אחוז הולך וגדל מהתעבורה בהדרגה תוך ניטור מטריקות – מסוכן פחות אך איטי יותר ומורכב יותר למימוש.
 
-**ש: מה תפקידם של Readiness ו-Liveness Probes בהקשר של deployment?**
-ת: Readiness Probe קובע מתי Pod מוכן לקבל תעבורה (חשוב במהלך rolling update כדי לא לשלוח תעבורה ל-pod שעדיין לא התאתחל). Liveness Probe קובע אם Pod "תקוע" וצריך להיות מופעל מחדש.
+</details>
 
-**ש: איך מבצעים Zero-Downtime Deployment ב-Kubernetes?**
-ת: שילוב של RollingUpdate strategy עם `maxUnavailable: 0`, Readiness Probes נכונים, ו-graceful shutdown באפליקציה (טיפול ב-SIGTERM) כדי לסיים בקשות פתוחות לפני שה-Pod נסגר.
+<details class="qa">
+<summary>מה זה GitOps ומה היתרון שלו על פני <code>kubectl</code> ישיר מ-CI?</summary>
 
-**ש: מה ההבדל בין Helm ל-kubectl apply רגיל?**
-ת: Helm הוא package manager ל-Kubernetes שמאפשר תבניות (templates) עם ערכים פרמטריים (`values.yaml`), ניהול גרסאות (releases), ו-rollback קל. `kubectl apply` פשוט מחיל manifest סטטי ללא ניהול מצב/היסטוריה מובנה.
+GitOps הופך את Git למקור אמת יחיד למצב ה-cluster; כלי כמו ArgoCD מסנכרן באופן רציף. זה נותן audit trail מלא, אפשרות rollback על ידי `git revert`, והפרדת הרשאות (ה-CI לא צריך גישת כתיבה ישירה לcluster).
 
-**ש: איך מבוצע rollback מהיר בפרודקשן?**
-ת: ב-Kubernetes וניל: `kubectl rollout undo deployment/<name>`. בגישת GitOps: `git revert` על הקומיט שהכניס את השינוי, ו-ArgoCD/Flux יסנכרנו אוטומטית את המצב הקודם.
+</details>
+
+<details class="qa">
+<summary>מה תפקידם של Readiness ו-Liveness Probes בהקשר של deployment?</summary>
+
+Readiness Probe קובע מתי Pod מוכן לקבל תעבורה (חשוב במהלך rolling update כדי לא לשלוח תעבורה ל-pod שעדיין לא התאתחל). Liveness Probe קובע אם Pod "תקוע" וצריך להיות מופעל מחדש.
+
+</details>
+
+<details class="qa">
+<summary>איך מבצעים Zero-Downtime Deployment ב-Kubernetes?</summary>
+
+שילוב של RollingUpdate strategy עם `maxUnavailable: 0`, Readiness Probes נכונים, ו-graceful shutdown באפליקציה (טיפול ב-SIGTERM) כדי לסיים בקשות פתוחות לפני שה-Pod נסגר.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Helm ל-kubectl apply רגיל?</summary>
+
+Helm הוא package manager ל-Kubernetes שמאפשר תבניות (templates) עם ערכים פרמטריים (`values.yaml`), ניהול גרסאות (releases), ו-rollback קל. `kubectl apply` פשוט מחיל manifest סטטי ללא ניהול מצב/היסטוריה מובנה.
+
+</details>
+
+<details class="qa">
+<summary>איך מבוצע rollback מהיר בפרודקשן?</summary>
+
+ב-Kubernetes וניל: `kubectl rollout undo deployment/<name>`. בגישת GitOps: `git revert` על הקומיט שהכניס את השינוי, ו-ArgoCD/Flux יסנכרנו אוטומטית את המצב הקודם.
+
+</details>
 
 ## קישורים חיצוניים
 

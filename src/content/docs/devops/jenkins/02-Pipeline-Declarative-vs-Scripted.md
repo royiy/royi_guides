@@ -231,23 +231,51 @@ pipeline {
 
 ## שאלות ראיון עבודה בנושא Pipelines
 
-**ש: מה ההבדל המרכזי בין Declarative ל-Scripted Pipeline?**
-ת: Declarative הוא syntax מובנה עם structure קבוע (`pipeline { agent {} stages {} }`), קריא ופשוט יותר, עם validation מובנה. Scripted הוא Groovy מלא בתוך בלוק `node {}`, גמיש יותר אך דורש ידע תכנותי מעמיק.
+<details class="qa">
+<summary>מה ההבדל המרכזי בין Declarative ל-Scripted Pipeline?</summary>
 
-**ש: איך מריצים שני stages במקביל ב-Jenkins?**
-ת: ב-Declarative באמצעות בלוק `parallel {}` בתוך stage, וב-Scripted באמצעות פונקציית `parallel()` עם map של closures.
+Declarative הוא syntax מובנה עם structure קבוע (`pipeline { agent {} stages {} }`), קריא ופשוט יותר, עם validation מובנה. Scripted הוא Groovy מלא בתוך בלוק `node {}`, גמיש יותר אך דורש ידע תכנותי מעמיק.
 
-**ש: מה זה `agent` ואילו סוגים קיימים?**
-ת: `agent` מגדיר איפה ה-pipeline (או stage ספציפי) ירוץ. אפשרויות: `any`, `none`, `label 'my-label'`, `docker { image 'node:20' }`, `kubernetes { ... }`.
+</details>
 
-**ש: מה תפקיד בלוק `post` ואילו conditions קיימים בו?**
-ת: מריץ פעולות אחרי סיום ה-pipeline/stage. Conditions: `always`, `success`, `failure`, `unstable`, `changed`, `aborted`, `cleanup`.
+<details class="qa">
+<summary>איך מריצים שני stages במקביל ב-Jenkins?</summary>
 
-**ש: מהו Jenkinsfile ולמה חשוב לשמור אותו ב-source control?**
-ת: קובץ טקסט שמגדיר את ה-Pipeline כקוד. שמירתו ב-Git מאפשרת גרסאות, code review, ו-single source of truth לתהליך ה-CI/CD, בהתאם לעקרון "Pipeline as Code".
+ב-Declarative באמצעות בלוק `parallel {}` בתוך stage, וב-Scripted באמצעות פונקציית `parallel()` עם map של closures.
 
-**ש: איך אפשר להריץ אישור ידני (manual approval) בתוך pipeline?**
-ת: באמצעות ה-step `input`, שמעצור את ה-pipeline וממתין לאישור אנושי דרך ה-UI, לרוב עם `timeout` כדי למנוע המתנה אינסופית.
+</details>
 
-**ש: מה זה Matrix build ומתי משתמשים בו?**
-ת: מאפשר להריץ אותם stages על קומבינציות שונות של פרמטרים (למשל מערכות הפעלה וגרסאות שפה) - שימושי לבדיקות תאימות (cross-platform testing).
+<details class="qa">
+<summary>מה זה <code>agent</code> ואילו סוגים קיימים?</summary>
+
+`agent` מגדיר איפה ה-pipeline (או stage ספציפי) ירוץ. אפשרויות: `any`, `none`, `label 'my-label'`, `docker { image 'node:20' }`, `kubernetes { ... }`.
+
+</details>
+
+<details class="qa">
+<summary>מה תפקיד בלוק <code>post</code> ואילו conditions קיימים בו?</summary>
+
+מריץ פעולות אחרי סיום ה-pipeline/stage. Conditions: `always`, `success`, `failure`, `unstable`, `changed`, `aborted`, `cleanup`.
+
+</details>
+
+<details class="qa">
+<summary>מהו Jenkinsfile ולמה חשוב לשמור אותו ב-source control?</summary>
+
+קובץ טקסט שמגדיר את ה-Pipeline כקוד. שמירתו ב-Git מאפשרת גרסאות, code review, ו-single source of truth לתהליך ה-CI/CD, בהתאם לעקרון "Pipeline as Code".
+
+</details>
+
+<details class="qa">
+<summary>איך אפשר להריץ אישור ידני (manual approval) בתוך pipeline?</summary>
+
+באמצעות ה-step `input`, שמעצור את ה-pipeline וממתין לאישור אנושי דרך ה-UI, לרוב עם `timeout` כדי למנוע המתנה אינסופית.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Matrix build ומתי משתמשים בו?</summary>
+
+מאפשר להריץ אותם stages על קומבינציות שונות של פרמטרים (למשל מערכות הפעלה וגרסאות שפה) - שימושי לבדיקות תאימות (cross-platform testing).
+
+</details>

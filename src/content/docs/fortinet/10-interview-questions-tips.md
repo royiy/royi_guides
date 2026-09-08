@@ -6,44 +6,88 @@ part: 10/10
 
 ## שאלות ראיון — יסודות
 
-**ש: מה ההבדל בין Firewall רגיל ל-NGFW?**
-ת: פיירוול קלאסי בודק Layer 3/4 בלבד (IP, Port, פרוטוקול). NGFW כמו FortiGate מוסיף בדיקה ברמת Layer 7: זיהוי אפליקציות (Application Control), חתימות התקפה (IPS), בדיקת קבצים (AV), וסינון תוכן (Web Filtering) — כל זה תחת מדיניות אבטחה אחת.
+<details class="qa">
+<summary>מה ההבדל בין Firewall רגיל ל-NGFW?</summary>
 
-**ש: הסבירו את סדר העיבוד (flow) של חבילה שנכנסת ל-FortiGate.**
-ת: בקצרה: קליטת החבילה → בדיקת Routing (מציאת יציאה) → בדיקת Policy תואם (מלמעלה למטה) → אם Accept: NAT (אם מוגדר) → Security Profiles (IPS/AV/Web Filter/App Control) → יציאה מהממשק המתאים.
+פיירוול קלאסי בודק Layer 3/4 בלבד (IP, Port, פרוטוקול). NGFW כמו FortiGate מוסיף בדיקה ברמת Layer 7: זיהוי אפליקציות (Application Control), חתימות התקפה (IPS), בדיקת קבצים (AV), וסינון תוכן (Web Filtering) — כל זה תחת מדיניות אבטחה אחת.
 
-**ש: מה זה Implicit Deny?**
-ת: כלל בלתי-נראה בסוף כל רשימת Policies שחוסם כל תעבורה שלא הותאמה לאף כלל מפורש. Best Practice הוא להוסיף כלל Deny מפורש עם Logging כדי שהחסימות יופיעו בלוגים.
+</details>
+
+<details class="qa">
+<summary>הסבירו את סדר העיבוד (flow) של חבילה שנכנסת ל-FortiGate.</summary>
+
+בקצרה: קליטת החבילה → בדיקת Routing (מציאת יציאה) → בדיקת Policy תואם (מלמעלה למטה) → אם Accept: NAT (אם מוגדר) → Security Profiles (IPS/AV/Web Filter/App Control) → יציאה מהממשק המתאים.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Implicit Deny?</summary>
+
+כלל בלתי-נראה בסוף כל רשימת Policies שחוסם כל תעבורה שלא הותאמה לאף כלל מפורש. Best Practice הוא להוסיף כלל Deny מפורש עם Logging כדי שהחסימות יופיעו בלוגים.
+
+</details>
 
 ## שאלות ראיון — VPN
 
-**ש: מה ההבדל בין Policy-Based ל-Route-Based VPN?**
-ת: ב-Route-Based (VTI — היום הנפוץ יותר) התעלה מיוצגת כממשק רשת וירטואלי, כך שניתן להשתמש ב-Routing רגיל (כולל דינמי) כדי לשלוט בתעבורה דרכה. ב-Policy-Based (ישן יותר), אין ממשק וירטואלי — ה-VPN מוגדר ישירות בתוך ה-Policy עצמו.
+<details class="qa">
+<summary>מה ההבדל בין Policy-Based ל-Route-Based VPN?</summary>
 
-**ש: מה קורה אם ה-Phase 1 Proposals לא תואמים בין שני הצדדים?**
-ת: תעלת ה-IKE לא תעלה כלל — אין הסכמה על שיטת ההצפנה/Hash הראשונית, אז אי אפשר אפילו להתחיל את תהליך האימות. יש לוודא זהות מדויקת של אלגוריתמים (Encryption, Hash, DH Group) בשני הצדדים.
+ב-Route-Based (VTI — היום הנפוץ יותר) התעלה מיוצגת כממשק רשת וירטואלי, כך שניתן להשתמש ב-Routing רגיל (כולל דינמי) כדי לשלוט בתעבורה דרכה. ב-Policy-Based (ישן יותר), אין ממשק וירטואלי — ה-VPN מוגדר ישירות בתוך ה-Policy עצמו.
+
+</details>
+
+<details class="qa">
+<summary>מה קורה אם ה-Phase 1 Proposals לא תואמים בין שני הצדדים?</summary>
+
+תעלת ה-IKE לא תעלה כלל — אין הסכמה על שיטת ההצפנה/Hash הראשונית, אז אי אפשר אפילו להתחיל את תהליך האימות. יש לוודא זהות מדויקת של אלגוריתמים (Encryption, Hash, DH Group) בשני הצדדים.
+
+</details>
 
 ## שאלות ראיון — HA
 
-**ש: מה זה Split-Brain במצב HA, ואיך מונעים אותו?**
-ת: מצב שבו שני החברים בקלאסטר "חושבים" ששניהם Primary בו-זמנית (בד"כ בגלל אובדן Heartbeat) — עלול לגרום לבעיות רשת חמורות. נמנע ע"י שימוש בכמה נתיבי Heartbeat (רדונדנטיות) ובדיקות תקינות תדירות.
+<details class="qa">
+<summary>מה זה Split-Brain במצב HA, ואיך מונעים אותו?</summary>
 
-**ש: מה קורה לסשנים (sessions) פעילים בזמן Failover?**
-ת: ב-FGCP, session-ים מסתנכרנים בין החברים באופן שוטף (Session Synchronization), כך שרוב הסשנים ה-TCP ממשיכים לרוץ ללא הפרעה משמעותית אחרי Failover.
+מצב שבו שני החברים בקלאסטר "חושבים" ששניהם Primary בו-זמנית (בד"כ בגלל אובדן Heartbeat) — עלול לגרום לבעיות רשת חמורות. נמנע ע"י שימוש בכמה נתיבי Heartbeat (רדונדנטיות) ובדיקות תקינות תדירות.
+
+</details>
+
+<details class="qa">
+<summary>מה קורה לסשנים (sessions) פעילים בזמן Failover?</summary>
+
+ב-FGCP, session-ים מסתנכרנים בין החברים באופן שוטף (Session Synchronization), כך שרוב הסשנים ה-TCP ממשיכים לרוץ ללא הפרעה משמעותית אחרי Failover.
+
+</details>
 
 ## שאלות ראיון — כלליות/תרחישיות
 
-**ש: יש לכם משתמש שמתלונן שהוא לא מצליח לגלוש לאתר ספציפי. איך תתחילו לחקור?**
-ת: תשובה טובה: 1) לבדוק אם זה כללי (כל האתרים) או ספציפי (אתר אחד) — אם ספציפי, כנראה Web Filter/App Control. 2) `diagnose sniffer` לוודא שהתעבורה בכלל מגיעה ל-FortiGate. 3) `Policy Lookup`/`debug flow` כדי לראות באיזה Policy זה נתפס ומה קורה שם. 4) בדיקת לוג Traffic ו-Web Filter Log לחיפוש Block מפורש.
+<details class="qa">
+<summary>יש לכם משתמש שמתלונן שהוא לא מצליח לגלוש לאתר ספציפי. איך תתחילו לחקור?</summary>
 
-**ש: מה ההבדל בין FortiManager ל-FortiAnalyzer?**
-ת: FortiManager מנהל **קונפיגורציה** (Provisioning), FortiAnalyzer אוסף ומנתח **לוגים**.
+תשובה טובה: 1) לבדוק אם זה כללי (כל האתרים) או ספציפי (אתר אחד) — אם ספציפי, כנראה Web Filter/App Control. 2) `diagnose sniffer` לוודא שהתעבורה בכלל מגיעה ל-FortiGate. 3) `Policy Lookup`/`debug flow` כדי לראות באיזה Policy זה נתפס ומה קורה שם. 4) בדיקת לוג Traffic ו-Web Filter Log לחיפוש Block מפורש.
 
-**ש: מה זה Security Fabric?**
-ת: הארכיטקטורה של Fortinet שמחברת בין כל מוצרי האבטחה שלה (FortiGate, FortiSwitch, FortiAP, FortiClient, FortiAnalyzer ועוד) לכדי מערכת אחת המשתפת מודיעין איומים ומאפשרת תגובה אוטומטית מתואמת (Automation Stitches) — למשל בידוד אוטומטי של מכשיר נגוע שזוהה ע"י FortiClient.
+</details>
 
-**ש: מה זה SD-WAN וב-FortiGate איך זה עובד?**
-ת: יכולת לשלב מספר קווי אינטרנט/WAN ולנתב תעבורה ביניהם בצורה חכמה על סמך מדדי ביצועים (Latency/Jitter/Packet Loss) בזמן אמת, ולא רק על סמך Static Routing. מוגדר דרך `config system sdwan` עם Health Check Servers שבודקים את איכות כל קו באופן שוטף.
+<details class="qa">
+<summary>מה ההבדל בין FortiManager ל-FortiAnalyzer?</summary>
+
+FortiManager מנהל **קונפיגורציה** (Provisioning), FortiAnalyzer אוסף ומנתח **לוגים**.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Security Fabric?</summary>
+
+הארכיטקטורה של Fortinet שמחברת בין כל מוצרי האבטחה שלה (FortiGate, FortiSwitch, FortiAP, FortiClient, FortiAnalyzer ועוד) לכדי מערכת אחת המשתפת מודיעין איומים ומאפשרת תגובה אוטומטית מתואמת (Automation Stitches) — למשל בידוד אוטומטי של מכשיר נגוע שזוהה ע"י FortiClient.
+
+</details>
+
+<details class="qa">
+<summary>מה זה SD-WAN וב-FortiGate איך זה עובד?</summary>
+
+יכולת לשלב מספר קווי אינטרנט/WAN ולנתב תעבורה ביניהם בצורה חכמה על סמך מדדי ביצועים (Latency/Jitter/Packet Loss) בזמן אמת, ולא רק על סמך Static Routing. מוגדר דרך `config system sdwan` עם Health Check Servers שבודקים את איכות כל קו באופן שוטף.
+
+</details>
 
 ## תרגילי הכנה מעשיים (Hands-on)
 

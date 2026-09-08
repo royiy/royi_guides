@@ -250,23 +250,47 @@ kubectl exec -it <pod-name> -- nslookup backend-svc
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין ClusterIP, NodePort ו-LoadBalancer?**
-ת: ClusterIP נגיש רק בתוך הקלאסטר. NodePort פותח פורט קבוע על כל Node ומאפשר גישה חיצונית דרך IP של Node. LoadBalancer מבקש Load Balancer אמיתי מספק הענן עם IP ציבורי ייעודי - למעשה, NodePort ו-LoadBalancer בונים על גבי ClusterIP.
+<details class="qa">
+<summary>מה ההבדל בין ClusterIP, NodePort ו-LoadBalancer?</summary>
 
-**ש: איך Service "יודע" לאילו Pods לנתב תעבורה?**
-ת: באמצעות Label Selector - ה-Service מחפש Pods עם labels תואמים, ו-Kubernetes מתעדכן דינמית ברשימת ה-Endpoints (או EndpointSlices) בכל פעם שנוסף/מוסר Pod תואם.
+ClusterIP נגיש רק בתוך הקלאסטר. NodePort פותח פורט קבוע על כל Node ומאפשר גישה חיצונית דרך IP של Node. LoadBalancer מבקש Load Balancer אמיתי מספק הענן עם IP ציבורי ייעודי - למעשה, NodePort ו-LoadBalancer בונים על גבי ClusterIP.
 
-**ש: מהו Headless Service ומתי משתמשים בו?**
-ת: Service עם `clusterIP: None` שלא מבצע load balancing - במקום להחזיר IP וירטואלי יחיד, שאילתת DNS מחזירה את כל כתובות ה-Pods ישירות. שימושי לאפליקציות stateful שצריכות לדעת ולתקשר עם כל instance בנפרד, כמו מסדי נתונים מבוזרים.
+</details>
 
-**ש: איך פועל ה-DNS הפנימי של Kubernetes?**
-ת: CoreDNS רץ כ-Deployment בתוך הקלאסטר ומספק רזולוציית שמות בפורמט `<service>.<namespace>.svc.cluster.local`, כך שאפליקציות יכולות לתקשר לפי שם במקום IP.
+<details class="qa">
+<summary>איך Service "יודע" לאילו Pods לנתב תעבורה?</summary>
 
-**ש: מה קורה כברירת מחדל בנוגע לתקשורת בין Pods, ואיך מגבילים אותה?**
-ת: כברירת מחדל כל Pod יכול לתקשר עם כל Pod אחר בקלאסטר. מגבילים באמצעות NetworkPolicy, בתנאי שה-CNI plugin תומך באכיפת מדיניות (כמו Calico או Cilium).
+באמצעות Label Selector - ה-Service מחפש Pods עם labels תואמים, ו-Kubernetes מתעדכן דינמית ברשימת ה-Endpoints (או EndpointSlices) בכל פעם שנוסף/מוסר Pod תואם.
 
-**ש: מה ההבדל בין Service ל-Ingress?**
-ת: Service מטפל בעיקר ב-L4 (TCP/UDP) load balancing בתוך הקלאסטר או ברמת Node/LB בודד. Ingress הוא אובייקט L7 (HTTP/HTTPS) שמאפשר ניתוב מבוסס host/path למספר Services מאחורי כתובת אחת, כולל TLS termination.
+</details>
+
+<details class="qa">
+<summary>מהו Headless Service ומתי משתמשים בו?</summary>
+
+Service עם `clusterIP: None` שלא מבצע load balancing - במקום להחזיר IP וירטואלי יחיד, שאילתת DNS מחזירה את כל כתובות ה-Pods ישירות. שימושי לאפליקציות stateful שצריכות לדעת ולתקשר עם כל instance בנפרד, כמו מסדי נתונים מבוזרים.
+
+</details>
+
+<details class="qa">
+<summary>איך פועל ה-DNS הפנימי של Kubernetes?</summary>
+
+CoreDNS רץ כ-Deployment בתוך הקלאסטר ומספק רזולוציית שמות בפורמט `<service>.<namespace>.svc.cluster.local`, כך שאפליקציות יכולות לתקשר לפי שם במקום IP.
+
+</details>
+
+<details class="qa">
+<summary>מה קורה כברירת מחדל בנוגע לתקשורת בין Pods, ואיך מגבילים אותה?</summary>
+
+כברירת מחדל כל Pod יכול לתקשר עם כל Pod אחר בקלאסטר. מגבילים באמצעות NetworkPolicy, בתנאי שה-CNI plugin תומך באכיפת מדיניות (כמו Calico או Cilium).
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Service ל-Ingress?</summary>
+
+Service מטפל בעיקר ב-L4 (TCP/UDP) load balancing בתוך הקלאסטר או ברמת Node/LB בודד. Ingress הוא אובייקט L7 (HTTP/HTTPS) שמאפשר ניתוב מבוסס host/path למספר Services מאחורי כתובת אחת, כולל TLS termination.
+
+</details>
 
 ---
 

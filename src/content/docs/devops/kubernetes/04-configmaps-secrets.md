@@ -262,23 +262,47 @@ kubectl delete secret db-credentials
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין ConfigMap ל-Secret?**
-ת: מבחינה טכנית הם דומים מאוד במבנה, אבל Secret מיועד למידע רגיש ומוצג מקודד ב-Base64 (לא מוצפן כברירת מחדל!), בעוד ConfigMap מיועד למידע לא רגיש ומוצג כטקסט גלוי.
+<details class="qa">
+<summary>מה ההבדל בין ConfigMap ל-Secret?</summary>
 
-**ש: האם Secret ב-Kubernetes מוצפן?**
-ת: לא כברירת מחדל - הוא רק מקודד ב-Base64, שזו לא הצפנה (אפשר לפענח בקלות). כדי להצפין באמת ב-etcd צריך להגדיר Encryption at Rest, ולרוב מומלץ להשתמש בפתרון חיצוני כמו Vault.
+מבחינה טכנית הם דומים מאוד במבנה, אבל Secret מיועד למידע רגיש ומוצג מקודד ב-Base64 (לא מוצפן כברירת מחדל!), בעוד ConfigMap מיועד למידע לא רגיש ומוצג כטקסט גלוי.
 
-**ש: מה קורה כשמעדכנים ConfigMap שכבר מחובר ל-Pod רץ?**
-ת: אם הוא מחובר כ-Volume, הקובץ יתעדכן אוטומטית תוך זמן קצר (תלוי ב-kubelet sync period), אבל האפליקציה צריכה לתמוך ב-hot reload. אם הוא מחובר כמשתנה סביבה - לא יתעדכן כלל, כי משתני סביבה נקבעים רק בזמן יצירת הקונטיינר, וצריך restart.
+</details>
 
-**ש: מה ההבדל בין `data` ל-`stringData` ב-Secret?**
-ת: `data` מצפה לערכים מקודדים כבר ב-Base64. `stringData` מאפשר להכניס ערך רגיל בטקסט, ו-Kubernetes מקודד אותו אוטומטית - נוח יותר ופחות טעויות.
+<details class="qa">
+<summary>האם Secret ב-Kubernetes מוצפן?</summary>
 
-**ש: איך מתמודדים עם Secrets ב-GitOps בלי לחשוף אותם בגלוי ב-Git?**
-ת: משתמשים בכלים כמו Sealed Secrets (מצפין את ה-Secret כך שרק ה-controller בקלאסטר יכול לפענח אותו) או External Secrets Operator שמושך סודות בזמן ריצה ממקור חיצוני מאובטח כמו Vault או AWS Secrets Manager, במקום לשמור אותם בגלוי בריפו.
+לא כברירת מחדל - הוא רק מקודד ב-Base64, שזו לא הצפנה (אפשר לפענח בקלות). כדי להצפין באמת ב-etcd צריך להגדיר Encryption at Rest, ולרוב מומלץ להשתמש בפתרון חיצוני כמו Vault.
 
-**ש: מהו imagePullSecret ומתי צריך אותו?**
-ת: Secret מסוג `kubernetes.io/dockerconfigjson` שמכיל credentials לרישום קונטיינרים פרטי, כדי ש-kubelet יוכל למשוך (pull) images שאינם ציבוריים.
+</details>
+
+<details class="qa">
+<summary>מה קורה כשמעדכנים ConfigMap שכבר מחובר ל-Pod רץ?</summary>
+
+אם הוא מחובר כ-Volume, הקובץ יתעדכן אוטומטית תוך זמן קצר (תלוי ב-kubelet sync period), אבל האפליקציה צריכה לתמוך ב-hot reload. אם הוא מחובר כמשתנה סביבה - לא יתעדכן כלל, כי משתני סביבה נקבעים רק בזמן יצירת הקונטיינר, וצריך restart.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>data</code> ל-<code>stringData</code> ב-Secret?</summary>
+
+`data` מצפה לערכים מקודדים כבר ב-Base64. `stringData` מאפשר להכניס ערך רגיל בטקסט, ו-Kubernetes מקודד אותו אוטומטית - נוח יותר ופחות טעויות.
+
+</details>
+
+<details class="qa">
+<summary>איך מתמודדים עם Secrets ב-GitOps בלי לחשוף אותם בגלוי ב-Git?</summary>
+
+משתמשים בכלים כמו Sealed Secrets (מצפין את ה-Secret כך שרק ה-controller בקלאסטר יכול לפענח אותו) או External Secrets Operator שמושך סודות בזמן ריצה ממקור חיצוני מאובטח כמו Vault או AWS Secrets Manager, במקום לשמור אותם בגלוי בריפו.
+
+</details>
+
+<details class="qa">
+<summary>מהו imagePullSecret ומתי צריך אותו?</summary>
+
+Secret מסוג `kubernetes.io/dockerconfigjson` שמכיל credentials לרישום קונטיינרים פרטי, כדי ש-kubelet יוכל למשוך (pull) images שאינם ציבוריים.
+
+</details>
 
 ---
 

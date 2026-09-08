@@ -277,23 +277,47 @@ kubectl create token ci-pipeline-sa -n dev
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין Authentication ל-Authorization ב-Kubernetes?**
-ת: Authentication מזהה "מי" שולח את הבקשה (משתמש, ServiceAccount). Authorization (בעיקר דרך RBAC) קובע האם לזהות המאומתת הזו מותר לבצע את הפעולה המבוקשת על המשאב המבוקש.
+<details class="qa">
+<summary>מה ההבדל בין Authentication ל-Authorization ב-Kubernetes?</summary>
 
-**ש: מה ההבדל בין Role ל-ClusterRole?**
-ת: Role מוגבל ל-namespace יחיד ומגדיר הרשאות על משאבים בתוכו. ClusterRole תקף בכל הקלאסטר, ויכול גם להעניק גישה למשאבים שאינם משויכים ל-namespace (כמו Nodes או PersistentVolumes).
+Authentication מזהה "מי" שולח את הבקשה (משתמש, ServiceAccount). Authorization (בעיקר דרך RBAC) קובע האם לזהות המאומתת הזו מותר לבצע את הפעולה המבוקשת על המשאב המבוקש.
 
-**ש: מה ההבדל בין RoleBinding ל-ClusterRoleBinding?**
-ת: RoleBinding מקשר Role (או ClusterRole) לזהות בתוך namespace ספציפי בלבד. ClusterRoleBinding מקשר ClusterRole לזהות ברמת הקלאסטר כולו - ההרשאה תקפה בכל ה-namespaces.
+</details>
 
-**ש: מהו ServiceAccount ומתי משתמשים בו?**
-ת: זהות שמאפשרת ל-Pod לאמת את עצמו מול ה-API Server. משתמשים בו כשאפליקציה בתוך הקלאסטר צריכה לבצע קריאות ל-Kubernetes API עצמו - למשל אופרטור, כלי CI/CD, או controller מותאם אישית.
+<details class="qa">
+<summary>מה ההבדל בין Role ל-ClusterRole?</summary>
 
-**ש: מה זה עקרון least-privilege, ואיך מיישמים אותו ב-Kubernetes?**
-ת: העיקרון שכל זהות (משתמש, ServiceAccount) צריכה לקבל רק את ההרשאות המינימליות הנדרשות לה, ולא יותר. מיישמים דרך Roles מדויקים במקום ClusterRoles רחבים, הימנעות מ-cluster-admin לגורמים לא-מנהליים, וכיבוי automountServiceAccountToken כשלא נדרש.
+Role מוגבל ל-namespace יחיד ומגדיר הרשאות על משאבים בתוכו. ClusterRole תקף בכל הקלאסטר, ויכול גם להעניק גישה למשאבים שאינם משויכים ל-namespace (כמו Nodes או PersistentVolumes).
 
-**ש: מהו SecurityContext ואילו הגדרות חשובות בו?**
-ת: אובייקט שמגדיר הרשאות אבטחה ברמת Pod או קונטיינר, כמו `runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false` ו-`capabilities.drop: [ALL]` - כולם עוזרים למזער את הנזק הפוטנציאלי אם קונטיינר נפרץ.
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין RoleBinding ל-ClusterRoleBinding?</summary>
+
+RoleBinding מקשר Role (או ClusterRole) לזהות בתוך namespace ספציפי בלבד. ClusterRoleBinding מקשר ClusterRole לזהות ברמת הקלאסטר כולו - ההרשאה תקפה בכל ה-namespaces.
+
+</details>
+
+<details class="qa">
+<summary>מהו ServiceAccount ומתי משתמשים בו?</summary>
+
+זהות שמאפשרת ל-Pod לאמת את עצמו מול ה-API Server. משתמשים בו כשאפליקציה בתוך הקלאסטר צריכה לבצע קריאות ל-Kubernetes API עצמו - למשל אופרטור, כלי CI/CD, או controller מותאם אישית.
+
+</details>
+
+<details class="qa">
+<summary>מה זה עקרון least-privilege, ואיך מיישמים אותו ב-Kubernetes?</summary>
+
+העיקרון שכל זהות (משתמש, ServiceAccount) צריכה לקבל רק את ההרשאות המינימליות הנדרשות לה, ולא יותר. מיישמים דרך Roles מדויקים במקום ClusterRoles רחבים, הימנעות מ-cluster-admin לגורמים לא-מנהליים, וכיבוי automountServiceAccountToken כשלא נדרש.
+
+</details>
+
+<details class="qa">
+<summary>מהו SecurityContext ואילו הגדרות חשובות בו?</summary>
+
+אובייקט שמגדיר הרשאות אבטחה ברמת Pod או קונטיינר, כמו `runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false` ו-`capabilities.drop: [ALL]` - כולם עוזרים למזער את הנזק הפוטנציאלי אם קונטיינר נפרץ.
+
+</details>
 
 ---
 

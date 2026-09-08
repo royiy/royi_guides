@@ -1,5 +1,5 @@
 ---
-title: "שאלות חזרה על Veeam Backup & Replication"
+title: "בחן את עצמך על Veeam Backup & Replication"
 category: Veeam
 part: 11/10
 ---
@@ -23,7 +23,7 @@ part: 11/10
 <div class="quiz-card" data-answer="א">
   <p class="quiz-question"><strong>2. מהי ההגבלה המרכזית של <code>Veeam Community Edition</code> (הגרסה החינמית)?</strong></p>
   <div class="quiz-options">
-    <button class="quiz-option" type="button" data-choice="א">א. ניתן להגן על עד 10 עומסי עבודה (VMs/שרתים/תחנות עבודה) בלבד</button>
+    <button class="quiz-option" type="button" data-choice="א">א. ניתן לגבות על עד 10 עומסי עבודה (VMs/שרתים/תחנות עבודה) בלבד</button>
     <button class="quiz-option" type="button" data-choice="ב">ב. אין אפשרות ליצור יותר מ-job אחד בכלל</button>
     <button class="quiz-option" type="button" data-choice="ג">ג. אין תמיכה ב-Application-Aware Processing כלל</button>
     <button class="quiz-option" type="button" data-choice="ד">ד. ניתן להתקין אותה רק על Linux</button>

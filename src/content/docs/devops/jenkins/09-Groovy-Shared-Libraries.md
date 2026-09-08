@@ -248,20 +248,44 @@ class BuildAppTest extends BasePipelineTest {
 
 ## שאלות ראיון עבודה בנושא Groovy ו-Shared Libraries
 
-**ש: מה ההבדל בין תיקיית `vars/` לתיקיית `src/` ב-Shared Library?**
-ת: `vars/` מכיל global variables/steps שנגישים ישירות מ-Jenkinsfile כפונקציות (כמו step מובנה). `src/` מכיל Groovy classes מלאים שנטענים עם `import` - מתאים ללוגיקה מורכבת יותר עם state ו-OOP.
+<details class="qa">
+<summary>מה ההבדל בין תיקיית <code>vars/</code> לתיקיית <code>src/</code> ב-Shared Library?</summary>
 
-**ש: למה classes ב-Shared Library צריכים להיות `Serializable`?**
-ת: Jenkins Pipeline משתמש ב-CPS (Continuation Passing Style) כדי לאפשר עצירה והמשך (pause/resume) של pipelines - למשל אחרי restart של Jenkins. אובייקטים שאינם serializable ישברו את היכולת הזו.
+`vars/` מכיל global variables/steps שנגישים ישירות מ-Jenkinsfile כפונקציות (כמו step מובנה). `src/` מכיל Groovy classes מלאים שנטענים עם `import` - מתאים ללוגיקה מורכבת יותר עם state ו-OOP.
 
-**ש: מה תפקיד ה-annotation `@NonCPS` ומתי משתמשים בו?**
-ת: מסמן method שירוץ כ-Groovy רגיל בלי CPS transformation - שימושי לפעולות מורכבות כמו sort/collect שה-CPS transformation יכולה לשבש, אבל משבש checkpoint/resume ולכן משתמשים בו בזהירות ורק כשצריך.
+</details>
 
-**ש: איך בודקים Shared Library לפני שמפיצים אותה לכל הארגון?**
-ת: עם ספריית JenkinsPipelineUnit שמאפשרת להריץ unit tests על `vars/*.groovy` כמו קוד Groovy/Java רגיל, בלי צורך ב-Jenkins server אמיתי.
+<details class="qa">
+<summary>למה classes ב-Shared Library צריכים להיות <code>Serializable</code>?</summary>
 
-**ש: מה היתרון המרכזי של Shared Libraries בארגון עם הרבה צוותים?**
-ת: DRY - מרכזת לוגיקה משותפת (build, deploy, notifications, validation) במקום אחד שכל הצוותים משתמשים בו, כך שתיקון/שיפור נעשה פעם אחת ומשפיע על כל ה-pipelines, במקום כפילות קוד בעשרות Jenkinsfiles.
+Jenkins Pipeline משתמש ב-CPS (Continuation Passing Style) כדי לאפשר עצירה והמשך (pause/resume) של pipelines - למשל אחרי restart של Jenkins. אובייקטים שאינם serializable ישברו את היכולת הזו.
 
-**ש: איך שולטים בגרסה של Shared Library שנטענת ב-pipeline מסוים?**
-ת: באמצעות `@Library('my-lib@v2.0')` שמצביע על tag/branch ספציפי, מה שמאפשר לעדכן library מבלי לשבור pipelines שעדיין תלויים בגרסה ישנה יותר.
+</details>
+
+<details class="qa">
+<summary>מה תפקיד ה-annotation <code>@NonCPS</code> ומתי משתמשים בו?</summary>
+
+מסמן method שירוץ כ-Groovy רגיל בלי CPS transformation - שימושי לפעולות מורכבות כמו sort/collect שה-CPS transformation יכולה לשבש, אבל משבש checkpoint/resume ולכן משתמשים בו בזהירות ורק כשצריך.
+
+</details>
+
+<details class="qa">
+<summary>איך בודקים Shared Library לפני שמפיצים אותה לכל הארגון?</summary>
+
+עם ספריית JenkinsPipelineUnit שמאפשרת להריץ unit tests על `vars/*.groovy` כמו קוד Groovy/Java רגיל, בלי צורך ב-Jenkins server אמיתי.
+
+</details>
+
+<details class="qa">
+<summary>מה היתרון המרכזי של Shared Libraries בארגון עם הרבה צוותים?</summary>
+
+DRY - מרכזת לוגיקה משותפת (build, deploy, notifications, validation) במקום אחד שכל הצוותים משתמשים בו, כך שתיקון/שיפור נעשה פעם אחת ומשפיע על כל ה-pipelines, במקום כפילות קוד בעשרות Jenkinsfiles.
+
+</details>
+
+<details class="qa">
+<summary>איך שולטים בגרסה של Shared Library שנטענת ב-pipeline מסוים?</summary>
+
+באמצעות `@Library('my-lib@v2.0')` שמצביע על tag/branch ספציפי, מה שמאפשר לעדכן library מבלי לשבור pipelines שעדיין תלויים בגרסה ישנה יותר.
+
+</details>

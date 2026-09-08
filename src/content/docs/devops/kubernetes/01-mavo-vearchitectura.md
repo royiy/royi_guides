@@ -217,23 +217,47 @@ kubectl delete -f namespace.yaml
 
 ## שאלות ראיון עבודה {#שאלות-ראיון-עבודה}
 
-**ש: מה ההבדל בין Control Plane ל-Worker Node?**
-ת: ה-Control Plane מקבל החלטות גלובליות על הקלאסטר (תזמון, בקרה, שמירת מצב), בעוד Worker Nodes הם המכונות שבפועל מריצות את הקונטיינרים (Pods) של האפליקציות.
+<details class="qa">
+<summary>מה ההבדל בין Control Plane ל-Worker Node?</summary>
 
-**ש: מה תפקידו של etcd, ומה קורה אם הוא קורס?**
-ת: etcd הוא מסד הנתונים המבוזר ששומר את כל מצב הקלאסטר. אם הוא קורס לחלוטין ואין גיבוי - הקלאסטר "שוכח" את כל ההגדרות שלו (אם כי ה-Pods שכבר רצים ימשיכו לרוץ עד להפעלה מחדש, אך לא ניתן יהיה לנהל אותם).
+ה-Control Plane מקבל החלטות גלובליות על הקלאסטר (תזמון, בקרה, שמירת מצב), בעוד Worker Nodes הם המכונות שבפועל מריצות את הקונטיינרים (Pods) של האפליקציות.
 
-**ש: מה ההבדל בין kubelet ל-kube-proxy?**
-ת: kubelet אחראי על הרצת קונטיינרים בפועל ב-Node ובדיקת תקינותם (health checks), בעוד kube-proxy אחראי על ניתוב תעבורת רשת בין Services ל-Pods.
+</details>
 
-**ש: מהו ה-Reconciliation Loop?**
-ת: זהו הדפוס הבסיסי שעליו מבוססים כל הבקרים (Controllers) בקוברנטיס - לולאה אינסופית שמשווה כל הזמן בין ה-desired state (מה שהוגדר ב-YAML) לבין ה-actual state (מה שקורה בפועל), ומתקנת פערים.
+<details class="qa">
+<summary>מה תפקידו של etcd, ומה קורה אם הוא קורס?</summary>
 
-**ש: מה קרה ל-Docker כ-Container Runtime בגרסאות חדשות?**
-ת: החל מ-Kubernetes 1.24 הוסר תמיכה ישירה ב-dockershim, וה-runtime ברירת המחדל הוא containerd (או CRI-O). זה לא משפיע על היכולת להריץ תמונות Docker - רק על ה-runtime ברמת ה-Node.
+etcd הוא מסד הנתונים המבוזר ששומר את כל מצב הקלאסטר. אם הוא קורס לחלוטין ואין גיבוי - הקלאסטר "שוכח" את כל ההגדרות שלו (אם כי ה-Pods שכבר רצים ימשיכו לרוץ עד להפעלה מחדש, אך לא ניתן יהיה לנהל אותם).
 
-**ש: מה ההבדל בין Minikube ל-kind?**
-ת: Minikube מריץ VM (או קונטיינר) יחיד שמדמה קלאסטר שלם; kind מריץ כל Node של הקלאסטר כקונטיינר Docker נפרד, מה שמקל על סימולציה של קלאסטרים multi-node.
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין kubelet ל-kube-proxy?</summary>
+
+kubelet אחראי על הרצת קונטיינרים בפועל ב-Node ובדיקת תקינותם (health checks), בעוד kube-proxy אחראי על ניתוב תעבורת רשת בין Services ל-Pods.
+
+</details>
+
+<details class="qa">
+<summary>מהו ה-Reconciliation Loop?</summary>
+
+זהו הדפוס הבסיסי שעליו מבוססים כל הבקרים (Controllers) בקוברנטיס - לולאה אינסופית שמשווה כל הזמן בין ה-desired state (מה שהוגדר ב-YAML) לבין ה-actual state (מה שקורה בפועל), ומתקנת פערים.
+
+</details>
+
+<details class="qa">
+<summary>מה קרה ל-Docker כ-Container Runtime בגרסאות חדשות?</summary>
+
+החל מ-Kubernetes 1.24 הוסר תמיכה ישירה ב-dockershim, וה-runtime ברירת המחדל הוא containerd (או CRI-O). זה לא משפיע על היכולת להריץ תמונות Docker - רק על ה-runtime ברמת ה-Node.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Minikube ל-kind?</summary>
+
+Minikube מריץ VM (או קונטיינר) יחיד שמדמה קלאסטר שלם; kind מריץ כל Node של הקלאסטר כקונטיינר Docker נפרד, מה שמקל על סימולציה של קלאסטרים multi-node.
+
+</details>
 
 ---
 

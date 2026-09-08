@@ -276,23 +276,47 @@ kubectl get hpa -w
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין Metrics Server ל-Prometheus?**
-ת: Metrics Server הוא רכיב קל-משקל שאוסף רק CPU/Memory נוכחיים, בלי היסטוריה - משמש בעיקר עבור `kubectl top` ו-HPA בסיסי. Prometheus הוא מערכת ניטור מלאה עם time-series database, שפת שאילתות (PromQL), והתראות - מתאים לניטור production אמיתי.
+<details class="qa">
+<summary>מה ההבדל בין Metrics Server ל-Prometheus?</summary>
 
-**ש: איך Prometheus אוסף מדדים - push או pull?**
-ת: Pull - Prometheus שולף (scrape) מדדים מ-endpoints שהאפליקציות חושפות (בדרך כלל `/metrics`) ברווחי זמן קבועים. זה שונה מרוב מערכות הניטור המסורתיות שמבוססות על push.
+Metrics Server הוא רכיב קל-משקל שאוסף רק CPU/Memory נוכחיים, בלי היסטוריה - משמש בעיקר עבור `kubectl top` ו-HPA בסיסי. Prometheus הוא מערכת ניטור מלאה עם time-series database, שפת שאילתות (PromQL), והתראות - מתאים לניטור production אמיתי.
 
-**ש: למה חייבים פתרון ריכוזי ללוגים, ולא מספיק `kubectl logs`?**
-ת: כי לוגים של Pod נשמרים רק כל עוד ה-Pod (או ה-Node) קיים - ברגע שה-Pod נמחק (למשל אחרי קריסה או deployment), הלוגים אבדים לצמיתות. פתרון ריכוזי (EFK/Loki) שולח לוגים למקום מרוכז חיצוני שנשאר גם אחרי מחיקת ה-Pod.
+</details>
 
-**ש: מה ההבדל בין livenessProbe להתראות ניטור (alerting)?**
-ת: livenessProbe הוא מנגנון self-healing אוטומטי ברמת Kubernetes עצמו - אם הוא נכשל, ה-Pod מופעל מחדש אוטומטית בלי מעורבות אדם. alerting (למשל דרך Alertmanager) מתריע לבני אדם על מצבים חריגים שדורשים תשומת לב או החלטה, ולא בהכרח ניתנים לתיקון אוטומטי.
+<details class="qa">
+<summary>איך Prometheus אוסף מדדים - push או pull?</summary>
 
-**ש: מדוע DaemonSet הוא הדפוס המקובל לאיסוף לוגים?**
-ת: כי צריך בדיוק instance אחד של אוסף לוגים (כמו Fluent Bit) שרץ על **כל** Node בקלאסטר כדי לקרוא את קבצי הלוג המקומיים שלו - זו בדיוק ההגדרה של DaemonSet, בניגוד ל-Deployment שלא מבטיח הפצה אחידה כזו על פני Nodes.
+Pull - Prometheus שולף (scrape) מדדים מ-endpoints שהאפליקציות חושפות (בדרך כלל `/metrics`) ברווחי זמן קבועים. זה שונה מרוב מערכות הניטור המסורתיות שמבוססות על push.
 
-**ש: מה זה HPA ואיך הוא קשור לניטור?**
-ת: Horizontal Pod Autoscaler מגדיל/מקטין אוטומטית את מספר ה-replicas של Deployment בהתאם למדדים (CPU, Memory, או custom metrics) - הוא תלוי לחלוטין בזמינות מדדים עדכניים, בין אם דרך Metrics Server (בסיסי) או Prometheus Adapter (מדדים מותאמים אישית).
+</details>
+
+<details class="qa">
+<summary>למה חייבים פתרון ריכוזי ללוגים, ולא מספיק <code>kubectl logs</code>?</summary>
+
+כי לוגים של Pod נשמרים רק כל עוד ה-Pod (או ה-Node) קיים - ברגע שה-Pod נמחק (למשל אחרי קריסה או deployment), הלוגים אבדים לצמיתות. פתרון ריכוזי (EFK/Loki) שולח לוגים למקום מרוכז חיצוני שנשאר גם אחרי מחיקת ה-Pod.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין livenessProbe להתראות ניטור (alerting)?</summary>
+
+livenessProbe הוא מנגנון self-healing אוטומטי ברמת Kubernetes עצמו - אם הוא נכשל, ה-Pod מופעל מחדש אוטומטית בלי מעורבות אדם. alerting (למשל דרך Alertmanager) מתריע לבני אדם על מצבים חריגים שדורשים תשומת לב או החלטה, ולא בהכרח ניתנים לתיקון אוטומטי.
+
+</details>
+
+<details class="qa">
+<summary>מדוע DaemonSet הוא הדפוס המקובל לאיסוף לוגים?</summary>
+
+כי צריך בדיוק instance אחד של אוסף לוגים (כמו Fluent Bit) שרץ על **כל** Node בקלאסטר כדי לקרוא את קבצי הלוג המקומיים שלו - זו בדיוק ההגדרה של DaemonSet, בניגוד ל-Deployment שלא מבטיח הפצה אחידה כזו על פני Nodes.
+
+</details>
+
+<details class="qa">
+<summary>מה זה HPA ואיך הוא קשור לניטור?</summary>
+
+Horizontal Pod Autoscaler מגדיל/מקטין אוטומטית את מספר ה-replicas של Deployment בהתאם למדדים (CPU, Memory, או custom metrics) - הוא תלוי לחלוטין בזמינות מדדים עדכניים, בין אם דרך Metrics Server (בסיסי) או Prometheus Adapter (מדדים מותאמים אישית).
+
+</details>
 
 ---
 

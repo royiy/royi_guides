@@ -286,20 +286,44 @@ stage('Handle Failure Gracefully') {
 
 ## שאלות ראיון עבודה בנושא Jenkinsfile
 
-**ש: איך מעבירים secrets ל-pipeline בלי לחשוף אותם בלוגים?**
-ת: באמצעות Jenkins Credentials Store ו-`credentials()` binding או `withCredentials`, כך ש-Jenkins מסווה (masks) אוטומטית את הערך בפלט הלוגים.
+<details class="qa">
+<summary>איך מעבירים secrets ל-pipeline בלי לחשוף אותם בלוגים?</summary>
 
-**ש: מה ההבדל בין `sh` עם ו-בלי `returnStatus`?**
-ת: כברירת מחדל `sh` זורק exception וממשיך את ה-pipeline ל-failure אם ה-exit code שונה מ-0. עם `returnStatus: true`, ה-step מחזיר את קוד היציאה כערך ולא עוצר את ה-pipeline, מה שמאפשר טיפול מותאם בשגיאות.
+באמצעות Jenkins Credentials Store ו-`credentials()` binding או `withCredentials`, כך ש-Jenkins מסווה (masks) אוטומטית את הערך בפלט הלוגים.
 
-**ש: מה זה `stash` ו-`unstash` ולמה משתמשים בהם?**
-ת: מאפשרים לשמור זמנית קבצים מ-workspace אחד ולשחזר אותם ב-stage/agent אחר באותו pipeline run - שימושי כשה-build רץ על agent אחד וה-deploy על agent אחר.
+</details>
 
-**ש: איך בונים לוגיקה שרצה רק על branch מסוים?**
-ת: באמצעות בלוק `when { branch 'main' }` או תנאים מורכבים יותר עם `allOf`/`anyOf`/`not`.
+<details class="qa">
+<summary>מה ההבדל בין <code>sh</code> עם ו-בלי <code>returnStatus</code>?</summary>
 
-**ש: מה תפקיד ה-directive `parameters` ב-Declarative Pipeline?**
-ת: מגדיר פרמטרים שהמשתמש יכול להזין בזמן הרצת ה-build (string, choice, boolean וכו'), נגישים דרך `params.NAME`.
+כברירת מחדל `sh` זורק exception וממשיך את ה-pipeline ל-failure אם ה-exit code שונה מ-0. עם `returnStatus: true`, ה-step מחזיר את קוד היציאה כערך ולא עוצר את ה-pipeline, מה שמאפשר טיפול מותאם בשגיאות.
 
-**ש: איך מטפלים בקריאת רשת שלא תמיד מצליחה (flaky)?**
-ת: באמצעות ה-step `retry(N) { ... }` שמנסה שוב את הבלוק עד N פעמים לפני שנכשל סופית.
+</details>
+
+<details class="qa">
+<summary>מה זה <code>stash</code> ו-<code>unstash</code> ולמה משתמשים בהם?</summary>
+
+מאפשרים לשמור זמנית קבצים מ-workspace אחד ולשחזר אותם ב-stage/agent אחר באותו pipeline run - שימושי כשה-build רץ על agent אחד וה-deploy על agent אחר.
+
+</details>
+
+<details class="qa">
+<summary>איך בונים לוגיקה שרצה רק על branch מסוים?</summary>
+
+באמצעות בלוק `when { branch 'main' }` או תנאים מורכבים יותר עם `allOf`/`anyOf`/`not`.
+
+</details>
+
+<details class="qa">
+<summary>מה תפקיד ה-directive <code>parameters</code> ב-Declarative Pipeline?</summary>
+
+מגדיר פרמטרים שהמשתמש יכול להזין בזמן הרצת ה-build (string, choice, boolean וכו'), נגישים דרך `params.NAME`.
+
+</details>
+
+<details class="qa">
+<summary>איך מטפלים בקריאת רשת שלא תמיד מצליחה (flaky)?</summary>
+
+באמצעות ה-step `retry(N) { ... }` שמנסה שוב את הבלוק עד N פעמים לפני שנכשל סופית.
+
+</details>

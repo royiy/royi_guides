@@ -87,11 +87,19 @@ Home → Tape Job → Backup to Tape
 
 ## שאלות נפוצות
 
-**ש: מה ההבדל בין Backup Copy Job ל-Replication Job?**
-ת: Backup Copy מעתיק **קבצי גיבוי** (VBK/VIB) ליעד נוסף לצורך שמירה ארוכת טווח; Replication יוצר **VM חי** שניתן להפעיל מיידית (Failover) במקרה אסון.
+<details class="qa">
+<summary>מה ההבדל בין Backup Copy Job ל-Replication Job?</summary>
 
-**ש: האם ניתן להריץ Backup Copy Job ישירות מה-Capacity Tier של SOBR?**
-ת: לא מומלץ - עדיף להריץ מה-Performance Tier המקומי כדי לחסוך עלויות Egress מהענן.
+Backup Copy מעתיק **קבצי גיבוי** (VBK/VIB) ליעד נוסף לצורך שמירה ארוכת טווח; Replication יוצר **VM חי** שניתן להפעיל מיידית (Failover) במקרה אסון.
+
+</details>
+
+<details class="qa">
+<summary>האם ניתן להריץ Backup Copy Job ישירות מה-Capacity Tier של SOBR?</summary>
+
+לא מומלץ - עדיף להריץ מה-Performance Tier המקומי כדי לחסוך עלויות Egress מהענן.
+
+</details>
 
 ## קישורים חיצוניים
 

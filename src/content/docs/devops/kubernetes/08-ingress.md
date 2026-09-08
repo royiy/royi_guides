@@ -266,23 +266,47 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/component=controller -f
 
 ## שאלות ראיון עבודה {#שאלות}
 
-**ש: מה ההבדל בין Service מסוג LoadBalancer ל-Ingress?**
-ת: Service מסוג LoadBalancer עובד ברמת L4 (TCP/UDP) ודורש Load Balancer נפרד (ויקר) לכל שירות. Ingress עובד ברמת L7 (HTTP/HTTPS) ומאפשר לנתב תעבורה לכמה Services שונים דרך כתובת IP/Load Balancer אחת, בהתבסס על host ו-path.
+<details class="qa">
+<summary>מה ההבדל בין Service מסוג LoadBalancer ל-Ingress?</summary>
 
-**ש: למה יצירת אובייקט Ingress לבד לא מספיקה?**
-ת: כי Ingress הוא רק "הצהרה" על כללי הניתוב הרצויים - צריך Ingress Controller (כמו NGINX Ingress Controller) שרץ בפועל בקלאסטר ומיישם את הכללים האלו, אחרת שום תעבורה לא תנותב בפועל.
+Service מסוג LoadBalancer עובד ברמת L4 (TCP/UDP) ודורש Load Balancer נפרד (ויקר) לכל שירות. Ingress עובד ברמת L7 (HTTP/HTTPS) ומאפשר לנתב תעבורה לכמה Services שונים דרך כתובת IP/Load Balancer אחת, בהתבסס על host ו-path.
 
-**ש: איך עובד TLS termination ב-Ingress?**
-ת: ה-Ingress מפנה ל-Secret מסוג `kubernetes.io/tls` שמכיל תעודה ומפתח פרטי. ה-Ingress Controller מפענח (terminates) את החיבור המוצפן ברמתו, ולרוב שולח תעבורה לא מוצפנת (HTTP רגיל) הלאה ל-Pods בתוך הקלאסטר.
+</details>
 
-**ש: מה תפקידו של cert-manager?**
-ת: כלי (operator) שמנפיק ומחדש אוטומטית תעודות TLS - למשל מ-Let's Encrypt - ומכניס אותן ל-Secret המתאים, כך שלא צריך תהליך ידני לניהול תעודות SSL.
+<details class="qa">
+<summary>למה יצירת אובייקט Ingress לבד לא מספיקה?</summary>
 
-**ש: מה ההבדל בין ניתוב מבוסס Path לניתוב מבוסס Host ב-Ingress?**
-ת: ניתוב מבוסס Path מנתב תעבורה מאותו דומיין לשירותים שונים לפי הנתיב (למשל `/api` מול `/admin`). ניתוב מבוסס Host מנתב לפי כותרת ה-Host עצמה, כלומר תומך בכמה דומיינים שונים (`api.example.com` מול `app.example.com`) על אותו Ingress.
+כי Ingress הוא רק "הצהרה" על כללי הניתוב הרצויים - צריך Ingress Controller (כמו NGINX Ingress Controller) שרץ בפועל בקלאסטר ומיישם את הכללים האלו, אחרת שום תעבורה לא תנותב בפועל.
 
-**ש: מהו Gateway API ולמה הוא נוצר?**
-ת: תקן חדש יותר ב-Kubernetes שנועד להחליף בהדרגה את Ingress. הוא מפריד תפקידים בבירור יותר (תשתית מול routing), תומך ביותר פרוטוקולים (לא רק HTTP), ופחות תלוי ב-annotations ספציפיים לספק, מה שמפחית vendor lock-in.
+</details>
+
+<details class="qa">
+<summary>איך עובד TLS termination ב-Ingress?</summary>
+
+ה-Ingress מפנה ל-Secret מסוג `kubernetes.io/tls` שמכיל תעודה ומפתח פרטי. ה-Ingress Controller מפענח (terminates) את החיבור המוצפן ברמתו, ולרוב שולח תעבורה לא מוצפנת (HTTP רגיל) הלאה ל-Pods בתוך הקלאסטר.
+
+</details>
+
+<details class="qa">
+<summary>מה תפקידו של cert-manager?</summary>
+
+כלי (operator) שמנפיק ומחדש אוטומטית תעודות TLS - למשל מ-Let's Encrypt - ומכניס אותן ל-Secret המתאים, כך שלא צריך תהליך ידני לניהול תעודות SSL.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין ניתוב מבוסס Path לניתוב מבוסס Host ב-Ingress?</summary>
+
+ניתוב מבוסס Path מנתב תעבורה מאותו דומיין לשירותים שונים לפי הנתיב (למשל `/api` מול `/admin`). ניתוב מבוסס Host מנתב לפי כותרת ה-Host עצמה, כלומר תומך בכמה דומיינים שונים (`api.example.com` מול `app.example.com`) על אותו Ingress.
+
+</details>
+
+<details class="qa">
+<summary>מהו Gateway API ולמה הוא נוצר?</summary>
+
+תקן חדש יותר ב-Kubernetes שנועד להחליף בהדרגה את Ingress. הוא מפריד תפקידים בבירור יותר (תשתית מול routing), תומך ביותר פרוטוקולים (לא רק HTTP), ופחות תלוי ב-annotations ספציפיים לספק, מה שמפחית vendor lock-in.
+
+</details>
 
 ---
 

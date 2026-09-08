@@ -157,20 +157,44 @@ jenkins:
 
 ## שאלות ראיון עבודה בנושא אבטחה ב-Jenkins
 
-**ש: איך הייתם מגנים על secrets בתוך Jenkins Pipeline?**
-ת: שימוש ב-Credentials Store המובנה עם `withCredentials`, הימנעות מ-interpolation ישיר של secrets ל-shell strings, scoping credentials ברמת folder, וסיבוב (rotation) תקופתי של tokens.
+<details class="qa">
+<summary>איך הייתם מגנים על secrets בתוך Jenkins Pipeline?</summary>
 
-**ש: מה זה Groovy Sandbox ולמה הוא חשוב?**
-ת: מנגנון הגנה שמריץ Scripted Pipeline/script בלוקים בסביבה מוגבלת שחוסמת קריאות מסוכנות ל-Java/Groovy APIs. פעולות שאינן ב-whitelist דורשות אישור מפורש ב-Script Approval, כדי למנוע הרצת קוד זדוני דרך pipeline.
+שימוש ב-Credentials Store המובנה עם `withCredentials`, הימנעות מ-interpolation ישיר של secrets ל-shell strings, scoping credentials ברמת folder, וסיבוב (rotation) תקופתי של tokens.
 
-**ש: מה ההבדל בין Matrix-based ל-Role-based Authorization?**
-ת: Matrix-based מגדיר הרשאות ישירות למשתמשים/קבוצות ברמה גלובלית או per-project. Role-based (plugin נוסף) מוסיף שכבת abstraction של "roles" הניתנים להקצאה, מה שמקל על ניהול הרשאות בארגונים גדולים עם משתמשים רבים.
+</details>
 
-**ש: למה מסוכן להריץ Jenkins עם Anonymous read/build permissions?**
-ת: זה חושף מידע רגיש (קוד, לוגים, קונפיגורציה) לכל מי שיש לו גישת רשת ל-Jenkins, ועלול לאפשר לתוקף להריץ builds/scripts שרירותיים - פוטנציאל לפריצה מלאה של השרת ותשתיות מחוברות.
+<details class="qa">
+<summary>מה זה Groovy Sandbox ולמה הוא חשוב?</summary>
 
-**ש: איך מגבילים גישה ל-Script Console ב-Jenkins ולמה זה קריטי?**
-ת: מגבילים דרך authorization strategy כך שרק admins מורשים יגיעו ל-`/script` endpoint. Script Console מריץ קוד Groovy שרירותי ישירות על ה-master JVM עם הרשאות מלאות - זו למעשה יכולת RCE (Remote Code Execution) מובנית שצריך להגן עליה בקפידה.
+מנגנון הגנה שמריץ Scripted Pipeline/script בלוקים בסביבה מוגבלת שחוסמת קריאות מסוכנות ל-Java/Groovy APIs. פעולות שאינן ב-whitelist דורשות אישור מפורש ב-Script Approval, כדי למנוע הרצת קוד זדוני דרך pipeline.
 
-**ש: מהם ה-scope levels האפשריים ל-Credential ב-Jenkins ומתי משתמשים בכל אחד?**
-ת: Global (זמין לכל ה-Jenkins, פחות מומלץ), System (רק לתצורת Jenkins core), ו-Folder/Item-level (הכי מומלץ בארגונים - מגביל credentials ל-jobs ספציפיים, מה שמקטין blast radius אם job מסוים נפרץ).
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Matrix-based ל-Role-based Authorization?</summary>
+
+Matrix-based מגדיר הרשאות ישירות למשתמשים/קבוצות ברמה גלובלית או per-project. Role-based (plugin נוסף) מוסיף שכבת abstraction של "roles" הניתנים להקצאה, מה שמקל על ניהול הרשאות בארגונים גדולים עם משתמשים רבים.
+
+</details>
+
+<details class="qa">
+<summary>למה מסוכן להריץ Jenkins עם Anonymous read/build permissions?</summary>
+
+זה חושף מידע רגיש (קוד, לוגים, קונפיגורציה) לכל מי שיש לו גישת רשת ל-Jenkins, ועלול לאפשר לתוקף להריץ builds/scripts שרירותיים - פוטנציאל לפריצה מלאה של השרת ותשתיות מחוברות.
+
+</details>
+
+<details class="qa">
+<summary>איך מגבילים גישה ל-Script Console ב-Jenkins ולמה זה קריטי?</summary>
+
+מגבילים דרך authorization strategy כך שרק admins מורשים יגיעו ל-`/script` endpoint. Script Console מריץ קוד Groovy שרירותי ישירות על ה-master JVM עם הרשאות מלאות - זו למעשה יכולת RCE (Remote Code Execution) מובנית שצריך להגן עליה בקפידה.
+
+</details>
+
+<details class="qa">
+<summary>מהם ה-scope levels האפשריים ל-Credential ב-Jenkins ומתי משתמשים בכל אחד?</summary>
+
+Global (זמין לכל ה-Jenkins, פחות מומלץ), System (רק לתצורת Jenkins core), ו-Folder/Item-level (הכי מומלץ בארגונים - מגביל credentials ל-jobs ספציפיים, מה שמקטין blast radius אם job מסוים נפרץ).
+
+</details>

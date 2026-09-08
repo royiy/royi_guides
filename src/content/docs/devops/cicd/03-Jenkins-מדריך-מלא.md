@@ -182,20 +182,40 @@ stage('Parallel Tests') {
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Declarative ל-Scripted Pipeline ב-Jenkins?**
-ת: Declarative הוא syntax מובנה ומחמיר יותר (`pipeline { stages { ... } }`), קל יותר לקריאה ולתחזוקה. Scripted הוא Groovy גמיש לחלוטין, נותן שליטה מלאה אך מסובך יותר ודורש ידע ב-Groovy.
+<details class="qa">
+<summary>מה ההבדל בין Declarative ל-Scripted Pipeline ב-Jenkins?</summary>
 
-**ש: מה זה Jenkins Agent ולמה צריך כמה?**
-ת: Agent הוא מכונה שמריצה את העבודה בפועל. שימוש בכמה agents מאפשר הרצה מקבילית, בידוד סביבות (למשל agent עם Windows לעומת Linux), וסקיילינג אופקי.
+Declarative הוא syntax מובנה ומחמיר יותר (`pipeline { stages { ... } }`), קל יותר לקריאה ולתחזוקה. Scripted הוא Groovy גמיש לחלוטין, נותן שליטה מלאה אך מסובך יותר ודורש ידע ב-Groovy.
 
-**ש: איך מנהלים סודות (secrets) ב-Jenkins בצורה בטוחה?**
-ת: דרך Jenkins Credentials Store, ושימוש בבלוק `withCredentials` שמזריק את הסוד כמשתנה סביבה בלבד לזמן הריצה של השלב, מבלי לחשוף אותו ב-logs.
+</details>
 
-**ש: מה זה Jenkins Shared Library ולמה זה שימושי?**
-ת: מנגנון שמאפשר להגדיר פונקציות/steps משותפים בריפוזיטורי נפרד ולייבא אותם לכל Jenkinsfile, כדי למנוע כפילות קוד בין פרויקטים רבים.
+<details class="qa">
+<summary>מה זה Jenkins Agent ולמה צריך כמה?</summary>
 
-**ש: איך תבנה Pipeline שממתין לאישור ידני לפני deploy לפרודקשן?**
-ת: באמצעות ה-step `input` בתוך stage, שעוצר את ה-pipeline וממתין לאישור אדם דרך ה-UI, לרוב עם timeout מוגדר.
+Agent הוא מכונה שמריצה את העבודה בפועל. שימוש בכמה agents מאפשר הרצה מקבילית, בידוד סביבות (למשל agent עם Windows לעומת Linux), וסקיילינג אופקי.
+
+</details>
+
+<details class="qa">
+<summary>איך מנהלים סודות (secrets) ב-Jenkins בצורה בטוחה?</summary>
+
+דרך Jenkins Credentials Store, ושימוש בבלוק `withCredentials` שמזריק את הסוד כמשתנה סביבה בלבד לזמן הריצה של השלב, מבלי לחשוף אותו ב-logs.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Jenkins Shared Library ולמה זה שימושי?</summary>
+
+מנגנון שמאפשר להגדיר פונקציות/steps משותפים בריפוזיטורי נפרד ולייבא אותם לכל Jenkinsfile, כדי למנוע כפילות קוד בין פרויקטים רבים.
+
+</details>
+
+<details class="qa">
+<summary>איך תבנה Pipeline שממתין לאישור ידני לפני deploy לפרודקשן?</summary>
+
+באמצעות ה-step `input` בתוך stage, שעוצר את ה-pipeline וממתין לאישור אדם דרך ה-UI, לרוב עם timeout מוגדר.
+
+</details>
 
 ```groovy
 stage('Approve Production Deploy') {

@@ -146,23 +146,47 @@ deploy:
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Stage ל-Job ב-GitLab CI?**
-ת: Stage הוא קבוצה לוגית (למשל "test"); כל ה-jobs באותו stage רצים במקביל כברירת מחדל. Stages עצמם רצים בסדר – stage הבא מתחיל רק אחרי שכל ה-jobs ב-stage הנוכחי הצליחו.
+<details class="qa">
+<summary>מה ההבדל בין Stage ל-Job ב-GitLab CI?</summary>
 
-**ש: מה זה GitLab Runner ואילו סוגים קיימים?**
-ת: התוכנה שמריצה את ה-jobs בפועל. יש Shared Runners (מנוהלים ע"י GitLab, זמינים לכל פרויקט), Group Runners (לקבוצת פרויקטים), ו-Project/Specific Runners (ייעודיים לפרויקט אחד, לרוב self-hosted לצרכים מיוחדים כמו GPU).
+Stage הוא קבוצה לוגית (למשל "test"); כל ה-jobs באותו stage רצים במקביל כברירת מחדל. Stages עצמם רצים בסדר – stage הבא מתחיל רק אחרי שכל ה-jobs ב-stage הנוכחי הצליחו.
 
-**ש: מהו `needs` וכיצד הוא משפר ביצועים?**
-ת: הוא מאפשר להגדיר Directed Acyclic Graph (DAG) בין jobs במקום תלות ליניארית ב-stages; job יכול להתחיל ברגע שהתלות הספציפית שלו הסתיימה, במקום להמתין לכל ה-stage הקודם.
+</details>
 
-**ש: איך מריצים Docker build בתוך GitLab CI job?**
-ת: באמצעות שירות Docker-in-Docker (`docker:24-dind`) כ-service, יחד עם image של `docker` עצמו, ו-login לרג'יסטרי דרך משתני `CI_REGISTRY_*` המובנים.
+<details class="qa">
+<summary>מה זה GitLab Runner ואילו סוגים קיימים?</summary>
 
-**ש: מה ההבדל בין `rules` ל-`only/except`?**
-ת: `rules` הוא syntax חדש, גמיש וקריא יותר, התומך בתנאים מורכבים (`if`, `changes`, `exists`) ומחליף לחלוטין את `only/except` הישן שכיום deprecated.
+התוכנה שמריצה את ה-jobs בפועל. יש Shared Runners (מנוהלים ע"י GitLab, זמינים לכל פרויקט), Group Runners (לקבוצת פרויקטים), ו-Project/Specific Runners (ייעודיים לפרויקט אחד, לרוב self-hosted לצרכים מיוחדים כמו GPU).
 
-**ש: איך מגדירים deploy שדורש אישור ידני לפרודקשן?**
-ת: על ידי `when: manual` בתוך ה-job, כך שה-pipeline עוצר ומחכה שמישהו ילחץ "play" ב-UI כדי להמשיך.
+</details>
+
+<details class="qa">
+<summary>מהו <code>needs</code> וכיצד הוא משפר ביצועים?</summary>
+
+הוא מאפשר להגדיר Directed Acyclic Graph (DAG) בין jobs במקום תלות ליניארית ב-stages; job יכול להתחיל ברגע שהתלות הספציפית שלו הסתיימה, במקום להמתין לכל ה-stage הקודם.
+
+</details>
+
+<details class="qa">
+<summary>איך מריצים Docker build בתוך GitLab CI job?</summary>
+
+באמצעות שירות Docker-in-Docker (`docker:24-dind`) כ-service, יחד עם image של `docker` עצמו, ו-login לרג'יסטרי דרך משתני `CI_REGISTRY_*` המובנים.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>rules</code> ל-<code>only/except</code>?</summary>
+
+`rules` הוא syntax חדש, גמיש וקריא יותר, התומך בתנאים מורכבים (`if`, `changes`, `exists`) ומחליף לחלוטין את `only/except` הישן שכיום deprecated.
+
+</details>
+
+<details class="qa">
+<summary>איך מגדירים deploy שדורש אישור ידני לפרודקשן?</summary>
+
+על ידי `when: manual` בתוך ה-job, כך שה-pipeline עוצר ומחכה שמישהו ילחץ "play" ב-UI כדי להמשיך.
+
+</details>
 
 ## קישורים חיצוניים
 

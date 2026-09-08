@@ -104,20 +104,40 @@ git remote show origin           # פרטים מפורטים
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Git ל-GitHub?**
-ת: Git הוא כלי בקרת גרסאות מבוזר שרץ מקומית ומנהל היסטוריה. GitHub הוא שירות ענן שמארח repositories של Git ומוסיף שכבת שיתוף פעולה (PRs, Issues, CI/CD) מעליו.
+<details class="qa">
+<summary>מה ההבדל בין Git ל-GitHub?</summary>
 
-**ש: הסבר את שלושת האזורים ב-Git (Working Directory, Staging, Repository).**
-ת: Working Directory הם הקבצים בפועל שאתה עורך. Staging Area הוא אזור ביניים שבו מסמנים אילו שינויים ייכנסו ל-commit הבא (`git add`). Repository הוא ההיסטוריה השמורה בפועל אחרי `git commit`, בתוך תיקיית `.git`.
+Git הוא כלי בקרת גרסאות מבוזר שרץ מקומית ומנהל היסטוריה. GitHub הוא שירות ענן שמארח repositories של Git ומוסיף שכבת שיתוף פעולה (PRs, Issues, CI/CD) מעליו.
 
-**ש: מה זה Commit Hash ולמה הוא חשוב?**
-ת: מזהה ייחודי (SHA-1, 40 תווים הקסדצימליים) שמחושב מתוכן ה-commit, ההורה שלו, המחבר והזמן. הוא מבטיח שלכל שינוי יש זיהוי חד-משמעי ובלתי ניתן לזיוף – ליבת מודל האבטחה וה-Integrity של Git.
+</details>
 
-**ש: מה ההבדל בין Distributed Version Control (כמו Git) ל-Centralized (כמו SVN)?**
-ת: במערכת מרכזית יש שרת יחיד עם ההיסטוריה המלאה, וללא חיבור אליו לא ניתן לעבוד. במערכת מבוזרת כמו Git, לכל מפתח יש עותק מלא של כל ההיסטוריה מקומית – ניתן לעבוד, לעשות commit ולראות היסטוריה גם ללא אינטרנט.
+<details class="qa">
+<summary>הסבר את שלושת האזורים ב-Git (Working Directory, Staging, Repository).</summary>
 
-**ש: מה זה `.gitignore` ולמה חשוב להגדיר אותו נכון?**
-ת: קובץ שמגדיר דפוסי קבצים/תיקיות ש-Git לא יעקוב אחריהם (כמו `node_modules`, קבצי סביבה עם סודות, קבצי build). חשוב כדי למנוע commit בטעות של קבצים גדולים, סודות רגישים, או artifacts שנוצרים אוטומטית.
+Working Directory הם הקבצים בפועל שאתה עורך. Staging Area הוא אזור ביניים שבו מסמנים אילו שינויים ייכנסו ל-commit הבא (`git add`). Repository הוא ההיסטוריה השמורה בפועל אחרי `git commit`, בתוך תיקיית `.git`.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Commit Hash ולמה הוא חשוב?</summary>
+
+מזהה ייחודי (SHA-1, 40 תווים הקסדצימליים) שמחושב מתוכן ה-commit, ההורה שלו, המחבר והזמן. הוא מבטיח שלכל שינוי יש זיהוי חד-משמעי ובלתי ניתן לזיוף – ליבת מודל האבטחה וה-Integrity של Git.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Distributed Version Control (כמו Git) ל-Centralized (כמו SVN)?</summary>
+
+במערכת מרכזית יש שרת יחיד עם ההיסטוריה המלאה, וללא חיבור אליו לא ניתן לעבוד. במערכת מבוזרת כמו Git, לכל מפתח יש עותק מלא של כל ההיסטוריה מקומית – ניתן לעבוד, לעשות commit ולראות היסטוריה גם ללא אינטרנט.
+
+</details>
+
+<details class="qa">
+<summary>מה זה <code>.gitignore</code> ולמה חשוב להגדיר אותו נכון?</summary>
+
+קובץ שמגדיר דפוסי קבצים/תיקיות ש-Git לא יעקוב אחריהם (כמו `node_modules`, קבצי סביבה עם סודות, קבצי build). חשוב כדי למנוע commit בטעות של קבצים גדולים, סודות רגישים, או artifacts שנוצרים אוטומטית.
+
+</details>
 
 ## קישורים חיצוניים
 

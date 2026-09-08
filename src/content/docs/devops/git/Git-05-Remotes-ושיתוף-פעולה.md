@@ -110,23 +110,47 @@ git submodule update --init --recursive
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין `git fetch` ל-`git pull`?**
-ת: `fetch` מוריד שינויים מהרימוט לענפי מעקב מקומיים (`origin/main`) בלי לגעת ב-branch שאתה עליו – בטוח לבדיקה. `pull` הוא בעצם `fetch` ואז `merge` (או `rebase`) אוטומטי לתוך ה-branch הנוכחי שלך.
+<details class="qa">
+<summary>מה ההבדל בין <code>git fetch</code> ל-<code>git pull</code>?</summary>
 
-**ש: הסבר את זרימת עבודת ה-Fork Workflow הנפוצה בפרויקטי Open Source.**
-ת: המתורגם Fork את הרפוזיטורי המקורי לחשבון שלו, מוסיף remote בשם `upstream` שמצביע למקור, עובד על feature branches בפורק שלו, ופותח Pull Request מהפורק בחזרה לפרויקט המקורי. זה מאפשר תרומה גם למי שאין לו הרשאות כתיבה ישירות לרפוזיטורי המקורי.
+`fetch` מוריד שינויים מהרימוט לענפי מעקב מקומיים (`origin/main`) בלי לגעת ב-branch שאתה עליו – בטוח לבדיקה. `pull` הוא בעצם `fetch` ואז `merge` (או `rebase`) אוטומטי לתוך ה-branch הנוכחי שלך.
 
-**ש: מה זה Branch Protection Rule ולמה חשוב להגדיר אותו?**
-ת: הגדרה ב-GitHub/GitLab שחוסמת פעולות מסוימות על branch מסוים (כמו `main`) – למשל push ישיר, מיזוג ללא code review, או מיזוג כשה-CI נכשל. חשוב לשמירה על איכות ויציבות הענף הראשי.
+</details>
 
-**ש: מה ההבדל בין `origin` ל-`upstream`?**
-ת: אלה רק שמות מוסכמים (convention), לא מונחים מיוחדים ב-Git עצמו. `origin` הוא בדרך כלל הrepository שממנו עשית clone (הפורק שלך). `upstream` הוא הרפוזיטורי המקורי שממנו אתה מושך עדכונים כשעובדים בשיטת Fork.
+<details class="qa">
+<summary>הסבר את זרימת עבודת ה-Fork Workflow הנפוצה בפרויקטי Open Source.</summary>
 
-**ש: מה זה Git Submodule ומה החסרונות שלו?**
-ת: מנגנון להטמעת repository אחד בתוך אחר, תוך שמירה על היסטוריות נפרדות. חסרונות: מורכבות בשימוש (`git submodule update --init` שכיח לשכוח), קושי לעקוב אחרי commit ה-submodule המדויק, וחוויית פיתוח פחות אינטואיטיבית מפתרונות חלופיים כמו package managers.
+המתורגם Fork את הרפוזיטורי המקורי לחשבון שלו, מוסיף remote בשם `upstream` שמצביע למקור, עובד על feature branches בפורק שלו, ופותח Pull Request מהפורק בחזרה לפרויקט המקורי. זה מאפשר תרומה גם למי שאין לו הרשאות כתיבה ישירות לרפוזיטורי המקורי.
 
-**ש: איך `git blame` יכול לעזור בדיבוג (debugging)?**
-ת: הוא מראה מי כתב כל שורה בקובץ ובאיזה commit – מאפשר להבין את ההקשר ההיסטורי של קוד בעייתי, למצוא את ה-commit שהכניס שינוי מסוים, ולדעת את מי לשאול לגבי כוונת הקוד.
+</details>
+
+<details class="qa">
+<summary>מה זה Branch Protection Rule ולמה חשוב להגדיר אותו?</summary>
+
+הגדרה ב-GitHub/GitLab שחוסמת פעולות מסוימות על branch מסוים (כמו `main`) – למשל push ישיר, מיזוג ללא code review, או מיזוג כשה-CI נכשל. חשוב לשמירה על איכות ויציבות הענף הראשי.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>origin</code> ל-<code>upstream</code>?</summary>
+
+אלה רק שמות מוסכמים (convention), לא מונחים מיוחדים ב-Git עצמו. `origin` הוא בדרך כלל הrepository שממנו עשית clone (הפורק שלך). `upstream` הוא הרפוזיטורי המקורי שממנו אתה מושך עדכונים כשעובדים בשיטת Fork.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Git Submodule ומה החסרונות שלו?</summary>
+
+מנגנון להטמעת repository אחד בתוך אחר, תוך שמירה על היסטוריות נפרדות. חסרונות: מורכבות בשימוש (`git submodule update --init` שכיח לשכוח), קושי לעקוב אחרי commit ה-submodule המדויק, וחוויית פיתוח פחות אינטואיטיבית מפתרונות חלופיים כמו package managers.
+
+</details>
+
+<details class="qa">
+<summary>איך <code>git blame</code> יכול לעזור בדיבוג (debugging)?</summary>
+
+הוא מראה מי כתב כל שורה בקובץ ובאיזה commit – מאפשר להבין את ההקשר ההיסטורי של קוד בעייתי, למצוא את ה-commit שהכניס שינוי מסוים, ולדעת את מי לשאול לגבי כוונת הקוד.
+
+</details>
 
 ## קישורים חיצוניים
 

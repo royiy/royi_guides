@@ -109,23 +109,47 @@ git clean -fd     # כולל תיקיות
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין `git reset` ל-`git revert`?**
-ת: `reset` מזיז את מצביע ה-branch אחורה ו"מוחק" commits מההיסטוריה (מסוכן על היסטוריה משותפת). `revert` יוצר commit חדש שמבטל את השינויים של commit קודם, בלי למחוק כלום מההיסטוריה – בטוח לשימוש תמיד, גם על branches ציבוריים.
+<details class="qa">
+<summary>מה ההבדל בין <code>git reset</code> ל-<code>git revert</code>?</summary>
 
-**ש: הסבר את ההבדל בין `--soft`, `--mixed`, ו-`--hard` ב-`git reset`.**
-ת: `--soft` מזיז רק את מצביע ה-commit, השינויים נשארים ב-staging. `--mixed` (ברירת מחדל) גם מוציא מה-staging אך משאיר בworking directory. `--hard` מוחק את השינויים לחלוטין מכל שלושת האזורים.
+`reset` מזיז את מצביע ה-branch אחורה ו"מוחק" commits מההיסטוריה (מסוכן על היסטוריה משותפת). `revert` יוצר commit חדש שמבטל את השינויים של commit קודם, בלי למחוק כלום מההיסטוריה – בטוח לשימוש תמיד, גם על branches ציבוריים.
 
-**ש: מה זה `git reflog` ולמה הוא שימושי?**
-ת: יומן פנימי שרושם כל תזוזה של HEAD (commits, resets, checkouts) גם אם commits "אבדו" מההיסטוריה הרגילה. מאפשר לשחזר כמעט כל מצב קודם, גם אחרי `reset --hard` בטעות.
+</details>
 
-**ש: מתי תשתמש ב-`git commit --amend` ומה הסיכון שלו?**
-ת: כדי לתקן הודעה או להוסיף קובץ שנשכח ל-commit האחרון בלבד. הסיכון: זה משנה את ה-hash של ה-commit, אז אסור להשתמש בו על commit שכבר נדחף ושותפים אחרים כבר משכו.
+<details class="qa">
+<summary>הסבר את ההבדל בין <code>--soft</code>, <code>--mixed</code>, ו-<code>--hard</code> ב-<code>git reset</code>.</summary>
 
-**ש: מה ההבדל בין `git push --force` ל-`git push --force-with-lease`?**
-ת: `--force` דורס את ההיסטוריה ברימוט ללא תנאי, גם אם מישהו אחר דחף שינויים חדשים בינתיים – מסוכן מאוד. `--force-with-lease` בודק קודם שהמצב ברימוט זהה למה שאתה מצפה, ומסרב לדחוף אם מישהו אחר כבר שינה משהו – בטוח יותר משמעותית.
+`--soft` מזיז רק את מצביע ה-commit, השינויים נשארים ב-staging. `--mixed` (ברירת מחדל) גם מוציא מה-staging אך משאיר בworking directory. `--hard` מוחק את השינויים לחלוטין מכל שלושת האזורים.
 
-**ש: איך תשחזר קובץ שנמחק בטעות ולא נשמר עדיין (uncommitted)?**
-ת: אם הקובץ עדיין tracked ורק נמחק מה-working directory: `git restore <file>`. אם היה untracked ונמחק ידנית מה-filesystem, אין דרך לשחזר דרך Git – רק אם היה גיבוי חיצוני.
+</details>
+
+<details class="qa">
+<summary>מה זה <code>git reflog</code> ולמה הוא שימושי?</summary>
+
+יומן פנימי שרושם כל תזוזה של HEAD (commits, resets, checkouts) גם אם commits "אבדו" מההיסטוריה הרגילה. מאפשר לשחזר כמעט כל מצב קודם, גם אחרי `reset --hard` בטעות.
+
+</details>
+
+<details class="qa">
+<summary>מתי תשתמש ב-<code>git commit --amend</code> ומה הסיכון שלו?</summary>
+
+כדי לתקן הודעה או להוסיף קובץ שנשכח ל-commit האחרון בלבד. הסיכון: זה משנה את ה-hash של ה-commit, אז אסור להשתמש בו על commit שכבר נדחף ושותפים אחרים כבר משכו.
+
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>git push --force</code> ל-<code>git push --force-with-lease</code>?</summary>
+
+`--force` דורס את ההיסטוריה ברימוט ללא תנאי, גם אם מישהו אחר דחף שינויים חדשים בינתיים – מסוכן מאוד. `--force-with-lease` בודק קודם שהמצב ברימוט זהה למה שאתה מצפה, ומסרב לדחוף אם מישהו אחר כבר שינה משהו – בטוח יותר משמעותית.
+
+</details>
+
+<details class="qa">
+<summary>איך תשחזר קובץ שנמחק בטעות ולא נשמר עדיין (uncommitted)?</summary>
+
+אם הקובץ עדיין tracked ורק נמחק מה-working directory: `git restore <file>`. אם היה untracked ונמחק ידנית מה-filesystem, אין דרך לשחזר דרך Git – רק אם היה גיבוי חיצוני.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -85,20 +85,40 @@ jobs:
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Git Flow ל-Trunk-Based Development, ומתי תבחר בכל אחד?**
-ת: Git Flow מתאים למוצרים עם מחזורי release מתוכננים וגרסאות מרובות בו-זמנית (למשל תוכנת desktop). Trunk-Based מתאים לשירותי web/SaaS עם פריסה תכופה, ודורש משמעת גבוהה + feature flags.
+<details class="qa">
+<summary>מה ההבדל בין Git Flow ל-Trunk-Based Development, ומתי תבחר בכל אחד?</summary>
 
-**ש: מה זה Feature Flag וכיצד הוא קשור ל-CI/CD?**
-ת: מנגנון שמאפשר להדליק/לכבות פיצ'ר בזמן ריצה בלי לפרוס קוד חדש. זה מאפשר למזג קוד לא גמור ל-`main` בבטחה ולנתק בין "Deploy" ל-"Release".
+Git Flow מתאים למוצרים עם מחזורי release מתוכננים וגרסאות מרובות בו-זמנית (למשל תוכנת desktop). Trunk-Based מתאים לשירותי web/SaaS עם פריסה תכופה, ודורש משמעת גבוהה + feature flags.
 
-**ש: איך היית מגדיר Pipeline שרץ אחרת ב-PR לעומת merge ל-main?**
-ת: על ידי הגדרת triggers שונים (`pull_request` מול `push` ל-`main`) עם jobs שונים – ב-PR רק build+test, ב-merge ל-main גם deploy.
+</details>
 
-**ש: מה הבעיה עם ענפי feature ארוכי חיים מבחינת CI/CD?**
-ת: הם מצטברים ל"merge hell" – ככל שענף רחוק יותר מ-main, כך גדל הסיכוי לקונפליקטים ולכשלי אינטגרציה. זה מנוגד לעיקרון של אינטגרציה תכופה.
+<details class="qa">
+<summary>מה זה Feature Flag וכיצד הוא קשור ל-CI/CD?</summary>
 
-**ש: איך תבטיח שאף אחד לא יעקוף את ה-CI ויעשה push ישיר ל-production branch?**
-ת: Branch protection rules ב-Git host (חסימת push ישיר, דרישת PR + status checks ירוקים + code owners review).
+מנגנון שמאפשר להדליק/לכבות פיצ'ר בזמן ריצה בלי לפרוס קוד חדש. זה מאפשר למזג קוד לא גמור ל-`main` בבטחה ולנתק בין "Deploy" ל-"Release".
+
+</details>
+
+<details class="qa">
+<summary>איך היית מגדיר Pipeline שרץ אחרת ב-PR לעומת merge ל-main?</summary>
+
+על ידי הגדרת triggers שונים (`pull_request` מול `push` ל-`main`) עם jobs שונים – ב-PR רק build+test, ב-merge ל-main גם deploy.
+
+</details>
+
+<details class="qa">
+<summary>מה הבעיה עם ענפי feature ארוכי חיים מבחינת CI/CD?</summary>
+
+הם מצטברים ל"merge hell" – ככל שענף רחוק יותר מ-main, כך גדל הסיכוי לקונפליקטים ולכשלי אינטגרציה. זה מנוגד לעיקרון של אינטגרציה תכופה.
+
+</details>
+
+<details class="qa">
+<summary>איך תבטיח שאף אחד לא יעקוף את ה-CI ויעשה push ישיר ל-production branch?</summary>
+
+Branch protection rules ב-Git host (חסימת push ישיר, דרישת PR + status checks ירוקים + code owners review).
+
+</details>
 
 ## קישורים חיצוניים
 

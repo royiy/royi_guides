@@ -168,23 +168,47 @@ terraform apply -var-file=staging.tfvars
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה זה Terraform State ולמה חשוב לשמור אותו remote?**
-ת: קובץ שממפה בין הגדרות הקוד למצב האמיתי בענן. Remote state (למשל S3) מאפשר לצוות שלם ולפייפליין לעבוד מול אותו מקור אמת יחיד, עם locking שמונע התנגשויות בין הרצות מקבילות.
+<details class="qa">
+<summary>מה זה Terraform State ולמה חשוב לשמור אותו remote?</summary>
 
-**ש: מהי הזרימה המומלצת של Terraform בתוך CI/CD?**
-ת: "Plan on PR, Apply on Merge" – מריצים `terraform plan` אוטומטית בכל PR ומציגים את התוצאה לסקירה, ומריצים `terraform apply` רק אחרי מיזוג ל-main, לרוב עם אישור ידני נוסף לפרודקשן.
+קובץ שממפה בין הגדרות הקוד למצב האמיתי בענן. Remote state (למשל S3) מאפשר לצוות שלם ולפייפליין לעבוד מול אותו מקור אמת יחיד, עם locking שמונע התנגשויות בין הרצות מקבילות.
 
-**ש: מה ההבדל בין Terraform Module ל-Workspace?**
-ת: Module הוא יחידת קוד לשימוש חוזר (כמו function) – אריזת קבוצת resources. Workspace הוא מנגנון לניהול מספר instances של אותה תצורה (למשל staging/production) עם state נפרד לכל אחד, תוך שימוש באותו קוד.
+</details>
 
-**ש: איך תמנע מצב שבו שני הרצות CI במקביל דורסות state אחת את השנייה?**
-ת: באמצעות State Locking (למשל DynamoDB table עם S3 backend, או lock מובנה ב-Terraform Cloud) – מונע מריצת `apply` שנייה להתחיל לפני שהראשונה הסתיימה ושחררה את הנעילה.
+<details class="qa">
+<summary>מהי הזרימה המומלצת של Terraform בתוך CI/CD?</summary>
 
-**ש: איך משלבים סריקת אבטחה לתשתית (IaC Security) ב-pipeline?**
-ת: הוספת שלב עם כלים כמו `tfsec` או `checkov` שסורקים את קבצי ה-`.tf` לפני `apply`, ותופסים בעיות כמו S3 buckets פתוחים לציבור, security groups רחבים מדי, או הצפנה חסרה.
+"Plan on PR, Apply on Merge" – מריצים `terraform plan` אוטומטית בכל PR ומציגים את התוצאה לסקירה, ומריצים `terraform apply` רק אחרי מיזוג ל-main, לרוב עם אישור ידני נוסף לפרודקשן.
 
-**ש: מה הסיכון ב-auto-apply ללא אישור אנושי, ומתי בכל זאת מקובל?**
-ת: הסיכון הוא מחיקה/שינוי בלתי צפוי של תשתית קריטית ללא ביקורת. מקובל ל-auto-apply בסביבות לא-קריטיות (dev/sandbox) או כשיש בדיקות אוטומטיות חזקות מאוד ו-blast radius מוגבל.
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין Terraform Module ל-Workspace?</summary>
+
+Module הוא יחידת קוד לשימוש חוזר (כמו function) – אריזת קבוצת resources. Workspace הוא מנגנון לניהול מספר instances של אותה תצורה (למשל staging/production) עם state נפרד לכל אחד, תוך שימוש באותו קוד.
+
+</details>
+
+<details class="qa">
+<summary>איך תמנע מצב שבו שני הרצות CI במקביל דורסות state אחת את השנייה?</summary>
+
+באמצעות State Locking (למשל DynamoDB table עם S3 backend, או lock מובנה ב-Terraform Cloud) – מונע מריצת `apply` שנייה להתחיל לפני שהראשונה הסתיימה ושחררה את הנעילה.
+
+</details>
+
+<details class="qa">
+<summary>איך משלבים סריקת אבטחה לתשתית (IaC Security) ב-pipeline?</summary>
+
+הוספת שלב עם כלים כמו `tfsec` או `checkov` שסורקים את קבצי ה-`.tf` לפני `apply`, ותופסים בעיות כמו S3 buckets פתוחים לציבור, security groups רחבים מדי, או הצפנה חסרה.
+
+</details>
+
+<details class="qa">
+<summary>מה הסיכון ב-auto-apply ללא אישור אנושי, ומתי בכל זאת מקובל?</summary>
+
+הסיכון הוא מחיקה/שינוי בלתי צפוי של תשתית קריטית ללא ביקורת. מקובל ל-auto-apply בסביבות לא-קריטיות (dev/sandbox) או כשיש בדיקות אוטומטיות חזקות מאוד ו-blast radius מוגבל.
+
+</details>
 
 ## קישורים חיצוניים
 

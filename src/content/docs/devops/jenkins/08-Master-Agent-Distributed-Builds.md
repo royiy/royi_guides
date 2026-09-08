@@ -178,17 +178,37 @@ Jenkins.instance.computers.each { computer ->
 
 ## שאלות ראיון עבודה בנושא Master/Agent Architecture
 
-**ש: למה לא כדאי להריץ builds ישירות על ה-Jenkins controller?**
-ת: הcontroller אחראי על UI, scheduling, וניהול כל המערכת - הרצת builds כבדים עליו עלולה להאט את כל Jenkins עבור כל המשתמשים, וגם חושפת סיכון אבטחה (build script רץ עם גישה לאותה מכונה שמריצה את כל Jenkins).
+<details class="qa">
+<summary>למה לא כדאי להריץ builds ישירות על ה-Jenkins controller?</summary>
 
-**ש: מה ההבדל בין agent סטטי (permanent) לבין agent דינמי (ephemeral)?**
-ת: Agent סטטי הוא מכונה קבועה שמחוברת תמיד (למשל דרך SSH), בעוד agent דינמי (למשל Kubernetes Pod) נוצר רק כשיש build ונמחק בסופו - מה שנותן ניצול משאבים יעיל יותר, בידוד מלא, וסקיילביליות אוטומטית.
+הcontroller אחראי על UI, scheduling, וניהול כל המערכת - הרצת builds כבדים עליו עלולה להאט את כל Jenkins עבור כל המשתמשים, וגם חושפת סיכון אבטחה (build script רץ עם גישה לאותה מכונה שמריצה את כל Jenkins).
 
-**ש: מה זה Label ב-Jenkins ואיך משתמשים בו?**
-ת: תגית שמשויכת ל-agent ומתארת את יכולותיו (מערכת הפעלה, כלים מותקנים, חומרה). ב-Pipeline, `agent { label 'linux && docker' }` מבטיח שה-build ירוץ רק על agent שתואם את הביטוי הלוגי.
+</details>
 
-**ש: מה זה Executor וכמה כדאי להגדיר על agent אחד?**
-ת: Executor הוא "חריץ" שמריץ build אחד בו-זמנית. כמות ה-executors צריכה להתאים למשאבי החומרה (CPU/RAM) של ה-agent - יותר מדי executors גורם ל-resource contention ותוצאות לא אמינות.
+<details class="qa">
+<summary>מה ההבדל בין agent סטטי (permanent) לבין agent דינמי (ephemeral)?</summary>
 
-**ש: איך Jenkins מתמודד עם עומסים משתנים (scaling) בסביבת cloud?**
-ת: באמצעות cloud plugins (Kubernetes, EC2, Azure VM Agents) שיוצרים agents לפי דרישה - כשיש builds ממתינים נוצרים agents חדשים, וכשאין עומס הם נמחקים, מה שחוסך עלויות ומספק אלסטיות.
+Agent סטטי הוא מכונה קבועה שמחוברת תמיד (למשל דרך SSH), בעוד agent דינמי (למשל Kubernetes Pod) נוצר רק כשיש build ונמחק בסופו - מה שנותן ניצול משאבים יעיל יותר, בידוד מלא, וסקיילביליות אוטומטית.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Label ב-Jenkins ואיך משתמשים בו?</summary>
+
+תגית שמשויכת ל-agent ומתארת את יכולותיו (מערכת הפעלה, כלים מותקנים, חומרה). ב-Pipeline, `agent { label 'linux && docker' }` מבטיח שה-build ירוץ רק על agent שתואם את הביטוי הלוגי.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Executor וכמה כדאי להגדיר על agent אחד?</summary>
+
+Executor הוא "חריץ" שמריץ build אחד בו-זמנית. כמות ה-executors צריכה להתאים למשאבי החומרה (CPU/RAM) של ה-agent - יותר מדי executors גורם ל-resource contention ותוצאות לא אמינות.
+
+</details>
+
+<details class="qa">
+<summary>איך Jenkins מתמודד עם עומסים משתנים (scaling) בסביבת cloud?</summary>
+
+באמצעות cloud plugins (Kubernetes, EC2, Azure VM Agents) שיוצרים agents לפי דרישה - כשיש builds ממתינים נוצרים agents חדשים, וכשאין עומס הם נמחקים, מה שחוסך עלויות ומספק אלסטיות.
+
+</details>

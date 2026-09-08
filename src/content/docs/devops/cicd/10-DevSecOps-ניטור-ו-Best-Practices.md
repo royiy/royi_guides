@@ -120,23 +120,47 @@ Google's DevOps Research and Assessment (DORA) הגדירו 4 מדדי מפתח 
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה זה DevSecOps ומה ההבדל שלו מ-DevOps רגיל?**
-ת: DevSecOps משלב בדיקות ופרקטיקות אבטחה כחלק אינטגרלי ואוטומטי מכל שלב בפייפליין (Shift Left), במקום להשאיר אבטחה כבדיקה ידנית בסוף התהליך לפני release.
+<details class="qa">
+<summary>מה זה DevSecOps ומה ההבדל שלו מ-DevOps רגיל?</summary>
 
-**ש: הסבר את ארבעת מדדי ה-DORA וכיצד הם מודדים הצלחת CI/CD.**
-ת: Deployment Frequency (תדירות פריסה), Lead Time for Changes (זמן מקוד לפרודקשן), Change Failure Rate (אחוז פריסות שגורמות לתקלה), ו-MTTR (זמן שחזור מתקלה). ביחד הם מודדים גם מהירות וגם יציבות – לא מספיק לפרוס מהר, צריך גם לפרוס בבטחה.
+DevSecOps משלב בדיקות ופרקטיקות אבטחה כחלק אינטגרלי ואוטומטי מכל שלב בפייפליין (Shift Left), במקום להשאיר אבטחה כבדיקה ידנית בסוף התהליך לפני release.
 
-**ש: מה ההבדל בין SAST ל-DAST?**
-ת: SAST (Static Application Security Testing) בודק את קוד המקור ללא הרצה, מוקדם בפייפליין. DAST (Dynamic Application Security Testing) תוקף את האפליקציה כשהיא רצה בפועל (בסביבת staging), ומדמה תרחישי תקיפה אמיתיים.
+</details>
 
-**ש: איך היית מתכנן Automated Rollback Strategy?**
-ת: הוספת smoke tests/health checks מיד אחרי deploy; אם הם נכשלים, ה-pipeline מריץ אוטומטית `kubectl rollout undo` (או GitOps revert). בנוסף, ניטור מטריקות (error rate, latency) עם alerting שיכול לטריגר rollback אוטומטי גם דקות אחרי deploy מוצלח לכאורה.
+<details class="qa">
+<summary>הסבר את ארבעת מדדי ה-DORA וכיצד הם מודדים הצלחת CI/CD.</summary>
 
-**ש: מה זה "Change Failure Rate" ולמה זה חשוב יותר מסתם "כמה פעמים פרסנו"?**
-ת: זה אחוז ה-deployments שגורמים לתקלה או דורשים תיקון חירום. חשוב כי תדירות פריסה גבוהה בלי יציבות היא לא הישג – המטרה היא לפרוס מהר **וגם** בבטחה; שני המדדים יחד נותנים תמונה מלאה.
+Deployment Frequency (תדירות פריסה), Lead Time for Changes (זמן מקוד לפרודקשן), Change Failure Rate (אחוז פריסות שגורמות לתקלה), ו-MTTR (זמן שחזור מתקלה). ביחד הם מודדים גם מהירות וגם יציבות – לא מספיק לפרוס מהר, צריך גם לפרוס בבטחה.
 
-**ש: איך אתה מונע דליפת secrets לקוד ב-pipeline?**
-ת: שילוב Secret Scanning (Gitleaks/TruffleHog) שרץ אוטומטית על כל commit/PR, שימוש ב-Secret Managers ייעודיים (Vault, AWS Secrets Manager) במקום env vars גלויים, ו-pre-commit hooks שתופסים סודות לפני שהם בכלל מגיעים ל-git.
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין SAST ל-DAST?</summary>
+
+SAST (Static Application Security Testing) בודק את קוד המקור ללא הרצה, מוקדם בפייפליין. DAST (Dynamic Application Security Testing) תוקף את האפליקציה כשהיא רצה בפועל (בסביבת staging), ומדמה תרחישי תקיפה אמיתיים.
+
+</details>
+
+<details class="qa">
+<summary>איך היית מתכנן Automated Rollback Strategy?</summary>
+
+הוספת smoke tests/health checks מיד אחרי deploy; אם הם נכשלים, ה-pipeline מריץ אוטומטית `kubectl rollout undo` (או GitOps revert). בנוסף, ניטור מטריקות (error rate, latency) עם alerting שיכול לטריגר rollback אוטומטי גם דקות אחרי deploy מוצלח לכאורה.
+
+</details>
+
+<details class="qa">
+<summary>מה זה "Change Failure Rate" ולמה זה חשוב יותר מסתם "כמה פעמים פרסנו"?</summary>
+
+זה אחוז ה-deployments שגורמים לתקלה או דורשים תיקון חירום. חשוב כי תדירות פריסה גבוהה בלי יציבות היא לא הישג – המטרה היא לפרוס מהר **וגם** בבטחה; שני המדדים יחד נותנים תמונה מלאה.
+
+</details>
+
+<details class="qa">
+<summary>איך אתה מונע דליפת secrets לקוד ב-pipeline?</summary>
+
+שילוב Secret Scanning (Gitleaks/TruffleHog) שרץ אוטומטית על כל commit/PR, שימוש ב-Secret Managers ייעודיים (Vault, AWS Secrets Manager) במקום env vars גלויים, ו-pre-commit hooks שתופסים סודות לפני שהם בכלל מגיעים ל-git.
+
+</details>
 
 ## קישורים חיצוניים
 

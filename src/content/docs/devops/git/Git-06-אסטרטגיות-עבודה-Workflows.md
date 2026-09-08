@@ -120,23 +120,47 @@ if (featureFlags.isEnabled('new-checkout-flow')) {
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Git Flow ל-GitHub Flow, ומתי תבחר בכל אחד?**
-ת: Git Flow משתמש בענפים ייעודיים מרובים (`develop`, `release/*`, `hotfix/*`) ומתאים לפרויקטים עם releases מתוזמנים וגרסאות מרובות (כמו תוכנת desktop/mobile). GitHub Flow פשוט הרבה יותר – רק `main` ו-feature branches קצרי חיים – ומתאים לשירותי web/SaaS עם deployment תכוף.
+<details class="qa">
+<summary>מה ההבדל בין Git Flow ל-GitHub Flow, ומתי תבחר בכל אחד?</summary>
 
-**ש: מה זה Trunk-Based Development ומה הדרישות התרבותיות שלו?**
-ת: מודל שבו מפתחים עובדים ישירות (או branches קצרי חיים של שעות) על ה-`main`/`trunk`, תוך שימוש נרחב ב-Feature Flags להסתרת פיצ'רים לא-גמורים. דורש בדיקות אוטומטיות חזקות מאוד, code review מהיר, ומשמעת צוותית גבוהה – כי אין "בידוד" ארוך-טווח בין שינויים.
+Git Flow משתמש בענפים ייעודיים מרובים (`develop`, `release/*`, `hotfix/*`) ומתאים לפרויקטים עם releases מתוזמנים וגרסאות מרובות (כמו תוכנת desktop/mobile). GitHub Flow פשוט הרבה יותר – רק `main` ו-feature branches קצרי חיים – ומתאים לשירותי web/SaaS עם deployment תכוף.
 
-**ש: למה Git Flow לא מתאים לצוותים עם CI/CD ו-deployment תכוף?**
-ת: Git Flow דורש שלבים ידניים רבים (release branches, מיזוגים כפולים ל-main ול-develop) שמאטים את קצב השחרור. הוא נבנה עבור מודל של releases מתוזמנים, לא deployment רציף כמה פעמים ביום.
+</details>
 
-**ש: מה זה Feature Flag וכיצד הוא קשור לבחירת אסטרטגיית Branching?**
-ת: מנגנון שמאפשר להדליק/לכבות פיצ'ר בזמן ריצה, ללא deploy נוסף. הוא מפריד את המושג "Deploy" (הקוד הגיע לפרודקשן) מ-"Release" (המשתמשים רואים את הפיצ'ר) – זה מה שמאפשר למזג קוד לא-גמור מוקדם ל-main בבטחה, ובכך מאפשר אסטרטגיות כמו Trunk-Based.
+<details class="qa">
+<summary>מה זה Trunk-Based Development ומה הדרישות התרבותיות שלו?</summary>
 
-**ש: מהם הסיכונים של branches ארוכי חיים?**
-ת: ככל שbranch רחוק יותר מ-`main`, כך גדל הסיכוי לקונפליקטי מיזוג מסובכים, לכפילות עבודה בין מפתחים שונים, ולבאגי אינטגרציה שמתגלים רק בסוף – מנוגד לעיקרון הבסיסי של Continuous Integration.
+מודל שבו מפתחים עובדים ישירות (או branches קצרי חיים של שעות) על ה-`main`/`trunk`, תוך שימוש נרחב ב-Feature Flags להסתרת פיצ'רים לא-גמורים. דורש בדיקות אוטומטיות חזקות מאוד, code review מהיר, ומשמעת צוותית גבוהה – כי אין "בידוד" ארוך-טווח בין שינויים.
 
-**ש: אילו branch protection rules היית מגדיר בפרויקט שעובד לפי GitHub Flow?**
-ת: חסימת push ישיר ל-`main`, דרישת לפחות אישור review אחד, דרישה ש-status checks (CI) יעברו לפני מיזוג, ואולי גם Required linear history למניעת merge commits מיותרים.
+</details>
+
+<details class="qa">
+<summary>למה Git Flow לא מתאים לצוותים עם CI/CD ו-deployment תכוף?</summary>
+
+Git Flow דורש שלבים ידניים רבים (release branches, מיזוגים כפולים ל-main ול-develop) שמאטים את קצב השחרור. הוא נבנה עבור מודל של releases מתוזמנים, לא deployment רציף כמה פעמים ביום.
+
+</details>
+
+<details class="qa">
+<summary>מה זה Feature Flag וכיצד הוא קשור לבחירת אסטרטגיית Branching?</summary>
+
+מנגנון שמאפשר להדליק/לכבות פיצ'ר בזמן ריצה, ללא deploy נוסף. הוא מפריד את המושג "Deploy" (הקוד הגיע לפרודקשן) מ-"Release" (המשתמשים רואים את הפיצ'ר) – זה מה שמאפשר למזג קוד לא-גמור מוקדם ל-main בבטחה, ובכך מאפשר אסטרטגיות כמו Trunk-Based.
+
+</details>
+
+<details class="qa">
+<summary>מהם הסיכונים של branches ארוכי חיים?</summary>
+
+ככל שbranch רחוק יותר מ-`main`, כך גדל הסיכוי לקונפליקטי מיזוג מסובכים, לכפילות עבודה בין מפתחים שונים, ולבאגי אינטגרציה שמתגלים רק בסוף – מנוגד לעיקרון הבסיסי של Continuous Integration.
+
+</details>
+
+<details class="qa">
+<summary>אילו branch protection rules היית מגדיר בפרויקט שעובד לפי GitHub Flow?</summary>
+
+חסימת push ישיר ל-`main`, דרישת לפחות אישור review אחד, דרישה ש-status checks (CI) יעברו לפני מיזוג, ואולי גם Required linear history למניעת merge commits מיותרים.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -181,17 +181,37 @@ credentials:
 
 ## שאלות ראיון עבודה בנושא Plugins
 
-**ש: איך הייתם מנהלים plugins בסביבת Jenkins שרצה ב-Docker ב-production?**
-ת: באמצעות Dockerfile מותאם עם `plugins.txt` שמכיל גרסאות נעולות (pinned versions), ולא התקנה ידנית דרך ה-UI, כדי לשמור על עקביות ו-reproducibility.
+<details class="qa">
+<summary>איך הייתם מנהלים plugins בסביבת Jenkins שרצה ב-Docker ב-production?</summary>
 
-**ש: מה ההבדל בין Blue Ocean ל-classic Jenkins UI?**
-ת: Blue Ocean מספק ממשק ויזואלי מודרני יותר להצגת pipelines עם גרפים ברורים, בעוד ה-classic UI הוא הממשק המסורתי. שניהם מציגים את אותם builds אך Blue Ocean מציע חוויית משתמש טובה יותר לדיבוג pipelines.
+באמצעות Dockerfile מותאם עם `plugins.txt` שמכיל גרסאות נעולות (pinned versions), ולא התקנה ידנית דרך ה-UI, כדי לשמור על עקביות ו-reproducibility.
 
-**ש: איך מטפלים בקונפליקט תלויות בין plugins?**
-ת: בודקים את דף ה-dependencies של כל plugin ב-plugins.jenkins.io, מעדכנים plugins תלויים יחד, ובודקים ב-staging environment לפני production.
+</details>
 
-**ש: מהו Jenkins Configuration as Code (JCasC) ולמה הוא חשוב?**
-ת: Plugin שמאפשר להגדיר את כל תצורת Jenkins (משתמשים, credentials, plugins, agents) בקובץ YAML, מה שהופך את ההגדרה לגרסתית (version-controlled), משוחזרת (reproducible) ואוטומטית.
+<details class="qa">
+<summary>מה ההבדל בין Blue Ocean ל-classic Jenkins UI?</summary>
 
-**ש: איך הייתם מוודאים שעדכון plugin לא ישבור production?**
-ת: גיבוי מלא, בדיקה בסביבת staging זהה, קריאת release notes, ועדכון הדרגתי (canary) ולא כל ה-plugins בבת אחת.
+Blue Ocean מספק ממשק ויזואלי מודרני יותר להצגת pipelines עם גרפים ברורים, בעוד ה-classic UI הוא הממשק המסורתי. שניהם מציגים את אותם builds אך Blue Ocean מציע חוויית משתמש טובה יותר לדיבוג pipelines.
+
+</details>
+
+<details class="qa">
+<summary>איך מטפלים בקונפליקט תלויות בין plugins?</summary>
+
+בודקים את דף ה-dependencies של כל plugin ב-plugins.jenkins.io, מעדכנים plugins תלויים יחד, ובודקים ב-staging environment לפני production.
+
+</details>
+
+<details class="qa">
+<summary>מהו Jenkins Configuration as Code (JCasC) ולמה הוא חשוב?</summary>
+
+Plugin שמאפשר להגדיר את כל תצורת Jenkins (משתמשים, credentials, plugins, agents) בקובץ YAML, מה שהופך את ההגדרה לגרסתית (version-controlled), משוחזרת (reproducible) ואוטומטית.
+
+</details>
+
+<details class="qa">
+<summary>איך הייתם מוודאים שעדכון plugin לא ישבור production?</summary>
+
+גיבוי מלא, בדיקה בסביבת staging זהה, קריאת release notes, ועדכון הדרגתי (canary) ולא כל ה-plugins בבת אחת.
+
+</details>

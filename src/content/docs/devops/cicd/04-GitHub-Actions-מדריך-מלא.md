@@ -181,23 +181,47 @@ concurrency:
 
 ## שאלות ראיון עבודה נפוצות
 
-**ש: מה ההבדל בין Job ל-Step ב-GitHub Actions?**
-ת: Job הוא יחידת עבודה שרצה על runner נפרד (יכול לרוץ במקביל ל-jobs אחרים); Step הוא פקודה בודדת בתוך job, שרץ ברצף על אותו runner ומשתף filesystem.
+<details class="qa">
+<summary>מה ההבדל בין Job ל-Step ב-GitHub Actions?</summary>
 
-**ש: איך מריצים jobs במקביל מול ברצף?**
-ת: כברירת מחדל כל ה-jobs רצים במקביל; כדי ליצור סדר יש להשתמש במפתח `needs: [job-name]`.
+Job הוא יחידת עבודה שרצה על runner נפרד (יכול לרוץ במקביל ל-jobs אחרים); Step הוא פקודה בודדת בתוך job, שרץ ברצף על אותו runner ומשתף filesystem.
 
-**ש: מה זה Reusable Workflow ואיך הוא שונה מ-Composite Action?**
-ת: Reusable Workflow (`workflow_call`) מאפשר לקרוא לworkflow שלם עם jobs מרובים ממקום אחר. Composite Action מאגד סדרת steps ליחידה אחת לשימוש בתוך job בודד. Reusable Workflows גמישים יותר לתרחישים מורכבים.
+</details>
 
-**ש: איך מנהלים secrets שונים לסביבות שונות (staging/production)?**
-ת: באמצעות GitHub Environments – כל environment יכול להחזיק סטים משלו של secrets ו-variables, וגם protection rules כמו required reviewers.
+<details class="qa">
+<summary>איך מריצים jobs במקביל מול ברצף?</summary>
 
-**ש: מה זה `GITHUB_TOKEN` ואיך הוא שונה מ-Personal Access Token?**
-ת: `GITHUB_TOKEN` הוא טוקן זמני שנוצר אוטומטית לכל הרצת workflow עם הרשאות מוגבלות לאותו repo, ונמחק בסיום הריצה. PAT הוא טוקן קבוע שהמשתמש יוצר ידנית עם הרשאות רחבות יותר.
+כברירת מחדל כל ה-jobs רצים במקביל; כדי ליצור סדר יש להשתמש במפתח `needs: [job-name]`.
 
-**ש: איך אתה מונע הרצה מיותרת (redundant) כשמשתמש דוחף כמה commits מהר?**
-ת: באמצעות `concurrency` group עם `cancel-in-progress: true`, כדי לבטל את הריצה הישנה ולהתחיל בחדשה.
+</details>
+
+<details class="qa">
+<summary>מה זה Reusable Workflow ואיך הוא שונה מ-Composite Action?</summary>
+
+Reusable Workflow (`workflow_call`) מאפשר לקרוא לworkflow שלם עם jobs מרובים ממקום אחר. Composite Action מאגד סדרת steps ליחידה אחת לשימוש בתוך job בודד. Reusable Workflows גמישים יותר לתרחישים מורכבים.
+
+</details>
+
+<details class="qa">
+<summary>איך מנהלים secrets שונים לסביבות שונות (staging/production)?</summary>
+
+באמצעות GitHub Environments – כל environment יכול להחזיק סטים משלו של secrets ו-variables, וגם protection rules כמו required reviewers.
+
+</details>
+
+<details class="qa">
+<summary>מה זה <code>GITHUB_TOKEN</code> ואיך הוא שונה מ-Personal Access Token?</summary>
+
+`GITHUB_TOKEN` הוא טוקן זמני שנוצר אוטומטית לכל הרצת workflow עם הרשאות מוגבלות לאותו repo, ונמחק בסיום הריצה. PAT הוא טוקן קבוע שהמשתמש יוצר ידנית עם הרשאות רחבות יותר.
+
+</details>
+
+<details class="qa">
+<summary>איך אתה מונע הרצה מיותרת (redundant) כשמשתמש דוחף כמה commits מהר?</summary>
+
+באמצעות `concurrency` group עם `cancel-in-progress: true`, כדי לבטל את הריצה הישנה ולהתחיל בחדשה.
+
+</details>
 
 ## קישורים חיצוניים
 
