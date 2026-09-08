@@ -1,5 +1,6 @@
 ---
 title: "VPN ב-Check Point - Site-to-Site ו-Remote Access"
+description: "הגדרת VPN עם IPsec - VPN Domain, Meshed ו-Star Community, Office Mode ל-Remote Access, ו-Route-Based VPN (VTI)."
 category: Check Point
 part: 4/10
 ---

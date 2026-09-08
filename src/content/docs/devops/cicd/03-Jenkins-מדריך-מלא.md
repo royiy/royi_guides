@@ -1,5 +1,6 @@
 ---
 title: "Jenkins – מדריך מלא"
+description: "ארכיטקטורת Jenkins, התקנה עם Docker, כתיבת Jenkinsfile ב-Declarative וב-Scripted Pipeline, agents דינמיים על Kubernetes ו-Shared Libraries לשימוש חוזר בקוד."
 category: DevOps/CI-CD
 part: 3/10
 ---

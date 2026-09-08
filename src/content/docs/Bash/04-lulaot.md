@@ -1,5 +1,6 @@
 ---
 title: "לולאות (for, while, until) ב-Bash"
+description: "לולאות for, while ו-until ב-Bash: איטרציה על רשימות, טווחים וקבצים, קריאת קובץ עם while read, break/continue ברמות מקוננות, ותפריט אינטראקטיבי עם select."
 category: Bash
 part: 4/10
 ---

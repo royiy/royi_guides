@@ -1,5 +1,6 @@
 ---
 title: "Best Practices, טיפים וטריקים, Troubleshooting"
+description: "דפוס App of Apps, הפרדת Repo קוד מ-Repo קונפיג, Image Updater, התראות ל-Slack, טיפי ביצועים, ופתרון תקלות נפוצות כמו OutOfSync ו-Sync תקוע."
 category: DevOps/ArgoCD
 part: 9/10
 ---

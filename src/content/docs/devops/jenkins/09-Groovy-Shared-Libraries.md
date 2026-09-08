@@ -1,5 +1,6 @@
 ---
 title: "Groovy Scripting ו-Shared Libraries ב-Jenkins"
+description: "בניית Shared Library ל-Jenkins - מבנה תיקיות, קבצי vars ו-src, טעינה דינמית, יסודות Groovy ובדיקות Unit Testing לספרייה המשותפת."
 category: DevOps/Jenkins
 part: 9/10
 ---

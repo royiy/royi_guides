@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (CCNA / Network+)"
+description: "מבחן אינטראקטיבי מאתגר בסגנון הסמכות Cisco CCNA ו-CompTIA Network+, עם שאלות מטעות על VLSM, STP, OSPF/BGP ואבטחת VLAN והסברים מפורטים."
 category: Networking
 part: 12/10
 ---

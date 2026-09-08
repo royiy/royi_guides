@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה על ArgoCD (עם תשובות מלאות)"
+description: "20 שאלות ראיון עבודה על ArgoCD ברמות Junior עד Staff, עם תשובות מפורטות על ארכיטקטורה, Sync, RBAC, ApplicationSets, Rollback ו-Scale."
 category: DevOps/ArgoCD
 part: 10/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "התקנת ArgoCD – שלב אחר שלב"
+description: "מדריך מעשי להתקנת ArgoCD בגרסת Non-HA ו-HA דרך kubectl או Helm, גישה ל-UI וה-CLI, קבלת סיסמת Admin, ופתרון בעיות התקנה נפוצות."
 category: DevOps/ArgoCD
 part: 2/10
 ---

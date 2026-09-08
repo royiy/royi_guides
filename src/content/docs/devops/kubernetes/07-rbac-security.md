@@ -1,5 +1,6 @@
 ---
 title: "RBAC ואבטחה ב-Kubernetes"
+description: "אבטחה ובקרת הרשאות ב-Kubernetes - שלבי Authentication/Authorization, RBAC עם Role ו-ClusterRole, ServiceAccounts, Pod Security Standards ו-SecurityContext."
 category: DevOps/Kubernetes
 part: 7/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-CI/CD – מושגי יסוד"
+description: "מושגי היסוד של CI/CD: ההבדל בין Continuous Delivery ל-Continuous Deployment, שלבי pipeline טיפוסי, ותרשים זרימה מלא מ-push ועד פרודקשן על AWS ו-Kubernetes."
 category: DevOps/CI-CD
 part: 1/10
 ---

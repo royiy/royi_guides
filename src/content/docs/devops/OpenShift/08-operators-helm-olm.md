@@ -1,5 +1,6 @@
 ---
 title: "Operators, Helm ו-OLM (Operator Lifecycle Manager)"
+description: "מהו Operator ו-CRD, ניהול מחזור החיים שלהם דרך OLM, שימוש ב-Helm charts ב-OpenShift, ההבדל בין Helm ל-Operator וכתיבת Operator פשוט."
 category: DevOps/OpenShift
 part: 8/10
 ---

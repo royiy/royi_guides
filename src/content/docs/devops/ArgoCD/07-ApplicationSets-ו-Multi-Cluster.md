@@ -1,5 +1,6 @@
 ---
 title: "ArgoCD ApplicationSets ו-Multi-Cluster"
+description: "יצירה דינמית של Applications עם ApplicationSet באמצעות List, Cluster, Git ו-Matrix Generators, וניהול פריסות למספר Clusters בארכיטקטורת Hub-and-Spoke."
 category: DevOps/ArgoCD
 part: 7/10
 ---

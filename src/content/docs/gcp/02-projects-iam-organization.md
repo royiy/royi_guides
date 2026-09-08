@@ -1,5 +1,6 @@
 ---
 title: "Projects, Organizations, Folders ו-IAM"
+description: "היררכיית המשאבים Organization/Folder/Project ב-GCP, סוגי IAM Roles, ניהול הרשאות ו-Service Accounts דרך gcloud ו-Terraform."
 category: GCP
 part: 2/10
 ---

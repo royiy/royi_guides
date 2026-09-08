@@ -1,5 +1,6 @@
 ---
 title: "עבודה עם Docker ו-Containers ב-GitHub Actions"
+description: "בניית ודחיפת Docker Images לרג'יסטרים שונים (Docker Hub, GHCR, AWS ECR), הרצת Jobs וService Containers, Multi-stage build ו-Multi-architecture."
 category: DevOps/GitHub Actions
 part: 8/10
 ---

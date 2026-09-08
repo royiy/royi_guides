@@ -1,5 +1,6 @@
 ---
 title: "Veeam עם VMware vSphere ו-Microsoft Hyper-V"
+description: "חיבור Veeam ל-vCenter ול-Hyper-V, הרשאות נדרשות, Transport Modes, CBT מול RCT, Application-Aware Processing ו-Instant VM Recovery."
 category: Veeam
 part: 6/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Ansible ב-DevOps - CI/CD, AWX/Tower ופרקטיקות מתקדמות"
+description: "שילוב Ansible בצינורות CI/CD של GitHub Actions, GitLab ו-Jenkins, היכרות עם AWX/Tower, Execution Environments, בדיקות עם Molecule ופריסת Rolling Deployment."
 category: DevOps/Ansible
 part: 9/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: Docker Volumes וניהול אחסון
+description: "השוואה בין Volumes, Bind Mounts ו-tmpfs, יצירה וניהול volumes, גיבוי ושחזור, שיתוף אחסון בין קונטיינרים ופתרון בעיות הרשאות נפוצות."
 category: DevOps/Docker
 part: 6/10
 ---

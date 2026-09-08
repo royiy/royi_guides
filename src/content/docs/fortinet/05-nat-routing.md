@@ -1,5 +1,6 @@
 ---
 title: "NAT ו-Routing ב-FortiGate"
+description: "סוגי NAT ב-FortiGate (SNAT, IP Pool, VIP, Central SNAT), ניתוב סטטי/דינמי, Policy-Based Routing ו-SD-WAN."
 category: Fortinet
 part: 5/10
 ---

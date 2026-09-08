@@ -1,5 +1,6 @@
 ---
 title: "Backup Copy Jobs וכלל 3-2-1-1-0"
+description: "הסבר על כלל 3-2-1-1-0 ויישומו ב-Veeam באמצעות Backup Copy Jobs, Object Storage עם Immutability, Health Check ו-Tape Jobs לגיבוי Air-gap."
 category: Veeam
 part: 4/10
 ---

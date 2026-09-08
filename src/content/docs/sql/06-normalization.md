@@ -1,5 +1,6 @@
 ---
 title: "Normalization - 1NF, 2NF, 3NF ו-Denormalization"
+description: "תהליך הנורמליזציה לצמצום כפילות נתונים ואנומליות עדכון - הצורות הנורמליות 1NF עד 3NF, דוגמאות מעשיות של פירוק טבלאות, ומתי כדאי לבצע Denormalization."
 category: SQL
 part: 6/10
 ---

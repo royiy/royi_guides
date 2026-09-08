@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה על Veeam (עם תשובות)"
+description: "אוסף שאלות ראיון עבודה נפוצות על Veeam לרמות Junior, Mid-Level ו-Senior, כולל שאלות תרחיש (Scenario-Based) עם תשובות מלאות וטיפים להכנה לראיון."
 category: Veeam
 part: 9/10
 ---

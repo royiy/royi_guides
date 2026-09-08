@@ -1,5 +1,6 @@
 ---
 title: "High Availability (HA) ב-FortiGate"
+description: "הקמת קלאסטר HA (FGCP) ב-FortiGate במצבי Active-Passive/Active-Active, תהליך Failover ומניעת Split-Brain."
 category: Fortinet
 part: 6/10
 ---

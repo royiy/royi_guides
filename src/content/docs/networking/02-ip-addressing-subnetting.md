@@ -1,5 +1,6 @@
 ---
 title: "כתובות IP, Subnetting ו-CIDR"
+description: "כתובות IPv4 וטווחים פרטיים לפי RFC 1918, חישובי Subnetting בשיטת CIDR, מבוא ל-IPv6, ופקודות מעשיות לבדיקת רשת וחישוב subnet."
 category: Networking
 part: 2/10
 ---

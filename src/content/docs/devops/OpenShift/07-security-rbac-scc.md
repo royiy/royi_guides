@@ -1,5 +1,6 @@
 ---
 title: "אבטחה - RBAC, SCC, ServiceAccounts ו-Secrets"
+description: "מודל האבטחה של OpenShift: הרשאות RBAC (Role/RoleBinding), מגבלות SCC על הרצת קונטיינרים, ServiceAccounts, ניהול Secrets ו-Certificates פנימיים."
 category: DevOps/OpenShift
 part: 7/10
 ---

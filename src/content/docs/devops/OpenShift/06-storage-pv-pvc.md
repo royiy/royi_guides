@@ -1,5 +1,6 @@
 ---
 title: "אחסון - PV, PVC, StorageClass ו-CSI"
+description: "ניהול אחסון קבוע ב-OpenShift: מושגי PV/PVC/StorageClass, יצירת וחיבור PVC לפודים, Access Modes, הרחבת נפח ללא downtime, ו-ODF לאבחון בעיות אחסון."
 category: DevOps/OpenShift
 part: 6/10
 ---

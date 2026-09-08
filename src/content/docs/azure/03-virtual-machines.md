@@ -1,5 +1,6 @@
 ---
 title: "Azure Virtual Machines, Availability Sets/Zones ו-VM Scale Sets"
+description: "גדלי VM נפוצים, יצירת מכונה וירטואלית עם Azure CLI, הבדלים בין Availability Sets ל-Availability Zones, VM Scale Sets ו-Managed Disks."
 category: Azure
 part: 3/10
 ---

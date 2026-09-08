@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה מקיפות על מדריכי ה-Networking"
+description: "חידון אינטראקטיבי בן 10 שאלות עם משוב מיידי והסבר, המסכם את כל מדריכי הסדרה: OSI/TCP-IP, IP ו-Subnetting, Routing, DNS, DHCP, VLANs, Firewalls ו-VPN."
 category: Networking
 part: 11/10
 ---

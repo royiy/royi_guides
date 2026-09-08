@@ -1,5 +1,6 @@
 ---
 title: "Actions מוכנים ו-GitHub Marketplace"
+description: "סקירת Actions חיוניים מ-GitHub Marketplace לניהול קוד, Artifacts, Docker ואבטחה, איך לבחור Action בבטחה, ודוגמת CI מלאה המשלבת אותם."
 category: DevOps/GitHub Actions
 part: 5/10
 ---

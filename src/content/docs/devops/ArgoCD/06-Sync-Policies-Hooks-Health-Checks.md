@@ -1,5 +1,6 @@
 ---
 title: "Sync Policies, Sync Hooks ו-Health Checks"
+description: "הגדרת Sync Policies מתקדמות (prune, selfHeal, retry), שימוש ב-PreSync/PostSync/SyncFail Hooks, סדר פריסה עם Sync Waves, וכתיבת Health Check מותאם ב-Lua."
 category: DevOps/ArgoCD
 part: 6/10
 ---

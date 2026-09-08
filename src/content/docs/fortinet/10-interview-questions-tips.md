@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה, טיפים וטריקים ל-Fortinet/FortiGate"
+description: "שאלות ותשובות לראיונות עבודה בנושא FortiGate (NGFW, VPN, HA, Security Fabric), תרגילי הכנה ומסלול הסמכות NSE."
 category: Fortinet
 part: 10/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Azure Virtual Network (VNet), Subnets, NSG ו-Peering"
+description: "ארכיטקטורת VNet ו-Subnets ב-Azure, הגדרת חוקי אבטחה עם Network Security Groups, וחיבור בין רשתות באמצעות VNet Peering."
 category: Azure
 part: 4/10
 ---

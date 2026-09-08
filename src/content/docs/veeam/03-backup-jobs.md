@@ -1,5 +1,6 @@
 ---
 title: "יצירה וניהול של Backup Jobs"
+description: "הגדרת Backup Job חדש ב-Veeam שלב אחר שלב, סוגי Jobs, מדיניות Retention ו-GFS, Backup Chain, Application-Aware Processing ופתרון בעיות נפוצות."
 category: Veeam
 part: 3/10
 ---

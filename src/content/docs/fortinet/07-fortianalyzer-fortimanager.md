@@ -1,5 +1,6 @@
 ---
 title: "FortiAnalyzer ו-FortiManager — ניהול מרכזי ולוגים"
+description: "ניהול מרכזי של מספר FortiGate עם FortiManager (ADOM, Policy Package) ו-FortiAnalyzer (לוגים, FortiView, דוחות)."
 category: Fortinet
 part: 7/10
 ---

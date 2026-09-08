@@ -1,5 +1,6 @@
 ---
 title: "אבטחה, Debugging, Best Practices ושאלות ראיון עבודה מקיפות"
+description: "עקרונות אבטחה כמו Least Privilege ו-Pinning, סכנות Script Injection ו-pull_request_target, כלי Debugging כמו tmate ו-act, ובנק שאלות ראיון."
 category: DevOps/GitHub Actions
 part: 10/10
 ---

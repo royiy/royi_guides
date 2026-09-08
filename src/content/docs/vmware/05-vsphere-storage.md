@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: "VMware #5 — Storage לעומק: VMFS, NFS, iSCSI ו-Performance"
+description: "השוואת VMFS, NFS ו-iSCSI, Multipathing, מדדי ביצועי Storage כמו Latency ו-IOPS, Thin Provisioning, ניהול Snapshots וטיפול ב-Datastore מלא."
 ---
 
 ## 1. איך VM נשמרת?

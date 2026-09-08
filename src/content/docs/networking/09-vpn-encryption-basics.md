@@ -1,5 +1,6 @@
 ---
 title: "VPN, IPSec ויסודות הצפנה (TLS/SSL)"
+description: "ההבדל בין Site-to-Site ל-Client VPN, פרוטוקול IPSec, הצפנת TLS/SSL, הצפנה סימטרית מול א-סימטרית, ופקודות לבדיקת תעודות ו-VPN."
 category: Networking
 part: 9/10
 ---

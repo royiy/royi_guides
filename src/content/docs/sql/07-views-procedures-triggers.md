@@ -1,5 +1,6 @@
 ---
 title: "Views, Stored Procedures, Functions ו-Triggers"
+description: "עטיפת לוגיקה בתוך מסד הנתונים באמצעות Views לשאילתות שמורות, Stored Procedures ו-Functions הניתנים להרצה עם פרמטרים, ו-Triggers הרצים אוטומטית על שינויי נתונים."
 category: SQL
 part: 7/10
 ---

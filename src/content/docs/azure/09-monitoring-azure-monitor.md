@@ -1,5 +1,6 @@
 ---
 title: "Azure Monitor, Log Analytics, Application Insights ו-Alerts"
+description: "ארכיטקטורת Azure Monitor, שאילתות KQL ב-Log Analytics, ניטור אפליקציות עם Application Insights, הגדרת Alerts ו-Diagnostic Settings."
 category: Azure
 part: 9/10
 ---

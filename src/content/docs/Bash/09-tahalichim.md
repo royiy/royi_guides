@@ -1,5 +1,6 @@
 ---
 title: "ניהול תהליכים, Jobs ו-Signals ב-Bash"
+description: "ניהול תהליכים ב-Bash: הרצה ברקע ו-jobs, שליחת signals עם kill, תפיסת אותות עם trap, המתנה עם wait, הרצה מקבילית, nohup, ובדיקה אם תהליך רץ עם pgrep."
 category: Bash
 part: 9/10
 ---

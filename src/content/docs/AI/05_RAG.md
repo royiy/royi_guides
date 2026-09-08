@@ -1,5 +1,6 @@
 ---
 title: "RAG — Retrieval Augmented Generation"
+description: "מהו RAG וכיצד הוא עובד שלב אחר שלב, דוגמאות קוד ל-RAG בסיסי בפייתון ולמערכת RAG עם LangChain ו-Vector Store, ורכיבים וטכניקות מתקדמות."
 category: AI
 part: 5/10
 ---

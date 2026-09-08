@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: "מדריך 2: Terraform CLI Workflow ופקודות חיוניות"
+description: "סקירת פקודות ה-CLI המרכזיות של Terraform - init, validate, fmt, plan, apply, destroy, show, output, console, import, state ו-taint, כולל תרחיש עבודה מלא."
 ---
 
 ## מבוא

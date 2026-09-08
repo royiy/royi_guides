@@ -1,5 +1,6 @@
 ---
 title: "Variables ו-Facts"
+description: "דרכי הגדרת משתנים ב-Ansible, סדר העדיפויות (Precedence) המלא ביניהם, איסוף Facts אוטומטי מהשרת, set_fact, פילטרי Jinja2 ו-vars_prompt."
 category: DevOps/Ansible
 part: 4/10
 ---

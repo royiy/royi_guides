@@ -1,5 +1,6 @@
 ---
 title: "BuildConfigs, ImageStreams, S2I ו-CI/CD"
+description: "מנגנון הבנייה המובנה ב-OpenShift: ImageStream, בנייה ללא Dockerfile באמצעות S2I, אסטרטגיית Docker, Pipelines מבוססי Tekton ו-Webhooks מ-Git."
 category: DevOps/OpenShift
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Playbooks - כתיבה ומבנה"
+description: "מבנה Playbook ב-Ansible - Plays, Tasks, תנאי when, לולאות, Blocks לטיפול בשגיאות, Handlers, Tags ורג'יסטר תוצאות, כולל דגלי הרצה שימושיים."
 category: DevOps/Ansible
 part: 3/10
 ---

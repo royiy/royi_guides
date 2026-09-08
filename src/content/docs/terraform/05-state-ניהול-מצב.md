@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: "מדריך 5: Terraform State לעומק"
+description: "מה זה קובץ ה-state ולמה הוא קיים, Local לעומת Remote state, נעילת state, פקודות terraform state, זיהוי drift ושיתוף מידע עם terraform_remote_state."
 ---
 
 ## מה זה State ולמה הוא קיים?

@@ -1,5 +1,6 @@
 ---
 title: "Veeam ONE - ניטור, דוחות והתראות"
+description: "רכיבי Veeam ONE, הגדרת Alarms ודוחות, Security & Compliance Analyzer, Threat Center לזיהוי כופרה, ואינטגרציה עם SIEM ו-PowerShell."
 category: Veeam
 part: 7/10
 ---

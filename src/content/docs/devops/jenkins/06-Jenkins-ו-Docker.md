@@ -1,5 +1,6 @@
 ---
 title: "Jenkins ו-Docker - אינטגרציה מלאה"
+description: "הרצת builds בתוך containers, בניית ודחיפת Docker images ל-Registry, Agents דינמיים ב-Kubernetes והשוואה בין Docker-in-Docker לחשיפת socket."
 category: DevOps/Jenkins
 part: 6/10
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: "מדריך 05 — Error Handling, Debugging, Logging וכתיבת סקריפטים Production"
+description: "try/catch, ErrorAction, לוגים ו-Transcript, WhatIf/ShouldProcess ובדיקות עם Pester, לבניית סקריפטים אמינים, אידמפוטנטיים ומוכנים ל-Production."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

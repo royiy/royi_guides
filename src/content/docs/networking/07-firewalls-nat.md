@@ -1,5 +1,6 @@
 ---
 title: "Firewalls, NAT/PAT ו-Security Zones"
+description: "ההבדל בין Firewall Stateless ל-Stateful, מנגנוני NAT ו-PAT, חלוקה לאזורי אבטחה, ופקודות מעשיות כמו iptables ובדיקת NAT Table."
 category: Networking
 part: 7/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "AI Agents — סוכני בינה מלאכותית"
+description: "מהו AI Agent, מרכיבי הליבה שלו, דפוס ReAct (Reason + Act), דוגמת קוד לסוכן עם Tool Use ב-Anthropic API ולולאת סוכן בסיסית, וארכיטקטורות ואתגרים נפוצים."
 category: AI
 part: 7/10
 ---

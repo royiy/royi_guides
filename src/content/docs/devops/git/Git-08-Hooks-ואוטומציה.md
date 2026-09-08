@@ -1,5 +1,6 @@
 ---
 title: "Git Hooks ואוטומציה"
+description: "כתיבת Git Hooks לאוטומציה כמו pre-commit, שיתוף hooks בין הצוות באמצעות Husky ו-Commitlint, מסגרת Pre-commit ל-Python, ו-hooks בצד השרת."
 category: DevOps/Git
 part: 8/10
 ---

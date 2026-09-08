@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה מקיפות על Azure + טיפים כלליים"
+description: "אוסף שאלות ראיון עבודה על Azure בדרגות Junior, Mid-Level ו-Senior עם תשובות תמציתיות, וטיפים כלליים לעבודה יומיומית."
 category: Azure
 part: 10/10
 ---

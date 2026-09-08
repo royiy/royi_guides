@@ -1,5 +1,6 @@
 ---
 title: "Fine-Tuning — אימון מודלים מותאמים אישית"
+description: "מתי כדאי לעשות Fine-Tuning ומתי לא, סוגי Fine-Tuning, דוגמאות קוד עם LoRA ו-Hugging Face PEFT ועם OpenAI API, והכנת דאטה-סט והערכת מודל."
 category: AI
 part: 6/10
 ---

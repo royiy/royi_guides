@@ -1,5 +1,6 @@
 ---
 title: "Compute Engine, Machine Types ו-Autoscaling"
+description: "יצירת וניהול מכונות וירטואליות ב-Compute Engine, משפחות Machine Types ו-Spot VMs, ובניית Instance Groups עם Autoscaling."
 category: GCP
 part: 3/10
 ---

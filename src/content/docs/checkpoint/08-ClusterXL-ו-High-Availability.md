@@ -1,5 +1,6 @@
 ---
 title: "ClusterXL ו-High Availability"
+description: "Clustering ב-Check Point - HA מול Load Sharing, State Synchronization, הקמת Cluster ופקודות ניהול Failover."
 category: Check Point
 part: 8/10
 ---

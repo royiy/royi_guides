@@ -1,5 +1,6 @@
 ---
 title: "Git מבוא ומושגי יסוד"
+description: "מושגי היסוד של Git - ההבדל בין Git ל-GitHub, שלושת האזורים (Working Directory, Staging, Repository), פקודות בסיס, commit, gitignore וחיבור ל-remote."
 category: DevOps/Git
 part: 1/10
 ---

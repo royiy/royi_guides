@@ -1,5 +1,6 @@
 ---
 title: "תנאים (if, case) ב-Bash"
+description: "תנאים ב-Bash: מבנה if/elif/else, ההבדל בין [ ] ל-[[ ]], אופרטורי השוואה למספרים ומחרוזות, בדיקות קבצים, תנאים מורכבים ומבנה case."
 category: Bash
 part: 3/10
 ---

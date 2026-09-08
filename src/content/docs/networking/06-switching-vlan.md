@@ -1,5 +1,6 @@
 ---
 title: "Switching, MAC Address Table ו-VLANs"
+description: "אופן פעולת Switch, בניית טבלת MAC Address, הגדרת VLANs להפרדה לוגית של רשתות, Trunking עם 802.1Q, ו-Inter-VLAN Routing."
 category: Networking
 part: 6/10
 ---

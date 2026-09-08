@@ -1,5 +1,6 @@
 ---
 title: "Stash, Cherry-Pick ו-Tags"
+description: "שמירה זמנית של שינויים עם git stash, העתקת commit בודד מענף אחר עם cherry-pick, סימון גרסאות עם tags, ואיתור באגים עם git bisect."
 category: DevOps/Git
 part: 4/10
 ---

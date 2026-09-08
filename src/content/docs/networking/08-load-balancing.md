@@ -1,5 +1,6 @@
 ---
 title: "Load Balancing - שיטות, L4/L7 ו-Health Checks"
+description: "ההבדל בין Load Balancing ברמת L4 ל-L7, אלגוריתמי חלוקת עומס, Health Checks לשמירה על זמינות, SSL Termination, ובדיקות HAProxy ו-NGINX."
 category: Networking
 part: 8/10
 ---

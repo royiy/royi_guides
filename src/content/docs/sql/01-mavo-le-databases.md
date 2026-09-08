@@ -1,5 +1,6 @@
 ---
 title: "מבוא למסדי נתונים, RDBMS מול NoSQL ומנועים נפוצים"
+description: "מושגי יסוד במסדי נתונים, השוואה בין RDBMS ל-NoSQL, סקירת מנועים נפוצים (MySQL, PostgreSQL, SQL Server, Oracle, SQLite) והסכימה שמלווה את סדרת המדריכים."
 category: SQL
 part: 1/10
 ---

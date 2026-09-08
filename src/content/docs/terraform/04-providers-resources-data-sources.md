@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: "מדריך 4: Providers, Resources ו-Data Sources"
+description: "מה זה Provider ואילוצי גרסה, מבנה resource block ומטא-ארגומנטים, שימוש ב-data sources לשאילתת משאבים קיימים, וכיצד Terraform מחליט מה לשנות."
 ---
 
 ## מה זה Provider?

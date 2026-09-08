@@ -1,5 +1,6 @@
 ---
 title: "התקנה ופריסה של Veeam Backup & Replication"
+description: "דרישות מערכת, שלבי התקנת Veeam VBR, פריסת Backup Proxy ו-Repository (כולל SOBR), שדרוג גרסה, וטעויות נפוצות בהתקנה."
 category: Veeam
 part: 2/10
 ---

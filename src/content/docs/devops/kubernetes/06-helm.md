@@ -1,5 +1,6 @@
 ---
 title: "Helm - מנהל החבילות של Kubernetes"
+description: "Helm כמנהל חבילות ל-Kubernetes - מבנה Chart, ערכי Values ו-templating, בניית Chart מותאם אישית, ניהול גרסאות, Rollback ו-Helm Hooks."
 category: DevOps/Kubernetes
 part: 6/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (CKA)"
+description: "מבחן אינטראקטיבי קשה בסגנון הסמכת CKA, הבודק נקודות עדינות ומטעות במנגנוני etcd, RBAC, Static Pods, Scheduler, Taints/Tolerations ו-Storage."
 category: DevOps/Kubernetes
 part: 12/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Replication, Failover ו-Disaster Recovery (DR)"
+description: "יצירת Replication Job, מושגי RPO/RTO, Failover ו-Failback, Failover Plan, CDP ותרגול DR בטוח באמצעות Test Failover ב-Veeam."
 category: Veeam
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Versioning ו-Backward Compatibility"
+description: "מהו Breaking Change, שיטות Versioning ב-URL/Header/Query, אסטרטגיית Deprecation, Semantic Versioning, ודוגמת ניתוב לפי גרסה ב-Express.js."
 category: API
 part: 5/10
 ---

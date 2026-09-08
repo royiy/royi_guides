@@ -1,5 +1,6 @@
 ---
 title: "Google Kubernetes Engine (GKE) - ארכיטקטורה וניהול Clusters"
+description: "ארכיטקטורת GKE, ההבדל בין מצבי Standard ל-Autopilot, יצירת Clusters ו-Node Pools, פריסת Workloads והגדרת Workload Identity."
 category: GCP
 part: 6/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Cloud Functions ו-Cloud Run - סקירת Serverless ב-GCP"
+description: "פריסת Cloud Functions מבוססות Event ו-Cloud Run מבוסס Container, כולל Scale-to-Zero, Concurrency, Canary Deployment בין Revisions ו-Eventarc."
 category: GCP
 part: 7/10
 ---

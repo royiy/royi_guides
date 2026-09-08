@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: "מדריך 09 — PowerShell לענן: Azure, AWS ו-GCP"
+description: "אוטומציה וניהול משאבי ענן עם מודולי Az, AWS Tools ו-gcloud - Inventory, Tags, אבטחת Secrets וניהול מרובה Subscriptions."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

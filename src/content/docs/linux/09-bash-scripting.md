@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: "מדריך 9: Bash Scripting"
+description: "כתיבת סקריפטים ב-Bash - משתנים וארגומנטים, תנאים if/else, לולאות for/while, פונקציות, דוגמת סקריפט גיבוי מלא, ו-debugging עם set -euo pipefail."
 ---
 
 ## מבוא

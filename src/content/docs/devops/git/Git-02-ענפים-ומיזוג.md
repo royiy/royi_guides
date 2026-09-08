@@ -1,5 +1,6 @@
 ---
 title: "Git ענפים ומיזוג"
+description: "עבודה עם branches ב-Git - יצירה ומעבר בין ענפים, merge ופתרון קונפליקטים, rebase כחלופה ל-merge, ועריכת היסטוריה עם interactive rebase."
 category: DevOps/Git
 part: 2/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "אימות והרשאה - Authentication ו-Authorization"
+description: "ההבדל בין Authentication ל-Authorization, ושיטות האימות הנפוצות ל-API: API Keys, Basic Auth, Bearer Tokens, JWT, OAuth 2.0 ו-Session-based Auth."
 category: API
 part: 3/10
 ---

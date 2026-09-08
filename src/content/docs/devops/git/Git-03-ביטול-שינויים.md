@@ -1,5 +1,6 @@
 ---
 title: "ביטול שינויים - Reset, Revert, Restore"
+description: "מתי להשתמש ב-restore, reset (soft/mixed/hard), revert ו-commit --amend לביטול שינויים, בנוסף לשימוש ב-reflog לשחזור ומחיקת קבצים לא-עקובים."
 category: DevOps/Git
 part: 3/10
 ---

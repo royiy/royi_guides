@@ -1,5 +1,6 @@
 ---
 title: "Pods, Deployments, DeploymentConfigs ו-ReplicaSets"
+description: "מבנה ה-Pod והיחס בין Deployment, DeploymentConfig הייחודי ל-OpenShift, StatefulSet, DaemonSet ו-Jobs/CronJobs, כולל זרימת אבחון תקלות בפודים."
 category: DevOps/OpenShift
 part: 3/10
 ---

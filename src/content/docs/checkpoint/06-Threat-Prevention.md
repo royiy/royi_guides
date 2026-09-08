@@ -1,5 +1,6 @@
 ---
 title: "Threat Prevention - IPS, Anti-Bot, Anti-Virus, Threat Emulation"
+description: "Blades למניעת איומים - IPS, Anti-Bot ו-Anti-Virus מול ThreatCloud, Sandboxing ב-Threat Emulation וניקוי קבצים ב-Threat Extraction."
 category: Check Point
 part: 6/10
 ---

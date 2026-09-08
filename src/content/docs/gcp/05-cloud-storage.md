@@ -1,5 +1,6 @@
 ---
 title: "Cloud Storage, Storage Classes ו-Access Control"
+description: "שירות אחסון האובייקטים Cloud Storage - Storage Classes, ניהול Buckets, הרשאות IAM ו-Lifecycle Rules למעבר אוטומטי בין מחלקות."
 category: GCP
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Helm Hooks — הרצת פעולות בנקודות זמן מוגדרות"
+description: "סוגי ה-Hooks ב-Helm (pre/post install/upgrade/delete/rollback, test), דוגמאות מעשיות למיגרציית DB, smoke tests וגיבויים, וההבדל בין Hook ל-init container."
 category: DevOps/Helm
 part: 6/10
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: "מדריך 3: שפת HCL - משתנים, פלטים ו-Locals"
+description: "יסודות שפת HCL: טיפוסי נתונים, variable ו-output, locals, אינטרפולציה ופונקציות מובנות, ביטויי for ו-conditional, ו-for_each/count ליצירת עותקים."
 ---
 
 ## מה זה HCL?

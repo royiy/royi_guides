@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (Azure Administrator AZ-104)"
+description: "מבחן אינטראקטיבי מתקדם בסגנון הסמכת AZ-104 עם שאלות מטעות על RBAC מול Policy, Redundancy, Peering, NSG ו-Autoscale."
 category: Azure
 part: 12/10
 ---

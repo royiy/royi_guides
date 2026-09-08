@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: "VMware #6 — Cluster, vMotion ו-DRS לעומק"
+description: "איך vMotion ו-Storage vMotion עובדים בפועל, בניית Cluster, כללי DRS Affinity ו-Anti-Affinity, תפקיד EVC ותחקור כשל vMotion."
 ---
 
 ## 1. Cluster

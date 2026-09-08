@@ -1,5 +1,6 @@
 ---
 title: "Troubleshooting וכלי אבחון ב-FortiGate"
+description: "פתרון תקלות ב-FortiGate עם diagnose sniffer, debug flow, בדיקת Session Table ו-Routing, ובעיות נפוצות."
 category: Fortinet
 part: 9/10
 ---

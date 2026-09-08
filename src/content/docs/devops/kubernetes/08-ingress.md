@@ -1,5 +1,6 @@
 ---
 title: "Ingress ו-Ingress Controllers"
+description: "ניתוב תעבורה חיצונית עם Ingress ו-Ingress Controllers - ניתוב לפי Host ו-Path, TLS/HTTPS עם cert-manager, Annotations נפוצים והשוואה מול Gateway API."
 category: DevOps/Kubernetes
 part: 8/10
 ---

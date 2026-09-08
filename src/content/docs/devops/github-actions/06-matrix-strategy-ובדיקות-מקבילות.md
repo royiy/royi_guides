@@ -1,5 +1,6 @@
 ---
 title: "Matrix Strategy ובדיקות מקבילות"
+description: "הרצת אותו Job עם קומבינציות פרמטרים מרובות באמצעות Matrix Strategy, כולל include/exclude, fail-fast, מטריצה דינמית מ-JSON ובקרת קצב."
 category: DevOps/GitHub Actions
 part: 6/10
 ---

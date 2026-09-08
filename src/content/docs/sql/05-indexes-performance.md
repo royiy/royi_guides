@@ -1,5 +1,6 @@
 ---
 title: "Indexes, EXPLAIN ואופטימיזציית שאילתות"
+description: "כיצד אינדקסים ומבנה B-Tree מאיצים שאילתות, סלקטיביות ו-Covering Index, שימוש בפקודת EXPLAIN לניתוח תוכנית ביצוע וטכניקות לאופטימיזציה של שאילתות איטיות."
 category: SQL
 part: 5/10
 ---

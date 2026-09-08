@@ -1,5 +1,6 @@
 ---
 title: "שאלות קשות ברמת הסמכה (VMCE)"
+description: "מבחן אינטראקטיבי מתקדם בסגנון הסמכת VMCE, עם 10 שאלות מטעות על מנגנוני פנים של Veeam - שרשראות גיבוי, SOBR, Instant Recovery, Failback ו-Immutability."
 category: Veeam
 part: 12/10
 ---

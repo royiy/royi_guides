@@ -1,5 +1,6 @@
 ---
 title: "Dependencies ו-Subcharts ב-Helm"
+description: "ניהול תלויות (Dependencies) ו-Subcharts ב-Helm: הגדרתן ב-Chart.yaml, שליטה בערכיהן דרך values.yaml, שימוש ב-Global Values, ו-Condition/Tags לבקרה על תלויות."
 category: DevOps/Helm
 part: 7/10
 ---

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: "מדריך 8: Best Practices ואבטחה ב-Terraform"
+description: "עשרה עקרונות מפתח: ניהול סודות, Least Privilege ב-IAM, סריקת קוד וPolicy as Code, backend מאובטח, אמנת שמות, pre-commit hooks וצמצום Blast Radius."
 ---
 
 ## 1. ניהול סודות (Secrets)

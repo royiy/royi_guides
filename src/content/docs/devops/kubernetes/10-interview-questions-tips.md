@@ -1,5 +1,6 @@
 ---
 title: "שאלות ראיון עבודה, טיפים וטריקים, ופתרון תקלות"
+description: "ריכוז שאלות ראיון עבודה ב-Kubernetes לכל הרמות, workflow שיטתי לפתרון תקלות (troubleshooting), מצבי כשל נפוצים כמו CrashLoopBackOff, וטיפים להצלחה בראיון."
 category: DevOps/Kubernetes
 part: 10/10
 ---

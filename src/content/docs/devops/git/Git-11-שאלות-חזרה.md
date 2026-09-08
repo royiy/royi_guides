@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה"
+description: "חידון אינטראקטיבי של 10 שאלות חזרה על כל מדריכי ה-Git - מבוא, ענפים ומיזוג, ביטול שינויים, Stash/Cherry-Pick, Remotes, Workflows, Internals, Hooks ואבטחה."
 category: DevOps/Git
 part: 11/10
 ---

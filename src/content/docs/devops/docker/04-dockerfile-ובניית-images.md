@@ -1,5 +1,6 @@
 ---
 title: Dockerfile ובניית Images
+description: "הוראות Dockerfile מרכזיות (FROM, RUN, COPY, CMD, ENTRYPOINT), Multi-stage builds, Layer Caching, .dockerignore ופקודות docker build שימושיות."
 category: DevOps/Docker
 part: 4/10
 ---

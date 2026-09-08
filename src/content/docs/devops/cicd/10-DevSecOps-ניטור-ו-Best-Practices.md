@@ -1,5 +1,6 @@
 ---
 title: "DevSecOps, ניטור ו-Best Practices ב-CI/CD"
+description: "שכבות אבטחה בפייפליין (SAST, SCA, Secret Scanning, DAST), ניטור פרודקשן עם Prometheus ו-ELK, מדדי DORA, ו-Best Practices כמו Immutable Artifacts ו-Rollback אוטומטי."
 category: DevOps/CI-CD
 part: 10/10
 ---

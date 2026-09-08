@@ -1,5 +1,6 @@
 ---
 title: "שילוב Jenkins עם Git, GitHub ו-Webhooks"
+description: "הגדרת Job עם Git, ניהול Credentials מסוג SSH ו-Token, הפעלה אוטומטית באמצעות GitHub Webhooks, Multibranch Pipeline ו-Status Checks."
 category: DevOps/Jenkins
 part: 5/10
 ---

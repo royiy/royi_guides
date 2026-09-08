@@ -1,5 +1,6 @@
 ---
 title: "Services, Routes, Ingress ורשתות"
+description: "סוגי ה-Service (ClusterIP, NodePort, LoadBalancer, Headless), חשיפה חיצונית באמצעות Route כולל TLS ופיצול תעבורה, ההבדל מול Ingress, ו-NetworkPolicy."
 category: DevOps/OpenShift
 part: 4/10
 ---

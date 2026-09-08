@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Google Cloud Platform, מודל שירותים ו-gcloud CLI"
+description: "היכרות עם GCP - מודלי IaaS/PaaS/SaaS, היררכיית Regions/Zones, והתקנה ושימוש בסיסי ב-gcloud CLI."
 category: GCP
 part: 1/10
 ---

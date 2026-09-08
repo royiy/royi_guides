@@ -1,5 +1,6 @@
 ---
 title: "יצירת Application ראשונה – מדריך מעשי מלא"
+description: "יצירת Application ב-ArgoCD דרך CLI, YAML ו-UI, ביצוע Sync ראשון, בדיקת Diff, ניהול History ו-Rollback, ומחיקת Application עם finalizers."
 category: DevOps/ArgoCD
 part: 4/10
 ---

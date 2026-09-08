@@ -1,5 +1,6 @@
 ---
 title: "Identity Awareness - אכיפה לפי משתמש ולא רק IP"
+description: "שיטות זיהוי ב-Identity Awareness - AD Query, Identity Agent, Captive Portal, בניית Access Role ושיתוף זהות בין Gateways."
 category: Check Point
 part: 5/10
 ---

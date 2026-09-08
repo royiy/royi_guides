@@ -1,5 +1,6 @@
 ---
 title: "DDL - CREATE TABLE, טיפוסי נתונים ו-Constraints"
+description: "פקודות DDL ליצירה ושינוי מבנה מסד הנתונים: CREATE, ALTER, DROP, טיפוסי נתונים נפוצים ב-PostgreSQL/MySQL/SQL Server, והגדרת Constraints לשמירה על תקינות הנתונים."
 category: SQL
 part: 3/10
 ---

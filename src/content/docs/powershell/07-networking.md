@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: "מדריך 07 — PowerShell לרשתות, DNS, HTTP, TCP ו-Troubleshooting"
+description: "בדיקות רשת שכבתיות עם Test-Connection, Test-NetConnection, Resolve-DnsName ו-Invoke-WebRequest, לאבחון תקלות DNS, TCP, TLS ו-HTTP צעד אחר צעד."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

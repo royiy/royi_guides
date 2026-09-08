@@ -1,6 +1,7 @@
 ---
 sidebar_position: 11
 title: "VMware #11 — שאלות חזרה"
+description: "מבחן חזרה אינטראקטיבי בן 10 שאלות עם משוב מיידי, המסכם את נושאי הסדרה: ESXi, vCenter, Networking, Storage, vMotion/DRS ו-HA."
 ---
 
 שאלות חזרה אינטראקטיביות על כל מה שלמדתם לאורך סדרת מדריכי ה-VMware (וירטואליזציה ו-ESXi, vCenter, Networking, Storage, vMotion/DRS, HA, ניהול VMs, Troubleshooting ו-PowerCLI/Performance). בחרו תשובה בכל שאלה ותקבלו מיד משוב האם היא נכונה, יחד עם הסבר.

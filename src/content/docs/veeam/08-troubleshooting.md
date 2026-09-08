@@ -1,5 +1,6 @@
 ---
 title: "פתרון בעיות נפוצות (Troubleshooting)"
+description: "אבחון ופתרון תקלות נפוצות ב-Veeam: כשלי Snapshot, בעיות תקשורת עם Proxy, Jobs איטיים, מקום אחסון, שגיאות VSS וכלי Export Logs ו-Backup Validator."
 category: Veeam
 part: 8/10
 ---

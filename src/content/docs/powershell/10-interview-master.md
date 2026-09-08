@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: "מדריך 10 — מאגר שאלות ראיון PowerShell ל-System / Cloud Administrator"
+description: "מאגר מקיף של שאלות ותשובות לראיון עבודה - בסיס, Remoting, Error Handling, AD, ענן ותרחישי Troubleshooting אמיתיים, כולל Cheat Sheet לפקודות."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

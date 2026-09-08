@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: "מדריך 06 — PowerShell מתקדם: Functions, Modules, Objects, Classes ו-Pipeline"
+description: "פונקציות Advanced עם begin/process/end, בניית Modules ו-Classes, סקירת Scope וביצועים, ועבודה עם Parallelism ו-Jobs ל-PowerShell 7."
 ---
 
 <!-- מדריך PowerShell בעברית | נבנה ללמידה, תרגול והכנה לראיונות -->

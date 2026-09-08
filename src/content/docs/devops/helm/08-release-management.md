@@ -1,5 +1,6 @@
 ---
 title: "ניהול Releases — Install, Upgrade, Rollback, Uninstall"
+description: "פקודות ניהול Release ב-Helm: install, upgrade, rollback ו-uninstall, סדר העדיפויות בין מקורות values, צפייה בהיסטוריה, ואסטרטגיית עדכון בטוחה ל-production."
 category: DevOps/Helm
 part: 8/10
 ---

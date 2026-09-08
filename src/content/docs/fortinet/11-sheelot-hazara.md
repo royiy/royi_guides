@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה"
+description: "חידון חזרה אינטראקטיבי בן 10 שאלות על מדריכי Fortinet/FortiGate - התקנה, Policies, VPN, NAT, HA וניהול מרכזי."
 category: Fortinet
 part: 11/10
 ---

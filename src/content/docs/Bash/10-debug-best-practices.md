@@ -1,5 +1,6 @@
 ---
 title: "דיבוג, Best Practices וטריקים מתקדמים ב-Bash"
+description: "דיבוג ב-Bash: מצבי trace עם set -x, strict mode (set -euo pipefail), ShellCheck, error handling עם trap ERR, פרסור ארגומנטים עם getopts והימנעות מ-antipatterns."
 category: Bash
 part: 10/10
 ---

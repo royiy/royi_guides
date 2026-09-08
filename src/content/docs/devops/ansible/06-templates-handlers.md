@@ -1,5 +1,6 @@
 ---
 title: "Templates (Jinja2) ו-Handlers מתקדם"
+description: "יצירת קבצי תצורה דינמיים עם תבניות Jinja2 (תנאים, לולאות, פילטרים ו-Magic Variables), והתנהגות מתקדמת של Handlers כולל listen ו-flush_handlers."
 category: DevOps/Ansible
 part: 6/10
 ---

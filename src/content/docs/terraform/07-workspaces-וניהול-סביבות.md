@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: "מדריך 7: Workspaces וניהול סביבות מרובות"
+description: "ניהול סביבות מרובות עם Terraform Workspaces: פקודות בסיסיות, terraform.workspace בקוד, מיקום ה-state לכל workspace, וההשוואה מול הפרדת תיקיות."
 ---
 
 ## מה זה Workspace?

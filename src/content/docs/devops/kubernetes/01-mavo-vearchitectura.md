@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Kubernetes וארכיטקטורה"
+description: "היכרות עם Kubernetes וארכיטקטורת הקלאסטר - רכיבי Control Plane ו-Worker Node (etcd, kubelet, kube-proxy), התקנה מקומית עם Minikube/kind ופקודות kubectl בסיסיות."
 category: DevOps/Kubernetes
 part: 1/10
 ---

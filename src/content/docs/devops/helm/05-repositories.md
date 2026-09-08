@@ -1,5 +1,6 @@
 ---
 title: "Helm Repositories — ניהול והפצת Charts"
+description: "ניהול Helm Repositories: הוספה וחיפוש Charts, יצירת repository משלכם עם GitHub Pages, ChartMuseum או OCI Registry, עבודה עם repos פרטיים וניהול גרסאות SemVer."
 category: DevOps/Helm
 part: 5/10
 ---

@@ -1,5 +1,6 @@
 ---
 title: "מבוא ל-Ansible, ארכיטקטורה והתקנה"
+description: "מבוא ל-Ansible - עקרונות Agentless, Idempotency ו-Push-based, רכיבי הארכיטקטורה, התקנה במערכות שונות והרצת פקודות Ad-Hoc ראשונות."
 category: DevOps/Ansible
 part: 1/10
 ---

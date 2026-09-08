@@ -1,5 +1,6 @@
 ---
 title: "התקנה והגדרה ראשונית של Helm"
+description: "מדריך התקנת Helm במערכות ההפעלה השונות, הגדרת repositories ראשוניים, חיפוש Charts, התקנת plugins שימושיים, הגדרת RBAC ופתרון תקלות התקנה נפוצות."
 category: DevOps/Helm
 part: 2/10
 ---

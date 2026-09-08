@@ -1,5 +1,6 @@
 ---
 title: "VPC Networks, Firewall Rules ו-Cloud Load Balancing"
+description: "ארכיטקטורת VPC הגלובלית ב-GCP, הגדרת Subnets ו-Firewall Rules, Cloud NAT ו-VPC Peering, וסוגי Cloud Load Balancing."
 category: GCP
 part: 4/10
 ---

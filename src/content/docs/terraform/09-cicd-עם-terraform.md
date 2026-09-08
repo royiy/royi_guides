@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: "מדריך 9: CI/CD עם Terraform"
+description: "הטמעת Terraform בצינור CI/CD: תבנית GitOps, דוגמאות מלאות ב-GitHub Actions וב-GitLab CI, אסטרטגיית סביבות, HCP Terraform, זיהוי drift אוטומטי ו-Terragrunt."
 ---
 
 ## למה אוטומציה קריטית?

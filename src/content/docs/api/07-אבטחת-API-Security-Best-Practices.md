@@ -1,5 +1,6 @@
 ---
 title: "אבטחת API - API Security Best Practices"
+description: "OWASP API Security Top 10, דוגמת פגיעות BOLA, Rate Limiting, Input Validation, HTTPS/TLS, CORS, הגנה מפני SQL/NoSQL Injection וניהול Secrets."
 category: API
 part: 7/10
 ---

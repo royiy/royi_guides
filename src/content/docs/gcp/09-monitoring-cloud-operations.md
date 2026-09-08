@@ -1,5 +1,6 @@
 ---
 title: "Cloud Monitoring, Cloud Logging ו-Alerting Policies"
+description: "Cloud Operations Suite - חיפוש וניתוב לוגים עם Log Sinks, בניית Dashboards, הגדרת Alerting Policies, Notification Channels ו-Uptime Checks."
 category: GCP
 part: 9/10
 ---

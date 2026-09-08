@@ -1,5 +1,6 @@
 ---
 title: "שאלות חזרה"
+description: "שאלות חזרה אינטראקטיביות עם משוב מיידי על כל נושאי מדריכי ה-Kubernetes - ארכיטקטורה, Services, אחסון, Helm, RBAC, Ingress וניטור."
 category: DevOps/Kubernetes
 part: 11/10
 ---
