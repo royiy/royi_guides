@@ -47,7 +47,7 @@ part: 2/10
 VeeamBackup&Replication_Setup.exe /accepteula /silent /log="C:\install.log"
 ```
 
-> טיפ: גרסת ה-Community Edition מוגבלת לעד 10 עומסי עבודה (VMs/Servers/Workstations) ומהווה כלי מצוין לתרגול לפני ראיונות עבודה.
+> טיפ: גרסת ה-Community Edition מוגבלת לעד 10 מכונות (VMs/Servers/Workstations) ומהווה כלי מצוין לתרגול לפני ראיונות עבודה.
 
 ## פריסת Backup Proxy
 
