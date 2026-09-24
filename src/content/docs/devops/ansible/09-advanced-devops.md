@@ -283,13 +283,54 @@ control_path = /tmp/ansible-ssh-%%h-%%p-%%r
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה זה AWX וההבדל בינו לבין Ansible Automation Platform (Tower)?
-2. איך תשלבו Ansible Vault בתוך pipeline של GitLab CI/GitHub Actions מבלי לחשוף סיסמאות?
-3. מה ההבדל בין אסטרטגיית `linear` ל-`free`, ומתי תבחרו בכל אחת?
-4. מה זה `serial` ב-Playbook ולמה הוא קריטי לפריסות Production?
-5. מה זה Execution Environment ולמה הוא פתרון עדיף על התקנת תלויות ישירות על ה-Control Node?
-6. איך תבנו תהליך Rolling Deployment עם בדיקות Health Check אוטומטיות ו-rollback במקרה כשלון?
-7. מהו Molecule ולמה הוא חשוב לבדיקת Roles לפני שילוב בפרודקשן?
+<details class="qa">
+<summary>1. מה זה AWX וההבדל בינו לבין Ansible Automation Platform (Tower)?</summary>
+
+AWX הוא פרויקט הקוד הפתוח שמספק ממשק Web, API, ניהול הרשאות, לוח זמנים ולוגים להרצות Ansible. Ansible Automation Platform (לשעבר Tower) הוא המוצר המסחרי של Red Hat המבוסס על אותה טכנולוגיה, עם תמיכה רשמית, גרסאות יציבות, Execution Environments מוסמכים ותכולות ארגוניות נוספות.
+
+</details>
+
+<details class="qa">
+<summary>2. איך תשלבו Ansible Vault בתוך pipeline של GitLab CI/GitHub Actions מבלי לחשוף סיסמאות?</summary>
+
+מגדירים את סיסמת ה-Vault כ-secret במערכת ה-CI, ובזמן ה-job כותבים אותה לקובץ זמני ומריצים עם `--vault-password-file`, או משתמשים במשתנה `ANSIBLE_VAULT_PASSWORD_FILE`. חשוב למחוק את הקובץ בסיום, לא להדפיס אותו ללוג, ולהשתמש ב-`no_log` במשימות רגישות.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין אסטרטגיית <code>linear</code> ל-<code>free</code>, ומתי תבחרו בכל אחת?</summary>
+
+ב-`linear` (ברירת המחדל) כל המארחים מסיימים משימה לפני שמתחילים את הבאה — נוח למעקב ומתאים כשיש תלות בין שלבים. ב-`free` כל מארח רץ קדימה בקצב שלו בלי להמתין לאחרים — מהיר יותר כשיש שרתים איטיים בקבוצה, אבל הפלט מבולבל ואין סנכרון בין שלבים.
+
+</details>
+
+<details class="qa">
+<summary>4. מה זה <code>serial</code> ב-Playbook ולמה הוא קריטי לפריסות Production?</summary>
+
+`serial` קובע כמה מארחים מעודכנים בכל "גל" — למשל `serial: 2` או `serial: "25%"`. זה מה שהופך פריסה ל-Rolling Update: בכל רגע חלק מהשרתים ממשיכים לשרת תעבורה, ואם גל נכשל הפריסה נעצרת לפני שכל החווה נפלה.
+
+</details>
+
+<details class="qa">
+<summary>5. מה זה Execution Environment ולמה הוא פתרון עדיף על התקנת תלויות ישירות על ה-Control Node?</summary>
+
+זהו image של קונטיינר שמכיל את Ansible, ה-Collections והתלויות (כולל ספריות Python) בגרסאות מדויקות. במקום "עובד אצלי" בגלל גרסאות שונות על שרתי בקרה שונים, כולם — מפתחים, AWX ו-CI — מריצים את אותו image, וכך הריצה הופכת לדטרמיניסטית וקלה לשדרוג.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תבנו תהליך Rolling Deployment עם בדיקות Health Check אוטומטיות ו-rollback במקרה כשלון?</summary>
+
+משלבים `serial` לפריסה בגלים, `pre_tasks` להוצאת השרת מה-Load Balancer, פריסה, ואז `uri`/`wait_for` כבדיקת בריאות לפני החזרתו לתעבורה. את שלב הפריסה עוטפים ב-`block/rescue`, כך שכישלון ב-health check מפעיל `rescue` שמחזיר את הגרסה הקודמת — ו-`max_fail_percentage` עוצר את כל הפריסה לפני שהגל הבא יוצא לדרך.
+
+</details>
+
+<details class="qa">
+<summary>7. מהו Molecule ולמה הוא חשוב לבדיקת Roles לפני שילוב בפרודקשן?</summary>
+
+Molecule היא מסגרת בדיקות ל-Roles: היא מקימה סביבה זמנית (Docker/Podman/ענן), מריצה עליה את ה-Role, בודקת אידמפוטנטיות בהרצה שנייה (אסור שיהיו `changed`), מריצה בדיקות אימות ומפרקת הכול. כך תופסים רגרסיות ב-CI במקום לגלות אותן בשרת אמיתי.
+
+</details>
 
 ## קישורים חיצוניים
 

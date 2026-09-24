@@ -194,20 +194,40 @@ async function getProduct(id) {
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. מה ההבדל בין Unit Test ל-Integration Test עבור API?**
+<details class="qa">
+<summary>1. מה ההבדל בין Unit Test ל-Integration Test עבור API?</summary>
+
 Unit Test בודק רכיב בודד (פונקציה) ללא תלויות אמיתיות (DB מדומה/mock). Integration Test בודק את הרכיבים יחד, כולל תקשורת אמיתית (או קרובה לאמיתית) עם DB/שירותים חיצוניים.
 
-**2. מה זה ETag ואיך הוא עוזר לביצועים?**
+</details>
+
+<details class="qa">
+<summary>2. מה זה ETag ואיך הוא עוזר לביצועים?</summary>
+
 טביעת אצבע של גרסת המשאב. הלקוח שולח אותה ב-`If-None-Match` בבקשות עוקבות; אם המשאב לא השתנה, השרת מחזיר `304 Not Modified` בלי לשלוח את הגוף שוב, וחוסך bandwidth.
 
-**3. הסבירו את ההבדל בין Token Bucket ל-Fixed Window ב-Rate Limiting.**
+</details>
+
+<details class="qa">
+<summary>3. הסבירו את ההבדל בין Token Bucket ל-Fixed Window ב-Rate Limiting.</summary>
+
 Fixed Window סופר בקשות בחלון קבוע ומתאפס בבת אחת (עלול לאפשר "פרץ" כפול בגבול בין חלונות). Token Bucket מאפשר צבירת "טוקנים" עד תקרה, ומאפשר גמישות ל-burst קצר תוך שמירה על ממוצע קצב לאורך זמן.
 
-**4. איך הייתם בודקים ש-API עומד בעומס גבוה?**
+</details>
+
+<details class="qa">
+<summary>4. איך הייתם בודקים ש-API עומד בעומס גבוה?</summary>
+
 Load Testing עם כלים כמו k6, JMeter או Locust - מדמים משתמשים וירטואליים מרובים, ובודקים throughput, latency, ואחוז שגיאות תחת עומס גובר.
 
-**5. מהם Contract Tests ולמה הם חשובים?**
+</details>
+
+<details class="qa">
+<summary>5. מהם Contract Tests ולמה הם חשובים?</summary>
+
 בדיקות שמוודאות שהתשובה בפועל מה-API תואמת ל-schema המתועד (OpenAPI). חשובות כדי לוודא שה-API לא "סוטה" מהתיעוד/החוזה מול הלקוחות, במיוחד בארכיטקטורת מיקרו-שירותים.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

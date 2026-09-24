@@ -207,12 +207,47 @@ ansible-galaxy collection install community.hashi_vault
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה ההבדל בין `ansible-vault encrypt` ל-`ansible-vault encrypt_string`?
-2. איך מנהלים סיסמאות Vault שונות לסביבות production ו-staging באותו Repository?
-3. מהי שיטת ה-vars.yml + vault.yml, ולמה היא עדיפה על הצפנת כל קובץ המשתנים?
-4. איך תשלבו Ansible Vault בתהליך CI/CD מבלי לשמור סיסמאות בקוד?
-5. מה עושה `no_log: true` ולמה הוא לא תחליף ל-Vault?
-6. איך מבצעים סיבוב (rotation) של סיסמת Vault בלי לאבד גישה לסודות הקיימים?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>ansible-vault encrypt</code> ל-<code>ansible-vault encrypt_string</code>?</summary>
+
+`encrypt` מצפין **קובץ שלם** — הקובץ כולו הופך לבלוק מוצפן ואי אפשר לקרוא אותו ב-diff. `encrypt_string` מצפין **ערך בודד** ומחזיר בלוק שאפשר להדביק בתוך קובץ YAML רגיל, כך ששאר הקובץ נשאר קריא ב-Git וב-code review.
+
+</details>
+
+<details class="qa">
+<summary>2. איך מנהלים סיסמאות Vault שונות לסביבות production ו-staging באותו Repository?</summary>
+
+עם Vault IDs: מצפינים עם `--vault-id prod@prompt` ו-`--vault-id staging@prompt`, ומריצים עם ה-ID המתאים (או עם כמה `--vault-id` יחד). כך לצוות שיש לו רק את סיסמת ה-staging אין גישה לסודות הפרודקשן, למרות ששניהם יושבים באותו repository.
+
+</details>
+
+<details class="qa">
+<summary>3. מהי שיטת ה-vars.yml + vault.yml, ולמה היא עדיפה על הצפנת כל קובץ המשתנים?</summary>
+
+מחזיקים קובץ `vars.yml` גלוי שבו כל המשתנים, כשהערכים הרגישים מפנים למשתנה מתוך `vault.yml` מוצפן (למשל `db_password: "{{ vault_db_password }}"`). היתרון: רואים ב-Git אילו משתנים קיימים ומה השתנה, בלי לחשוף את הערכים עצמם — בניגוד להצפנת הקובץ כולו, שבה כל diff הוא בלוק בינארי חסר משמעות.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תשלבו Ansible Vault בתהליך CI/CD מבלי לשמור סיסמאות בקוד?</summary>
+
+שומרים את סיסמת ה-Vault כ-secret של מערכת ה-CI (GitHub Actions Secrets, GitLab CI Variables), כותבים אותה בזמן הריצה לקובץ זמני והעברה עם `--vault-password-file`, ומוחקים בסיום. אפשרות מתקדמת יותר: סקריפט `--vault-password-file` שמושך את הסיסמה מ-secrets manager (Vault של HashiCorp, AWS Secrets Manager).
+
+</details>
+
+<details class="qa">
+<summary>5. מה עושה <code>no_log: true</code> ולמה הוא לא תחליף ל-Vault?</summary>
+
+הוא מסתיר את הפלט של המשימה מהלוג ומ-`-v`, כדי שסיסמה לא תודפס למסך או ל-CI. הוא לא מצפין כלום — הערך עדיין יושב בקוד או במשתנה בטקסט גלוי. Vault מגן על הסוד **במנוחה** (ב-Git), ו-`no_log` מגן עליו רק **בתצוגה**; צריך את שניהם.
+
+</details>
+
+<details class="qa">
+<summary>6. איך מבצעים סיבוב (rotation) של סיסמת Vault בלי לאבד גישה לסודות הקיימים?</summary>
+
+עם `ansible-vault rekey` — הפקודה מפענחת עם הסיסמה הישנה ומצפינה מחדש עם החדשה, על כל הקבצים הרלוונטיים. חשוב לעשות זאת ב-branch נפרד, לוודא שכל הקבצים עברו rekey, לעדכן את הסיסמה בכל מקום שמשתמש בה (CI, מפתחים) ורק אז למזג.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -171,9 +171,45 @@ Events
 
 ## 11. שאלות ראיון
 
-1. מה קורה בזמן vMotion?
-2. מה ההבדל בין vMotion ל-Storage vMotion?
-3. מה עושה DRS?
-4. מהו EVC?
-5. מהו DRS Rule?
-6. למה Anti-Affinity שימושי?
+<details class="qa">
+<summary>1. מה קורה בזמן vMotion?</summary>
+
+ה-Host היעד מקבל מכונה "ריקה", זיכרון ה-VM מועתק אליו ברקע בכמה סבבים (pre-copy) בזמן שהמכונה ממשיכה לרוץ, ובסוף יש הקפאה קצרצרה (switchover) שבה מועברים הדפים האחרונים ומצב המעבד — ואז המכונה ממשיכה לרוץ על ה-Host החדש. הדיסק נשאר במקומו ב-Datastore המשותף.
+
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין vMotion ל-Storage vMotion?</summary>
+
+vMotion מעביר את **החישוב** — המכונה עוברת ל-Host אחר, הדיסק נשאר. Storage vMotion מעביר את **הקבצים** — ה-VMDK עובר ל-Datastore אחר בזמן שהמכונה רצה על אותו Host. אפשר גם לשלב את שניהם (Cross-Host vMotion / XvMotion).
+
+</details>
+
+<details class="qa">
+<summary>3. מה עושה DRS?</summary>
+
+מנטר את העומס (CPU וזיכרון) על ה-Hosts בקלאסטר ומבצע או ממליץ על vMotion כדי לאזן. הוא גם בוחר את ה-Host המתאים בהפעלת VM חדשה, ומכבד כללי Affinity/Anti-Affinity. רמת האוטומציה נעה בין המלצות בלבד ל-Fully Automated.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו EVC?</summary>
+
+Enhanced vMotion Compatibility — מסכה שמציגה לכל המכונות בקלאסטר מערכת פקודות (CPU baseline) אחידה, כך שאפשר לבצע vMotion גם בין Hosts עם דורות מעבד שונים. בלעדיו ההעברה תיחסם בגלל אי-התאמת תכונות CPU. מומלץ להפעיל מראש — הפעלה בדיעבד עשויה לדרוש כיבוי מכונות.
+
+</details>
+
+<details class="qa">
+<summary>5. מהו DRS Rule?</summary>
+
+כלל שמגביל את שיקול הדעת של DRS במיקום מכונות: Affinity (השאר יחד), Anti-Affinity (הפרד), או VM-Host rules ("should"/"must") שמצמידות מכונות לקבוצת Hosts — למשל מטעמי רישוי או קרבה לאחסון.
+
+</details>
+
+<details class="qa">
+<summary>6. למה Anti-Affinity שימושי?</summary>
+
+כדי ששני שרתים שאמורים לגבות זה את זה — שני בקרי דומיין, שני צמתים בקלאסטר SQL, שני שרתי Web מאחורי Load Balancer — לא ירוצו על אותו Host פיזי. כך כשל חומרה בודד לא מפיל את שני העותקים בבת אחת.
+
+</details>
+

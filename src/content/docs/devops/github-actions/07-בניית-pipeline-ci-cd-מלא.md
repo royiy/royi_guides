@@ -293,35 +293,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. מה ההבדל בין Continuous Delivery ל-Continuous Deployment?**
+<details class="qa">
+<summary>1. מה ההבדל בין Continuous Delivery ל-Continuous Deployment?</summary>
+
 ב-Continuous Delivery הקוד תמיד "מוכן" לפריסה אך דורש אישור ידני; ב-Continuous Deployment הפריסה קורית אוטומטית לגמרי, ללא התערבות אנושית, לאחר שכל הבדיקות עוברות.
 
-**2. איך בונים Pipeline שמריץ CI על כל PR אך פורס רק מ-main?**
+</details>
+
+<details class="qa">
+<summary>2. איך בונים Pipeline שמריץ CI על כל PR אך פורס רק מ-main?</summary>
+
 משתמשים בטריגר `pull_request` לבדיקות בלבד, ומגבילים את jobs הפריסה בתנאי `if: github.ref == 'refs/heads/main'` או ע"י triggers נפרדים (`push` ל-main בלבד).
 
-**3. למה כדאי לתייג תמונת Docker עם git SHA ולא רק `latest`?**
+</details>
+
+<details class="qa">
+<summary>3. למה כדאי לתייג תמונת Docker עם git SHA ולא רק <code>latest</code>?</summary>
+
 כדי לאפשר מעקב מדויק ו-rollback לגרסה קודמת ספציפית - עם `latest` בלבד אין דרך לדעת בדיוק איזה קוד רץ בפועל.
 
-**4. מה זה smoke test ולמה משלבים אותו אחרי deploy ל-staging?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה smoke test ולמה משלבים אותו אחרי deploy ל-staging?</summary>
+
 בדיקה מהירה ובסיסית (למשל endpoint `/health`) שמוודאת שהשירות עלה ועובד לפני שממשיכים לשלב הבא ב-pipeline (כמו פריסה לפרודקשן).
 
-**5. איך אפשר לממש rollback אוטומטי ב-GitHub Actions?**
+</details>
+
+<details class="qa">
+<summary>5. איך אפשר לממש rollback אוטומטי ב-GitHub Actions?</summary>
+
 באמצעות `continue-on-error: true` בשלב הפריסה ובדיקת התקינות, ולאחר מכן `if: steps.<id>.outcome == 'failure'` שמפעיל סקריפט rollback.
 
-**6. מה זה reusable workflow ואיך הוא מצמצם כפילות?**
+</details>
+
+<details class="qa">
+<summary>6. מה זה reusable workflow ואיך הוא מצמצם כפילות?</summary>
+
 Workflow שמוגדר עם `on: workflow_call` וניתן "לקרוא" אליו מ-workflows אחרים (גם בריפוזיטוריז שונים), במקום להעתיק את אותה לוגיקה בכמה מקומות.
 
-**7. מה ההבדל בין הפעלת CD דרך `workflow_run` לבין הרצתו כחלק מאותו workflow כמו CI?**
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין הפעלת CD דרך <code>workflow_run</code> לבין הרצתו כחלק מאותו workflow כמו CI?</summary>
+
 `workflow_run` מפריד לחלוטין בין ה-workflows ומאפשר CD לרוץ רק לאחר סיום מוצלח מובהק של CI, כולל גישה שונה ל-permissions; שילוב הכול באותו workflow פשוט יותר לתחזוקה אך פחות גמיש בהפרדת אחריות.
 
-**8. איך מוודאים שפריסה לפרודקשן מחייבת אישור אנושי לפני ביצוע?**
+</details>
+
+<details class="qa">
+<summary>8. איך מוודאים שפריסה לפרודקשן מחייבת אישור אנושי לפני ביצוע?</summary>
+
 באמצעות `environment: production` עם "required reviewers" מוגדרים בהגדרות ה-Environment בממשק GitHub.
 
-**9. מה הסיכון בפריסה ישירה מ-Pull Request לפני merge?**
+</details>
+
+<details class="qa">
+<summary>9. מה הסיכון בפריסה ישירה מ-Pull Request לפני merge?</summary>
+
 קוד לא סקור (unreviewed) עלול להגיע לפרודקשן, ובנוסף PR מ-fork חיצוני עלול לא לקבל גישה נדרשת ל-secrets, מה שעלול לגרום להתנהגות בלתי צפויה.
 
-**10. מהם השלבים הטיפוסיים ב-pipeline מלא מקוד ועד פרודקשן?**
+</details>
+
+<details class="qa">
+<summary>10. מהם השלבים הטיפוסיים ב-pipeline מלא מקוד ועד פרודקשן?</summary>
+
 Lint → Test → Build → Push image → Deploy to staging → Smoke test → Manual approval → Deploy to production.
+
+</details>
 
 ## קישורים חיצוניים
 

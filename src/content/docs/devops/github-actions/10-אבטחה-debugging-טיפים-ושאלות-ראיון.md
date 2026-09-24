@@ -178,103 +178,223 @@ act push -j build
 
 ### רמה בסיסית
 
-**1. מה זה GitHub Actions במשפט אחד?**
+<details class="qa">
+<summary>1. מה זה GitHub Actions במשפט אחד?</summary>
+
 פלטפורמת CI/CD ואוטומציה מובנית ב-GitHub, המאפשרת הרצת תהליכים אוטומטיים בתגובה לאירועים בריפוזיטורי.
 
-**2. מה ההבדל בין Workflow, Job, ו-Step?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין Workflow, Job, ו-Step?</summary>
+
 Workflow הוא התהליך השלם המוגדר בקובץ YAML; Job הוא קבוצת steps שרצה על runner אחד; Step הוא פעולה בודדת (command או Action) בתוך job.
 
-**3. איפה שומרים קובצי workflow?**
+</details>
+
+<details class="qa">
+<summary>3. איפה שומרים קובצי workflow?</summary>
+
 בתיקייה `.github/workflows/` בשורש הריפו, כקבצי YAML.
 
-**4. מה ההבדל בין `push` ל-`pull_request` כטריגר?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>push</code> ל-<code>pull_request</code> כטריגר?</summary>
+
 `push` מגיב לדחיפת קוד ישירה לענף; `pull_request` מגיב לפעולות על Pull Request, ורץ עם הרשאות מוגבלות יותר כשמדובר ב-PR מ-fork חיצוני.
 
-**5. מה זה `GITHUB_TOKEN`?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה <code>GITHUB_TOKEN</code>?</summary>
+
 טוקן זמני שנוצר אוטומטית בתחילת כל ריצת workflow, לצורך אינטראקציה עם ה-API של הריפו לפי ההרשאות שהוגדרו.
+
+</details>
 
 ### רמה בינונית
 
-**6. מה ההבדל בין Secret ל-Variable?**
+<details class="qa">
+<summary>6. מה ההבדל בין Secret ל-Variable?</summary>
+
 Secret הוא ערך מוצפן שמוסתר מלוגים, מיועד למידע רגיש; Variable הוא ערך רגיל ולא מוצפן, מיועד לקונפיגורציה כללית.
 
-**7. איך גורמים ל-job להיות תלוי בסיום מוצלח של job אחר?**
+</details>
+
+<details class="qa">
+<summary>7. איך גורמים ל-job להיות תלוי בסיום מוצלח של job אחר?</summary>
+
 באמצעות `needs: <job_id>` - וברירת המחדל היא שה-job הנוכחי לא ירוץ אם ה-job שהוא תלוי בו נכשל.
 
-**8. מה זה Matrix Strategy?**
+</details>
+
+<details class="qa">
+<summary>8. מה זה Matrix Strategy?</summary>
+
 מנגנון שיוצר אוטומטית מספר jobs מקומבינציות של משתנים (כמו OS וגרסת שפה) מהגדרה יחידה, במקום לכתוב job נפרד לכל קומבינציה.
 
-**9. מה ההבדל בין `artifacts` ל-`outputs`?**
+</details>
+
+<details class="qa">
+<summary>9. מה ההבדל בין <code>artifacts</code> ל-<code>outputs</code>?</summary>
+
 Artifacts מיועדים להעברת קבצים שלמים בין jobs; Outputs מיועדים לערכים טקסטואליים קצרים.
 
-**10. איך מריצים workflow ידנית עם פרמטרים?**
+</details>
+
+<details class="qa">
+<summary>10. איך מריצים workflow ידנית עם פרמטרים?</summary>
+
 באמצעות טריגר `workflow_dispatch` עם `inputs` מוגדרים מראש.
 
-**11. מה זה reusable workflow?**
+</details>
+
+<details class="qa">
+<summary>11. מה זה reusable workflow?</summary>
+
 Workflow שמוגדר עם `on: workflow_call`, וניתן "לקרוא" אליו מ-workflows אחרים - מצמצם כפילות קוד.
 
-**12. איך מונעים ריצה כפולה של workflow באותו ענף בזמן קצר?**
+</details>
+
+<details class="qa">
+<summary>12. איך מונעים ריצה כפולה של workflow באותו ענף בזמן קצר?</summary>
+
 באמצעות `concurrency` עם `group` מוגדר ו-`cancel-in-progress: true`.
+
+</details>
 
 ### רמה מתקדמת
 
-**13. מה זה script injection ב-GitHub Actions, ואיך מונעים אותו?**
+<details class="qa">
+<summary>13. מה זה script injection ב-GitHub Actions, ואיך מונעים אותו?</summary>
+
 פרצת אבטחה שבה תוכן שנשלט על ידי המשתמש (כמו כותרת PR) מוזרק ישירות לתוך `run:` ומאפשר הרצת קוד זדוני. הפתרון: להעביר ערכים דרך `env:` ולא ישירות במחרוזת הפקודה.
 
-**14. מה הסיכון בשימוש ב-`pull_request_target` יחד עם checkout של קוד ה-PR?**
+</details>
+
+<details class="qa">
+<summary>14. מה הסיכון בשימוש ב-<code>pull_request_target</code> יחד עם checkout של קוד ה-PR?</summary>
+
 `pull_request_target` רץ עם הרשאות מלאות (כולל secrets) של הענף הבסיסי, גם עבור PR מ-fork. אם עושים checkout לקוד ה-PR עצמו ומריצים אותו, זה בפועל מריץ קוד לא מהימן עם הרשאות גבוהות - חור אבטחה חמור.
 
-**15. מה זה OIDC ואיך הוא משפר אבטחה בפריסות לענן?**
+</details>
+
+<details class="qa">
+<summary>15. מה זה OIDC ואיך הוא משפר אבטחה בפריסות לענן?</summary>
+
 OpenID Connect מאפשר קבלת טוקן זמני וממוקד-הרשאות בזמן ריצה במקום החזקת מפתחות סטטיים כ-secrets, מה שמצמצם משמעותית סיכון דליפת אישורים.
 
-**16. איך אפשר לצמצם את ההרשאות של GITHUB_TOKEN?**
+</details>
+
+<details class="qa">
+<summary>16. איך אפשר לצמצם את ההרשאות של GITHUB_TOKEN?</summary>
+
 באמצעות מפתח `permissions` בראש קובץ ה-workflow (ואופציונלית ברמת job ספציפי), תוך מתן רק ההרשאות המינימליות הנדרשות בפועל.
 
-**17. מה ההבדל בין נעילת Action לתגית גרסה (`@v4`) לנעילה ל-commit SHA?**
+</details>
+
+<details class="qa">
+<summary>17. מה ההבדל בין נעילת Action לתגית גרסה (<code>@v4</code>) לנעילה ל-commit SHA?</summary>
+
 תגית עלולה תיאורטית להשתנות (אם כי זו פרקטיקה גרועה); commit SHA הוא immutable לחלוטין ומבטיח שאותו קוד בדיוק ירוץ תמיד - הדרך הבטוחה ביותר.
 
-**18. איך מגדירים אישור ידני לפני פריסה לפרודקשן?**
+</details>
+
+<details class="qa">
+<summary>18. איך מגדירים אישור ידני לפני פריסה לפרודקשן?</summary>
+
 באמצעות `environment: production` ברמת job, עם "required reviewers" מוגדרים בהגדרות ה-Environment בממשק GitHub.
 
-**19. מה זה cache poisoning ב-GitHub Actions, ואיך מגנים מפניו?**
+</details>
+
+<details class="qa">
+<summary>19. מה זה cache poisoning ב-GitHub Actions, ואיך מגנים מפניו?</summary>
+
 מצב שבו workflow זדוני "מזהם" cache משותף עם תוכן פוגעני שנטען מאוחר יותר על ידי workflow אחר. הגנה: אין לשמור מידע רגיש בקאש, ולהגביל כתיבת קאש ל-triggers מהימנים בלבד.
 
-**20. איך אפשר להריץ debugging אינטראקטיבי (SSH) לתוך runner בזמן כישלון?**
+</details>
+
+<details class="qa">
+<summary>20. איך אפשר להריץ debugging אינטראקטיבי (SSH) לתוך runner בזמן כישלון?</summary>
+
 באמצעות Action כמו `mxschmitt/action-tmate`, המופעל בתנאי `if: failure()` ופותח session SSH זמני לחקירת מצב הכישלון.
+
+</details>
 
 ### שאלות תרחישיות (Scenario-based)
 
-**21. אתם רואים ש-workflow לוקח יותר מדי זמן. אילו שלושה שינויים תבדקו ראשונים?**
+<details class="qa">
+<summary>21. אתם רואים ש-workflow לוקח יותר מדי זמן. אילו שלושה שינויים תבדקו ראשונים?</summary>
+
 (1) הוספת `actions/cache` לתלויות שלא השתנו; (2) פיצול jobs עצמאיים שרצים כרגע ברצף לריצה מקבילה; (3) שימוש ב-matrix עם sharding אם מדובר בסוויטת בדיקות כבדה.
 
-**22. מפתח מתלונן שה-secret שלו "לא עובד" ב-PR מ-fork חיצוני. מה ההסבר הסביר?**
+</details>
+
+<details class="qa">
+<summary>22. מפתח מתלונן שה-secret שלו "לא עובד" ב-PR מ-fork חיצוני. מה ההסבר הסביר?</summary>
+
 Secrets רגילים (חוץ מ-GITHUB_TOKEN מוגבל) אינם זמינים אוטומטית עבור PR שמגיע מ-fork, מטעמי אבטחה - זה מונע גניבת סודות דרך PR זדוני.
 
-**23. איך הייתם בונים pipeline שבודק קוד בכל PR, אבל פורס לפרודקשן רק לאחר merge ל-main ואישור ידני?**
+</details>
+
+<details class="qa">
+<summary>23. איך הייתם בונים pipeline שבודק קוד בכל PR, אבל פורס לפרודקשן רק לאחר merge ל-main ואישור ידני?</summary>
+
 CI (lint+test) על טריגר `pull_request`; לאחר merge, workflow נפרד (או `if: github.ref == 'refs/heads/main'`) שפורס ל-staging, מריץ smoke test, ולבסוף `environment: production` עם required reviewers לפני הפריסה הסופית.
 
-**24. ה-workflow שלכם נכשל רק בסביבת Windows במטריצה, אך עובד ב-Linux. מה תבדקו?**
+</details>
+
+<details class="qa">
+<summary>24. ה-workflow שלכם נכשל רק בסביבת Windows במטריצה, אך עובד ב-Linux. מה תבדקו?</summary>
+
 הבדלי path separators (`/` מול `\`), הבדלי shell ברירת מחדל (PowerShell מול bash), ותלויות ספציפיות למערכת הפעלה - אפשר גם להוסיף `shell: bash` מפורש כדי לאחד התנהגות.
 
-**25. איך תוודאו שריצות ה-CI לא "יאכלו" את כל דקות ה-Actions של הארגון?**
+</details>
+
+<details class="qa">
+<summary>25. איך תוודאו שריצות ה-CI לא "יאכלו" את כל דקות ה-Actions של הארגון?</summary>
+
 הגדרת `timeout-minutes` סבירה לכל job, שימוש נכון ב-`paths`/`paths-ignore` כדי לדלג על ריצות מיותרות, וניצול caching כדי לקצר זמני ריצה.
+
+</details>
 
 ### שאלות "מה ההבדל בין..."
 
-**26. מה ההבדל בין Continuous Delivery ל-Continuous Deployment?**
+<details class="qa">
+<summary>26. מה ההבדל בין Continuous Delivery ל-Continuous Deployment?</summary>
+
 Delivery - הקוד תמיד מוכן לפריסה אך דורש אישור ידני; Deployment - הפריסה קורית אוטומטית לחלוטין ללא התערבות אנושית.
 
-**27. מה ההבדל בין Composite Action ל-Reusable Workflow?**
+</details>
+
+<details class="qa">
+<summary>27. מה ההבדל בין Composite Action ל-Reusable Workflow?</summary>
+
 Composite Action עוטף steps בתוך job בודד (ניתן לשימוש בכל job); Reusable Workflow הוא workflow שלם עם jobs מרובים, שנקרא ברמת ה-workflow.
 
-**28. מה ההבדל בין `workflow_dispatch` ל-`repository_dispatch`?**
+</details>
+
+<details class="qa">
+<summary>28. מה ההבדל בין <code>workflow_dispatch</code> ל-<code>repository_dispatch</code>?</summary>
+
 `workflow_dispatch` מיועד להפעלה ידנית דרך ממשק GitHub או API; `repository_dispatch` מיועד להפעלה חיצונית (מ-CI/CD אחר, webhook, שירות צד שלישי) דרך קריאת REST API.
 
-**29. מה ההבדל בין self-hosted runner ל-GitHub-hosted runner מבחינת אבטחה?**
+</details>
+
+<details class="qa">
+<summary>29. מה ההבדל בין self-hosted runner ל-GitHub-hosted runner מבחינת אבטחה?</summary>
+
 GitHub-hosted הוא אפמרי לחלוטין (נמחק אחרי כל ריצה) ומנוהל על ידי GitHub; self-hosted נשאר קיים בין ריצות, ולכן דורש הקשחה עצמאית (במיוחד בריפו ציבורי, שם PR זדוני עלול להריץ קוד על התשתית שלכם).
 
-**30. מה ההבדל בין `if: success()` (ברירת מחדל) ל-`if: always()`?**
+</details>
+
+<details class="qa">
+<summary>30. מה ההבדל בין <code>if: success()</code> (ברירת מחדל) ל-<code>if: always()</code>?</summary>
+
 `success()` מריץ step רק אם כל השלבים הקודמים הצליחו; `always()` מריץ תמיד, בין אם הצליחו ובין אם לא - שימושי לניקוי (cleanup) או שליחת התראות בכל מקרה.
+
+</details>
 
 ## קישורים חיצוניים
 

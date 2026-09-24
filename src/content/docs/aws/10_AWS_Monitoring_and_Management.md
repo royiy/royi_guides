@@ -30,10 +30,19 @@ aws cloudtrail lookup-events     --lookup-attributes AttributeKey=EventName,Attr
 * **Tagging Strategy:** תייגו (Tags) את כל המשאבים שלכם לפי פרויקט, סביבה (Dev/Prod) או מחלקה. זה יאפשר לכם לסנן עלויות ב-Cost Explorer ולדעת מי אחראי על איזו הוצאה.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל העיקרי בין CloudWatch ל-CloudTrail?
-   **תשובה:** CloudWatch מסתכל על "איך המערכת מתפקדת" (ביצועים, מדדים, לוגים אפליקטיביים). CloudTrail מסתכל על "מי עשה מה בחשבון" (תיעוד של קריאות ה-API מטעמי אבטחה ורגולציה).
-2. **שאלה:** יש לכם התראה ב-CloudWatch שה-EC2 שלכם הגיע ל-90% RAM. האם Metric זה מגיע כברירת מחדל?
-   **תשובה:** לא! CloudWatch מספק מדדי CPU, Disk ו-Network כברירת מחדל ב-EC2, אבל אינו יכול "לראות" לתוך מערכת ההפעלה כדי למדוד זיכרון (RAM). לשם כך יש להתקין CloudWatch Agent בתוך השרת.
+<details class="qa">
+<summary>1. מה ההבדל העיקרי בין CloudWatch ל-CloudTrail?</summary>
+
+CloudWatch מסתכל על "איך המערכת מתפקדת" (ביצועים, מדדים, לוגים אפליקטיביים). CloudTrail מסתכל על "מי עשה מה בחשבון" (תיעוד של קריאות ה-API מטעמי אבטחה ורגולציה).
+
+</details>
+
+<details class="qa">
+<summary>2. יש לכם התראה ב-CloudWatch שה-EC2 שלכם הגיע ל-90% RAM. האם Metric זה מגיע כברירת מחדל?</summary>
+
+לא! CloudWatch מספק מדדי CPU, Disk ו-Network כברירת מחדל ב-EC2, אבל אינו יכול "לראות" לתוך מערכת ההפעלה כדי למדוד זיכרון (RAM). לשם כך יש להתקין CloudWatch Agent בתוך השרת.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS CloudWatch Documentation](https://docs.aws.amazon.com/cloudwatch/)

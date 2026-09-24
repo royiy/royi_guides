@@ -193,16 +193,83 @@ Restore Test
 
 ## 10. שאלות ראיון מתקדמות
 
-1. מהו CPU Ready?
-2. איך תבדיל בין CPU bottleneck ל-Storage bottleneck?
-3. מה ההבדל בין HA, DRS ו-vMotion?
-4. איך תתכנן שני Hosts עם Redundancy?
-5. מה תבדוק לפני vMotion?
-6. איך תזהה Snapshot בעייתי?
-7. איך תבנה PowerCLI report?
-8. למה DNS/NTP חשובים?
-9. איך תתכנן Management Network?
-10. איך תבנה תהליך Troubleshooting?
+<details class="qa">
+<summary>1. מהו CPU Ready?</summary>
+
+הזמן שבו vCPU הייתה מוכנה לרוץ והמתינה למעבד פיזי פנוי (`%RDY` ב-esxtop). זהו המדד הראשון שבודקים בתלונת "VM איטית": לרוב הפתרון הוא דווקא **להקטין** את מספר ה-vCPUs או להוריד עומס מה-Host, ולא להוסיף משאבים.
+
+</details>
+
+<details class="qa">
+<summary>2. איך תבדיל בין CPU bottleneck ל-Storage bottleneck?</summary>
+
+ב-esxtop: `%RDY` ו-`%CSTP` גבוהים מצביעים על תחרות CPU, בעוד GAVG/DAVG גבוהים (עשרות מילישניות) מצביעים על אחסון. גם בתוך מערכת ההפעלה אפשר להבחין: ב-CPU bottleneck העומס גבוה אך ה-I/O wait נמוך, ובבעיית אחסון התהליכים ממתינים ל-I/O בזמן שהמעבד פנוי.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין HA, DRS ו-vMotion?</summary>
+
+vMotion הוא **הכלי** להעברה חיה של VM בין Hosts. DRS משתמש בו כדי **לאזן עומסים** באופן שוטף. HA מטפל ב**כשל**: הוא לא מעביר חי אלא מפעיל מחדש מכונות על Host אחר אחרי שה-Host שלהן נפל.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תתכנן שני Hosts עם Redundancy?</summary>
+
+מוודאים שכל Host יכול לשאת את העומס של שניהם (N+1), אחסון משותף נגיש לשניהם, לפחות שני NICs לכל תפקיד רשת מול שני מתגים, ספקי כוח כפולים, וקלאסטר עם HA ו-Admission Control מוגדר כראוי. מוסיפים כללי Anti-Affinity למכונות שמגבות זו את זו, ו-DNS/NTP יציבים מחוץ לתלות באותם Hosts.
+
+</details>
+
+<details class="qa">
+<summary>5. מה תבדוק לפני vMotion?</summary>
+
+קישוריות רשת ה-vMotion בין ה-Hosts, אחסון משותף נגיש, תאימות CPU (EVC), משאבים פנויים ב-Host היעד, ניתוק התקנים מקומיים מהמכונה (ISO, USB, passthrough), וכללי DRS/Affinity שעלולים לחסום. כדאי גם לוודא שאין snapshot ענק או פעולה אחרת שרצה על המכונה.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תזהה Snapshot בעייתי?</summary>
+
+מחפשים snapshots ישנים או גדולים — ב-PowerCLI `Get-VM | Get-Snapshot | Where-Object Created -lt (Get-Date).AddDays(-7)` — ובודקים את גודל קבצי ה-delta מול ה-Datastore. סימנים נוספים: מכונה שהאטה בהדרגה, Datastore שמתמלא, ו-snapshot "יתום" שמופיע בקבצים אך לא ב-Snapshot Manager (מזוהה עם Consolidate).
+
+</details>
+
+<details class="qa">
+<summary>7. איך תבנה PowerCLI report?</summary>
+
+מתחברים עם `Connect-VIServer`, אוספים את הנתונים ובונים אובייקט אחיד לייצוא:
+
+```powershell
+Get-VM | Select-Object Name, PowerState, NumCpu, MemoryGB,
+    @{N="Host";E={$_.VMHost.Name}}, @{N="Datastore";E={($_ | Get-Datastore).Name -join ","}} |
+  Export-Csv .\vm-inventory.csv -NoTypeInformation -Encoding UTF8
+```
+
+מתזמנים את הריצה, ומקפידים לא להריץ `Format-Table` לפני הייצוא.
+
+</details>
+
+<details class="qa">
+<summary>8. למה DNS/NTP חשובים?</summary>
+
+רוב הרכיבים בסביבת vSphere מזהים זה את זה בשם ולא ב-IP — vCenter, Hosts, vSAN ותעודות TLS. DNS שגוי מייצר Hosts במצב Not Responding ובעיות הצטרפות. NTP קריטי כי הפרשי שעון שוברים אימות (Kerberos/SSO), פוסלים תעודות ומקשים על קורלציה בין לוגים בזמן אירוע.
+
+</details>
+
+<details class="qa">
+<summary>9. איך תתכנן Management Network?</summary>
+
+VMkernel ייעודי לניהול, ב-VLAN נפרד, עם שני uplinks לשני מתגים שונים (teaming/failover), כתובות סטטיות, DNS ו-NTP תקינים, וגישה מוגבלת מרשת ניהול בלבד. מפרידים אותה מ-vMotion ומתעבורת אחסון, כדי שפרץ תעבורה לא ינתק את הניהול ויגרור תגובות HA מיותרות.
+
+</details>
+
+<details class="qa">
+<summary>10. איך תבנה תהליך Troubleshooting?</summary>
+
+אוספים עובדות לפני שמשערים: מה השתנה ומתי, מי מושפע (VM בודדת / Host / כל הקלאסטר), ומה אומרים ה-Events והלוגים. אחר כך מפרידים שכבות — Guest, CPU, זיכרון, אחסון, רשת — ומודדים כל אחת (esxtop, vmkping, מדדי latency). משנים **שינוי אחד בכל פעם**, מתעדים, מאמתים שהבעיה נפתרה, ולבסוף כותבים סיכום ופעולה מונעת.
+
+</details>
 
 ## 11. המשך מתקדם
 

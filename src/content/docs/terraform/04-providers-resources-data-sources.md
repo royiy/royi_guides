@@ -237,20 +237,40 @@ resource "aws_s3_bucket" "us_bucket" {
 
 ## שאלות ראיון נפוצות
 
-**1. מה ההבדל בין `resource` ל-`data`?**
+<details class="qa">
+<summary>1. מה ההבדל בין <code>resource</code> ל-<code>data</code>?</summary>
+
 `resource` יוצר, מעדכן ומוחק משאב שנמצא תחת ניהול Terraform; `data` רק קורא מידע קיים (בין אם נוצר ידנית, על ידי Terraform אחר, או שירות אחר) בלי לשנות אותו.
 
-**2. מתי משתמשים ב-`depends_on` אם Terraform כבר בונה גרף תלויות אוטומטית?**
+</details>
+
+<details class="qa">
+<summary>2. מתי משתמשים ב-<code>depends_on</code> אם Terraform כבר בונה גרף תלויות אוטומטית?</summary>
+
 כאשר יש תלות "סמויה" שלא באה לידי ביטוי בהפניה ישירה בקוד - למשל, IAM policy שצריכה להתקיים לפני שמשאב מסוים ירוץ בהצלחה, אך אין הפניה ישירה בין השדות שלהם.
 
-**3. מה עושה `create_before_destroy` ולמה זה חשוב?**
+</details>
+
+<details class="qa">
+<summary>3. מה עושה <code>create_before_destroy</code> ולמה זה חשוב?</summary>
+
 גורם ל-Terraform ליצור את המשאב החדש **לפני** מחיקת הישן, במקום ברירת המחדל (מחיקה ואז יצירה). זה קריטי למניעת downtime במשאבים כמו launch configurations, load balancer targets וכו'.
 
-**4. מהו provider alias ומתי משתמשים בו?**
+</details>
+
+<details class="qa">
+<summary>4. מהו provider alias ומתי משתמשים בו?</summary>
+
 מנגנון להגדרת מספר קונפיגורציות שונות לאותו provider (למשל AWS בכמה regions או accounts) באותה קונפיגורציית Terraform.
 
-**5. איך מוצאים AMI העדכני ביותר של Ubuntu בלי לעדכן ידנית?**
+</details>
+
+<details class="qa">
+<summary>5. איך מוצאים AMI העדכני ביותר של Ubuntu בלי לעדכן ידנית?</summary>
+
 באמצעות `data "aws_ami"` עם `most_recent = true` וסינון לפי `owners` ו-`filter` על שם ה-image.
+
+</details>
 
 ---
 

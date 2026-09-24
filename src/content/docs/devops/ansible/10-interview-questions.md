@@ -9,39 +9,81 @@ part: 10/10
 
 ## שאלות בסיסיות (Junior)
 
-**1. מה זה Ansible ומה ההבדל בינו לבין Puppet/Chef?**
+<details class="qa">
+<summary>1. מה זה Ansible ומה ההבדל בינו לבין Puppet/Chef?</summary>
+
 Ansible הוא כלי אוטומציה Agentless המשתמש ב-SSH, מבוסס Push, ונכתב ב-YAML (הצהרתי). Puppet ו-Chef הם Agent-based, מבוססי Pull, ודורשים שפת DSL ייעודית (Ruby-based).
 
-**2. מהי אידמפוטנטיות (Idempotency)?**
+</details>
+
+<details class="qa">
+<summary>2. מהי אידמפוטנטיות (Idempotency)?</summary>
+
 עיקרון לפיו הרצה חוזרת של אותה פעולה תמיד מביאה לאותה תוצאה סופית, ללא שינוי נוסף אם המערכת כבר במצב הרצוי. לדוגמה, הרצת `apt: name=nginx state=present` פעמיים לא תתקין את nginx פעמיים.
 
-**3. מה ההבדל בין Playbook ל-Ad-Hoc Command?**
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין Playbook ל-Ad-Hoc Command?</summary>
+
 Ad-Hoc command היא פקודה בודדת חד-פעמית (`ansible all -m ping`), בעוד Playbook הוא קובץ YAML עם רצף Tasks מובנה, הניתן לשמירה, גרסאות ושימוש חוזר.
 
-**4. מה זה Inventory?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה Inventory?</summary>
+
 קובץ (או מקור דינמי) המפרט את השרתים המנוהלים וקיבוצם לקבוצות לוגיות.
 
-**5. מה ההבדל בין `command` ל-`shell` module?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין <code>command</code> ל-<code>shell</code> module?</summary>
+
 `command` לא עובר דרך shell של המערכת (בטוח יותר, לא תומך ב-pipes/redirects/env vars), בעוד `shell` כן עובר דרך `/bin/sh` ותומך בכל התחביר של shell רגיל.
 
-**6. מה עושה הדגל `--check`?**
+</details>
+
+<details class="qa">
+<summary>6. מה עושה הדגל <code>--check</code>?</summary>
+
 מריץ Playbook ב-Dry Run — מציג מה *היה* משתנה בלי לבצע שינוי בפועל.
 
-**7. מהם Facts?**
+</details>
+
+<details class="qa">
+<summary>7. מהם Facts?</summary>
+
 מידע אוטומטי שנאסף על השרת המנוהל בתחילת כל Play (OS, IP, זיכרון, דיסקים וכו') דרך מודול `setup`.
+
+</details>
 
 ## שאלות בינוניות (Mid-Level)
 
-**8. הסבירו את סדר העדיפויות (Precedence) של משתנים ב-Ansible.**
+<details class="qa">
+<summary>8. הסבירו את סדר העדיפויות (Precedence) של משתנים ב-Ansible.</summary>
+
 מהחלש לחזק בקצרה: role defaults → group_vars/all → group_vars/<group> → host_vars → facts → play vars → vars_files → set_fact/register → role vars → **extra vars (`-e`)** תמיד מנצחים.
 
-**9. מה ההבדל בין `include` ל-`import` (בכלליות)?**
+</details>
+
+<details class="qa">
+<summary>9. מה ההבדל בין <code>include</code> ל-<code>import</code> (בכלליות)?</summary>
+
 `import_*` הוא Static — מעובד ב"זמן קומפילציה" של ה-Playbook, לפני ההרצה. `include_*` הוא Dynamic — מעובד בזמן ריצה, ולכן תומך ב-`loop` ו-`when` שמוערך per-task.
 
-**10. מהם Handlers ומתי הם רצים בפועל?**
+</details>
+
+<details class="qa">
+<summary>10. מהם Handlers ומתי הם רצים בפועל?</summary>
+
 Tasks מיוחדים שרצים רק פעם אחת, בסוף ה-Play, ורק אם Task שקרא ל-`notify` **גם ביצע שינוי בפועל** (status "changed").
 
-**11. איך מריצים Task פעם אחת בלבד גם אם ה-Playbook רץ על 50 שרתים?**
+</details>
+
+<details class="qa">
+<summary>11. איך מריצים Task פעם אחת בלבד גם אם ה-Playbook רץ על 50 שרתים?</summary>
+
 ```yaml
 - name: הרצת migration פעם אחת
   ansible.builtin.command: /opt/app/migrate.sh
@@ -49,49 +91,107 @@ Tasks מיוחדים שרצים רק פעם אחת, בסוף ה-Play, ורק א�
   delegate_to: "{{ groups['dbservers'][0] }}"
 ```
 
-**12. מה זה `delegate_to`?**
+</details>
+
+<details class="qa">
+<summary>12. מה זה <code>delegate_to</code>?</summary>
+
 מאפשר להריץ Task על שרת אחר מזה שמוגדר ב-`hosts`, למשל להריץ פעולה על ה-Load Balancer בזמן שמעדכנים שרת Web.
 
-**13. איך מבטלים איסוף Facts ולמה זה משפר ביצועים?**
+</details>
+
+<details class="qa">
+<summary>13. איך מבטלים איסוף Facts ולמה זה משפר ביצועים?</summary>
+
 `gather_facts: false` — חוסך את זמן ה-SSH connection הנוסף הנדרש לאיסוף מידע מקיף על כל שרת, שימושי כאשר ה-Playbook לא תלוי במידע זה.
 
-**14. מה זה Ansible Vault ואיך הוא עובד?**
+</details>
+
+<details class="qa">
+<summary>14. מה זה Ansible Vault ואיך הוא עובד?</summary>
+
 כלי הצפנה מובנה (AES256) לקבצי YAML/משתנים רגישים, המאפשר שמירתם ב-Git בבטחה. פענוח קורה רק בזמן ריצה עם סיסמה/קובץ סיסמה.
 
-**15. מה ההבדל בין Role ל-Collection?**
+</details>
+
+<details class="qa">
+<summary>15. מה ההבדל בין Role ל-Collection?</summary>
+
 Role הוא יחידת ארגון קוד בודדת (Tasks+Templates+Vars). Collection היא חבילת הפצה שיכולה להכיל מספר Roles, Modules, Plugins ו-Playbooks יחד, מותקנת דרך Ansible Galaxy.
+
+</details>
 
 ## שאלות מתקדמות (Senior)
 
-**16. איך תבנו אסטרטגיית Rolling Deployment עם Zero Downtime?**
+<details class="qa">
+<summary>16. איך תבנו אסטרטגיית Rolling Deployment עם Zero Downtime?</summary>
+
 שילוב של `serial` (עדכון תת-קבוצה בכל פעם), `max_fail_percentage`, הוצאת שרת מה-Load Balancer לפני עדכון, Health Check אחרי, והחזרה ל-LB רק בהצלחה.
 
-**17. מה ההבדל בין אסטרטגיית `linear`, `free` ו-`host_pinned`?**
+</details>
+
+<details class="qa">
+<summary>17. מה ההבדל בין אסטרטגיית <code>linear</code>, <code>free</code> ו-<code>host_pinned</code>?</summary>
+
 `linear` (ברירת מחדל) מסנכרן את כל השרתים בכל Task. `free` נותן לכל שרת להתקדם בקצב שלו ללא סנכרון. `host_pinned` דומה ל-free אך שומר worker קבוע לכל שרת (יעיל בזיכרון).
 
-**18. איך מטפלים בכישלון חלקי (Partial Failure) בפריסה על מספר שרתים?**
+</details>
+
+<details class="qa">
+<summary>18. איך מטפלים בכישלון חלקי (Partial Failure) בפריסה על מספר שרתים?</summary>
+
 שילוב `max_fail_percentage`, `any_errors_fatal`, ו-`block/rescue/always` לטיפול נקודתי, יחד עם מנגנון rollback (Git revert / previous release symlink).
 
-**19. מהו Execution Environment ולמה השימוש בו הכרחי בסביבות Enterprise?**
+</details>
+
+<details class="qa">
+<summary>19. מהו Execution Environment ולמה השימוש בו הכרחי בסביבות Enterprise?</summary>
+
 קונטיינר Docker/Podman שמכיל את כל תלויות ה-Runtime (Python, Collections) הנדרשות להרצת Playbook, מבטיח שהרצה מה-CI תהיה זהה בדיוק להרצה מסביבת פיתוח - פותר בעיות "עובד אצלי במחשב".
 
-**20. איך תבנו Dynamic Inventory לענן היברידי (AWS + Azure יחד)?**
+</details>
+
+<details class="qa">
+<summary>20. איך תבנו Dynamic Inventory לענן היברידי (AWS + Azure יחד)?</summary>
+
 שימוש במספר Inventory Plugins בו-זמנית בתוך תיקיית inventory (למשל `aws_ec2.yml` ו-`azure_rm.yml`), Ansible ימזג אוטומטית את התוצאות מכל הקבצים בתיקייה.
 
-**21. איך תבטיחו שסודות לא נחשפים בלוגים גם כשמשתמשים ב-`shell`/`command` המכילים סיסמה כפרמטר?**
+</details>
+
+<details class="qa">
+<summary>21. איך תבטיחו שסודות לא נחשפים בלוגים גם כשמשתמשים ב-<code>shell</code>/<code>command</code> המכילים סיסמה כפרמטר?</summary>
+
 `no_log: true` על ה-Task הספציפי, יחד עם הימנעות מהעברת סיסמה כפרמטר command-line גלוי (עדיף environment variable או stdin).
 
-**22. מה ההבדל בין `ansible.cfg` ברמת פרויקט לזה שברמת מערכת (`/etc/ansible/ansible.cfg`)?**
+</details>
+
+<details class="qa">
+<summary>22. מה ההבדל בין <code>ansible.cfg</code> ברמת פרויקט לזה שברמת מערכת (<code>/etc/ansible/ansible.cfg</code>)?</summary>
+
 Ansible טוען קונפיגורציה לפי סדר עדיפויות: `ANSIBLE_CONFIG` env var → `./ansible.cfg` (בתיקייה מהם מריצים) → `~/.ansible.cfg` → `/etc/ansible/ansible.cfg`. קובץ פרויקט מאפשר לכל Repository הגדרות עצמאיות בלי להשפיע על שאר המערכת.
 
-**23. כיצד תבצעו Testing אוטומטי ל-Roles לפני מיזוג ל-main?**
+</details>
+
+<details class="qa">
+<summary>23. כיצד תבצעו Testing אוטומטי ל-Roles לפני מיזוג ל-main?</summary>
+
 שילוב `ansible-lint` לבדיקת סטייל וטעויות נפוצות, ו-**Molecule** להרצת ה-Role בפועל בתוך קונטיינר/VM ובדיקת מצב סופי (verify) - הכל כ-Gate ב-CI Pipeline.
 
-**24. מה קורה כאשר Task נכשל באמצע Play על 100 שרתים - איך Ansible מתנהג?**
+</details>
+
+<details class="qa">
+<summary>24. מה קורה כאשר Task נכשל באמצע Play על 100 שרתים - איך Ansible מתנהג?</summary>
+
 כברירת מחדל Ansible מסמן את השרת שנכשל כ-"failed" ומוציא אותו מהמשך ה-Play (שאר ה-Tasks על אותו שרת יידלגו), אך ממשיך להריץ על שאר השרתים, אלא אם הוגדר `any_errors_fatal: true` שעוצר את כולם מיידית.
 
-**25. איך תבנו Playbook שמתאים גם ל-Ubuntu וגם ל-RHEL בלי כפילות קוד?**
+</details>
+
+<details class="qa">
+<summary>25. איך תבנו Playbook שמתאים גם ל-Ubuntu וגם ל-RHEL בלי כפילות קוד?</summary>
+
 שימוש במודול `package` הגנרי, או `when: ansible_facts['os_family'] == "Debian"` לבחירת מודול ספציפי, לעיתים בשילוב עם `vars_files` דינמיים בהתאם ל-`ansible_facts['os_family']` (`include_vars: "{{ ansible_facts['os_family'] }}.yml"`).
+
+</details>
 
 ## סימולציית תרחיש (Scenario-Based) - נפוץ בראיונות Senior
 

@@ -164,24 +164,48 @@ Set-Cookie: session_id=abc123; HttpOnly; Secure; SameSite=Strict
 
 **1. מה ההבדל בין Authentication ל-Authorization?** (ראו הסבר בתחילת המדריך)
 
-**2. מה ההבדל בין JWT ל-Session-based Auth?**
+<details class="qa">
+<summary>2. מה ההבדל בין JWT ל-Session-based Auth?</summary>
+
 JWT הוא Stateless - כל המידע נמצא בטוקן עצמו והשרת רק מוודא חתימה. Session היא Stateful - השרת שומר את המידע (בזיכרון/DB/Redis) ומזהה את המשתמש דרך ID.
 
-**3. איך JWT מבטיח שהטוקן לא זויף?**
+</details>
+
+<details class="qa">
+<summary>3. איך JWT מבטיח שהטוקן לא זויף?</summary>
+
 דרך ה-Signature - חתימה קריפטוגרפית שנוצרת מה-Header וה-Payload יחד עם מפתח סודי (HMAC) או זוג מפתחות (RSA/ECDSA). כל שינוי בתוכן הטוקן יגרום לחתימה לא להתאים.
 
-**4. מה קורה אם access token דלף?**
+</details>
+
+<details class="qa">
+<summary>4. מה קורה אם access token דלף?</summary>
+
 תוקף מוגבל בזמן (אם הגדרתם exp קצר) מגביל את הנזק. בנוסף אפשר לשמור רשימת "Revoked tokens" (blacklist) בצד השרת, אם כי זה שובר קצת את עקרון ה-Statelessness.
 
-**5. מה זה Refresh Token ולמה משתמשים בו?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה Refresh Token ולמה משתמשים בו?</summary>
+
 טוקן ארוך טווח (יכול לחיות ימים/שבועות) שמשמש רק כדי לקבל Access Token חדש, בלי לחייב את המשתמש להתחבר שוב. Refresh Tokens נשמרים בצד השרת ואפשר לבטל אותם.
 
-**6. הסבירו את זרימת OAuth 2.0 Authorization Code בקצרה.**
+</details>
+
+<details class="qa">
+<summary>6. הסבירו את זרימת OAuth 2.0 Authorization Code בקצרה.</summary>
+
 (ראו התרשים למעלה - חשוב לדעת את 5-6 השלבים בסדר הנכון)
 
-**7. מה זה RBAC ו-ABAC?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה RBAC ו-ABAC?</summary>
+
 - **RBAC** (Role-Based Access Control) - הרשאות מוגדרות לפי תפקיד (admin, editor, viewer)
 - **ABAC** (Attribute-Based Access Control) - הרשאות מוגדרות לפי תכונות (attributes) של המשתמש, המשאב וההקשר (למשל: "רק בין 9:00-17:00", "רק אם המחלקה תואמת")
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

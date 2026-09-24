@@ -43,12 +43,26 @@ Search-ADAccount -AccountInactive -TimeSpan 90.00:00:00 -ComputersOnly
 *   **שימוש ב-LAPS:** לעולם אל תשתמשו באותה סיסמת Local Administrator בכל המחשבים בארגון. התקינו LAPS (Local Administrator Password Solution) דרך ה-AD כדי לסנכרן סיסמה אקראית לכל מחשב בנפרד.
 
 ## שאלות ראיון עבודה 🎯
-1. **שאלה:** מהו ה-PDC Emulator (חלק מ-FSMO)?
-   *תשובה:* ה-PDC אחראי על מספר דברים קריטיים: סנכרון שעון (Time Sync) מול כל שאר השרתים והמחשבים בדומיין, ניהול שינויי סיסמאות ונעילת חשבונות ברחבי הדומיין, ועדכוני GPO.
-2. **שאלה:** מהו Global Catalog (GC)?
-   *תשובה:* ה-GC הוא מסד נתונים חלקי לקריאה בלבד (Read-Only) שמכיל עותק של כל האובייקטים מכל הדומיינים באותו Forest. הוא מאפשר לבצע חיפוש אובייקטים מהיר בכל היער ומאפשר תהליכי התחברות (Logon) בסביבות מרובות דומיינים על ידי חיפוש חברויות בקבוצות יוניברסליות.
-3. **שאלה:** מחקנו OU בטעות וה-Recycle bin כבוי. מה הפתרון?
-   *תשובה:* שחזור מסובך שנקרא Authoritative Restore מתוך גיבוי System State ב-Directory Services Restore Mode (DSRM). לכן חובה להפעיל סל מיחזור!
+<details class="qa">
+<summary>1. מהו ה-PDC Emulator (חלק מ-FSMO)?</summary>
+
+ה-PDC אחראי על מספר דברים קריטיים: סנכרון שעון (Time Sync) מול כל שאר השרתים והמחשבים בדומיין, ניהול שינויי סיסמאות ונעילת חשבונות ברחבי הדומיין, ועדכוני GPO.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו Global Catalog (GC)?</summary>
+
+ה-GC הוא מסד נתונים חלקי לקריאה בלבד (Read-Only) שמכיל עותק של כל האובייקטים מכל הדומיינים באותו Forest. הוא מאפשר לבצע חיפוש אובייקטים מהיר בכל היער ומאפשר תהליכי התחברות (Logon) בסביבות מרובות דומיינים על ידי חיפוש חברויות בקבוצות יוניברסליות.
+
+</details>
+
+<details class="qa">
+<summary>3. מחקנו OU בטעות וה-Recycle bin כבוי. מה הפתרון?</summary>
+
+שחזור מסובך שנקרא Authoritative Restore מתוך גיבוי System State ב-Directory Services Restore Mode (DSRM). לכן חובה להפעיל סל מיחזור!
+
+</details>
 
 ## קישורים חיצוניים 🔗
 *   [מיקרוסופט: מושגי יסוד ב-AD](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services)

@@ -292,12 +292,47 @@ ansible-playbook site.yml --list-tasks
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה ההבדל בין `tasks` ל-`handlers`, ומתי ה-handler בפועל לא ירוץ?
-2. הסבירו את ההבדל בין `block/rescue/always` לבין try/except בשפות תכנות רגילות.
-3. מה קורה אם יש שני Tasks שקוראים ל-`notify` לאותו handler באותו Play?
-4. איך מריצים רק חלק מ-Playbook על סמך Tags, ומה ההבדל בין `--tags` ל-`--skip-tags`?
-5. מהי אידמפוטנטיות בהקשר Task ב-Ansible, ואיך מודול `command` שובר את זה בהשוואה למודול ייעודי?
-6. מה ההבדל בין `gather_facts: true` ל-`gather_facts: false` והשפעתו על זמן ריצה?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>tasks</code> ל-<code>handlers</code>, ומתי ה-handler בפועל לא ירוץ?</summary>
+
+`tasks` רצים תמיד לפי הסדר; `handlers` הם משימות שרצות רק אם משימה אחרת דיווחה `changed` והפעילה אותן ב-`notify`, והן מתבצעות בסוף ה-Play (פעם אחת). ה-handler לא ירוץ אם שום task לא השתנה, ובברירת מחדל גם אם ה-Play נכשל באמצע — אלא אם מריצים עם `--force-handlers`.
+
+</details>
+
+<details class="qa">
+<summary>2. הסבירו את ההבדל בין <code>block/rescue/always</code> לבין try/except בשפות תכנות רגילות.</summary>
+
+הרעיון זהה: `block` הוא הקוד שמנסים, `rescue` רץ רק אם משימה ב-block נכשלה, ו-`always` רץ בכל מקרה. ההבדל הוא שב-Ansible מדובר בקבוצת משימות ולא בשורות קוד, ושהמנגנון פועל **לכל מארח בנפרד** — ייתכן שעל שרת אחד ירוץ ה-rescue ועל אחר לא.
+
+</details>
+
+<details class="qa">
+<summary>3. מה קורה אם יש שני Tasks שקוראים ל-<code>notify</code> לאותו handler באותו Play?</summary>
+
+ה-handler ירוץ **פעם אחת בלבד** בסוף ה-Play, גם אם הופעל עשר פעמים. זו בדיוק המטרה: אם שינינו שלושה קבצי קונפיגורציה של nginx, השירות יופעל מחדש פעם אחת ולא שלוש.
+
+</details>
+
+<details class="qa">
+<summary>4. איך מריצים רק חלק מ-Playbook על סמך Tags, ומה ההבדל בין <code>--tags</code> ל-<code>--skip-tags</code>?</summary>
+
+מסמנים משימות עם `tags:` ואז מריצים `ansible-playbook site.yml --tags "config"` כדי להריץ **רק** אותן, או `--skip-tags "packages"` כדי להריץ את הכול **חוץ** מהן. שימושי במיוחד לריצה מהירה של חלק קטן מ-Playbook ארוך.
+
+</details>
+
+<details class="qa">
+<summary>5. מהי אידמפוטנטיות בהקשר Task ב-Ansible, ואיך מודול <code>command</code> שובר את זה בהשוואה למודול ייעודי?</summary>
+
+אידמפוטנטיות היא שהרצה חוזרת לא משנה דבר אם המצב כבר תקין — מודול ייעודי כמו `apt` בודק אם החבילה מותקנת ומדווח `ok` במקום `changed`. `command` פשוט מריץ את הפקודה בכל ריצה ומדווח `changed` תמיד, ולכן הוא אינו אידמפוטנטי — אלא אם מוסיפים `creates`/`removes` או `changed_when`.
+
+</details>
+
+<details class="qa">
+<summary>6. מה ההבדל בין <code>gather_facts: true</code> ל-<code>gather_facts: false</code> והשפעתו על זמן ריצה?</summary>
+
+כש-`true` (ברירת המחדל) Ansible מריץ `setup` על כל מארח ואוסף מאות עובדות על המערכת — זה עולה זמן וחיבור נוסף לכל שרת. כש-`false` מדלגים על השלב, מה שמאיץ משמעותית Playbooks קצרים על הרבה שרתים, אבל אז משתנים כמו `ansible_distribution` או `ansible_default_ipv4` אינם זמינים.
+
+</details>
 
 ## קישורים חיצוניים
 

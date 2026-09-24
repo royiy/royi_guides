@@ -265,20 +265,40 @@ resource "aws_iam_policy" "example" {
 
 ## שאלות ראיון נפוצות
 
-**1. מה ההבדל בין `variable` ל-`local`?**
+<details class="qa">
+<summary>1. מה ההבדל בין <code>variable</code> ל-<code>local</code>?</summary>
+
 `variable` הוא קלט חיצוני שניתן להזין מבחוץ (CLI, קובץ, env var); `local` הוא ערך מחושב פנימית בקוד ולא ניתן לדריסה מבחוץ.
 
-**2. מה ההבדל בין `count` ל-`for_each`?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין <code>count</code> ל-<code>for_each</code>?</summary>
+
 `count` יוצר משאבים לפי אינדקס מספרי (0, 1, 2...) - רגיש לשינויי סדר ברשימה. `for_each` יוצר משאבים לפי מפתח (מ-set או map) - יציב יותר כי כל עותק מזוהה ייחודית ולא לפי מיקום.
 
-**3. מתי ישתמשו ב-`sensitive = true`?**
+</details>
+
+<details class="qa">
+<summary>3. מתי ישתמשו ב-<code>sensitive = true</code>?</summary>
+
 כאשר משתנה או output מכיל מידע רגיש (סיסמאות, טוקנים, מפתחות). Terraform יסתיר את הערך מפלטי `plan`/`apply`/`output` הרגילים (אך הוא עדיין נשמר בטקסט גלוי בקובץ ה-state עצמו - חשוב להכיר את המגבלה הזו!).
 
-**4. איך אוכפים ולידציה על ערך משתנה?**
+</details>
+
+<details class="qa">
+<summary>4. איך אוכפים ולידציה על ערך משתנה?</summary>
+
 עם בלוק `validation` בתוך `variable`, שמכיל `condition` ו-`error_message`.
 
-**5. האם אפשר לכתוב פונקציות מותאמות אישית ב-Terraform?**
+</details>
+
+<details class="qa">
+<summary>5. האם אפשר לכתוב פונקציות מותאמות אישית ב-Terraform?</summary>
+
 לא - HCL תומך רק בפונקציות מובנות. עבור לוגיקה מותאמת אישית משתמשים ב-modules, external data source, או Terraform providers מותאמים.
+
+</details>
 
 ---
 

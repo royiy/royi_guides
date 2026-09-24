@@ -36,10 +36,19 @@ kubectl get nodes
 * השתמשו ב-AWS Fargate כדי להימנע מניהול שרתים, עדכוני מערכת הפעלה וניהול Capacity.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל בין ECS עם מודל פריסה של EC2 לבין מודל Fargate?
-   **תשובה:** ב-ECS עם EC2, אתם מנהלים את השרתים הפיזיים (Instances), צריכים לדאוג ל-Scaling שלהם ולעדכוני אבטחה. ב-Fargate, אמזון מנהלת את התשתית ואתם משלמים רק על ה-vCPU והזיכרון שהקונטיינר שלכם צורך.
-2. **שאלה:** איך EKS מתממשק עם IAM ב-AWS?
-   **תשובה:** דרך שירות שנקרא IRSA (IAM Roles for Service Accounts). הוא מאפשר לקשר Kubernetes Service Account ל-IAM Role ספציפי וכך להעניק הרשאות (כמו גישה ל-S3) לקונטיינר (Pod) בודד.
+<details class="qa">
+<summary>1. מה ההבדל בין ECS עם מודל פריסה של EC2 לבין מודל Fargate?</summary>
+
+ב-ECS עם EC2, אתם מנהלים את השרתים הפיזיים (Instances), צריכים לדאוג ל-Scaling שלהם ולעדכוני אבטחה. ב-Fargate, אמזון מנהלת את התשתית ואתם משלמים רק על ה-vCPU והזיכרון שהקונטיינר שלכם צורך.
+
+</details>
+
+<details class="qa">
+<summary>2. איך EKS מתממשק עם IAM ב-AWS?</summary>
+
+דרך שירות שנקרא IRSA (IAM Roles for Service Accounts). הוא מאפשר לקשר Kubernetes Service Account ל-IAM Role ספציפי וכך להעניק הרשאות (כמו גישה ל-S3) לקונטיינר (Pod) בודד.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS EKS Documentation](https://docs.aws.amazon.com/eks/)

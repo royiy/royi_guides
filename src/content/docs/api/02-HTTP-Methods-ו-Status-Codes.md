@@ -153,20 +153,40 @@ async function createUser(userData) {
 
 **1. מה ההבדל בין 401 ל-403?** (ראו הסבר למעלה)
 
-**2. איזה status code מחזירים אחרי DELETE מוצלח?**
+<details class="qa">
+<summary>2. איזה status code מחזירים אחרי DELETE מוצלח?</summary>
+
 בדרך כלל `204 No Content` (אם אין גוף להחזיר) או `200 OK` (אם מחזירים מידע על המשאב שנמחק).
 
-**3. מה ההבדל בין 500 ל-503?**
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין 500 ל-503?</summary>
+
 500 = שגיאה כללית לא צפויה בקוד השרת. 503 = השרת יודע שהוא לא זמין כרגע (עומס, תחזוקה) ומתקשר את זה במפורש.
 
-**4. האם POST הוא idempotent?**
+</details>
+
+<details class="qa">
+<summary>4. האם POST הוא idempotent?</summary>
+
 לא, כי כל קריאה יוצרת משאב חדש. אם שולחים את אותה בקשת POST פעמיים, יווצרו שני משאבים שונים (בהנחה שאין מנגנון ייחודי כמו idempotency key).
 
-**5. מהו idempotency key, ולמה משתמשים בו עם POST?**
+</details>
+
+<details class="qa">
+<summary>5. מהו idempotency key, ולמה משתמשים בו עם POST?</summary>
+
 מזהה ייחודי שהלקוח שולח בבקשת POST, כדי שהשרת יוכל לזהות בקשות כפולות (בגלל retry ברשת) ולא ליצור משאב כפול. נפוץ מאוד ב-APIs של תשלומים (Stripe למשל).
 
-**6. מה קורה אם קוראים ל-endpoint עם method לא נתמך?**
+</details>
+
+<details class="qa">
+<summary>6. מה קורה אם קוראים ל-endpoint עם method לא נתמך?</summary>
+
 מחזירים `405 Method Not Allowed`, ולעיתים מוסיפים Header `Allow` שמפרט אילו methods כן נתמכים.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

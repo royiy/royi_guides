@@ -215,35 +215,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. מה זה GitHub Marketplace?**
+<details class="qa">
+<summary>1. מה זה GitHub Marketplace?</summary>
+
 קטלוג ציבורי של אלפי Actions מוכנים לשימוש חוזר, שנוצרו על ידי GitHub, חברות צד שלישי, והקהילה.
 
-**2. למה חשוב לנעול Action לגרסה ספציפית ולא להשתמש ב-`@main`?**
+</details>
+
+<details class="qa">
+<summary>2. למה חשוב לנעול Action לגרסה ספציפית ולא להשתמש ב-<code>@main</code>?</summary>
+
 כי `@main` יכול להשתנות בכל רגע - כולל שינויים לא צפויים או פגיעים - בעוד שגרסה נעולה (טאג או commit SHA) מבטיחה יציבות וחזרתיות (reproducibility).
 
-**3. מהי הדרך הבטוחה ביותר לנעול Action?**
+</details>
+
+<details class="qa">
+<summary>3. מהי הדרך הבטוחה ביותר לנעול Action?</summary>
+
 הצמדה ל-commit SHA מלא, ולא רק טאג גרסה - כי טאגים תיאורטית ניתנים לשינוי (אם כי זה נחשב לפרקטיקה גרועה מצד המפרסם).
 
-**4. מה ההבדל בין `uses: actions/checkout@v4` ל-`uses: ./.github/actions/my-action`?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>uses: actions/checkout@v4</code> ל-<code>uses: ./.github/actions/my-action</code>?</summary>
+
 הראשון מושך Action מריפו חיצוני ב-GitHub (public או private נגיש); השני מפעיל Action מקומי שמוגדר בתוך אותו ריפו.
 
-**5. איך אפשר להריץ Action שמבוסס על Docker image ציבורי ישירות, בלי לעטוף אותו כ-Action רשמי?**
+</details>
+
+<details class="qa">
+<summary>5. איך אפשר להריץ Action שמבוסס על Docker image ציבורי ישירות, בלי לעטוף אותו כ-Action רשמי?</summary>
+
 באמצעות `uses: docker://<image>:<tag>`.
 
-**6. מהם שיקולי האבטחה המרכזיים לפני שימוש ב-Action של צד שלישי?**
+</details>
+
+<details class="qa">
+<summary>6. מהם שיקולי האבטחה המרכזיים לפני שימוש ב-Action של צד שלישי?</summary>
+
 פופולריות ואמינות המקור, תדירות עדכונים, בדיקת קוד המקור, ובחירת נעילת גרסה בטוחה - כי Action רץ עם גישה פוטנציאלית ל-secrets ולריפו.
 
-**7. מה זה Dependabot ואיך הוא קשור ל-GitHub Actions?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה Dependabot ואיך הוא קשור ל-GitHub Actions?</summary>
+
 כלי שמנטר תלויות (כולל Actions) ופותח PR אוטומטי כשיש גרסה חדשה - ניתן להגדיר אקוסיסטם `github-actions` לעדכון אוטומטי של Actions בשימוש.
 
-**8. מה ההבדל בין `actions/cache` לבין `cache: 'npm'` בתוך `actions/setup-node`?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין <code>actions/cache</code> לבין <code>cache: 'npm'</code> בתוך <code>actions/setup-node</code>?</summary>
+
 `setup-node` עם `cache: 'npm'` הוא קיצור דרך מובנה שמנהל קאשינג אוטומטי לתלויות npm; `actions/cache` הוא Action כללי יותר שניתן להתאים לכל סוג קאש (Python, Maven, Gradle, custom paths וכו').
 
-**9. מה קורה אם Action שאתם משתמשים בו מוסר או מתעדכן בצורה פורצת (breaking change)?**
+</details>
+
+<details class="qa">
+<summary>9. מה קורה אם Action שאתם משתמשים בו מוסר או מתעדכן בצורה פורצת (breaking change)?</summary>
+
 אם אתם נעולים לגרסה ספציפית (כמו `@v4`), ה-workflow שלכם ימשיך לעבוד כרגיל עד שתחליטו לשדרג במודע. זו הסיבה המרכזית לנעילת גרסאות.
 
-**10. תנו דוגמה למקרה שבו כדאי לכתוב `run: curl ...` פשוט במקום להשתמש ב-Action ייעודי.**
+</details>
+
+<details class="qa">
+<summary>10. תנו דוגמה למקרה שבו כדאי לכתוב <code>run: curl ...</code> פשוט במקום להשתמש ב-Action ייעודי.</summary>
+
 כאשר המשימה פשוטה מספיק (למשל שליחת webhook בודד) - הוספת Action שלם עם כל התלויות שלו עלולה להאט את הריצה ולהוסיף סיכון אבטחתי מיותר, בעוד ש-`curl` בשורה אחת עושה בדיוק את מה שצריך.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -132,14 +132,54 @@ $secret = "..."
 9. Rollback/start procedure.
 
 ## שאלות ראיון
-1. Azure PowerShell מול Azure CLI?
-2. איך תמנע hard-coded secrets?
-3. מה זה Managed Identity?
-4. איך תנהל כמה subscriptions?
-5. איך תבצע inventory של 1,000 resources?
-6. איך תתמודד עם API throttling?
-7. מה ההבדל בין automation לבין orchestration?
+<details class="qa">
+<summary>1. Azure PowerShell מול Azure CLI?</summary>
 
+Azure PowerShell (מודול `Az`) מחזיר אובייקטים ומשתלב טבעית בסקריפטים של PowerShell — נוח למי שכבר עובד בסביבת Windows/PowerShell. Azure CLI (`az`) הוא כלי חוצה-פלטפורמות שמחזיר JSON, פופולרי בפייפליינים ובתיעוד של מיקרוסופט. שניהם פונים לאותו ARM API; הבחירה היא בעיקר סגנונית וארגונית — העיקר לשמור על עקביות בצוות.
+
+</details>
+
+<details class="qa">
+<summary>2. איך תמנע hard-coded secrets?</summary>
+
+לא שומרים סיסמאות בקוד או ב-Git: משתמשים ב-Managed Identity כשרצים בתוך Azure, ב-Key Vault / AWS Secrets Manager לשליפת סודות בזמן ריצה, ב-secrets של מערכת ה-CI, וב-`SecretManagement`/`SecretStore` של PowerShell בתחנה המקומית. בנוסף מוסיפים סריקת secrets ל-repository כדי לתפוס טעויות.
+
+</details>
+
+<details class="qa">
+<summary>3. מה זה Managed Identity?</summary>
+
+זהות שמנוהלת ע"י Azure ומוצמדת למשאב (VM, Function, App Service), שבאמצעותה המשאב מקבל token ל-Azure AD בלי שום סוד שמאוחסן בקוד. נותנים לזהות הרשאות RBAC למה שהיא צריכה, וה-token מתחדש אוטומטית — זה הפתרון המועדף לאוטומציה בענן, במקום Service Principal עם סיסמה.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תנהל כמה subscriptions?</summary>
+
+ב-`Az` שולפים את הרשימה עם `Get-AzSubscription` ומחליפים הקשר עם `Set-AzContext -SubscriptionId ...`, או עובדים עם `Az.Context` ופרופילים נפרדים. בסקריפט inventory עוברים בלולאה על כל ה-subscriptions ומוסיפים לכל רשומה את שם ה-subscription, כדי שהפלט יהיה חד-משמעי.
+
+</details>
+
+<details class="qa">
+<summary>5. איך תבצע inventory של 1,000 resources?</summary>
+
+משתמשים ב-Azure Resource Graph (`Search-AzGraph`) שמריץ שאילתה אחת על פני subscriptions רבים ומחזיר תוצאות במהירות, במקום לולאה של אלפי קריאות API. מייצאים את התוצאה ל-CSV/JSON עם השדות החשובים (שם, סוג, קבוצת משאבים, אזור, tags), ומתזמנים את הריצה כדי לקבל תמונת מצב עדכנית.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תתמודד עם API throttling?</summary>
+
+מזהים את קודי 429/503 ומיישמים retry עם exponential backoff (עדיף לכבד את הכותרת `Retry-After`), מקטינים מקביליות, מאחדים קריאות (Resource Graph, batch APIs) ומשתמשים בסינון בצד השרת כדי למשוך פחות נתונים. בנוסף שומרים תוצאות ב-cache במקום לשאול שוב ושוב את אותו מידע.
+
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין automation לבין orchestration?</summary>
+
+Automation היא הפיכת משימה בודדת לאוטומטית — סקריפט שיוצר משתמש או מגבה מסד נתונים. Orchestration היא ניהול של כמה משימות כאלה כתהליך אחד: סדר הרצה, תנאים, טיפול בכשלים, retry ודיווח — למשל פייפליין שמריץ פריסה, בודק בריאות ומבצע rollback. במילים אחרות: automation היא "הפעולה", orchestration היא "התהליך".
+
+</details>
 
 ## מקורות מומלצים
 
@@ -157,8 +197,6 @@ $secret = "..."
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Cloud Automation מהיום-יום
 

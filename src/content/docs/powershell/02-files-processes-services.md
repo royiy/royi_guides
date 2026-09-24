@@ -161,11 +161,54 @@ Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3" |
 החזר הכול כ-`PSCustomObject` וייצא ל-CSV.
 
 ## שאלות ראיון
-1. איך תחקור Service שלא עולה?
-2. איך תמצא Event Log רלוונטי?
-3. מה ההבדל בין `Get-Process` לבין `Get-CimInstance Win32_Process`?
-4. איך תמחק קבצים ישנים בצורה בטוחה?
-5. למה `-Recurse -Force` צריך זהירות?
+<details class="qa">
+<summary>1. איך תחקור Service שלא עולה?</summary>
+
+מתחילים במצב עצמו: `Get-Service <name>` ואז `Get-CimInstance Win32_Service -Filter "Name='<name>'"` כדי לראות את ה-`StartMode`, ה-`StartName` (החשבון שמריץ) ואת נתיב ההרצה. משם עוברים ללוג: `Get-WinEvent -FilterHashtable @{LogName="System"; Id=7000,7001,7009,7034}`. הסיבות הנפוצות הן סיסמה שפגה לחשבון השירות, תלות בשירות אחר שלא עלה, חוסר הרשאות לנתיב, או קובץ קונפיגורציה שגוי.
+
+</details>
+
+<details class="qa">
+<summary>2. איך תמצא Event Log רלוונטי?</summary>
+
+משתמשים ב-`Get-WinEvent -ListLog *` כדי לאתר את הלוג, ואז מסננים בצד השרת עם `-FilterHashtable` (מהיר בהרבה מ-`Where-Object` אחרי שליפה):
+
+```powershell
+Get-WinEvent -FilterHashtable @{LogName="System"; Level=2; StartTime=(Get-Date).AddHours(-2)}
+```
+
+חשוב לסנן לפי חלון זמן שמתאים לזמן התקלה, ולא לשלוף את הלוג כולו.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין <code>Get-Process</code> לבין <code>Get-CimInstance Win32_Process</code>?</summary>
+
+`Get-Process` מהיר ומחזיר אובייקט .NET מקומי עם מידע על ריצה (CPU, Memory, Handles), אבל בלי פרטים כמו שורת הפקודה או המשתמש שמריץ. `Get-CimInstance Win32_Process` פונה ל-WMI/CIM ומחזיר גם `CommandLine`, `ParentProcessId` ואת הבעלים (דרך `GetOwner`), והוא עובד היטב גם מרחוק — במחיר ביצועים איטיים יותר.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תמחק קבצים ישנים בצורה בטוחה?</summary>
+
+קודם מריצים בלי למחוק, כדי לראות מה ייתפס — ורק אז מוחקים:
+
+```powershell
+$old = Get-ChildItem C:\Logs -Recurse -File |
+       Where-Object LastWriteTime -lt (Get-Date).AddDays(-30)
+$old | Remove-Item -WhatIf
+```
+
+אחרי שהרשימה נראית נכונה מסירים את `-WhatIf`. תמיד מגבילים לנתיב מפורש, מסננים לפי `LastWriteTime`, ומתעדים ללוג מה נמחק.
+
+</details>
+
+<details class="qa">
+<summary>5. למה <code>-Recurse -Force</code> צריך זהירות?</summary>
+
+כי הצירוף מוחק רקורסיבית גם קבצים מוסתרים, קבצים לקריאה-בלבד ותיקיות שלמות — בלי לשאול. טעות קטנה במשתנה נתיב (למשל נתיב ריק שהופך ל-`C:\`) מוחקת הרבה יותר ממה שהתכוונתם, ו-`Remove-Item` לא שולח לסל המיחזור. לכן: לבדוק עם `-WhatIf`, להשתמש בנתיב מלא ומפורש, ולוודא שהמשתנה לא ריק לפני ההרצה.
+
+</details>
 
 ## טיפ חשוב
 בפעולות מחיקה/שינוי השתמש קודם ב-WhatIf כאשר ה-Cmdlet תומך בכך:
@@ -178,7 +221,6 @@ Remove-Item C:\Temp\*.log -WhatIf
 ```powershell
 Remove-Item C:\Temp\*.log
 ```
-
 
 ## מקורות מומלצים
 
@@ -196,8 +238,6 @@ Remove-Item C:\Temp\*.log
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Windows Administration מהיום-יום
 

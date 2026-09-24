@@ -242,14 +242,61 @@ Gateway 192.168.20.1
 
 ## 11. שאלות ראיון
 
-1. מה ההבדל בין vSwitch ל-Port Group?
-2. מהו VMkernel?
-3. מה ההבדל בין vSS ל-vDS?
-4. מהו VLAN?
-5. למה משתמשים ב-vmkping?
-6. איך תבדוק MTU?
-7. מה ההבדל בין Access ל-Trunk?
-8. למה כדאי להפריד vMotion מ-Management?
+<details class="qa">
+<summary>1. מה ההבדל בין vSwitch ל-Port Group?</summary>
+
+vSwitch הוא המתג הווירטואלי עצמו, שמחובר לכרטיסי הרשת הפיזיים (uplinks). Port Group הוא הגדרה לוגית **בתוך** ה-vSwitch, שקובעת לקבוצת פורטים מאפיינים משותפים — VLAN ID, מדיניות אבטחה, teaming ו-failover. מכונות מתחברות ל-Port Group, לא ישירות ל-vSwitch.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו VMkernel?</summary>
+
+ממשק רשת של ה-Host עצמו (vmk0, vmk1...) שמשמש לתעבורת תשתית — Management, vMotion, iSCSI/NFS, FT ו-vSAN. לכל שירות מקצים VMkernel משלו ב-VLAN ייעודי, כדי להפריד תעבורות ולמנוע תחרות על רוחב פס.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין vSS ל-vDS?</summary>
+
+vSphere Standard Switch (vSS) מוגדר בנפרד על כל Host — פשוט, אך מועד לטעויות עקביות בין שרתים. vSphere Distributed Switch (vDS) מוגדר פעם אחת ברמת vCenter ומוחל על כל ה-Hosts בקלאסטר, ומוסיף יכולות כמו NIOC, Port Mirroring, NetFlow ו-LACP. vDS דורש רישוי מתאים.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו VLAN?</summary>
+
+הפרדה לוגית של רשת פיזית אחת לכמה רשתות שכבה-2 נפרדות, לפי תגיות 802.1Q. בסביבת vSphere מגדירים VLAN ID ברמת ה-Port Group (מצב VST), וכך אותו כבל פיזי נושא תעבורה של ניהול, vMotion, אחסון וייצור — בבידוד מלא ביניהן.
+
+</details>
+
+<details class="qa">
+<summary>5. למה משתמשים ב-vmkping?</summary>
+
+כי הוא בודק קישוריות מתוך ממשק ה-VMkernel הספציפי — כלומר בדיוק מהמסלול שבו עוברת תעבורת vMotion או האחסון, ולא מרשת הניהול. `vmkping -I vmk1 <ip>` מאמת שהשכבה הזו באמת מגיעה ליעד.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תבדוק MTU?</summary>
+
+שולחים חבילה בגודל מלא עם דגל "אל תפרק": `vmkping -I vmk1 -d -s 8972 <ip>` (8972 בתים + 28 כותרת = 9000). אם זה נכשל אבל ping רגיל עובד — ה-Jumbo Frames לא מוגדרים לכל אורך המסלול: צריך MTU 9000 ב-VMkernel, ב-vSwitch **וגם** במתגים הפיזיים.
+
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין Access ל-Trunk?</summary>
+
+פורט Access במתג הפיזי נושא VLAN אחד בלבד ומעביר תעבורה ללא תגית. פורט Trunk נושא כמה VLANs עם תגיות 802.1Q. ב-vSphere, כשמגדירים VLAN ID ב-Port Groups, הפורט הפיזי מול ה-Host צריך להיות Trunk שמרשה את אותם VLANs.
+
+</details>
+
+<details class="qa">
+<summary>8. למה כדאי להפריד vMotion מ-Management?</summary>
+
+כי vMotion מייצר פרצי תעבורה כבדים שיכולים להרעיב את רשת הניהול — ואובדן תקשורת ניהול גורר Host שמופיע Not Responding ואף תגובת HA מיותרת. הפרדה ל-VMkernel נפרד וב-VLAN ייעודי (ורצוי uplinks נפרדים) שומרת על יציבות הניהול ועל ביצועי ההעברה.
+
+</details>
 
 ## 12. מעבדות רשמיות
 

@@ -145,14 +145,26 @@ Get-WebBinding
 ```
 
 ## שאלות ראיון
-### Ping עובד אבל RDP לא. מה תבדוק?
+<details class="qa">
+<summary>Ping עובד אבל RDP לא. מה תבדוק?</summary>
+
 Port 3389, Firewall, RDP service, listener, routing, ACL, NLA ו-logs.
 
-### DNS עובד אבל HTTPS לא?
+</details>
+
+<details class="qa">
+<summary>DNS עובד אבל HTTPS לא?</summary>
+
 בדוק TCP 443, Certificate/TLS, SNI, reverse proxy/load balancer ו-HTTP response.
 
-### TCP פתוח אבל האפליקציה איטית?
+</details>
+
+<details class="qa">
+<summary>TCP פתוח אבל האפליקציה איטית?</summary>
+
 זה לא מוכיח שהרשת היא הבעיה. צריך למדוד TTFB, server processing, DB, application logs ו-client rendering.
+
+</details>
 
 ## תרגיל
 בנה `Test-WebEndpoint` שמחזיר:
@@ -163,7 +175,6 @@ Port 3389, Firewall, RDP service, listener, routing, ACL, NLA ו-logs.
 - Total time
 - Certificate expiry אם אפשר
 - Error message במקרה כשל
-
 
 ## מקורות מומלצים
 
@@ -181,8 +192,6 @@ Port 3389, Firewall, RDP service, listener, routing, ACL, NLA ו-logs.
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Networking Troubleshooting מהיום-יום
 

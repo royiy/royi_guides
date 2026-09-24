@@ -228,35 +228,75 @@ concurrency:
 
 ## שאלות ראיון עבודה
 
-**1. מה ההבדל בין `push` ל-`pull_request_target`?**
+<details class="qa">
+<summary>1. מה ההבדל בין <code>push</code> ל-<code>pull_request_target</code>?</summary>
+
 `pull_request` רץ בהקשר הממוזג עם הרשאות מוגבלות (במיוחד מ-forks, ללא גישה ל-secrets). `pull_request_target` רץ עם הרשאות מלאות של הענף הבסיסי, גם על PR מ-fork - ולכן דורש זהירות רבה.
 
-**2. איך מריצים workflow פעם ביום בשעה קבועה?**
+</details>
+
+<details class="qa">
+<summary>2. איך מריצים workflow פעם ביום בשעה קבועה?</summary>
+
 באמצעות טריגר `schedule` עם ביטוי cron, למשל `cron: '0 3 * * *'`.
 
-**3. מה זה `workflow_dispatch` ולמה הוא שימושי?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה <code>workflow_dispatch</code> ולמה הוא שימושי?</summary>
+
 טריגר שמאפשר הפעלה ידנית של workflow דרך ממשק GitHub או ה-API, עם אפשרות להזין פרמטרים מותאמים אישית (`inputs`).
 
-**4. איך מונעים הרצה כפולה של אותו workflow כשעושים כמה push ברצף?**
+</details>
+
+<details class="qa">
+<summary>4. איך מונעים הרצה כפולה של אותו workflow כשעושים כמה push ברצף?</summary>
+
 באמצעות `concurrency` עם `group` ו-`cancel-in-progress: true`.
 
-**5. מה ההבדל בין `workflow_call` ל-`workflow_run`?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין <code>workflow_call</code> ל-<code>workflow_run</code>?</summary>
+
 `workflow_call` הופך workflow ל"פונקציה" שניתן לקרוא לה מתוך workflow אחר עם `uses`. `workflow_run` מפעיל workflow כתגובה לסיום ריצה של workflow אחר, לרוב לצורך שרשור תהליכים.
 
-**6. איך מדלגים על הרצת CI לקומיט מסוים?**
+</details>
+
+<details class="qa">
+<summary>6. איך מדלגים על הרצת CI לקומיט מסוים?</summary>
+
 הוספת `[skip ci]` (או וריאציות דומות) בהודעת ה-commit.
 
-**7. מה ההבדל בין `if: success()`, `if: failure()` ו-`if: always()`?**
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין <code>if: success()</code>, <code>if: failure()</code> ו-<code>if: always()</code>?</summary>
+
 `success()` (ברירת המחדל) רץ רק אם כל השלבים הקודמים הצליחו; `failure()` רץ רק אם משהו נכשל; `always()` רץ תמיד, ללא קשר לתוצאה - שימושי לניקוי או התראות.
 
-**8. איך מגבילים workflow לרוץ רק כשמשנים קבצים בתיקייה מסוימת?**
+</details>
+
+<details class="qa">
+<summary>8. איך מגבילים workflow לרוץ רק כשמשנים קבצים בתיקייה מסוימת?</summary>
+
 באמצעות `paths` (או `paths-ignore`) תחת הגדרת ה-`push`/`pull_request`.
 
-**9. מה זה קונטקסט (context) ב-GitHub Actions?**
+</details>
+
+<details class="qa">
+<summary>9. מה זה קונטקסט (context) ב-GitHub Actions?</summary>
+
 אובייקט מובנה שנגיש דרך `${{ }}` ומכיל מידע על הריצה - כמו `github`, `env`, `runner`, `job`, `steps`, `matrix`.
 
-**10. מה קורה אם `jobs.<job_id>.if` מחזיר false?**
+</details>
+
+<details class="qa">
+<summary>10. מה קורה אם <code>jobs.&lt;job_id&gt;.if</code> מחזיר false?</summary>
+
 ה-job כולו מדולג (לא נכשל), ומופיע כ-"Skipped" בממשק.
+
+</details>
 
 ## קישורים חיצוניים
 

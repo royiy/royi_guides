@@ -243,10 +243,33 @@ Charts אחרים יכולים להשתמש בו כתלות ולקרוא ל-temp
 
 ## שאלות לחזרה עצמית
 
-1. מה ההבדל בין `version` ל-`appVersion` בקובץ `Chart.yaml`?
-2. מה תפקידה של תיקיית `templates/`?
-3. מתי משתמשים ב-Library Chart ולא ב-Application Chart?
-4. איזו פקודה משתמשים בה כדי לבדוק שגיאות תחביר ב-Chart לפני התקנה?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>version</code> ל-<code>appVersion</code> בקובץ <code>Chart.yaml</code>?</summary>
+
+`version` היא גרסת ה-Chart עצמו (SemVer) ויש להעלות אותה בכל שינוי בחבילה — היא זו שמופיעה ב-repository. `appVersion` היא גרסת האפליקציה שנארזת (למשל ה-tag של ה-image), היא תיעודית בלבד ואינה חייבת להיות SemVer.
+
+</details>
+
+<details class="qa">
+<summary>2. מה תפקידה של תיקיית <code>templates/</code>?</summary>
+
+היא מכילה את תבניות ה-YAML (Go templates) שמהן Helm מרנדר את משאבי Kubernetes בפועל, יחד עם `_helpers.tpl` להגדרות חוזרות (שמות, labels) ו-`NOTES.txt` שמוצג למשתמש בסיום ההתקנה. כל קובץ בתיקייה עובר רינדור עם ערכי `.Values`.
+
+</details>
+
+<details class="qa">
+<summary>3. מתי משתמשים ב-Library Chart ולא ב-Application Chart?</summary>
+
+כשרוצים לשתף לוגיקת templates (helpers) בין כמה Charts בלי להתקין משאבים בעצמו. Chart מסוג `library` אינו ניתן להתקנה ישירה — מצרפים אותו כתלות ל-Charts אחרים שמשתמשים ב-helpers שלו, וכך נמנעים משכפול קוד תבניות בין עשרות Charts.
+
+</details>
+
+<details class="qa">
+<summary>4. איזו פקודה משתמשים בה כדי לבדוק שגיאות תחביר ב-Chart לפני התקנה?</summary>
+
+`helm lint ./my-chart` בודק תחביר ומוסכמות. משלימים אותו עם `helm template ./my-chart --debug` שמרנדר את התוצאה הסופית מקומית לבדיקה ידנית, בלי לגעת בקלאסטר.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 2 - התקנה והגדרה](/devops/helm/02-hatkana-vehagdara/)

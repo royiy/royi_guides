@@ -209,11 +209,59 @@ VMware Hands-on Labs מציעה מעבדת Performance שמתרגלת esxtop ו�
 
 ## 14. שאלות ראיון
 
-1. מהו Datastore?
-2. VMFS מול NFS?
-3. מהו LUN?
-4. מהו iSCSI?
-5. למה צריך Multipathing?
-6. מה הסיכון ב-Thin Provisioning?
-7. למה Snapshot אינו Backup?
-8. איך תחקור Storage latency?
+<details class="qa">
+<summary>1. מהו Datastore?</summary>
+
+מאגר אחסון לוגי שבו נשמרים קבצי ה-VM — VMDK, VMX, snapshots ולוגים. הוא יושב על VMFS (אחסון בלוקי: FC, iSCSI, מקומי) או על NFS. Datastore משותף בין Hosts הוא תנאי ליכולות קלאסטר כמו vMotion ו-HA.
+
+</details>
+
+<details class="qa">
+<summary>2. VMFS מול NFS?</summary>
+
+VMFS היא מערכת קבצים אשכולית של VMware על LUN בלוקי — ESXi מנהל את הנעילות ואת הבלוקים בעצמו, ותומך ב-RDM וב-VMFS-only features. NFS הוא אחסון מבוסס קבצים שבו שרת האחסון מנהל את מערכת הקבצים, ההגדרה פשוטה יותר ואין צורך ב-LUN masking. שניהם נתמכים במלואם; הבחירה תלויה בתשתית ובהעדפת צוות האחסון.
+
+</details>
+
+<details class="qa">
+<summary>3. מהו LUN?</summary>
+
+Logical Unit Number — יחידת אחסון בלוקית שמוצגת מה-SAN ל-Host דרך FC או iSCSI. ה-Host רואה אותה כדיסק, ועליה נוצרת מערכת הקבצים VMFS שהופכת אותה ל-Datastore.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו iSCSI?</summary>
+
+פרוטוקול שמעביר פקודות SCSI מעל רשת TCP/IP, כלומר אחסון בלוקי על גבי Ethernet רגיל — ללא צורך ב-Fibre Channel ייעודי. ב-ESXi מגדירים Software iSCSI Adapter, מקשרים אותו ל-VMkernel ports ייעודיים, ומוסיפים את ה-Target. מומלץ רשת/VLAN נפרדת, ורצוי Jumbo Frames ו-Multipathing.
+
+</details>
+
+<details class="qa">
+<summary>5. למה צריך Multipathing?</summary>
+
+כדי שיהיה יותר ממסלול פיזי אחד בין ה-Host לאחסון — HBA, מתג או בקר שנופלים לא מנתקים את ה-Datastore. מעבר ליתירות, מדיניות כמו Round Robin מחלקת את ה-I/O בין המסלולים ומשפרת ביצועים.
+
+</details>
+
+<details class="qa">
+<summary>6. מה הסיכון ב-Thin Provisioning?</summary>
+
+הקצאת יתר (overcommit): סכום הדיסקים המוקצים גדול מהמקום הפיזי, וכשהמכונות מתמלאות ה-Datastore עלול להתמלא לגמרי — מצב שמקפיא מכונות באופן מיידי. לכן חובה ניטור והתרעות על תפוסה, מעקב אחרי snapshots שגדלים, ותכנון מרווח פנוי.
+
+</details>
+
+<details class="qa">
+<summary>7. למה Snapshot אינו Backup?</summary>
+
+כי Snapshot הוא שרשרת דלתא שנשענת על הדיסק המקורי ויושבת על אותו Datastore — אם ה-Datastore או ה-VM נפגעים, גם הוא אבד. בנוסף snapshots ישנים תופסים מקום וגורמים לירידת ביצועים חמורה. גיבוי אמיתי הוא עותק נפרד, במיקום נפרד, שניתן לשחזר ממנו לנקודת זמן.
+
+</details>
+
+<details class="qa">
+<summary>8. איך תחקור Storage latency?</summary>
+
+מתחילים ב-esxtop במסך הדיסק (`u`/`d`) ובודקים את `DAVG` (זמן במערך האחסון), `KAVG` (זמן ב-kernel — ערך גבוה מרמז על queueing) ו-`GAVG` (מה שה-VM חווה בפועל). ערכים מעל ~20ms ב-DAVG מצביעים על בעיה בצד האחסון. משם בודקים Multipathing, queue depth, עומס על ה-LUN ו-snapshots ישנים.
+
+</details>
+

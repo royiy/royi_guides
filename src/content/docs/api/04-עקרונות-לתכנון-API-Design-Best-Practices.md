@@ -145,18 +145,30 @@ curl -X POST https://api.example.com/v1/payments \
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. איך הייתם מעצבים endpoint לחיפוש מוצרים עם סינון, מיון ו-pagination?**
+<details class="qa">
+<summary>1. איך הייתם מעצבים endpoint לחיפוש מוצרים עם סינון, מיון ו-pagination?</summary>
+
 תשובה טובה: `GET /products?category=x&min_price=100&sort=-price&page=1&per_page=20`, עם תשובה שכוללת `data` ו-`pagination` metadata.
 
 **2. מה זה Richardson Maturity Model?** (ראו הסבר למעלה)
 
-**3. איך הייתם מטפלים ביצירת משאב שדורש כמה שדות חובה חסרים?**
+</details>
+
+<details class="qa">
+<summary>3. איך הייתם מטפלים ביצירת משאב שדורש כמה שדות חובה חסרים?</summary>
+
 מחזירים `400` או `422` עם גוף תשובה שמפרט בדיוק אילו שדות חסרים/שגויים, כדי שהלקוח יוכל לתקן.
 
-**4. מה ההבדל בין page-based ל-cursor-based pagination, ומתי להעדיף כל אחד?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין page-based ל-cursor-based pagination, ומתי להעדיף כל אחד?</summary>
+
 Page-based פשוט אך בעייתי עם נתונים שמשתנים תדיר (יכול לדלג/לכפול פריטים). Cursor-based יציב יותר לנתונים דינמיים, אך פחות אינטואיטיבי למשתמש (אי אפשר "לקפוץ לעמוד 5").
 
 **5. מה זה idempotency key ולמה משתמשים בו עם POST?** (ראו הסבר למעלה)
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

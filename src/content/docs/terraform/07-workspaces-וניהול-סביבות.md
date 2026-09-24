@@ -187,17 +187,33 @@ enable_monitoring = false
 
 ## שאלות ראיון נפוצות
 
-**1. מה ההבדל בין CLI workspace ל-Terraform Cloud workspace?**
+<details class="qa">
+<summary>1. מה ההבדל בין CLI workspace ל-Terraform Cloud workspace?</summary>
+
 CLI workspace הוא מנגנון מקומי/backend לניהול מספר states לאותה קונפיגורציה. Terraform Cloud workspace הוא ישות שלמה בפלטפורמת HCP Terraform - כולל קוד, משתנים, היסטוריית ריצות ו-state, בדומה יותר ל"פרויקט" נפרד.
 
-**2. מתי תמליצו על workspaces ומתי על הפרדת תיקיות?**
+</details>
+
+<details class="qa">
+<summary>2. מתי תמליצו על workspaces ומתי על הפרדת תיקיות?</summary>
+
 Workspaces מתאימים לסביבות זמניות/דומות (per-PR, בדיקות) שלא דורשות הפרדת credentials. הפרדת תיקיות מומלצת לסביבות פרודקשן קבועות (dev/staging/prod) שדורשות בקרת גישה נפרדת ומניעת טעויות אנוש.
 
-**3. מהו הסיכון המרכזי בשימוש ב-workspaces לניהול prod/dev?**
+</details>
+
+<details class="qa">
+<summary>3. מהו הסיכון המרכזי בשימוש ב-workspaces לניהול prod/dev?</summary>
+
 טעות אנוש - שכחה לבדוק באיזה workspace נמצאים לפני `apply`, מה שעלול לגרום להרצת שינויים על הסביבה הלא נכונה. מומלץ להוסיף בדיקות אוטומטיות ב-CI (`terraform workspace show`) לפני apply.
 
-**4. איפה נשמר ה-state של כל workspace ב-S3 backend?**
+</details>
+
+<details class="qa">
+<summary>4. איפה נשמר ה-state של כל workspace ב-S3 backend?</summary>
+
 תחת prefix `env:/<workspace_name>/` בנוסף לנתיב ה-key שהוגדר.
+
+</details>
 
 ---
 

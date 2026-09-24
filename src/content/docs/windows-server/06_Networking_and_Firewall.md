@@ -45,10 +45,19 @@ New-NetLbfoTeam -Name "ProductionTeam" -TeamMembers "Ethernet1","Ethernet2" -Tea
 *   **IPv6:** אפילו אם אינכם משתמשים ב-IPv6 ברשת הארגונית, מיקרוסופט **לא ממליצה** לבטל אותו בכרטיס הרשת. שירותי ליבה רבים ב-Windows מצפים לנוכחותו, והשבתתו עלולה לגרום לתקלות שרת בלתי מוסברות.
 
 ## שאלות ראיון עבודה 🎯
-1. **שאלה:** למה עדיף להשתמש ב- `Test-NetConnection` במקום ב-`Ping`?
-   *תשובה:* ה-Ping משתמש בפרוטוקול ICMP. לעיתים קרובות Firewall יחסום בקשות ICMP אך השרת והאפליקציה כן פעילים. `Test-NetConnection` בתוספת הפורמטר `-Port` יבדוק אם פורט ספציפי (למשל 80 ל-Web או 3389 ל-RDP) עונה ב-TCP, וכך נותן תמונת מצב אמיתית של השירות.
-2. **שאלה:** מה ההבדל בין TCP ל-UDP?
-   *תשובה:* TCP הוא פרוטוקול אמין (Connection-Oriented). הוא מבצע לחיצת יד (Three-way handshake) ומוודא שכל חבילת נתונים הגיעה (מתאים ל-HTTP, שיתוף קבצים). UDP הוא פרוטוקול של "שגר ושכח" ללא וידוא הגעה, אך הוא מהיר הרבה יותר (מתאים לשידורי וידאו, VoIP, ושאילתות DNS קצרות).
+<details class="qa">
+<summary>1. למה עדיף להשתמש ב- <code>Test-NetConnection</code> במקום ב-<code>Ping</code>?</summary>
+
+ה-Ping משתמש בפרוטוקול ICMP. לעיתים קרובות Firewall יחסום בקשות ICMP אך השרת והאפליקציה כן פעילים. `Test-NetConnection` בתוספת הפורמטר `-Port` יבדוק אם פורט ספציפי (למשל 80 ל-Web או 3389 ל-RDP) עונה ב-TCP, וכך נותן תמונת מצב אמיתית של השירות.
+
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין TCP ל-UDP?</summary>
+
+TCP הוא פרוטוקול אמין (Connection-Oriented). הוא מבצע לחיצת יד (Three-way handshake) ומוודא שכל חבילת נתונים הגיעה (מתאים ל-HTTP, שיתוף קבצים). UDP הוא פרוטוקול של "שגר ושכח" ללא וידוא הגעה, אך הוא מהיר הרבה יותר (מתאים לשידורי וידאו, VoIP, ושאילתות DNS קצרות).
+
+</details>
 
 ## קישורים חיצוניים 🔗
 *   [Windows Defender Firewall Documentation](https://learn.microsoft.com/en-us/windows/security/operating-system-security/network-security/windows-firewall/)

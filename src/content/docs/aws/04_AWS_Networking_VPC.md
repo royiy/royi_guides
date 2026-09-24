@@ -39,10 +39,19 @@ aws ec2 create-route --route-table-id rtb-22574640 --destination-cidr-block 0.0.
 * VPC Endpoints: השתמשו בהם כדי לגשת לשירותי AWS (כמו S3 או DynamoDB) מבלי לצאת לאינטרנט הציבורי, משפר אבטחה וחוסך בעלויות NAT.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל בין Security Group ל-NACL (Network Access Control List)?
-   **תשובה:** Security Group עובד ברמת ה-Instance, הוא Stateful (אם תעבורה נכנסת מותרת, התשובה תעבור אוטומטית). NACL עובד ברמת ה-Subnet, הוא Stateless (יש להגדיר חוקים גם לנכנס וגם ליוצא בנפרד).
-2. **שאלה:** יש לכם שרת ב-Private Subnet שצריך לגשת ל-S3. איך תעשו זאת בדרך המאובטחת ביותר?
-   **תשובה:** ניצור VPC Gateway Endpoint עבור S3 בתוך ה-VPC שלנו, ונוסיף נתיב אליו ב-Route Table של ה-Private Subnet.
+<details class="qa">
+<summary>1. מה ההבדל בין Security Group ל-NACL (Network Access Control List)?</summary>
+
+Security Group עובד ברמת ה-Instance, הוא Stateful (אם תעבורה נכנסת מותרת, התשובה תעבור אוטומטית). NACL עובד ברמת ה-Subnet, הוא Stateless (יש להגדיר חוקים גם לנכנס וגם ליוצא בנפרד).
+
+</details>
+
+<details class="qa">
+<summary>2. יש לכם שרת ב-Private Subnet שצריך לגשת ל-S3. איך תעשו זאת בדרך המאובטחת ביותר?</summary>
+
+ניצור VPC Gateway Endpoint עבור S3 בתוך ה-VPC שלנו, ונוסיף נתיב אליו ב-Route Table של ה-Private Subnet.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS VPC Documentation](https://docs.aws.amazon.com/vpc/)

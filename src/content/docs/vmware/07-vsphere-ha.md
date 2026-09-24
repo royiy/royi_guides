@@ -128,12 +128,47 @@ Events
 
 ## 10. שאלות ראיון
 
-1. האם HA עושה vMotion?
-2. מהו Admission Control?
-3. מה ההבדל בין Host Failure ל-Isolation?
-4. למה Shared Storage עשוי להיות חשוב?
-5. מהו Restart Priority?
-6. איך תחקור VM שלא התאוששה?
+<details class="qa">
+<summary>1. האם HA עושה vMotion?</summary>
+
+לא. HA **מפעיל מחדש** מכונות על Host אחר אחרי כשל — יש זמן השבתה של דקות ספורות עד שמערכת ההפעלה עולה. vMotion הוא העברה חיה ומתוכננת של מכונה שרצה, והוא שייך ל-DRS ולתחזוקה, לא לתרחיש הכשל.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו Admission Control?</summary>
+
+מנגנון שמונע הפעלת מכונות נוספות אם לא יישארו מספיק משאבים פנויים כדי להפעיל מחדש את כל המכונות בעת כשל Host. מגדירים אותו לפי אחוז משאבים שמור, לפי מספר Hosts שמותר שייכשלו או לפי Failover Host ייעודי. ביטולו "מרוויח" משאבים בטווח הקצר אבל עלול לגרום ל-HA להיכשל בדיוק ברגע האמת.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין Host Failure ל-Isolation?</summary>
+
+Host Failure הוא כשל אמיתי — ה-Host מת ואינו מגיב ל-heartbeats ולא ל-Datastore heartbeating. Isolation הוא מצב שבו ה-Host חי וממשיך להריץ VMs אבל מנותק מרשת הניהול. ההבחנה חשובה כדי לא להפעיל מחדש מכונות שעדיין רצות (split-brain), ולכן מגדירים Isolation Response ומסתמכים גם על heartbeat דרך ה-Datastore.
+
+</details>
+
+<details class="qa">
+<summary>4. למה Shared Storage עשוי להיות חשוב?</summary>
+
+כי כדי ש-Host אחר יוכל להפעיל מכונה שנפלה, הוא צריך גישה לקבצי ה-VMDK שלה. אחסון משותף (או vSAN) הוא התנאי ל-HA, ל-vMotion ול-DRS; בלי זה כל מכונה כבולה ל-Host שעליו הדיסק שלה יושב.
+
+</details>
+
+<details class="qa">
+<summary>5. מהו Restart Priority?</summary>
+
+הגדרה לכל VM שקובעת את סדר ההפעלה מחדש אחרי כשל (Highest / High / Medium / Low / Disabled). כך מוודאים שתשתיות קודמות — בקר דומיין, DNS, מסד נתונים — יעלו לפני שרתי האפליקציה שתלויים בהן.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תחקור VM שלא התאוששה?</summary>
+
+בודקים את ה-Events והלוג `fdm.log` ב-Hosts, אם ה-HA agent במצב תקין, אם היו מספיק משאבים (Admission Control), אם ה-VM נמצאת על Datastore משותף ונגישה מה-Host השני, אם קיימים כללי Affinity שמונעים מיקום, והאם ה-Restart Priority הוגדר ל-Disabled. בנוסף בודקים אם המכונה בכלל עלתה אך נכשלה ברמת מערכת ההפעלה.
+
+</details>
 
 ## 11. מעבדות
 

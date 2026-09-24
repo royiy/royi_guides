@@ -43,12 +43,26 @@ Checkpoint-VM -Name "SRV-FILE-02" -SnapshotName "Pre-Windows-Update"
 *   **Dynamic Memory (זיכרון דינמי):** הפעילו זיכרון דינמי אם אתם רוצים שהמכונה תיקח מהשרת הפיזי רק את ה-RAM שהיא באמת צריכה ברגע הנתון. הגדירו לה מינימום ומקסימום כדי שלא תחנק את כל השרת.
 
 ## שאלות ראיון עבודה 🎯
-1. **שאלה:** מה ההבדל בין Type 1 ל-Type 2 Hypervisor? 
-   *תשובה:* Hyper-V ב-Windows Server ו-VMware ESXi הם Type 1 שיושבים ישירות על החומרה. לעומתם, VirtualBox או VMware Workstation במחשב הביתי הם Type 2 - אפליקציות שרצות מעל מערכת ההפעלה הקיימת ולכן איטיות וצרכניות יותר.
-2. **שאלה:** שרת וירטואלי של מסד נתונים עובד לאט. אני מגלה שמוגדר לו Checkpoint לפני שנה שמעולם לא נמחק. למה זה קורה?
-   *תשובה:* בגלל שהצ'קפוינט פתוח שנה, השרת כותב נתונים חדשים רק לקובץ השינויים הזמני (Differencing Disk). הוא צריך לחשב שינויים בין הדיסק המקורי לדיסק הזמני כל פעם שמתבצעת קריאה. זה מפרק את ה-IOPS של הדיסק הפיזי וגורם להאטה קריטית.
-3. **שאלה:** מהו Live Migration?
-   *תשובה:* היכולת להעביר מכונה וירטואלית דולקת ועובדת משרת Hyper-V פיזי אחד לשרת פיזי אחר מבלי שאף משתמש ירגיש נתק (Downtime). 
+<details class="qa">
+<summary>1. מה ההבדל בין Type 1 ל-Type 2 Hypervisor?</summary>
+
+Hyper-V ב-Windows Server ו-VMware ESXi הם Type 1 שיושבים ישירות על החומרה. לעומתם, VirtualBox או VMware Workstation במחשב הביתי הם Type 2 - אפליקציות שרצות מעל מערכת ההפעלה הקיימת ולכן איטיות וצרכניות יותר.
+
+</details>
+
+<details class="qa">
+<summary>2. שרת וירטואלי של מסד נתונים עובד לאט. אני מגלה שמוגדר לו Checkpoint לפני שנה שמעולם לא נמחק. למה זה קורה?</summary>
+
+בגלל שהצ'קפוינט פתוח שנה, השרת כותב נתונים חדשים רק לקובץ השינויים הזמני (Differencing Disk). הוא צריך לחשב שינויים בין הדיסק המקורי לדיסק הזמני כל פעם שמתבצעת קריאה. זה מפרק את ה-IOPS של הדיסק הפיזי וגורם להאטה קריטית.
+
+</details>
+
+<details class="qa">
+<summary>3. מהו Live Migration?</summary>
+
+היכולת להעביר מכונה וירטואלית דולקת ועובדת משרת Hyper-V פיזי אחד לשרת פיזי אחר מבלי שאף משתמש ירגיש נתק (Downtime).
+
+</details>
 
 ## קישורים חיצוניים 🔗
 *   [תיעוד רשמי Hyper-V Architecture](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)

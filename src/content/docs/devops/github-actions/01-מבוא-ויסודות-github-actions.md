@@ -210,35 +210,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. מה זה GitHub Actions ולמה משתמשים בו?**
+<details class="qa">
+<summary>1. מה זה GitHub Actions ולמה משתמשים בו?</summary>
+
 פלטפורמת CI/CD ואוטומציה מובנית ב-GitHub, שמאפשרת להריץ תהליכים אוטומטיים (בנייה, בדיקות, פריסה) בתגובה לאירועים בריפוזיטורי, ללא צורך בכלי חיצוני.
 
-**2. מהם חמשת המושגים המרכזיים ב-GitHub Actions?**
+</details>
+
+<details class="qa">
+<summary>2. מהם חמשת המושגים המרכזיים ב-GitHub Actions?</summary>
+
 Workflow, Event, Job, Step, Action - ו-Runner בתור המכונה שמריצה את הכול.
 
-**3. איפה שומרים קובצי workflow בריפו?**
+</details>
+
+<details class="qa">
+<summary>3. איפה שומרים קובצי workflow בריפו?</summary>
+
 בתיקייה `.github/workflows/`, כקבצי YAML.
 
-**4. מה ההבדל בין `run` ל-`uses` בתוך step?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>run</code> ל-<code>uses</code> בתוך step?</summary>
+
 `run` מריץ פקודת shell ישירה, בעוד `uses` מפעיל Action מוכן (שיכול להיות מ-Marketplace, מריפו אחר, או local).
 
-**5. מה זה GitHub-hosted runner ומתי כדאי להשתמש ב-self-hosted?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה GitHub-hosted runner ומתי כדאי להשתמש ב-self-hosted?</summary>
+
 GitHub-hosted הוא runner מנוהל על ידי GitHub, נקי ואפמרי בכל ריצה. Self-hosted משמש כשצריך חומרה מיוחדת, גישה לרשת פנימית, או שליטה מלאה בסביבה.
 
-**6. האם jobs באותו workflow רצים במקביל או בזה אחר זה?**
+</details>
+
+<details class="qa">
+<summary>6. האם jobs באותו workflow רצים במקביל או בזה אחר זה?</summary>
+
 כברירת מחדל, כל ה-jobs רצים במקביל, אלא אם משתמשים במילת המפתח `needs` כדי ליצור תלות ביניהם.
 
-**7. מה חשיבות שלב `actions/checkout` בתחילת כמעט כל workflow?**
+</details>
+
+<details class="qa">
+<summary>7. מה חשיבות שלב <code>actions/checkout</code> בתחילת כמעט כל workflow?</summary>
+
 ה-runner מתחיל עם סביבה ריקה, ולכן צריך במפורש "למשוך" את קוד הריפו לתוכה כדי לעבוד איתו.
 
-**8. מה ההבדל בין `push` ל-`pull_request` כטריגר?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין <code>push</code> ל-<code>pull_request</code> כטריגר?</summary>
+
 `push` מופעל כשיש דחיפת קוד לענף מסוים; `pull_request` מופעל בפעולות על Pull Request (פתיחה, עדכון וכו') ורץ בהקשר ממוזג (merge context) עם הרשאות מוגבלות יותר, במיוחד מ-forks.
 
-**9. איך מריצים workflow באופן ידני?**
+</details>
+
+<details class="qa">
+<summary>9. איך מריצים workflow באופן ידני?</summary>
+
 באמצעות טריגר `workflow_dispatch`, שמאפשר גם להגדיר פרמטרי קלט (`inputs`) שמוזנים דרך ממשק GitHub או ה-API.
 
-**10. מה זה matrix strategy ולמה הוא שימושי? (הרחבה במדריך 6)**
+</details>
+
+<details class="qa">
+<summary>10. מה זה matrix strategy ולמה הוא שימושי? (הרחבה במדריך 6)</summary>
+
 מאפשר להריץ אותו job עם קומבינציות שונות של משתנים (למשל מערכות הפעלה וגרסאות שפה) ללא שכפול קוד.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -266,20 +266,40 @@ terraform test
 
 ## שאלות ראיון נפוצות
 
-**1. מה ההבדל בין root module ל-child module?**
+<details class="qa">
+<summary>1. מה ההבדל בין root module ל-child module?</summary>
+
 Root module הוא ה-`.tf` files בתיקיית העבודה הראשית שמריצים עליה `terraform apply`. Child module הוא כל module שנקרא באמצעות בלוק `module` - יכול להיות מקומי או חיצוני.
 
-**2. למה לא כדאי לכלול `provider` block בתוך מודול משותף?**
+</details>
+
+<details class="qa">
+<summary>2. למה לא כדאי לכלול <code>provider</code> block בתוך מודול משותף?</summary>
+
 כי זה "נועל" את המודול לקונפיגורציית provider ספציפית (region, credentials) ומונע גמישות מהצוותים שמשתמשים בו. עדיף להעביר providers מבחוץ עם ה-meta-argument `providers`.
 
-**3. מה קורה אם משנים את ה-`source` של מודול?**
+</details>
+
+<details class="qa">
+<summary>3. מה קורה אם משנים את ה-<code>source</code> של מודול?</summary>
+
 חובה להריץ `terraform init` (או `init -upgrade`) שוב כדי ש-Terraform יוריד/יעדכן את הקוד המקומי של המודול.
 
-**4. איך פורסים את אותו מודול פעמיים עם קונפיגורציה שונה?**
+</details>
+
+<details class="qa">
+<summary>4. איך פורסים את אותו מודול פעמיים עם קונפיגורציה שונה?</summary>
+
 עם `for_each` (מפתחות ייחודיים, מומלץ) או `count` (אינדקס מספרי) על בלוק ה-`module`.
 
-**5. מה השיקולים כשבוחרים בין מודול מה-Registy הציבורי לכתיבת מודול משלכם?**
+</details>
+
+<details class="qa">
+<summary>5. מה השיקולים כשבוחרים בין מודול מה-Registy הציבורי לכתיבת מודול משלכם?</summary>
+
 זמן פיתוח מול שליטה מלאה; בדיקות קהילתיות מול דרישות ספציפיות לארגון; תחזוקה שוטפת מול תלות בפרויקט חיצוני. לרוב, עדיף להתחיל ממודול ציבורי בדוק ולעטוף אותו במודול פנימי אם צריך התאמות ספציפיות.
+
+</details>
 
 ---
 

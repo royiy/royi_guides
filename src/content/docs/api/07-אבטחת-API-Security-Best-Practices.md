@@ -165,20 +165,40 @@ app.use(helmet());
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. מה זה BOLA (Broken Object Level Authorization) ואיך מונעים אותו?**
+<details class="qa">
+<summary>1. מה זה BOLA (Broken Object Level Authorization) ואיך מונעים אותו?</summary>
+
 פגיעות שבה משתמש מזוהה יכול לגשת לנתונים ששייכים למשתמש אחר, כי השרת לא בודק בעלות על המשאב, רק אימות. פתרון: לבדוק תמיד שה-ownership של המשאב תואם למשתמש המחובר, בכל endpoint שמקבל ID.
 
-**2. מה ההבדל בין Rate Limiting ל-Throttling?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין Rate Limiting ל-Throttling?</summary>
+
 Rate Limiting חוסם בקשות שחורגות ממכסה (מחזיר 429). Throttling מאט את קצב הטיפול בבקשות במקום לחסום לגמרי. לעיתים המונחים משמשים לסירוגין בתעשייה.
 
-**3. איך הייתם מגנים על API מפני Brute Force על לוגין?**
+</details>
+
+<details class="qa">
+<summary>3. איך הייתם מגנים על API מפני Brute Force על לוגין?</summary>
+
 Rate Limiting ספציפי ל-endpoint של login, נעילת חשבון זמנית אחרי X ניסיונות כושלים, CAPTCHA, ומעקב אחר ניסיונות חשודים (IP anomalies).
 
-**4. למה חשוב Input Validation גם אם יש כבר וולידציה בצד הלקוח (Frontend)?**
+</details>
+
+<details class="qa">
+<summary>4. למה חשוב Input Validation גם אם יש כבר וולידציה בצד הלקוח (Frontend)?</summary>
+
 כי אפשר לעקוף וולידציית frontend בקלות (curl, Postman, DevTools). וולידציה בצד השרת היא קו ההגנה האמיתי.
 
-**5. מה זה CORS ולמה הוא קיים?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה CORS ולמה הוא קיים?</summary>
+
 מנגנון דפדפן שמונע מדף web אחד לשלוח בקשות (עם credentials) לדומיין אחר בלי אישור מפורש מהשרת היעד - מגן מפני Cross-Site Request Forgery ומתקפות דומות.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

@@ -276,12 +276,47 @@ ansible-galaxy collection install ansible.posix
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה ההבדל בין `roles/*/vars/main.yml` ל-`roles/*/defaults/main.yml`, ואיזה מהם עדיפות גבוהה יותר?
-2. מה ההבדל בין `import_role` ל-`include_role`, ומתי תעדיפו כל אחד?
-3. איך מגדירים תלות בין Role אחד לשני (Role Dependencies)?
-4. מה ההבדל בין Role ל-Collection?
-5. איך תבנו מבנה פרויקט Ansible לתמיכה במספר סביבות (production/staging) בלי לשכפל קוד?
-6. מהם היתרונות של שימוש ב-Roles מוכנים מ-Galaxy (כמו geerlingguy) לעומת כתיבה מאפס?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>roles/*/vars/main.yml</code> ל-<code>roles/*/defaults/main.yml</code>, ואיזה מהם עדיפות גבוהה יותר?</summary>
+
+`defaults` הוא בעל העדיפות **הנמוכה ביותר** במערכת — מיועד לערכים שהמשתמש אמור לדרוס. `vars` הוא בעל עדיפות גבוהה ומיועד לערכים פנימיים של ה-Role שלא אמורים להשתנות. הכלל: כל מה שמיועד להתאמה — ל-`defaults`; קבועים פנימיים — ל-`vars`.
+
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין <code>import_role</code> ל-<code>include_role</code>, ומתי תעדיפו כל אחד?</summary>
+
+`import_role` הוא סטטי — נטען בזמן פענוח ה-Playbook, ולכן `--list-tags`/`--list-tasks` רואים את המשימות, אבל אי אפשר להחליט לפי תנאי דינמי או ללולאה. `include_role` הוא דינמי — נטען בזמן ריצה, ולכן אפשר `when` על סמך ערכים שחושבו ולולאות, במחיר פחות נראות מראש.
+
+</details>
+
+<details class="qa">
+<summary>3. איך מגדירים תלות בין Role אחד לשני (Role Dependencies)?</summary>
+
+בקובץ `roles/<role>/meta/main.yml` תחת `dependencies:` — Ansible יריץ את ה-Roles שברשימה לפני ה-Role הנוכחי. לדוגמה, Role של אפליקציה יכול להצהיר על תלות ב-Role של `common` שמתקין חבילות בסיס.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין Role ל-Collection?</summary>
+
+Role הוא יחידת ארגון של משימות, templates ומשתנים לנושא אחד. Collection היא חבילת הפצה רחבה יותר שיכולה להכיל כמה Roles יחד עם modules, plugins ו-filters משלה, עם namespace וגרסה — וזו צורת ההפצה הסטנדרטית ב-Ansible Galaxy כיום.
+
+</details>
+
+<details class="qa">
+<summary>5. איך תבנו מבנה פרויקט Ansible לתמיכה במספר סביבות (production/staging) בלי לשכפל קוד?</summary>
+
+שומרים Inventory נפרד לכל סביבה (`inventories/production/`, `inventories/staging/`) עם `group_vars`/`host_vars` משלו, ומשתמשים **באותם** Roles ו-Playbooks לשתיהן. ההבדל בין הסביבות מתבטא רק בערכי המשתנים, ולכן שינוי לוגי נעשה במקום אחד ונבדק ב-staging לפני production.
+
+</details>
+
+<details class="qa">
+<summary>6. מהם היתרונות של שימוש ב-Roles מוכנים מ-Galaxy (כמו geerlingguy) לעומת כתיבה מאפס?</summary>
+
+חוסכים זמן ומקבלים קוד שנבדק על הרבה הפצות, מטפל במקרי קצה ומתוחזק בקהילה. החסרונות: תלות בצד שלישי, צורך לבדוק את הקוד מבחינת אבטחה, ולנעול גרסה ב-`requirements.yml` כדי שעדכון לא ישבור לכם את הפריסה.
+
+</details>
 
 ## קישורים חיצוניים
 

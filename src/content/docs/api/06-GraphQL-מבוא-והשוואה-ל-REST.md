@@ -217,20 +217,40 @@ console.log(data.users);
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. מה ההבדל המרכזי בין REST ל-GraphQL?**
+<details class="qa">
+<summary>1. מה ההבדל המרכזי בין REST ל-GraphQL?</summary>
+
 ב-REST, השרת קובע איזה נתונים חוזרים מכל endpoint. ב-GraphQL, הלקוח קובע בדיוק אילו שדות הוא רוצה, דרך שאילתה יחידה ל-endpoint אחד.
 
-**2. מהי בעיית N+1 ב-GraphQL, ואיך פותרים אותה?**
+</details>
+
+<details class="qa">
+<summary>2. מהי בעיית N+1 ב-GraphQL, ואיך פותרים אותה?</summary>
+
 כשresolver לכל פריט ברשימה שולח query נפרד ל-DB (למשל להביא את ה"author" של כל פוסט בנפרד) - N פוסטים = N+1 שאילתות. פותרים עם DataLoader שמאגד (batches) בקשות דומות לשאילתה אחת.
 
-**3. איך מטפלים בשגיאות ב-GraphQL, בהשוואה ל-REST?**
+</details>
+
+<details class="qa">
+<summary>3. איך מטפלים בשגיאות ב-GraphQL, בהשוואה ל-REST?</summary>
+
 ב-REST משתמשים ב-HTTP status codes. ב-GraphQL, התשובה כמעט תמיד `200 OK`, והשגיאות מופיעות במערך `errors` בתוך גוף התשובה, לצד `data`.
 
-**4. מה זה Mutation ב-GraphQL?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה Mutation ב-GraphQL?</summary>
+
 פעולה שמשנה מצב (state) בשרת - מקביל ל-POST/PUT/PATCH/DELETE ב-REST.
 
-**5. האם GraphQL "טוב יותר" מ-REST?**
+</details>
+
+<details class="qa">
+<summary>5. האם GraphQL "טוב יותר" מ-REST?</summary>
+
 לא באופן מוחלט - זו בחירת ארכיטקטורה תלוית-הקשר. GraphQL פותר בעיות ספציפיות (over/under-fetching, multiple clients עם צרכים שונים) במחיר מורכבות נוספת.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

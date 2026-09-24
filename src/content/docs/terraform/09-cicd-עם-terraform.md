@@ -240,20 +240,40 @@ jobs:
 
 ## שאלות ראיון נפוצות
 
-**1. למה עדיף להריץ Terraform דרך CI/CD ולא ידנית?**
+<details class="qa">
+<summary>1. למה עדיף להריץ Terraform דרך CI/CD ולא ידנית?</summary>
+
 Audit trail, code review חובה, אבטחת credentials (OIDC במקום secrets סטטיים), עקביות בין ריצות, ומניעת "זה עבד אצלי במחשב".
 
-**2. מה זה OIDC ולמה הוא עדיף על שמירת AWS keys ב-CI secrets?**
+</details>
+
+<details class="qa">
+<summary>2. מה זה OIDC ולמה הוא עדיף על שמירת AWS keys ב-CI secrets?</summary>
+
 OpenID Connect מאפשר ל-CI (למשל GitHub Actions) לקבל טוקן זמני ולהתחזות ל-IAM Role בלי לאחסן credentials ארוכי טווח בכלל - מפחית משמעותית את משטח התקיפה.
 
-**3. איך הייתם בונים gate אישור ידני לפני apply בפרודקשן?**
+</details>
+
+<details class="qa">
+<summary>3. איך הייתם בונים gate אישור ידני לפני apply בפרודקשן?</summary>
+
 עם `when: manual` (GitLab), `environment protection rules` (GitHub Actions), או approval policies מובנות ב-HCP Terraform.
 
-**4. מה זה `-detailed-exitcode` ולמה הוא שימושי ב-CI?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה <code>-detailed-exitcode</code> ולמה הוא שימושי ב-CI?</summary>
+
 דגל שגורם ל-`terraform plan` להחזיר קוד יציאה שונה בהתאם למצב (0=אין שינוי, 2=יש שינוי, 1=שגיאה) - מאפשר לוגיקת CI לזהות ולהתריע על drift אוטומטית.
 
-**5. מה ההבדל בין lint/validate בשלב ה-PR לבין apply בשלב ה-merge?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין lint/validate בשלב ה-PR לבין apply בשלב ה-merge?</summary>
+
 `validate`/`fmt`/סריקות אבטחה רצים על כל PR כדי לתפוס בעיות מוקדם וזול; `apply` רץ רק לאחר merge (או עם gate ידני) כדי להבטיח שרק קוד שעבר review משפיע בפועל על תשתית אמיתית.
+
+</details>
 
 ---
 

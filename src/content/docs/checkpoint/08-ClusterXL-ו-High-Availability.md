@@ -98,13 +98,54 @@ clusterXL_admin up
 
 ## שאלות נפוצות לראיון עבודה בנושא זה
 
-1. מה ההבדל בין High Availability Mode ל-Load Sharing Mode ב-ClusterXL?
-2. מה תפקיד ה-Sync Interface ולמה הוא חייב להיות נפרד?
-3. מה קורה בפועל בתהליך Failover, ומה יכול לגרום לו?
-4. איך הייתם מבצעים תחזוקה (עדכון תוכנה) על קלאסטר מבלי לגרום להשבתה?
-5. מה זה CCP (Cluster Control Protocol)?
-6. איזו פקודה תשתמשו כדי לבדוק את מצב הקלאסטר וחבריו?
-7. מה ההבדל בין ClusterXL רגיל לפתרון כמו VSX או Maestro (ברמה גבוהה)?
+<details class="qa">
+<summary>1. מה ההבדל בין High Availability Mode ל-Load Sharing Mode ב-ClusterXL?</summary>
+
+ב-High Availability חבר אחד פעיל (Active) והשני ממתין (Standby) ומקבל סנכרון — פשוט, צפוי, וכל התעבורה עוברת דרך חבר אחד. ב-Load Sharing כל החברים מעבדים תעבורה בו-זמנית (Multicast או Unicast), מה שמגדיל תפוקה אך מורכב יותר לאבחון ותלוי בתמיכת המתגים ובהתנהגות פרוטוקולים א-סימטריים.
+
+</details>
+
+<details class="qa">
+<summary>2. מה תפקיד ה-Sync Interface ולמה הוא חייב להיות נפרד?</summary>
+
+דרכו עוברת טבלת החיבורים והמצב בין חברי הקלאסטר, כך שב-Failover החיבורים הקיימים ממשיכים לחיות. הוא חייב להיות ייעודי (ורצוי מחובר ישירות או ברשת נפרדת) כי הוא רגיש להשהיה ולאובדן — עומס על רשת משותפת עלול לגרום לסנכרון חלקי, ובמקרה הגרוע לשני חברים שמכריזים על עצמם כ-Active.
+
+</details>
+
+<details class="qa">
+<summary>3. מה קורה בפועל בתהליך Failover, ומה יכול לגרום לו?</summary>
+
+החבר הפעיל מפסיק להכריז על עצמו תקין (CCP), החבר השני עובר ל-Active, משתלט על ה-Virtual IP ושולח Gratuitous ARP כדי שהמתגים יפנו אליו — והחיבורים ממשיכים בזכות הסנכרון. גורמים אפשריים: נפילת ממשק או קו, כשל חומרה, תקלה ב-CCP, כישלון של תהליך קריטי (`cphaprob list`), עומס חריג או פעולה יזומה (`clusterXL_admin down`).
+
+</details>
+
+<details class="qa">
+<summary>4. איך הייתם מבצעים תחזוקה (עדכון תוכנה) על קלאסטר מבלי לגרום להשבתה?</summary>
+
+עובדים חבר-אחר-חבר: מורידים את חבר ה-Standby (`clusterXL_admin down`), מעדכנים אותו, מוודאים תקינות (`cphaprob stat`, בדיקת ממשקים ורישיונות), מחזירים אותו (`clusterXL_admin up`), מבצעים Failover מבוקר אליו, ורק אז מעדכנים את החבר השני. חשוב לוודא תאימות גרסאות בין החברים במהלך התהליך ולעבוד בחלון תחזוקה מוגדר.
+
+</details>
+
+<details class="qa">
+<summary>5. מה זה CCP (Cluster Control Protocol)?</summary>
+
+הפרוטוקול הפנימי שבו חברי הקלאסטר מחליפים ביניהם heartbeats ומידע מצב — כך כל חבר יודע אם האחרים חיים ומי אמור להיות Active. הוא עובר ברשת ה-Sync (ולעיתים גם בממשקים אחרים), ויכול לעבוד ב-Multicast או ב-Broadcast; בעיות במתג שחוסם את התעבורה הזו הן סיבה קלאסית ל-split-brain.
+
+</details>
+
+<details class="qa">
+<summary>6. איזו פקודה תשתמשו כדי לבדוק את מצב הקלאסטר וחבריו?</summary>
+
+`cphaprob stat` (או `cphaprob state`) להצגת מצב החברים — מי Active ומי Standby. בנוסף: `cphaprob -a if` למצב הממשקים המנוטרים, `cphaprob list` לתהליכים קריטיים שעלולים לגרום ל-Failover, ו-`cphaprob syncstat` לסטטיסטיקות הסנכרון.
+
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין ClusterXL רגיל לפתרון כמו VSX או Maestro (ברמה גבוהה)?</summary>
+
+ClusterXL מספק זמינות בין שני גייטוויים פיזיים. VSX הוא וירטואליזציה של גייטוויים — הרצת עשרות Virtual Systems עצמאיים על אותה חומרה, כל אחד עם מדיניות וטבלאות משלו. Maestro הוא Hyperscale: איחוד של הרבה גייטוויים ל"מכונה" לוגית אחת עם חלוקת עומסים דינמית והרחבה אופקית לפי הצורך.
+
+</details>
 
 ## קישורים חיצוניים
 

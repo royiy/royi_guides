@@ -245,35 +245,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. האם jobs שונים חולקים מערכת קבצים באותה ריצת workflow?**
+<details class="qa">
+<summary>1. האם jobs שונים חולקים מערכת קבצים באותה ריצת workflow?</summary>
+
 לא. כל job רץ על runner נפרד לגמרי. כדי להעביר קבצים בין jobs צריך להשתמש ב-artifacts (upload/download), ולערכים טקסטואליים - ב-outputs.
 
-**2. מה ההבדל בין `outputs` ל-`artifacts`?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין <code>outputs</code> ל-<code>artifacts</code>?</summary>
+
 Outputs מיועדים לערכים טקסטואליים קצרים (מחרוזות, מספרים) שמועברים בין steps או jobs. Artifacts מיועדים להעברת קבצים שלמים (תוצרי build, דוחות, לוגים).
 
-**3. איך גורמים ל-job לרוץ רק אחרי שjob אחר הצליח?**
+</details>
+
+<details class="qa">
+<summary>3. איך גורמים ל-job לרוץ רק אחרי שjob אחר הצליח?</summary>
+
 באמצעות `needs: <job_id>`, ובאופן דיפולטיבי ה-job לא ירוץ אם ה-job שממנו הוא תלוי נכשל.
 
-**4. מה זה `$GITHUB_OUTPUT` ולמה הוא החליף את `::set-output`?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה <code>$GITHUB_OUTPUT</code> ולמה הוא החליף את <code>::set-output</code>?</summary>
+
 זהו קובץ מיוחד שאליו כותבים ערכי output בפורמט `key=value`. הוא החליף את התחביר הישן `::set-output` מטעמי אבטחה - כדי למנוע command injection דרך פלט לוגים.
 
-**5. איך מריצים job בתוך קונטיינר Docker ולא ישירות על ה-VM?**
+</details>
+
+<details class="qa">
+<summary>5. איך מריצים job בתוך קונטיינר Docker ולא ישירות על ה-VM?</summary>
+
 באמצעות מפתח `container` ברמת ה-job, עם ציון `image` (ואופציונלית `env`, `options`, `volumes`).
 
-**6. מה קורה אם job A נכשל ו-job B תלוי בו עם needs?**
+</details>
+
+<details class="qa">
+<summary>6. מה קורה אם job A נכשל ו-job B תלוי בו עם needs?</summary>
+
 Job B ידולג אוטומטית (Skipped), אלא אם מגדירים במפורש `if: always()` או תנאי אחר שמאפשר ריצה גם במקרה כישלון.
 
-**7. איך מגדירים אישור ידני (manual approval) לפני פריסה לפרודקשן?**
+</details>
+
+<details class="qa">
+<summary>7. איך מגדירים אישור ידני (manual approval) לפני פריסה לפרודקשן?</summary>
+
 באמצעות `environment` ברמת ה-job, בשילוב עם הגדרת "required reviewers" בהגדרות ה-Environment בממשק GitHub.
 
-**8. מה ההבדל בין self-hosted runner עם label בודד למספר labels?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין self-hosted runner עם label בודד למספר labels?</summary>
+
 כשמגדירים `runs-on: [self-hosted, linux, gpu]`, ה-runner חייב להיות מתויג בכל ה-labels האלה יחד כדי שה-job ישתבץ אליו.
 
-**9. איך מעבירים משתנה בין שני steps באותו job?**
+</details>
+
+<details class="qa">
+<summary>9. איך מעבירים משתנה בין שני steps באותו job?</summary>
+
 באמצעות כתיבה ל-`$GITHUB_ENV` בשלב הראשון (למשתני סביבה לכל שאר ה-job), או `$GITHUB_OUTPUT` עם `id` בשלב הראשון וקריאה דרך `steps.<id>.outputs.<name>`.
 
-**10. מה קורה ל-artifacts אחרי כמה זמן?**
+</details>
+
+<details class="qa">
+<summary>10. מה קורה ל-artifacts אחרי כמה זמן?</summary>
+
 הם נמחקים אוטומטית לפי `retention-days` (ברירת מחדל בדרך כלל 90 יום, ניתן לשינוי), אלא אם מוגדר אחרת.
+
+</details>
 
 ## קישורים חיצוניים
 

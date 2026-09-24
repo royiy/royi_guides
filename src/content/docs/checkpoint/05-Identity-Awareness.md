@@ -78,12 +78,47 @@ Track: Log
 
 ## שאלות נפוצות לראיון עבודה בנושא זה
 
-1. מה ההבדל בין AD Query ל-Identity Agent? מתי תבחרו בכל אחד?
-2. מהו Access Role וכיצד הוא שונה מ-Network Object רגיל?
-3. איך פותרים מצב שבו AD Query לא מזהה משתמשים בכלל?
-4. מה זה Identity Sharing ולמה הוא נחוץ בסביבה מרובת Gateways?
-5. איזה שיטת זיהוי הייתם ממליצים לסביבת Terminal Server משותפת ולמה?
-6. מהם פרוטוקולי התקשורת הנדרשים בין הגייטווי ל-Domain Controller ב-AD Query?
+<details class="qa">
+<summary>1. מה ההבדל בין AD Query ל-Identity Agent? מתי תבחרו בכל אחד?</summary>
+
+AD Query הוא clientless — הגייטוויי קורא Security Events מבקרי הדומיין (WMI) וממפה משתמש לכתובת IP. פשוט לפריסה, אבל פחות מדויק ומתעדכן באיחור. Identity Agent הוא סוכן שמותקן בתחנה, מדווח בזמן אמת, תומך ב-SSO מבוסס Kerberos ומזהה נכון גם החלפת משתמשים. הכלל: AD Query לפריסה רחבה ומהירה, Identity Agent כשנדרשת דיוק גבוה או אכיפה מחמירה.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו Access Role וכיצד הוא שונה מ-Network Object רגיל?</summary>
+
+Access Role הוא אובייקט שמבוסס על **זהות** — משתמשים, קבוצות AD, מכונות ומיקום רשת — ולא על כתובת IP בלבד. כך כותבים כלל כמו "קבוצת Finance רשאית לגשת לשרת ה-ERP" שממשיך לעבוד גם כשהמשתמש מקבל IP אחר או עובר לעמדה אחרת.
+
+</details>
+
+<details class="qa">
+<summary>3. איך פותרים מצב שבו AD Query לא מזהה משתמשים בכלל?</summary>
+
+בודקים שחשבון השירות קיים ובעל הרשאות קריאת Security Log בבקרי הדומיין, שתקשורת WMI/DCOM פתוחה מהגייטוויי ל-DC, ששעון ו-DNS מסונכרנים, ושהאירועים הרלוונטיים (4624) בכלל נרשמים. לאבחון: `adlog a dc` לבדיקת חיבור לבקרים ו-`pdp monitor all` לראות אילו זהויות נלמדו בפועל.
+
+</details>
+
+<details class="qa">
+<summary>4. מה זה Identity Sharing ולמה הוא נחוץ בסביבה מרובת Gateways?</summary>
+
+מנגנון שבו גייטוויי שלמד זהות (PDP) משתף אותה עם גייטוויים אחרים שאוכפים (PEP). בלעדיו, משתמש שזוהה בגייטוויי אחד לא יזוהה בשני והכללים מבוססי הזהות לא ייאכפו — מה שמחייב חזרה על תהליך הזיהוי בכל נקודת אכיפה.
+
+</details>
+
+<details class="qa">
+<summary>5. איזה שיטת זיהוי הייתם ממליצים לסביבת Terminal Server משותפת ולמה?</summary>
+
+Identity Agent for Terminal Servers (Multi-User Host Agent). בשרת מסופים כל המשתמשים חולקים כתובת IP אחת, ולכן מיפוי IP↔משתמש של AD Query פשוט לא עובד. הסוכן הייעודי מקצה טווח פורטים לכל session ומאפשר להבחין בין המשתמשים.
+
+</details>
+
+<details class="qa">
+<summary>6. מהם פרוטוקולי התקשורת הנדרשים בין הגייטווי ל-Domain Controller ב-AD Query?</summary>
+
+AD Query מבוסס WMI מעל DCOM/RPC — כלומר פורט 135 (RPC Endpoint Mapper) ופורטים דינמיים גבוהים — בתוספת LDAP (389, או 636 מוצפן) לשאילתות על משתמשים וקבוצות. בנוסף נדרש שחשבון השירות יהיה מורשה לקרוא את יומן האבטחה בבקר הדומיין, ושהשעון וה-DNS יהיו מסונכרנים.
+
+</details>
 
 ## קישורים חיצוניים
 

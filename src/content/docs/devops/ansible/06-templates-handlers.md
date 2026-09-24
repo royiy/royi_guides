@@ -263,12 +263,55 @@ tasks:
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה קורה אם 3 Tasks שונים קוראים ל-`notify` לאותו handler באותו Play?
-2. איך גורמים ל-handler לרוץ מיד ולא לחכות לסוף ה-Play?
-3. מה ההבדל בין `copy` ל-`template` מבחינת עיבוד תוכן?
-4. מהו `validate` במודול `template`, ולמה הוא קריטי לקבצי קונפיגורציה של שרתי web?
-5. איך משתמשים ב-`hostvars` כדי לגשת למשתנה של שרת אחר בזמן בניית קובץ load balancer?
-6. מה עושה `listen` ב-handlers, ומתי כדאי להשתמש בו במקום `notify` ישיר?
+<details class="qa">
+<summary>1. מה קורה אם 3 Tasks שונים קוראים ל-<code>notify</code> לאותו handler באותו Play?</summary>
+
+ה-handler ירוץ פעם אחת בלבד, בסוף ה-Play. Ansible מאחד קריאות כפולות בכוונה — כך ששינוי בשלושה קבצי קונפיגורציה גורר restart אחד לשירות, ולא שלושה.
+
+</details>
+
+<details class="qa">
+<summary>2. איך גורמים ל-handler לרוץ מיד ולא לחכות לסוף ה-Play?</summary>
+
+מוסיפים משימת `meta: flush_handlers` בנקודה שבה רוצים שהם ירוצו — כל ה-handlers שהופעלו עד אותו רגע יתבצעו מיד. שימושי כשחייבים שהשירות יעלה מחדש לפני שהמשימות הבאות מסתמכות עליו.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין <code>copy</code> ל-<code>template</code> מבחינת עיבוד תוכן?</summary>
+
+`copy` מעתיק קובץ כמו שהוא, בייט בבייט. `template` מעביר את הקובץ (בדרך כלל בסיומת `.j2`) דרך מנוע Jinja2 בצד ה-Control Node — כך שמשתנים, תנאים ולולאות מוחלפים בערכים בפועל עבור כל מארח בנפרד.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו <code>validate</code> במודול <code>template</code>, ולמה הוא קריטי לקבצי קונפיגורציה של שרתי web?</summary>
+
+הוא מריץ פקודת בדיקה על הקובץ הזמני **לפני** שהוא מוחלף בפועל, למשל `validate: nginx -t -c %s`. אם הבדיקה נכשלת, הקובץ המקורי לא נדרס — וכך נמנע המצב הקלאסי שבו קונפיגורציה שגויה נכתבת, השירות מקבל reload ונופל בפרודקשן.
+
+</details>
+
+<details class="qa">
+<summary>5. איך משתמשים ב-<code>hostvars</code> כדי לגשת למשתנה של שרת אחר בזמן בניית קובץ load balancer?</summary>
+
+עוברים בלולאה על הקבוצה וקוראים את המשתנים של כל מארח דרך `hostvars`, למשל:
+
+```jinja
+{% for host in groups["webservers"] %}
+server {{ hostvars[host]["ansible_default_ipv4"]["address"] }}:80;
+{% endfor %}
+```
+
+כדי שזה יעבוד, ה-facts של אותם מארחים צריכים להיאסף (או להיות ב-cache).
+
+</details>
+
+<details class="qa">
+<summary>6. מה עושה <code>listen</code> ב-handlers, ומתי כדאי להשתמש בו במקום <code>notify</code> ישיר?</summary>
+
+`listen` נותן ל-handler "שם אירוע" שאפשר להפעיל, כך שמשימה אחת עם `notify: restart web stack` תפעיל כמה handlers שמאזינים לאותו אירוע. זה עדיף על `notify` ישיר כשרוצים להפעיל כמה פעולות יחד, או כשה-handlers מוגדרים ב-Role ואתם לא רוצים להיות תלויים בשמותיהם המדויקים.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -212,12 +212,47 @@ ansible web1.example.com -i inventory.ini -m setup -a "filter=ansible_distributi
 
 ## שאלות ראיון עבודה נפוצות
 
-1. הסבירו את סדר העדיפויות (Precedence) של משתנים ב-Ansible - מה מנצח את מה?
-2. מה ההבדל בין `vars`, `vars_files` ו-`vars_prompt`?
-3. איך אוספים Facts רק על תת-קבוצה ספציפית מה-Facts הכלליים (למשל, רק מידע רשת)?
-4. מתי כדאי לבטל `gather_facts` ומה המחיר של כך?
-5. מהו ההבדל בין `register` ל-`set_fact`?
-6. איך תבטיחו שסיסמה לא תופיע בלוג ההרצה (verbose output)?
+<details class="qa">
+<summary>1. הסבירו את סדר העדיפויות (Precedence) של משתנים ב-Ansible - מה מנצח את מה?</summary>
+
+מהנמוך לגבוה (בקירוב): `role defaults` → משתני inventory (`group_vars/all` → `group_vars` ספציפי → `host_vars`) → `vars` ב-Play → `vars_files` → `set_fact`/`register` → `role vars` → משתני Task → ולבסוף `-e` (extra vars) שגובר על הכול. הכלל לזכור: `defaults` הוא החלש ביותר, `-e` הוא החזק ביותר.
+
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין <code>vars</code>, <code>vars_files</code> ו-<code>vars_prompt</code>?</summary>
+
+`vars` מגדיר משתנים ישירות בתוך ה-Play; `vars_files` טוען אותם מקובץ חיצוני (נוח להפרדה בין קוד לקונפיגורציה, וגם לקבצים מוצפנים ב-Vault); `vars_prompt` מבקש את הערך מהמשתמש בזמן ההרצה — מתאים לערך חד-פעמי או רגיש שלא רוצים לשמור בקובץ.
+
+</details>
+
+<details class="qa">
+<summary>3. איך אוספים Facts רק על תת-קבוצה ספציפית מה-Facts הכלליים (למשל, רק מידע רשת)?</summary>
+
+עם `gather_subset`, למשל `gather_facts: true` בתוספת `gather_subset: ["network"]`, או ישירות במודול: `ansible.builtin.setup: gather_subset=network`. אפשר גם לשלול תת-קבוצות עם `!` (כמו `["!hardware"]`) כדי לקצר את זמן האיסוף.
+
+</details>
+
+<details class="qa">
+<summary>4. מתי כדאי לבטל <code>gather_facts</code> ומה המחיר של כך?</summary>
+
+כשה-Playbook לא משתמש בעובדות המערכת והמהירות חשובה — למשל משימת ping/deploy קצרה על מאות שרתים. המחיר: כל המשתנים האוטומטיים (`ansible_os_family`, `ansible_hostname`, כתובות IP וכו׳) לא יהיו זמינים, וכל `when` שמסתמך עליהם ייכשל. פשרה נפוצה: להשאיר `gather_facts: false` ולהריץ `setup` נקודתית רק היכן שצריך.
+
+</details>
+
+<details class="qa">
+<summary>5. מהו ההבדל בין <code>register</code> ל-<code>set_fact</code>?</summary>
+
+`register` שומר את **תוצאת הרצת ה-Task** (כולל `rc`, `stdout`, `changed`) במשתנה, ו-`set_fact` יוצר משתנה חדש עם ערך שאתם מחשבים בעצמכם. שניהם חיים ברמת המארח לאורך ה-Play, אבל `set_fact` מתאים לערך נגזר ("הגרסה שהחלטנו להתקין") ו-`register` לבדיקה של מה שקרה בפועל.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תבטיחו שסיסמה לא תופיע בלוג ההרצה (verbose output)?</summary>
+
+מוסיפים `no_log: true` למשימה שמטפלת בערך הרגיש — כך Ansible מסתיר את הפלט שלה. בנוסף שומרים את הסוד עצמו ב-Ansible Vault או ב-secrets manager חיצוני, כי `no_log` מסתיר תצוגה בלבד ולא מצפין דבר.
+
+</details>
 
 ## קישורים חיצוניים
 

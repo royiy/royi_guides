@@ -195,10 +195,33 @@ jobs:
 
 ## שאלות לחזרה עצמית
 
-1. מה ההבדל בין repository מבוסס HTTP ל-OCI registry?
-2. מדוע Artifact Hub החליף את Helm Hub?
-3. מה המשמעות של `~17.3.0` לעומת `^12.0.0` בהגדרת גרסת תלות?
-4. אילו שלושה קבצים נדרשים כדי ליצור repository מבוסס GitHub Pages?
+<details class="qa">
+<summary>1. מה ההבדל בין repository מבוסס HTTP ל-OCI registry?</summary>
+
+repository מבוסס HTTP הוא שרת סטטי שמארח קובץ `index.yaml` וקבצי `.tgz`, וצריך לעדכן את האינדקס בכל פרסום. ב-OCI registry ה-Charts נשמרים כ-artifacts באותו registry שבו יושבים ה-images, בלי `index.yaml`, עם אותו מנגנון אימות והרשאות — וזו הגישה המומלצת מאז Helm 3.8.
+
+</details>
+
+<details class="qa">
+<summary>2. מדוע Artifact Hub החליף את Helm Hub?</summary>
+
+כי Artifact Hub הוא פרויקט CNCF רחב יותר שמאנדקס לא רק Helm Charts אלא גם Operators, plugins, policies ו-artifacts נוספים, ומספק חיפוש, תיעוד, סימון Charts רשמיים ומידע אבטחה — במקום קטלוג ייעודי ל-Helm בלבד.
+
+</details>
+
+<details class="qa">
+<summary>3. מה המשמעות של <code>~17.3.0</code> לעומת <code>^12.0.0</code> בהגדרת גרסת תלות?</summary>
+
+`~17.3.0` מרשה עדכוני patch בלבד — כלומר `>=17.3.0 <17.4.0`. `^12.0.0` מרשה עדכוני minor ו-patch כל עוד ה-major לא משתנה — כלומר `>=12.0.0 <13.0.0`. בפרודקשן מעדיפים את הטווח הצר יותר, או נעילה מלאה דרך `Chart.lock`.
+
+</details>
+
+<details class="qa">
+<summary>4. אילו שלושה קבצים נדרשים כדי ליצור repository מבוסס GitHub Pages?</summary>
+
+צריך קובץ `index.yaml` (נוצר ב-`helm repo index . --url ...`) וקובץ `.tgz` ארוז לכל גרסת Chart (`helm package`), כשהם יושבים בענף או בתיקייה שמוגדרים כ-GitHub Pages. שלושת השלבים בפועל: `helm package` ליצירת ה-`.tgz`, `helm repo index` ליצירת האינדקס, ו-`git push` לענף `gh-pages`.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 4 - Templates ו-Values](/devops/helm/04-templates-values/)

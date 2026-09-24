@@ -239,10 +239,41 @@ helm install my-release ./fullstack-app
 
 ## שאלות לחזרה עצמית
 
-1. מה ההבדל בין `helm dependency update` ל-`helm dependency build`?
-2. איך מעבירים ערכים ל-subchart מסוים דרך ה-`values.yaml` של ה-Chart הראשי?
-3. מה תפקיד ה-`global` ב-values, ואיך הכיוון של ההעברה (למי מועבר למי)?
-4. למה חשוב קובץ `Chart.lock`?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>helm dependency update</code> ל-<code>helm dependency build</code>?</summary>
+
+`update` קורא את רשימת התלויות ב-`Chart.yaml`, מושך את הגרסאות המתאימות לטווח שהוגדר, ומעדכן את `Chart.lock`. `build` מתעלם מהטווחים ומתקין בדיוק את הגרסאות הנעולות ב-`Chart.lock` הקיים — ולכן זו הפקודה הנכונה ב-CI, כדי שהבנייה תהיה דטרמיניסטית.
+
+</details>
+
+<details class="qa">
+<summary>2. איך מעבירים ערכים ל-subchart מסוים דרך ה-<code>values.yaml</code> של ה-Chart הראשי?</summary>
+
+מקננים את הערכים תחת מפתח בשם ה-subchart (או ה-alias שהוגדר לו):
+
+```yaml
+postgresql:
+  auth:
+    database: myapp
+```
+
+כל מה שנמצא תחת `postgresql:` מועבר כ-values של ה-subchart בשם הזה ודורס את ברירות המחדל שלו.
+
+</details>
+
+<details class="qa">
+<summary>3. מה תפקיד ה-<code>global</code> ב-values, ואיך הכיוון של ההעברה (למי מועבר למי)?</summary>
+
+מפתחות תחת `global:` זמינים לכל ה-Charts בעץ — גם ל-parent וגם לכל ה-subcharts — ולכן משתמשים בהם לערכים משותפים כמו `imageRegistry` או `storageClass`. הכיוון הוא תמיד מלמעלה למטה: parent מעביר ל-subcharts, אבל subchart לא יכול להעביר ערכים ל-parent או ל-subchart אחר.
+
+</details>
+
+<details class="qa">
+<summary>4. למה חשוב קובץ <code>Chart.lock</code>?</summary>
+
+הוא נועל את הגרסאות המדויקות של התלויות (כולל digest), כך ש-`helm dependency build` יפיק את אותו תוצר בכל סביבה ובכל זמן — בדיוק כמו `package-lock.json`. בלעדיו, טווח גרסאות כמו `^12.0.0` עלול למשוך גרסה חדשה ושונה בפרודקשן.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 6 - Hooks](/devops/helm/06-hooks/)

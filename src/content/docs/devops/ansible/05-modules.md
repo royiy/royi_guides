@@ -330,12 +330,47 @@ ansible-doc -l | grep docker    # חיפוש מודולים הקשורים ל-do
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה ההבדל בין מודול `command` למודול `shell`, ומתי תבחרו בכל אחד?
-2. למה מודול ייעודי (כמו `apt`) עדיף על שימוש ב-`shell` להתקנת חבילה?
-3. הסבירו את ההבדל בין `service` ל-`systemd` module.
-4. איך תוודאו שקובץ קיים רק אם הוא לא קיים כבר, בלי לדרוס אותו כל הרצה?
-5. מה עושה הפרמטר `creates` במודול `command`?
-6. כיצד תריצו Task רק פעם אחת גם אם ה-Playbook רץ על 50 שרתים (למשל להרצת migration)?
+<details class="qa">
+<summary>1. מה ההבדל בין מודול <code>command</code> למודול <code>shell</code>, ומתי תבחרו בכל אחד?</summary>
+
+`command` מריץ את הפקודה ישירות, בלי shell — ולכן אין תמיכה ב-pipe, redirection, משתני סביבה או wildcards, וזה גם מה שהופך אותו לבטוח יותר. `shell` מריץ דרך `/bin/sh` ולכן תומך בכל אלה, במחיר חשיפה ל-injection. הכלל: `command` כברירת מחדל, `shell` רק כשבאמת צריך יכולות shell.
+
+</details>
+
+<details class="qa">
+<summary>2. למה מודול ייעודי (כמו <code>apt</code>) עדיף על שימוש ב-<code>shell</code> להתקנת חבילה?</summary>
+
+כי המודול הייעודי אידמפוטנטי — הוא בודק אם החבילה כבר מותקנת ומדווח `ok` במקום להתקין שוב, מחזיר מצב `changed` אמין, מטפל בשגיאות ובגרסאות, ועובד גם עם `--check`. `shell: apt install -y nginx` ירוץ בכל פעם, ידווח `changed` תמיד, ולא יעבוד נכון ב-dry-run.
+
+</details>
+
+<details class="qa">
+<summary>3. הסבירו את ההבדל בין <code>service</code> ל-<code>systemd</code> module.</summary>
+
+`service` הוא מודול גנרי שמזהה את מנהל השירותים של המערכת (systemd, SysV, upstart) ומתאים לעצמו — נוח כשה-Playbook רץ על הפצות שונות. `systemd` הוא ייעודי ל-systemd ולכן חושף יכולות שאין בגנרי, כמו `daemon_reload`, `masked` ו-`scope`.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תוודאו שקובץ קיים רק אם הוא לא קיים כבר, בלי לדרוס אותו כל הרצה?</summary>
+
+עם `ansible.builtin.copy` בתוספת `force: no` (יוצר רק אם אינו קיים), או `ansible.builtin.file` עם `state: touch` בשילוב `creates`/`when`. לקובץ שנוצר מפקודה משתמשים בפרמטר `creates` כדי לדלג על ההרצה אם הקובץ כבר שם.
+
+</details>
+
+<details class="qa">
+<summary>5. מה עושה הפרמטר <code>creates</code> במודול <code>command</code>?</summary>
+
+הוא מקבל נתיב לקובץ: אם הקובץ כבר קיים, Ansible **מדלג** על הרצת הפקודה ומדווח `ok`. כך הופכים פקודה חד-פעמית (כמו חילוץ ארכיון או הרצת installer) לאידמפוטנטית. `removes` הוא ההפך — מריץ רק אם הקובץ קיים.
+
+</details>
+
+<details class="qa">
+<summary>6. כיצד תריצו Task רק פעם אחת גם אם ה-Playbook רץ על 50 שרתים (למשל להרצת migration)?</summary>
+
+עם `run_once: true` — המשימה תרוץ על המארח הראשון בלבד (אפשר לשלב עם `delegate_to` כדי לקבוע על מי בדיוק), והתוצאה זמינה לכל שאר המארחים. זו הדרך הנכונה להרצת database migration פעם אחת בפריסה מרובת שרתים.
+
+</details>
 
 ## קישורים חיצוניים
 

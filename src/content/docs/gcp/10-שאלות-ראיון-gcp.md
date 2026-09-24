@@ -9,84 +9,184 @@ part: 10/10
 
 ## שאלות בסיסיות (Junior)
 
-**1. מה ההבדל בין Region ל-Zone ב-GCP?**
+<details class="qa">
+<summary>1. מה ההבדל בין Region ל-Zone ב-GCP?</summary>
+
 Region הוא אזור גיאוגרפי (למשל `europe-west3`), המכיל לפחות 3 Zones (מרכזי נתונים נפרדים). משאב Zonal (כמו VM) חי בתוך Zone בודד; לתכנון High Availability פורסים על פני כמה Zones באותו Region.
 
-**2. מה ההיררכיה של המשאבים ב-GCP?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההיררכיה של המשאבים ב-GCP?</summary>
+
 Organization → Folder → Project → Resource. מדיניות IAM שמוגדרת ברמה גבוהה יורשת אוטומטית לכל מה שמתחתיה.
 
-**3. מה ההבדל בין Basic Roles ל-Predefined Roles ב-IAM?**
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין Basic Roles ל-Predefined Roles ב-IAM?</summary>
+
 Basic Roles (Owner/Editor/Viewer) רחבים מאוד וחוצי-שירותים - לא מומלץ בפרודקשן. Predefined Roles ממוקדים לשירות ספציפי (למשל `roles/storage.objectViewer`) ותומכים בעיקרון Least Privilege.
 
-**4. מהו Service Account?**
+</details>
+
+<details class="qa">
+<summary>4. מהו Service Account?</summary>
+
 "משתמש" מיוחד המיועד לתהליכים ואפליקציות (לא לבני אדם), המאפשר ל-VM, פונקציה או Pipeline לבצע פעולות מול GCP APIs עם הרשאות מוגדרות.
 
-**5. מה ההבדל בין Compute Engine, Cloud Run ו-Cloud Functions?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין Compute Engine, Cloud Run ו-Cloud Functions?</summary>
+
 Compute Engine הוא IaaS - VM מלא בשליטתכם. Cloud Run הוא Container as a Service Serverless - מריץ כל Docker Image. Cloud Functions הוא FaaS - פונקציה בודדת שרצה בתגובה לאירוע.
 
-**6. מהם Storage Classes ב-Cloud Storage?**
+</details>
+
+<details class="qa">
+<summary>6. מהם Storage Classes ב-Cloud Storage?</summary>
+
 Standard (גישה תכופה), Nearline (פחות מפעם בחודש), Coldline (פחות מפעם ברבעון), Archive (פחות מפעם בשנה) - ההבדל העיקרי הוא עלות אחסון מול עלות שליפה וזמינות.
 
-**7. מה זה gcloud CLI?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה gcloud CLI?</summary>
+
 כלי שורת הפקודה הרשמי לניהול משאבי GCP - מאפשר ליצור, לעדכן ולמחוק כל משאב בפלטפורמה, כתחליף או השלמה ל-Console.
 
-**8. מה ההבדל בין VPC ב-GCP ל-VPC ב-AWS?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין VPC ב-GCP ל-VPC ב-AWS?</summary>
+
 ב-GCP, VPC הוא משאב **Global** שיכול להכיל Subnets במספר Regions תחת אותה רשת לוגית - בלי VPC Peering ביניהם. ב-AWS, VPC הוא Regional במהותו.
+
+</details>
 
 ## שאלות ברמה בינונית (Mid-Level)
 
-**9. הסבירו את ההבדל בין GKE Standard ל-GKE Autopilot.**
+<details class="qa">
+<summary>9. הסבירו את ההבדל בין GKE Standard ל-GKE Autopilot.</summary>
+
 ב-Standard אתם מנהלים את ה-Node Pools (Sizing, Scaling, תצורה) ומשלמים לפי VM. ב-Autopilot גוגל מנהלת את שכבת ה-Nodes לחלוטין, התמחור לפי Pod (CPU/Memory/Storage בפועל), וה-Best Practices לאבטחה נאכפים אוטומטית.
 
-**10. מהו Workload Identity ב-GKE ולמה הוא עדיף על מפתחות JSON?**
+</details>
+
+<details class="qa">
+<summary>10. מהו Workload Identity ב-GKE ולמה הוא עדיף על מפתחות JSON?</summary>
+
 מנגנון שמקשר בין Kubernetes Service Account ל-GCP Service Account ללא מפתחות סטטיים - מבטל את הצורך לאחסן Secrets בתוך ה-Cluster ומפחית סיכון דליפת אישורים.
 
-**11. מה ההבדל בין OLTP ל-OLAP, ואיך זה מכתיב את הבחירה בין Cloud SQL ל-BigQuery?**
+</details>
+
+<details class="qa">
+<summary>11. מה ההבדל בין OLTP ל-OLAP, ואיך זה מכתיב את הבחירה בין Cloud SQL ל-BigQuery?</summary>
+
 OLTP (Cloud SQL) מיועד לעסקאות בזמן אמת (הזמנות, מלאי). OLAP (BigQuery) מיועד לניתוח היקפי נתונים ענקיים (Analytics, BI) עם ביצועים מעולים בשאילתות Aggregation על מיליארדי שורות, אך פחות מתאים לעדכונים תכופים ברמת שורה בודדת.
 
-**12. מה זה Firewall Rule ב-GCP וכיצד הוא מסונן?**
+</details>
+
+<details class="qa">
+<summary>12. מה זה Firewall Rule ב-GCP וכיצד הוא מסונן?</summary>
+
 חוק Allow/Deny לתעבורה ברמת VPC (לא Subnet), מסונן לפי Network Tags, Service Account, או טווחי IP. הכללים Stateful - תגובה לחיבור מאושר מותרת אוטומטית.
 
-**13. מה ההבדל בין Cloud Functions ל-Cloud Run מבחינת Concurrency?**
+</details>
+
+<details class="qa">
+<summary>13. מה ההבדל בין Cloud Functions ל-Cloud Run מבחינת Concurrency?</summary>
+
 Cloud Functions Gen1 מטפל בבקשה אחת בכל פעם למופע. Cloud Run תומך בעד 1000 בקשות במקביל באותו Container Instance (בהנחה שהאפליקציה Thread-Safe), מה שהופך אותו ליעיל יותר לעומסים גבוהים.
 
-**14. איך פועל Autoscaling ב-Managed Instance Group?**
+</details>
+
+<details class="qa">
+<summary>14. איך פועל Autoscaling ב-Managed Instance Group?</summary>
+
 מגדירים מדד יעד (CPU Utilization, Load Balancing Capacity, או Custom Metric), min/max replicas, ו-cooldown period. ה-Autoscaler בודק את המדד באופן שוטף ומתאים את מספר המופעים בהתאם.
 
-**15. מהו Log Sink ולמה הוא נחוץ?**
+</details>
+
+<details class="qa">
+<summary>15. מהו Log Sink ולמה הוא נחוץ?</summary>
+
 חוק ניתוב לוגים מ-Cloud Logging ליעד חיצוני (BigQuery/Cloud Storage/Pub/Sub) - נדרש כי לוגים ב-Cloud Logging נשמרים כברירת מחדל רק 30 יום, וארכיון ארוך טווח או ניתוח מעמיק דורש הפניה החוצה.
 
-**16. מה ההבדל בין Regional Bucket ל-Multi-Region Bucket?**
+</details>
+
+<details class="qa">
+<summary>16. מה ההבדל בין Regional Bucket ל-Multi-Region Bucket?</summary>
+
 Regional זול יותר ומהיר לגישה ממקום קרוב גיאוגרפית. Multi-Region עולה יותר אך מספק זמינות גבוהה יותר וגישה מהירה מכל מקום ביבשת (למשל כל אירופה).
+
+</details>
 
 ## שאלות מתקדמות (Senior)
 
-**17. איך תתכננו ארכיטקטורת Multi-Region עם High Availability ל-Cloud SQL?**
+<details class="qa">
+<summary>17. איך תתכננו ארכיטקטורת Multi-Region עם High Availability ל-Cloud SQL?</summary>
+
 שימוש ב-Regional Instance (Primary + Standby Zone שונה) להגנה מפני נפילת Zone, בשילוב Read Replicas ב-Region נוסף לקריאה מהירה ו-Disaster Recovery. Failover אוטומטי מנוהל ע"י GCP במקרה Regional Instance.
 
-**18. מה ההבדל בין VPC Peering ל-Shared VPC, ומתי תבחרו כל אחד?**
+</details>
+
+<details class="qa">
+<summary>18. מה ההבדל בין VPC Peering ל-Shared VPC, ומתי תבחרו כל אחד?</summary>
+
 VPC Peering מחבר שתי רשתות VPC נפרדות (כל אחת עם הבעלות והניהול שלה) - מתאים לחיבור בין ארגונים/פרויקטים עצמאיים. Shared VPC מאפשר לפרויקט "Host" לשתף Subnets עם פרויקטי "Service" מרובים תחת ניהול רשת מרכזי - מתאים לארגון גדול עם צוותי Dev מרובים שצריכים לחלוק תשתית רשת אחידה.
 
-**19. כיצד תעצבו אסטרטגיית CI/CD מאובטחת שמפרסת ל-Cloud Run/GKE מ-GitHub Actions בלי לשמור מפתחות JSON?**
+</details>
+
+<details class="qa">
+<summary>19. כיצד תעצבו אסטרטגיית CI/CD מאובטחת שמפרסת ל-Cloud Run/GKE מ-GitHub Actions בלי לשמור מפתחות JSON?</summary>
+
 שימוש ב-Workload Identity Federation - מגדירים Identity Pool ו-Provider ב-GCP שסומכים על ה-OIDC Token שגוגל מנפיקה עבור GitHub Actions, מקשרים אותו ל-Service Account עם הרשאות מדויקות, וכך ה-Pipeline מקבל אסימון זמני בלי מפתח סטטי בכלל.
 
-**20. מה ההבדל בין Cloud Spanner ל-Cloud SQL, ומתי תבחרו ב-Spanner?**
+</details>
+
+<details class="qa">
+<summary>20. מה ההבדל בין Cloud Spanner ל-Cloud SQL, ומתי תבחרו ב-Spanner?</summary>
+
 Cloud SQL הוא מסד יחסי קלאסי (MySQL/PostgreSQL) עם Scaling אנכי מוגבל. Cloud Spanner הוא מסד יחסי גלובלי הניתן ל-Horizontal Scaling עם Strong Consistency גם על פני Regions מרובים - מתאים לאפליקציות גלובליות בקנה מידה ענק (כמו מערכות פיננסיות רב-לאומיות) שדורשות גם עקביות חזקה וגם Scale אופקי.
 
-**21. איך תתכננו Partitioning ו-Clustering נכון ב-BigQuery לטבלת Events ענקית?**
+</details>
+
+<details class="qa">
+<summary>21. איך תתכננו Partitioning ו-Clustering נכון ב-BigQuery לטבלת Events ענקית?</summary>
+
 Partition לפי עמודת תאריך (`_PARTITIONTIME` או שדה DATE ייעודי) לצמצום סריקה לפי טווח זמן, ו-Clustering לפי עמודות שנשאלות בתדירות גבוהה ב-WHERE/GROUP BY (למשל `customer_id`) - משפר משמעותית ביצועים ומפחית עלות סריקה.
 
-**22. מה ההבדל בין Preemptible/Spot VM ל-Committed Use Discount, ומתי כל אחד מתאים?**
+</details>
+
+<details class="qa">
+<summary>22. מה ההבדל בין Preemptible/Spot VM ל-Committed Use Discount, ומתי כל אחד מתאים?</summary>
+
 Spot VM מספק הנחה עצומה (עד 91%) אך ניתן לכיבוי בכל רגע - מתאים לעומסים Fault-Tolerant כמו Batch Processing. Committed Use Discount מספק הנחה (עד 57%) בתמורה להתחייבות שימוש קבועה ל-1-3 שנים - מתאים לעומס Baseline יציב וידוע מראש.
 
-**23. איך תבצעו Canary Deployment ב-Cloud Run עם Rollback מהיר?**
+</details>
+
+<details class="qa">
+<summary>23. איך תבצעו Canary Deployment ב-Cloud Run עם Rollback מהיר?</summary>
+
 פורסים Revision חדש עם `--no-traffic` ו-`--tag=canary`, מנתבים אחוז קטן מהתעבורה (`update-traffic --to-tags=canary=10`) ובודקים מדדים ב-Cloud Monitoring. אם תקין - מגדילים הדרגתית ל-100%; אם יש בעיה - `update-traffic` בחזרה ל-Revision היציב הקודם תוך שניות, ללא Downtime.
 
-**24. מהי אסטרטגיית ה-Security Layering שתיישמו בפרויקט GCP חדש בארגון?**
+</details>
+
+<details class="qa">
+<summary>24. מהי אסטרטגיית ה-Security Layering שתיישמו בפרויקט GCP חדש בארגון?</summary>
+
 Organization Policies לאכיפת מדיניות רוחבית (מניעת IP ציבורי, אכיפת Domain-restricted sharing), IAM עם Least Privilege וקבוצות, VPC Service Controls להגבלת גישה ל-APIs מחוץ לגבול מוגדר, Uniform Bucket-Level Access בכל Storage, Binary Authorization ב-GKE לאכיפת אימג'ים חתומים בלבד, ו-Security Command Center לניטור מתמשך.
 
-**25. איך תתכננו Disaster Recovery בין שני Regions ל-GKE + Cloud SQL?**
+</details>
+
+<details class="qa">
+<summary>25. איך תתכננו Disaster Recovery בין שני Regions ל-GKE + Cloud SQL?</summary>
+
 Cluster GKE כפול (Active-Active או Active-Passive) בשני Regions עם Global Load Balancer שמנתב לפי Health/Latency, Cloud SQL עם Cross-Region Read Replica שניתן לקדם ל-Primary במקרה כשל (Promotion), וגיבוי אוטומטי + Point-in-Time Recovery כרשת ביטחון נוספת. חשוב לתעד ולתרגל RTO/RPO בפועל, לא רק בתיאוריה.
+
+</details>
 
 ## סימולציית תרחיש (Scenario-Based) - נפוץ בראיונות Senior
 

@@ -138,8 +138,38 @@ vCenter Events
 
 ## שאלות ראיון
 
-1. למה צריך vCenter?
-2. מהו VCSA?
-3. מהו Datacenter ב-vCenter?
-4. מהו Cluster?
-5. איך היית פותר Host שהפך ל-Not Responding?
+<details class="qa">
+<summary>1. למה צריך vCenter?</summary>
+
+כי בלעדיו כל Host מנוהל בנפרד ואין קלאסטר. vCenter מרכז ניהול של כל ה-Hosts, ומאפשר את היכולות שמתבססות על ראייה כוללת: vMotion, HA, DRS, Templates ו-Cloning, הרשאות מבוססות תפקידים, ניטור, Alarms ודוחות.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו VCSA?</summary>
+
+vCenter Server Appliance — מכונה וירטואלית מוכנה מבוססת Photon OS שמריצה את vCenter, כולל מסד הנתונים המובנה (vPostgres). זו הצורה היחידה הנתמכת כיום (הגרסה על Windows הוצאה משימוש), והיא כוללת ממשק ניהול משלה (VAMI) לגיבוי, עדכונים וניטור.
+
+</details>
+
+<details class="qa">
+<summary>3. מהו Datacenter ב-vCenter?</summary>
+
+אובייקט לוגי בראש ההיררכיה שמאגד Hosts, Clusters, רשתות ו-Datastores — גבול אדמיניסטרטיבי שבתוכו מתבצעות פעולות כמו vMotion. הוא לא חייב להיות חדר שרתים פיזי; זו יחידת ארגון בעץ הניהול.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו Cluster?</summary>
+
+קבוצת Hosts שמנוהלת כיחידה אחת ומשתפת משאבים, ועליה מפעילים את יכולות הזמינות והאיזון: HA, DRS, EVC ולעיתים vSAN. הקלאסטר הוא מה שמאפשר לראות את המשאבים כ"בריכה" אחת במקום שרתים בודדים.
+
+</details>
+
+<details class="qa">
+<summary>5. איך היית פותר Host שהפך ל-Not Responding?</summary>
+
+קודם בודקים אם זו בעיית ניהול בלבד או שה-VMs באמת נפלו (ping ל-VMs ולכתובת הניהול). משם: קישוריות רשת הניהול, מצב שירותי ה-Host (`services.sh restart` דרך SSH/DCUI), ה-agents של vCenter (`vpxa`/`hostd`), סנכרון שעון ו-DNS, ולוגים `/var/log/vmkernel.log` ו-`hostd.log`. אם ה-VMs שרדו — מטפלים בשקט; אם ה-Host באמת נפל — HA אמור היה להפעיל אותן מחדש במקום אחר.
+
+</details>
+

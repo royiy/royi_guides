@@ -37,10 +37,19 @@ aws iam create-policy --policy-name MyCustomPolicy --policy-document file://poli
 * לעולם אל תשתמשו ב-Root Account לעבודה יומיומית!
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל בין IAM Role ל-IAM User?
-   **תשובה:** User מייצג ישות קבועה עם Credentials קבועים (סיסמה או Access Keys). Role מייצג הרשאות זמניות שניתן "לאמץ" על ידי שירותים (כמו EC2) או משתמשים, ללא Credentials קבועים, מה שהופך אותו למאובטח יותר.
-2. **שאלה:** מה זה Policy Evaluation ב-AWS?
-   **תשובה:** ברירת המחדל היא Deny. אם יש Allow מפורש זה יאפשר את הפעולה, אך אם יש Deny מפורש באחד מה-Policies, ה-Deny תמיד ינצח (Explicit Deny).
+<details class="qa">
+<summary>1. מה ההבדל בין IAM Role ל-IAM User?</summary>
+
+User מייצג ישות קבועה עם Credentials קבועים (סיסמה או Access Keys). Role מייצג הרשאות זמניות שניתן "לאמץ" על ידי שירותים (כמו EC2) או משתמשים, ללא Credentials קבועים, מה שהופך אותו למאובטח יותר.
+
+</details>
+
+<details class="qa">
+<summary>2. מה זה Policy Evaluation ב-AWS?</summary>
+
+ברירת המחדל היא Deny. אם יש Allow מפורש זה יאפשר את הפעולה, אך אם יש Deny מפורש באחד מה-Policies, ה-Deny תמיד ינצח (Explicit Deny).
+
+</details>
 
 ## קישורים שימושיים
 * [AWS IAM Documentation](https://docs.aws.amazon.com/iam/)

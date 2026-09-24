@@ -135,23 +135,47 @@ print(data)
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. מה ההבדל בין API ל-REST API?**
+<details class="qa">
+<summary>1. מה ההבדל בין API ל-REST API?</summary>
+
 API הוא מושג כללי לכל ממשק בין תוכנות. REST API הוא סוג ספציפי של Web API שמיישם (בדרך כלל חלקית) את העקרונות הארכיטקטוניים של REST, ומבוסס על HTTP.
 
-**2. מהם עקרונות ה-REST המרכזיים?**
+</details>
+
+<details class="qa">
+<summary>2. מהם עקרונות ה-REST המרכזיים?</summary>
+
 Client-Server, Statelessness, Cacheability, Uniform Interface, Layered System, ו-Code on Demand (אופציונלי). מומלץ לדעת להסביר כל אחד בכמה מילים, לא רק לשנן שמות.
 
-**3. למה REST הוא Stateless, ומה היתרון בכך?**
+</details>
+
+<details class="qa">
+<summary>3. למה REST הוא Stateless, ומה היתרון בכך?</summary>
+
 כי כל בקשה מכילה את כל המידע הדרוש לביצועה, בלי תלות בבקשות קודמות. זה מאפשר **scalability** קל יותר - כל שרת יכול לטפל בכל בקשה בלי צורך "לזכור" את הלקוח, מה שמקל על load balancing.
 
-**4. מה זה Idempotency (אידמפוטנטיות) ולמה זה חשוב ב-REST?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה Idempotency (אידמפוטנטיות) ולמה זה חשוב ב-REST?</summary>
+
 פעולה אידמפוטנטית היא פעולה שאם מבצעים אותה כמה פעמים ברצף, התוצאה זהה לביצוע פעם אחת. GET, PUT ו-DELETE הן אידמפוטנטיות; POST לרוב לא. זה חשוב כי במקרה של timeout או retry ברשת, אתם רוצים לדעת אם בטוח לשלוח את הבקשה שוב.
 
-**5. מה ההבדל בין PUT ל-PATCH?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין PUT ל-PATCH?</summary>
+
 PUT מחליף את כל המשאב (עדכון מלא), PATCH מעדכן רק חלק ממנו (עדכון חלקי). נרחיב על כך במדריך הבא על HTTP Methods.
 
-**6. האם API חייב להיות RESTful כדי להיחשב "טוב"?**
+</details>
+
+<details class="qa">
+<summary>6. האם API חייב להיות RESTful כדי להיחשב "טוב"?</summary>
+
 לא. יש מקרים שבהם GraphQL, gRPC או אפילו WebSockets מתאימים יותר, תלוי בצרכי המערכת (למשל: אם הלקוח צריך שליטה גמישה בשדות שמוחזרים - GraphQL עדיף; אם צריך תקשורת בזמן אמת דו-כיוונית - WebSockets).
+
+</details>
 
 ## טיפים וטריקים
 

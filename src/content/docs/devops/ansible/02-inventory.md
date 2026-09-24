@@ -248,11 +248,40 @@ ansible webservers -i inventory.ini --list-hosts
 
 ## שאלות ראיון עבודה נפוצות
 
-1. מה ההבדל בין Static Inventory ל-Dynamic Inventory, ומתי תבחרו בכל אחד?
-2. כיצד Ansible פותר קונפליקט כאשר אותו משתנה מוגדר גם ב-`group_vars` וגם ב-`host_vars`?
-3. איך תבנו Inventory עבור סביבת AWS עם מאות מכונות שמתעדכנות תדיר?
-4. מה ההבדל בין `ansible_host` לבין שם המארח (hostname) ב-Inventory?
-5. כיצד ניתן להריץ Playbook רק על תת-קבוצה מסוימת מתוך Group גדול (למשל, רק 5 שרתים מתוך 100)?
+<details class="qa">
+<summary>1. מה ההבדל בין Static Inventory ל-Dynamic Inventory, ומתי תבחרו בכל אחד?</summary>
+
+Static Inventory הוא קובץ ידני (INI או YAML) עם רשימת מארחים קבועה — פשוט, קריא ומתאים לסביבות שבהן השרתים לא משתנים הרבה. Dynamic Inventory הוא plugin או סקריפט שמושך את רשימת המארחים בזמן ריצה ממקור אמת חיצוני (AWS, Azure, vSphere, CMDB) — הכרחי בענן, שבו מכונות קמות ונכבות כל הזמן והרשימה הידנית מתיישנת מיד.
+
+</details>
+
+<details class="qa">
+<summary>2. כיצד Ansible פותר קונפליקט כאשר אותו משתנה מוגדר גם ב-<code>group_vars</code> וגם ב-<code>host_vars</code>?</summary>
+
+`host_vars` תמיד מנצח — הכלל הוא שככל שההגדרה ספציפית יותר למארח, כך העדיפות שלה גבוהה יותר. בתוך `group_vars` עצמו, קבוצה "ילדה" (child) גוברת על קבוצת האב, ו-`all` הוא בעל העדיפות הנמוכה ביותר.
+
+</details>
+
+<details class="qa">
+<summary>3. איך תבנו Inventory עבור סביבת AWS עם מאות מכונות שמתעדכנות תדיר?</summary>
+
+עם Dynamic Inventory — ה-plugin הרשמי `amazon.aws.aws_ec2`, שמושך את המכונות ישירות מה-API וממפה אותן לקבוצות אוטומטית לפי Tags, Region, VPC או סוג instance. כך אין צורך לתחזק רשימת IP ידנית, ומכונה חדשה שנוצרת עם ה-Tag הנכון נכנסת לקבוצה שלה מיד.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>ansible_host</code> לבין שם המארח (hostname) ב-Inventory?</summary>
+
+שם המארח ב-Inventory הוא ה-alias שבו משתמשים בתוך Ansible (וכך הוא מופיע בפלט ובקבוצות). `ansible_host` הוא כתובת ה-IP או ה-DNS שאליה Ansible באמת מתחבר. כך אפשר לקרוא לשרת `web1` ולהתחבר אליו לפי `ansible_host: 10.0.1.25` בלי תלות ב-DNS.
+
+</details>
+
+<details class="qa">
+<summary>5. כיצד ניתן להריץ Playbook רק על תת-קבוצה מסוימת מתוך Group גדול (למשל, רק 5 שרתים מתוך 100)?</summary>
+
+עם `--limit`, שמקבל שמות, תבניות או חיתוכים — למשל `ansible-playbook site.yml --limit "web[0:4]"`, `--limit web1,web2` או `--limit "webservers:&tel-aviv"`. לבדיקה מראש מה ייבחר משתמשים ב-`ansible-inventory --graph` או ב-`--list-hosts`.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -36,10 +36,19 @@ cdk diff
 * לעולם (אבל לעולם!) אל תשנו ידנית דרך ה-Console משאבים שנוצרו על ידי CloudFormation או Terraform. הדבר ייצור Drift ועלול לשבור את התשתית.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מהו CloudFormation Drift ואיך מתמודדים איתו?
-   **תשובה:** Drift מתרחש כאשר משאב שנוהל על ידי CF שונה באופן ידני מחוץ ל-CF (למשל פתיחת פורט ב-Security Group מהקונסול). ניתן לגלות זאת על ידי הרצת Drift Detection דרך הקונסול, ויש לתקן את קוד ה-YAML כך שיתאים למצב החדש או להחזיר את המצב הידני לקדמותו.
-2. **שאלה:** למה שחברה תבחר ב-Terraform על פני CloudFormation?
-   **תשובה:** טרפורם עובד מעולה בסביבות Multi-Cloud (AWS + GCP/Azure). בנוסף, טרפורם מציע מנגנון State עוצמתי וסינטקס (HCL) שחלק מוצאים כקריא יותר מ-YAML ארוך של CF.
+<details class="qa">
+<summary>1. מהו CloudFormation Drift ואיך מתמודדים איתו?</summary>
+
+Drift מתרחש כאשר משאב שנוהל על ידי CF שונה באופן ידני מחוץ ל-CF (למשל פתיחת פורט ב-Security Group מהקונסול). ניתן לגלות זאת על ידי הרצת Drift Detection דרך הקונסול, ויש לתקן את קוד ה-YAML כך שיתאים למצב החדש או להחזיר את המצב הידני לקדמותו.
+
+</details>
+
+<details class="qa">
+<summary>2. למה שחברה תבחר ב-Terraform על פני CloudFormation?</summary>
+
+טרפורם עובד מעולה בסביבות Multi-Cloud (AWS + GCP/Azure). בנוסף, טרפורם מציע מנגנון State עוצמתי וסינטקס (HCL) שחלק מוצאים כקריא יותר מ-YAML ארוך של CF.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS CDK Documentation](https://docs.aws.amazon.com/cdk/)

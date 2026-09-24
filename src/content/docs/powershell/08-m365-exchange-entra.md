@@ -114,12 +114,55 @@ $password = "P@ssword123"
 העדף Authentication מודרני, Managed Identity/Certificate/App Registration לפי התרחיש, או SecureString רק במקרים שבהם הוא באמת מתאים.
 
 ## שאלות ראיון
-1. איך תאתר משתמשים ללא MFA?
-2. איך תוציא רשימת Mailboxes ל-CSV?
-3. מה ההבדל בין Microsoft Graph לבין Exchange Online PowerShell?
-4. איך תחקור Mail Flow?
-5. מה הסיכון בהרצת Bulk command עם `-ResultSize Unlimited`?
-6. איך תעבוד עם הרשאות Least Privilege?
+<details class="qa">
+<summary>1. איך תאתר משתמשים ללא MFA?</summary>
+
+דרך Microsoft Graph: שולפים את שיטות האימות הרשומות לכל משתמש (`Get-MgUserAuthenticationMethod`) ומזהים מי שאין לו שיטה חזקה, או משתמשים בדוח `Get-MgReportAuthenticationMethodUserRegistrationDetail`. חשוב לזכור שבסביבה מודרנית האכיפה מתבצעת ב-Conditional Access, ולכן בודקים גם אילו משתמשים אינם בהיקף המדיניות.
+
+</details>
+
+<details class="qa">
+<summary>2. איך תוציא רשימת Mailboxes ל-CSV?</summary>
+
+מתחברים עם `Connect-ExchangeOnline`, שולפים ובוחרים רק את השדות הדרושים:
+
+```powershell
+Get-Mailbox -ResultSize Unlimited |
+  Select-Object DisplayName, PrimarySmtpAddress, RecipientTypeDetails |
+  Export-Csv .\mailboxes.csv -NoTypeInformation -Encoding UTF8
+```
+
+חשוב לא להריץ `Format-Table` לפני `Export-Csv`, אחרת מייצאים אובייקטי עיצוב במקום נתונים.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין Microsoft Graph לבין Exchange Online PowerShell?</summary>
+
+Microsoft Graph הוא ה-API האחיד והעתידי לכל Microsoft 365 — משתמשים, קבוצות, התקנים, רישוי ואבטחה — ועובד דרך `Microsoft.Graph` module עם הרשאות scope מוגדרות. Exchange Online PowerShell הוא מודול ייעודי עם cmdlets עמוקים לניהול דואר (mailbox, transport rules, mail flow) שחלקם עדיין אינם קיימים ב-Graph. בפועל משלבים: Graph לזהות ורישוי, EXO לדואר.
+
+</details>
+
+<details class="qa">
+<summary>4. איך תחקור Mail Flow?</summary>
+
+מתחילים ב-`Get-MessageTrace` (או `Get-MessageTraceDetail` לפירוט) לפי שולח, נמען וטווח זמן, כדי לראות היכן ההודעה נעצרה. משם בודקים כללי תעבורה (`Get-TransportRule`), הגדרות דומיין ורשומות DNS (SPF/DKIM/DMARC), ואת דוחות ההגנה ב-Defender. הסדר החשוב: קודם לאתר את ההודעה בפועל, ורק אז לשער השערות.
+
+</details>
+
+<details class="qa">
+<summary>5. מה הסיכון בהרצת Bulk command עם <code>-ResultSize Unlimited</code>?</summary>
+
+שליפה של עשרות אלפי אובייקטים בבת אחת צורכת זיכרון, לוקחת זמן רב ועלולה להיתקל ב-throttling של השירות ולהיכשל באמצע. אם מדובר בפקודה שמשנה מצב, הסיכון גדול יותר: שינוי רוחבי על כל הארגון בלי אפשרות לעצור. לכן מסננים, עובדים באצוות ומריצים קודם `-WhatIf`.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תעבוד עם הרשאות Least Privilege?</summary>
+
+משתמשים בתפקידי RBAC ייעודיים במקום Global Admin, מפעילים אותם רק בזמן הצורך דרך PIM (Privileged Identity Management), ומבקשים ב-Graph רק את ה-scopes הנדרשים לפעולה (למשל `User.Read.All` במקום `Directory.ReadWrite.All`). לאוטומציה משתמשים ב-App Registration עם הרשאות מצומצמות ו-certificate במקום סיסמה.
+
+</details>
 
 ## תרגיל
 בנה דוח יומי:
@@ -130,7 +173,6 @@ $password = "P@ssword123"
 - Primary SMTP
 - Last sign-in כאשר הנתון/הרשאות מאפשרים
 - Export CSV
-
 
 ## מקורות מומלצים
 
@@ -148,8 +190,6 @@ $password = "P@ssword123"
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Microsoft 365 / Exchange בתרחישים יום-יומיים
 

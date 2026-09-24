@@ -44,12 +44,26 @@ Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 *   **Best Practice:** תמיד השאירו משתמש Local Administrator עם סיסמה חזקה למקרי חירום (Break-glass account) למקרה שהדומיין קורס ואין אפשרות להתחבר עם משתמש רשת.
 
 ## שאלות ראיון עבודה 🎯
-1. **שאלה:** מה ההבדל בין Roles ל-Features ב-Windows Server?
-   *תשובה:* Role הוא התפקיד המרכזי של השרת (לדוגמה: שרת קבצים, שרת DNS, בקר דומיין). Feature הוא תוספת או כלי עזר התומך ב-Roles או בשרת עצמו (לדוגמה: Failover Clustering, תכונות גיבוי, BitLocker).
-2. **שאלה:** מדוע משתמשים ב-Sysprep, ומה עלול לקרות אם לא נשתמש בו לפני יצירת קלון (Clone) לשרת?
-   *תשובה:* Sysprep מכין את המערכת להפצה. אם נשכפל שרת ללא Sysprep, שני השרתים יקבלו את אותו SID (Security Identifier). ברשת Active Directory הדבר יגרום להתנגשויות חמורות, בעיות הרשאות וקריסת שירותים, מכיוון שה-AD מזהה מחשבים לפי ה-SID ולא לפי השם.
-3. **שאלה:** מה היתרון של Server Core?
-   *תשובה:* אבטחה (שטח תקיפה קטן), פחות תקלות תוכנה, התקנה קלה, דורש פחות הפעלות מחדש לאחר עדכונים, וחיסכון משמעותי במשאבי RAM ו-CPU.
+<details class="qa">
+<summary>1. מה ההבדל בין Roles ל-Features ב-Windows Server?</summary>
+
+Role הוא התפקיד המרכזי של השרת (לדוגמה: שרת קבצים, שרת DNS, בקר דומיין). Feature הוא תוספת או כלי עזר התומך ב-Roles או בשרת עצמו (לדוגמה: Failover Clustering, תכונות גיבוי, BitLocker).
+
+</details>
+
+<details class="qa">
+<summary>2. מדוע משתמשים ב-Sysprep, ומה עלול לקרות אם לא נשתמש בו לפני יצירת קלון (Clone) לשרת?</summary>
+
+Sysprep מכין את המערכת להפצה. אם נשכפל שרת ללא Sysprep, שני השרתים יקבלו את אותו SID (Security Identifier). ברשת Active Directory הדבר יגרום להתנגשויות חמורות, בעיות הרשאות וקריסת שירותים, מכיוון שה-AD מזהה מחשבים לפי ה-SID ולא לפי השם.
+
+</details>
+
+<details class="qa">
+<summary>3. מה היתרון של Server Core?</summary>
+
+אבטחה (שטח תקיפה קטן), פחות תקלות תוכנה, התקנה קלה, דורש פחות הפעלות מחדש לאחר עדכונים, וחיסכון משמעותי במשאבי RAM ו-CPU.
+
+</details>
 
 ## קישורים חיצוניים 🔗
 *   [דוקומנטציה רשמית ל-Windows Server 2022 (Microsoft Learn)](https://learn.microsoft.com/en-us/windows-server/)

@@ -54,12 +54,26 @@ Resolve-DnsName -Name _ldap._tcp.dc._msdcs.corp.local -Type SRV
 *   **DNS Scavenging:** ודאו שאתם מפעילים Aging & Scavenging בשרת ה-DNS. זה מנגנון קריטי שמוחק אוטומטית רשומות DNS ישנות של מחשבים שכבר לא קיימים ברשת, מה שמונע התנגשויות (IP Conflict) ובלאגן ב-DNS.
 
 ## שאלות ראיון עבודה 🎯
-1. **שאלה:** מה ההבדל בין רשומת Forward Lookup Zone ל-Reverse Lookup Zone?
-   *תשובה:* Forward מתרגם שם לכתובת IP (למשל `PC1.corp.local` יחזיר `10.0.0.5`). Reverse מתרגם כתובת IP חזרה לשם (למשל `10.0.0.5` יחזיר `PC1`).
-2. **שאלה:** מחשב מקבל כתובת מתחילה ב- `169.254.x.x`. מה זה אומר?
-   *תשובה:* זוהי כתובת APIPA (Automatic Private IP Addressing). זה אומר שהמחשב הוגדר לחיפוש שרת DHCP, לא קיבל תשובה (לרוב בגלל בעיית רשת או שהשרת נפל), והקצה לעצמו כתובת אוטומטית שלא מאפשרת גלישה חיצונית אלא רק תקשורת פנימית מוגבלת מאוד.
-3. **שאלה:** מה זה DNS Forwarder?
-   *תשובה:* הגדרה בשרת ה-DNS הפנימי, שאומרת לשרת: "אם קיבלת בקשה לתרגם כתובת שאתה לא מכיר (למשל אתר אינטרנט כמו youtube.com), הפנה את הבקשה לשרת DNS חיצוני כמו 8.8.8.8 כדי שיביא את התשובה".
+<details class="qa">
+<summary>1. מה ההבדל בין רשומת Forward Lookup Zone ל-Reverse Lookup Zone?</summary>
+
+Forward מתרגם שם לכתובת IP (למשל `PC1.corp.local` יחזיר `10.0.0.5`). Reverse מתרגם כתובת IP חזרה לשם (למשל `10.0.0.5` יחזיר `PC1`).
+
+</details>
+
+<details class="qa">
+<summary>2. מחשב מקבל כתובת מתחילה ב- <code>169.254.x.x</code>. מה זה אומר?</summary>
+
+זוהי כתובת APIPA (Automatic Private IP Addressing). זה אומר שהמחשב הוגדר לחיפוש שרת DHCP, לא קיבל תשובה (לרוב בגלל בעיית רשת או שהשרת נפל), והקצה לעצמו כתובת אוטומטית שלא מאפשרת גלישה חיצונית אלא רק תקשורת פנימית מוגבלת מאוד.
+
+</details>
+
+<details class="qa">
+<summary>3. מה זה DNS Forwarder?</summary>
+
+הגדרה בשרת ה-DNS הפנימי, שאומרת לשרת: "אם קיבלת בקשה לתרגם כתובת שאתה לא מכיר (למשל אתר אינטרנט כמו youtube.com), הפנה את הבקשה לשרת DNS חיצוני כמו 8.8.8.8 כדי שיביא את התשובה".
+
+</details>
 
 ## קישורים חיצוניים 🔗
 *   [מיקרוסופט: כיצד עובד DNS](https://learn.microsoft.com/en-us/windows-server/networking/dns/dns-top)

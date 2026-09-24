@@ -36,10 +36,19 @@ aws ec2 modify-instance-attribute --instance-id i-1234567890abcdef0 --instance-t
 * **Termination Protection:** הפעילו הגנה מפני מחיקה בטעות עבור שרתי Production.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה קורה לנתונים על ה-Instance Store כשהשרת נכבה?
-   **תשובה:** הנתונים ב-Instance Store נמחקים לחלוטין. זהו אחסון זמני (Ephemeral). לאחסון קבוע יש להשתמש ב-EBS.
-2. **שאלה:** איך ניתן להתחבר לשרת ללא מפתח SSH?
-   **תשובה:** באמצעות AWS Systems Manager Session Manager (SSM). זה בטוח יותר ואינו דורש פתיחת פורט 22 ב-Security Group.
+<details class="qa">
+<summary>1. מה קורה לנתונים על ה-Instance Store כשהשרת נכבה?</summary>
+
+הנתונים ב-Instance Store נמחקים לחלוטין. זהו אחסון זמני (Ephemeral). לאחסון קבוע יש להשתמש ב-EBS.
+
+</details>
+
+<details class="qa">
+<summary>2. איך ניתן להתחבר לשרת ללא מפתח SSH?</summary>
+
+באמצעות AWS Systems Manager Session Manager (SSM). זה בטוח יותר ואינו דורש פתיחת פורט 22 ב-Security Group.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/)

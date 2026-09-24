@@ -198,8 +198,38 @@ ESXi01
 
 ## שאלות ראיון
 
-1. מה ההבדל בין ESXi ל-VM?
-2. למה צריך Management Network?
-3. מה עושה vmkping?
-4. מהו VMkernel?
-5. מה חשוב לבדוק לפני התקנת ESXi?
+<details class="qa">
+<summary>1. מה ההבדל בין ESXi ל-VM?</summary>
+
+ESXi היא מערכת ההפעלה (Hypervisor) שמותקנת על הברזל ומנהלת את החומרה. VM היא מכונה וירטואלית שרצה מעל ESXi ומקבלת ממנו CPU, זיכרון, דיסק ורשת וירטואליים. ESXi הוא "המארח", ה-VM היא "האורחת".
+
+</details>
+
+<details class="qa">
+<summary>2. למה צריך Management Network?</summary>
+
+זו הרשת (VMkernel port עם תפקיד Management) שדרכה מתחברים ל-Host — vCenter, ה-Host Client, SSH ותקשורת ה-HA agents. בלעדיה ה-Host מנותק ניהולית גם אם המכונות עליו ממשיכות לרוץ, ולכן מקובל לתת לה יתירות (שני NICs) ולהפריד אותה מתעבורת vMotion ואחסון.
+
+</details>
+
+<details class="qa">
+<summary>3. מה עושה vmkping?</summary>
+
+שולח ping מתוך ממשק ה-VMkernel של ה-Host (ולא מרשת הניהול הכללית), כך שאפשר לבדוק קישוריות אמיתית של vMotion, iSCSI או NFS. עם `vmkping -I vmk1 -d -s 8972 <ip>` בודקים גם Jumbo Frames — ללא פירוק חבילה — כדי לאמת שה-MTU מוגדר נכון לאורך כל המסלול.
+
+</details>
+
+<details class="qa">
+<summary>4. מהו VMkernel?</summary>
+
+ממשק רשת וירטואלי של ה-Host עצמו (vmk0, vmk1...), שדרכו עוברת תעבורת התשתית: Management, vMotion, iSCSI/NFS, Fault Tolerance ו-vSAN. לכל שירות מקובל להקצות VMkernel נפרד, ברשת/VLAN ייעודית, כדי למנוע תחרות על רוחב פס.
+
+</details>
+
+<details class="qa">
+<summary>5. מה חשוב לבדוק לפני התקנת ESXi?</summary>
+
+תאימות החומרה ב-VMware Compatibility Guide (שרת, HBA, NIC), קושחה ודרייברים מעודכנים, תכנון דיסק ההתקנה, הגדרות רשת ו-VLAN, וכן DNS ו-NTP תקינים — שניהם קריטיים ל-vCenter, לתעודות ול-Kerberos. כדאי גם לתכנן מראש שמות, כתובות IP סטטיות ויתירות ל-NICs.
+
+</details>
+

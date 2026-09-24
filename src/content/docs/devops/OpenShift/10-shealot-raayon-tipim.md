@@ -7,97 +7,196 @@ part: 10/10
 
 ## חלק א': שאלות ראיון עבודה - יסודות (Junior/Mid)
 
-### 1. מה ההבדל בין OpenShift ל-Kubernetes?
-**תשובה:** OpenShift בנוי על גבי Kubernetes ומוסיף עליו: קונסולת ניהול גרפית, מנגנון SCC לאבטחה מחמירה יותר, מערכת Build מובנית (S2I, BuildConfig), Route לחשיפה חיצונית (בנוסף ל-Ingress), OLM לניהול Operators, ותמיכה ארגונית מלאה מ-Red Hat. כל מה שרץ ב-Kubernetes רגיל יכול לרוץ גם ב-OpenShift.
+<details class="qa">
+<summary>1. מה ההבדל בין OpenShift ל-Kubernetes?</summary>
 
-### 2. מה זה Pod ולמה לא עובדים איתו ישירות בפרודקשן?
-**תשובה:** Pod הוא היחידה הקטנה ביותר להרצת קונטיינר/ים. הבעיה: Pod עצמאי לא מתאושש אוטומטית אם הוא קורס. לכן תמיד עובדים דרך Deployment/StatefulSet/DaemonSet שמנהלים ReplicaSet שדואג ליצור Pod מחדש במקרה כשל.
+OpenShift בנוי על גבי Kubernetes ומוסיף עליו: קונסולת ניהול גרפית, מנגנון SCC לאבטחה מחמירה יותר, מערכת Build מובנית (S2I, BuildConfig), Route לחשיפה חיצונית (בנוסף ל-Ingress), OLM לניהול Operators, ותמיכה ארגונית מלאה מ-Red Hat. כל מה שרץ ב-Kubernetes רגיל יכול לרוץ גם ב-OpenShift.
 
-### 3. מה ההבדל בין Deployment ל-DeploymentConfig?
-**תשובה:** Deployment הוא native ל-Kubernetes ומנוהל דרך ReplicaSet, DeploymentConfig הוא ייחודי ל-OpenShift, legacy, מנוהל דרך ReplicationController, ותומך ב-triggers אוטומטיים מ-ImageStream ו-lifecycle hooks. Red Hat ממליצה כיום להשתמש ב-Deployment הרגיל בפרויקטים חדשים.
+</details>
 
-### 4. מה זה Route וכיצד הוא שונה מ-Service?
-**תשובה:** Service מספק כתובת יציבה **בתוך** הקלאסטר (internal load balancing). Route חושף שירות פנימי החוצה לאינטרנט, דרך ה-HAProxy Router, ותמיד "יושב" מעל Service קיים - הוא לא יכול לחשוף פוד ישירות.
+<details class="qa">
+<summary>2. מה זה Pod ולמה לא עובדים איתו ישירות בפרודקשן?</summary>
 
-### 5. מה זה SCC (Security Context Constraints)?
-**תשובה:** מנגנון אבטחה ייחודי ל-OpenShift שקובע אילו הרשאות אבטחה מותרות לפוד - כמו האם מותר לרוץ כ-root, אילו Linux capabilities מותרות, אילו volume types מותרים. ברירת המחדל `restricted-v2` אוסרת ריצה כ-root ומחייבת UID רנדומלי.
+Pod הוא היחידה הקטנה ביותר להרצת קונטיינר/ים. הבעיה: Pod עצמאי לא מתאושש אוטומטית אם הוא קורס. לכן תמיד עובדים דרך Deployment/StatefulSet/DaemonSet שמנהלים ReplicaSet שדואג ליצור Pod מחדש במקרה כשל.
 
-### 6. מהם הסוגים השונים של Service?
-**תשובה:** `ClusterIP` (פנימי בלבד, ברירת מחדל), `NodePort` (פורט קבוע על כל node), `LoadBalancer` (דורש תמיכת ספק ענן), ו-`Headless` (בלי ClusterIP, שימושי ל-StatefulSets לקבלת DNS ישיר לכל פוד).
+</details>
 
-### 7. מה ההבדל בין readinessProbe ל-livenessProbe?
-**תשובה:** `readinessProbe` קובע האם הפוד מוכן לקבל תעבורה (אם נכשל - מוסר מה-Service אבל לא נהרג). `livenessProbe` קובע האם הפוד "חי" בכלל (אם נכשל - הפוד מקבל restart). בלבול ביניהם עלול לגרום ל-restart loops מיותרים כשבעצם הבעיה זמנית (למשל התחברות איטית ל-DB).
+<details class="qa">
+<summary>3. מה ההבדל בין Deployment ל-DeploymentConfig?</summary>
 
-### 8. מה זה ImageStream ומה היתרון שלו?
-**תשובה:** abstraction ייחודי ל-OpenShift שעוקב אחר תגיות תמונות ומאפשר triggers אוטומטיים - כאשר תמונה חדשה נכנסת ל-ImageStream, כל Deployment/DC שמצביע עליה יכול להתעדכן אוטומטית, בלי webhook חיצוני.
+Deployment הוא native ל-Kubernetes ומנוהל דרך ReplicaSet, DeploymentConfig הוא ייחודי ל-OpenShift, legacy, מנוהל דרך ReplicationController, ותומך ב-triggers אוטומטיים מ-ImageStream ו-lifecycle hooks. Red Hat ממליצה כיום להשתמש ב-Deployment הרגיל בפרויקטים חדשים.
 
-### 9. מה זה S2I (Source-to-Image)?
-**תשובה:** מנגנון שלוקח קוד מקור מ-Git ו-builder image (כמו Node.js/Python/Java) ובונה תמונת container מוכנה - בלי צורך לכתוב Dockerfile ידנית. מריץ תהליך assemble+run מוגדר מראש.
+</details>
+
+<details class="qa">
+<summary>4. מה זה Route וכיצד הוא שונה מ-Service?</summary>
+
+Service מספק כתובת יציבה **בתוך** הקלאסטר (internal load balancing). Route חושף שירות פנימי החוצה לאינטרנט, דרך ה-HAProxy Router, ותמיד "יושב" מעל Service קיים - הוא לא יכול לחשוף פוד ישירות.
+
+</details>
+
+<details class="qa">
+<summary>5. מה זה SCC (Security Context Constraints)?</summary>
+
+מנגנון אבטחה ייחודי ל-OpenShift שקובע אילו הרשאות אבטחה מותרות לפוד - כמו האם מותר לרוץ כ-root, אילו Linux capabilities מותרות, אילו volume types מותרים. ברירת המחדל `restricted-v2` אוסרת ריצה כ-root ומחייבת UID רנדומלי.
+
+</details>
+
+<details class="qa">
+<summary>6. מהם הסוגים השונים של Service?</summary>
+
+`ClusterIP` (פנימי בלבד, ברירת מחדל), `NodePort` (פורט קבוע על כל node), `LoadBalancer` (דורש תמיכת ספק ענן), ו-`Headless` (בלי ClusterIP, שימושי ל-StatefulSets לקבלת DNS ישיר לכל פוד).
+
+</details>
+
+<details class="qa">
+<summary>7. מה ההבדל בין readinessProbe ל-livenessProbe?</summary>
+
+`readinessProbe` קובע האם הפוד מוכן לקבל תעבורה (אם נכשל - מוסר מה-Service אבל לא נהרג). `livenessProbe` קובע האם הפוד "חי" בכלל (אם נכשל - הפוד מקבל restart). בלבול ביניהם עלול לגרום ל-restart loops מיותרים כשבעצם הבעיה זמנית (למשל התחברות איטית ל-DB).
+
+</details>
+
+<details class="qa">
+<summary>8. מה זה ImageStream ומה היתרון שלו?</summary>
+
+abstraction ייחודי ל-OpenShift שעוקב אחר תגיות תמונות ומאפשר triggers אוטומטיים - כאשר תמונה חדשה נכנסת ל-ImageStream, כל Deployment/DC שמצביע עליה יכול להתעדכן אוטומטית, בלי webhook חיצוני.
+
+</details>
+
+<details class="qa">
+<summary>9. מה זה S2I (Source-to-Image)?</summary>
+
+מנגנון שלוקח קוד מקור מ-Git ו-builder image (כמו Node.js/Python/Java) ובונה תמונת container מוכנה - בלי צורך לכתוב Dockerfile ידנית. מריץ תהליך assemble+run מוגדר מראש.
+
+</details>
 
 ## חלק ב': שאלות ברמה בינונית-מתקדמת
 
-### 10. הסבירו את שלושת סוגי ה-TLS Termination ב-Route.
-**תשובה:**
+<details class="qa">
+<summary>10. הסבירו את שלושת סוגי ה-TLS Termination ב-Route.</summary>
+
 - **edge** - ה-TLS מסתיים ב-Router, מהראוטר לפוד זה HTTP רגיל (הכי נפוץ).
 - **passthrough** - ה-TLS עובר "בשלמותו" עד הפוד, האפליקציה עצמה מנהלת אותו.
 - **reencrypt** - ה-TLS מסתיים ב-Router, ואז נפתח מחדש חיבור TLS חדש פנימה לפוד (compliance מחמיר).
 
-### 11. איך עובד RollingUpdate ומה משמעות maxUnavailable / maxSurge?
-**תשובה:** RollingUpdate מחליף פודים ישנים בחדשים בהדרגה. `maxUnavailable` קובע כמה פודים מקסימום יכולים להיות לא זמינים בו-זמנית במהלך העדכון. `maxSurge` קובע כמה פודים נוספים מעל ה-replicas המקורי אפשר ליצור זמנית. לדוגמה `maxUnavailable: 0, maxSurge: 1` = zero-downtime מוחלט, אבל דורש קיבולת נוספת זמנית.
+</details>
 
-### 12. מה ההבדל בין PV ל-PVC?
-**תשובה:** `PersistentVolume` (PV) הוא "חתיכת" אחסון פיזי/וירטואלי בפועל בקלאסטר. `PersistentVolumeClaim` (PVC) הוא "בקשה" של המשתמש לקבל אחסון - כמו הזמנת חדר במלון. StorageClass מגדיר איך PV נוצר אוטומטית (dynamic provisioning) כשמגיע PVC חדש.
+<details class="qa">
+<summary>11. איך עובד RollingUpdate ומה משמעות maxUnavailable / maxSurge?</summary>
 
-### 13. מה ההבדל בין accessModes RWO, RWX, ROX?
-**תשובה:** `ReadWriteOnce` (RWO) - node אחד יכול לכתוב. `ReadWriteMany` (RWX) - כמה nodes יכולים לכתוב במקביל (לא כל backend תומך). `ReadOnlyMany` (ROX) - כמה nodes, קריאה בלבד. `ReadWriteOncePod` (RWOP) - פוד יחיד בלבד, הכי מחמיר.
+RollingUpdate מחליף פודים ישנים בחדשים בהדרגה. `maxUnavailable` קובע כמה פודים מקסימום יכולים להיות לא זמינים בו-זמנית במהלך העדכון. `maxSurge` קובע כמה פודים נוספים מעל ה-replicas המקורי אפשר ליצור זמנית. לדוגמה `maxUnavailable: 0, maxSurge: 1` = zero-downtime מוחלט, אבל דורש קיבולת נוספת זמנית.
 
-### 14. מה קורה כשפוד נכשל ב-OOMKilled ואיך מתקנים?
-**תשובה:** הקונטיינר חרג ממגבלת הזיכרון שהוגדרה ב-`resources.limits.memory` והמערכת הרגה אותו כדי להגן על ה-node. פתרון: `oc describe pod` יראה `Reason: OOMKilled` תחת Last State, ואז יש להגדיל את ה-limit או לחקור memory leak באפליקציה.
+</details>
 
-### 15. הסבירו את ההבדל בין Role ל-ClusterRole, ובין RoleBinding ל-ClusterRoleBinding.
-**תשובה:** `Role` תקף לnamespace ספציפי בלבד. `ClusterRole` תקף לכל הקלאסטר (או ניתן לקשור ל-namespace ספציפי גם כן, לצורך reuse). `RoleBinding` מקשר הרשאות בתוך namespace יחיד. `ClusterRoleBinding` מקשר הרשאות בכל הקלאסטר.
+<details class="qa">
+<summary>12. מה ההבדל בין PV ל-PVC?</summary>
 
-### 16. מה זה Operator ו-CRD?
-**תשובה:** CRD (Custom Resource Definition) מלמד את Kubernetes API "type" חדש. Operator הוא בקר (controller) שמריץ reconciliation loop מתמיד כדי לוודא שהמצב בפועל תואם את המצב הרצוי, מרחיב יכולות ניהול אוטומטי (backup, upgrade, self-healing) מעבר למה ש-Deployment/StatefulSet רגילים מספקים.
+`PersistentVolume` (PV) הוא "חתיכת" אחסון פיזי/וירטואלי בפועל בקלאסטר. `PersistentVolumeClaim` (PVC) הוא "בקשה" של המשתמש לקבל אחסון - כמו הזמנת חדר במלון. StorageClass מגדיר איך PV נוצר אוטומטית (dynamic provisioning) כשמגיע PVC חדש.
 
-### 17. מה ההבדל בין Helm ל-Operator?
-**תשובה:** Helm מתמקד בפריסה חד-פעמית ("templating + install") ואינו כולל לוגיקה תפעולית מתמשכת. Operator כולל לוגיקה עסקית מתמשכת (reconciliation loop) - מתאים לניהול אפליקציות stateful מורכבות שדורשות התערבות אוטומטית לאורך זמן.
+</details>
 
-### 18. איך מגדילים אוטומטית מספר פודים לפי עומס (Autoscaling)?
-**תשובה:** באמצעות **HPA** (Horizontal Pod Autoscaler) שמגדיל/מקטין מספר replicas לפי מטריקות (CPU, memory, custom metrics). ל-VPA (Vertical) שמתאים אוטומטית את ה-resources requests/limits. ל-Cluster Autoscaler שמוסיף/מוריד nodes שלמים מהקלאסטר לפי דרישת קיבולת.
+<details class="qa">
+<summary>13. מה ההבדל בין accessModes RWO, RWX, ROX?</summary>
 
-### 19. מה זה NetworkPolicy ולמה חשוב להגדיר אותה?
-**תשובה:** כברירת מחדל כל הפודים בקלאסטר יכולים לתקשר חופשי ביניהם. NetworkPolicy מגביל תעבורה נכנסת/יוצאת ברמת namespace/pod, מיישם עקרון Zero Trust - חשוב מאוד ב-production, במיוחד בסביבות multi-tenant.
+`ReadWriteOnce` (RWO) - node אחד יכול לכתוב. `ReadWriteMany` (RWX) - כמה nodes יכולים לכתוב במקביל (לא כל backend תומך). `ReadOnlyMany` (ROX) - כמה nodes, קריאה בלבד. `ReadWriteOncePod` (RWOP) - פוד יחיד בלבד, הכי מחמיר.
 
-### 20. תארו את זרימת ה-CI/CD המובנית ב-OpenShift (מ-git push ועד production).
-**תשובה:** Git push → Webhook מפעיל BuildConfig → S2I/Docker/Pipeline strategy בונה תמונה → נשמרת ב-ImageStream (internal registry) → trigger אוטומטי מעדכן את ה-Deployment → rolling update מבצע פריסה הדרגתית → Route מפנה תעבורה לפודים החדשים.
+</details>
+
+<details class="qa">
+<summary>14. מה קורה כשפוד נכשל ב-OOMKilled ואיך מתקנים?</summary>
+
+הקונטיינר חרג ממגבלת הזיכרון שהוגדרה ב-`resources.limits.memory` והמערכת הרגה אותו כדי להגן על ה-node. פתרון: `oc describe pod` יראה `Reason: OOMKilled` תחת Last State, ואז יש להגדיל את ה-limit או לחקור memory leak באפליקציה.
+
+</details>
+
+<details class="qa">
+<summary>15. הסבירו את ההבדל בין Role ל-ClusterRole, ובין RoleBinding ל-ClusterRoleBinding.</summary>
+
+`Role` תקף לnamespace ספציפי בלבד. `ClusterRole` תקף לכל הקלאסטר (או ניתן לקשור ל-namespace ספציפי גם כן, לצורך reuse). `RoleBinding` מקשר הרשאות בתוך namespace יחיד. `ClusterRoleBinding` מקשר הרשאות בכל הקלאסטר.
+
+</details>
+
+<details class="qa">
+<summary>16. מה זה Operator ו-CRD?</summary>
+
+CRD (Custom Resource Definition) מלמד את Kubernetes API "type" חדש. Operator הוא בקר (controller) שמריץ reconciliation loop מתמיד כדי לוודא שהמצב בפועל תואם את המצב הרצוי, מרחיב יכולות ניהול אוטומטי (backup, upgrade, self-healing) מעבר למה ש-Deployment/StatefulSet רגילים מספקים.
+
+</details>
+
+<details class="qa">
+<summary>17. מה ההבדל בין Helm ל-Operator?</summary>
+
+Helm מתמקד בפריסה חד-פעמית ("templating + install") ואינו כולל לוגיקה תפעולית מתמשכת. Operator כולל לוגיקה עסקית מתמשכת (reconciliation loop) - מתאים לניהול אפליקציות stateful מורכבות שדורשות התערבות אוטומטית לאורך זמן.
+
+</details>
+
+<details class="qa">
+<summary>18. איך מגדילים אוטומטית מספר פודים לפי עומס (Autoscaling)?</summary>
+
+באמצעות **HPA** (Horizontal Pod Autoscaler) שמגדיל/מקטין מספר replicas לפי מטריקות (CPU, memory, custom metrics). ל-VPA (Vertical) שמתאים אוטומטית את ה-resources requests/limits. ל-Cluster Autoscaler שמוסיף/מוריד nodes שלמים מהקלאסטר לפי דרישת קיבולת.
+
+</details>
+
+<details class="qa">
+<summary>19. מה זה NetworkPolicy ולמה חשוב להגדיר אותה?</summary>
+
+כברירת מחדל כל הפודים בקלאסטר יכולים לתקשר חופשי ביניהם. NetworkPolicy מגביל תעבורה נכנסת/יוצאת ברמת namespace/pod, מיישם עקרון Zero Trust - חשוב מאוד ב-production, במיוחד בסביבות multi-tenant.
+
+</details>
+
+<details class="qa">
+<summary>20. תארו את זרימת ה-CI/CD המובנית ב-OpenShift (מ-git push ועד production).</summary>
+
+Git push → Webhook מפעיל BuildConfig → S2I/Docker/Pipeline strategy בונה תמונה → נשמרת ב-ImageStream (internal registry) → trigger אוטומטי מעדכן את ה-Deployment → rolling update מבצע פריסה הדרגתית → Route מפנה תעבורה לפודים החדשים.
+
+</details>
 
 ## חלק ג': שאלות תרחיש (Scenario-based) - לתפקידי DevOps/SRE
 
-### 21. אפליקציה חדשה לא נגישה למרות שהפודים Running - איך תאבחנו?
+<details class="qa">
+<summary>21. אפליקציה חדשה לא נגישה למרות שהפודים Running - איך תאבחנו?</summary>
+
 1. `oc get endpoints <svc-name>` - האם ה-Service מוצא פודים בכלל? (בעיית selector נפוצה)
 2. `oc get route` - האם ה-Route קיים ומצביע ל-Service הנכון?
 3. `oc rsh` לפוד אחר ו-`curl` פנימית לבדוק אם השירות עונה כלל
 4. בדיקת NetworkPolicy שאולי חוסמת
 
-### 22. Deployment תקוע ב-rolling update, פודים חדשים לא עולים - מה בודקים?
+</details>
+
+<details class="qa">
+<summary>22. Deployment תקוע ב-rolling update, פודים חדשים לא עולים - מה בודקים?</summary>
+
 ```bash
 oc rollout status deployment/my-app
 oc get rs -l app=my-app   # יש ReplicaSet ישן וחדש - מה קורה עם החדש?
 oc describe pod <new-pod>  # למה הוא לא Ready? Probe נכשל? Resources?
 ```
 
-### 23. איך הייתם מבצעים Blue-Green Deployment ב-OpenShift?
+</details>
+
+<details class="qa">
+<summary>23. איך הייתם מבצעים Blue-Green Deployment ב-OpenShift?</summary>
+
 תשובה: יצירת שני Deployments נפרדים (`app-blue`, `app-green`) עם Service/Route שמצביע רק על אחד מהם. כשגרסה חדשה מוכנה, משנים את ה-selector של ה-Service (או weight ב-Route עם `alternateBackends`) כדי להעביר תעבורה בהדרגה, ומאפשרים rollback מיידי על ידי חזרה לגרסה הקודמת.
 
-### 24. הקלאסטר במצוקת משאבים - כיצד תזהו איזה namespace "אוכל" הכי הרבה?
+</details>
+
+<details class="qa">
+<summary>24. הקלאסטר במצוקת משאבים - כיצד תזהו איזה namespace "אוכל" הכי הרבה?</summary>
+
 ```bash
 oc adm top pods -A --sort-by=memory
 oc describe resourcequota -A
 ```
 
-### 25. איך מבטיחים zero-downtime בזמן שדרוג node (drain)?
+</details>
+
+<details class="qa">
+<summary>25. איך מבטיחים zero-downtime בזמן שדרוג node (drain)?</summary>
+
 תשובה: שילוב של PodDisruptionBudget (מגביל כמה פודים יכולים להיות לא זמינים בו-זמנית) יחד עם replicas מרובים ו-anti-affinity rules כדי לפזר פודים על nodes שונים, כך ש-drain של node בודד לא מוריד את כל השירות.
+
+</details>
 
 ## חלק ד': טיפים וטריקים כלליים לעבודה יומיומית
 

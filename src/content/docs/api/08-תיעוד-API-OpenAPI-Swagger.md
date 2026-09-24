@@ -196,17 +196,33 @@ app.get("/users/:id", getUserHandler);
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. מה ההבדל בין Swagger ל-OpenAPI?**
+<details class="qa">
+<summary>1. מה ההבדל בין Swagger ל-OpenAPI?</summary>
+
 OpenAPI הוא שם התקן (הספציפיקציה). Swagger היה השם המקורי, וכיום מתייחס בעיקר לכלים (Swagger UI/Editor) שתומכים בתקן OpenAPI.
 
-**2. מה ההבדל בין גישת Design-First ל-Code-First לתיעוד API?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין גישת Design-First ל-Code-First לתיעוד API?</summary>
+
 Design-First - כותבים את ה-spec קודם, מקבלים פידבק, ואז מממשים קוד. Code-First - כותבים קוד עם annotations, וכלי מייצר את ה-spec מהקוד. Design-First עדיף לתכנון API רחב-היקף ולעבודת צוות.
 
-**3. איך אפשר לוודא שתיעוד ה-API תמיד מעודכן?**
+</details>
+
+<details class="qa">
+<summary>3. איך אפשר לוודא שתיעוד ה-API תמיד מעודכן?</summary>
+
 לשמור את קובץ ה-OpenAPI ב-Git כחלק מהקוד, לחייב עדכון שלו ב-Pull Requests, ואפילו להריץ contract tests אוטומטיים ב-CI שמשווים בין ה-spec לבין ההתנהגות בפועל.
 
-**4. מה זה JSON Schema, ואיך הוא קשור ל-OpenAPI?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה JSON Schema, ואיך הוא קשור ל-OpenAPI?</summary>
+
 JSON Schema הוא תקן לתיאור מבנה נתוני JSON (סוגי שדות, שדות חובה וכו'). OpenAPI משתמש ב-JSON Schema (בגרסה מותאמת) כדי לתאר את מבני הבקשות והתשובות שלו.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

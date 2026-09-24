@@ -192,23 +192,47 @@ infra/
 
 ## שאלות ראיון נפוצות
 
-**1. מה זה Terraform state ולמה הוא קריטי?**
+<details class="qa">
+<summary>1. מה זה Terraform state ולמה הוא קריטי?</summary>
+
 קובץ JSON ששומר מיפוי בין הקונפיגורציה למשאבים בפועל בענן, כולל attributes, IDs ותלויות. בלעדיו Terraform לא יכול לדעת מה כבר קיים ומה צריך ליצור/לעדכן/למחוק.
 
-**2. מה ההבדל בין local state ל-remote state, ומתי משתמשים בכל אחד?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין local state ל-remote state, ומתי משתמשים בכל אחד?</summary>
+
 Local state מתאים ללימוד/פרויקטים אישיים קטנים. Remote state הכרחי לעבודת צוות - מאפשר שיתוף, locking, backup והצפנה.
 
-**3. מה זה state locking ואיך הוא מונע בעיות?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה state locking ואיך הוא מונע בעיות?</summary>
+
 מנגנון שמונע משני תהליכים להריץ `apply`/`plan` על אותו state בו-זמנית, כדי למנוע corruption. מיושם בעזרת DynamoDB (S3 backend), lease מנגנונים (Azure), או native ב-Terraform Cloud.
 
-**4. איך מטפלים ב-state drift?**
+</details>
+
+<details class="qa">
+<summary>4. איך מטפלים ב-state drift?</summary>
+
 מזהים אותו עם `terraform plan` (או `-refresh-only` לפירוט מדויק יותר), ואז מחליטים: או להריץ `apply` כדי להחזיר לתאום עם הקוד, או לעדכן את הקוד כך שישקף את המציאות ואז `apply -refresh-only`.
 
-**5. מה ההבדל בין `terraform state rm` ל-`terraform destroy`?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין <code>terraform state rm</code> ל-<code>terraform destroy</code>?</summary>
+
 `state rm` מסיר משאב מה-state **בלי** למחוק אותו בפועל בענן - הוא ממשיך להתקיים אבל Terraform מפסיק לנהל אותו. `destroy` מוחק את המשאב בפועל.
 
-**6. איך הייתם מפצלים state גדול לחלקים קטנים יותר?**
+</details>
+
+<details class="qa">
+<summary>6. איך הייתם מפצלים state גדול לחלקים קטנים יותר?</summary>
+
 על ידי חלוקה לשכבות לוגיות (network/database/compute) עם backend נפרד לכל אחת, ושימוש ב-`terraform_remote_state` או data sources ייעודיים לשיתוף מידע ביניהן.
+
+</details>
 
 ---
 

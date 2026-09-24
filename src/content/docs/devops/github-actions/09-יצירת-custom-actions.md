@@ -271,35 +271,75 @@ runs:
 
 ## שאלות ראיון עבודה
 
-**1. מהם שלושת סוגי ה-Custom Actions הקיימים ב-GitHub Actions?**
+<details class="qa">
+<summary>1. מהם שלושת סוגי ה-Custom Actions הקיימים ב-GitHub Actions?</summary>
+
 Composite Actions (YAML בלבד), JavaScript Actions (Node.js), ו-Docker Actions (container מותאם אישית).
 
-**2. מה ההבדל העיקרי בין JavaScript Action ל-Docker Action מבחינת ביצועים ותמיכה בפלטפורמות?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל העיקרי בין JavaScript Action ל-Docker Action מבחינת ביצועים ותמיכה בפלטפורמות?</summary>
+
 JavaScript Actions רצים ישירות על ה-runner ותומכים בכל מערכות ההפעלה (Linux, Windows, macOS) עם ביצועים מהירים; Docker Actions דורשים בניית image (איטי יותר) ותומכים ב-Linux בלבד.
 
-**3. איזה קובץ חובה לכל Custom Action, מכל סוג?**
+</details>
+
+<details class="qa">
+<summary>3. איזה קובץ חובה לכל Custom Action, מכל סוג?</summary>
+
 קובץ `action.yml` (או `action.yaml`) בשורש תיקיית ה-Action, המגדיר `name`, `description`, `inputs`, `outputs`, ו-`runs`.
 
-**4. למה חייבים לציין `shell:` בכל step בתוך Composite Action, בניגוד ל-workflow רגיל?**
+</details>
+
+<details class="qa">
+<summary>4. למה חייבים לציין <code>shell:</code> בכל step בתוך Composite Action, בניגוד ל-workflow רגיל?</summary>
+
 כי Composite Action אינו נקשר אוטומטית לברירת מחדל של shell מהקשר ה-runner החיצוני, ולכן חייבים להגדיר אותו במפורש בכל step שמריץ פקודה.
 
-**5. מה תפקידה של חבילת `@actions/core` ב-JavaScript Actions?**
+</details>
+
+<details class="qa">
+<summary>5. מה תפקידה של חבילת <code>@actions/core</code> ב-JavaScript Actions?</summary>
+
 מספקת פונקציות שירות לגישה ל-inputs, כתיבת outputs, לוגים בפורמט מיוחד, וסימון הצלחה/כישלון של ה-Action.
 
-**6. למה מומלץ לארוז JavaScript Action עם `ncc` לפני פרסום?**
+</details>
+
+<details class="qa">
+<summary>6. למה מומלץ לארוז JavaScript Action עם <code>ncc</code> לפני פרסום?</summary>
+
 כדי לאגד את כל התלויות (כולל `node_modules`) לקובץ JavaScript בודד, כך שלא צריך להתקין תלויות בזמן ריצה - מה שמקצר משמעותית את זמן ההרצה ומונע בעיות תאימות.
 
-**7. מתי כדאי לבחור Docker Action על פני JavaScript Action?**
+</details>
+
+<details class="qa">
+<summary>7. מתי כדאי לבחור Docker Action על פני JavaScript Action?</summary>
+
 כאשר ה-Action תלוי בכלים או ספריות מערכת ספציפיות שאינן זמינות כברירת מחדל, או כשרוצים לכתוב את הלוגיקה בשפה שאינה JavaScript (Python, Go, Rust וכו').
 
-**8. מה ההבדל בין תגית `v1.2.3` לתגית נעה `v1`?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין תגית <code>v1.2.3</code> לתגית נעה <code>v1</code>?</summary>
+
 `v1.2.3` היא גרסה מדויקת וקבועה; `v1` היא תגית שהמפרסם מעדכן ידנית להצביע תמיד על הגרסה היציבה האחרונה תחת ה-major הזה, כך שמשתמשים שמצמידים ל-`v1` מקבלים תיקוני באגים אוטומטית בלי לשנות את ה-workflow שלהם.
 
-**9. איך בודקים Custom Action לפני שמפרסמים אותו כריפו נפרד ב-Marketplace?**
+</details>
+
+<details class="qa">
+<summary>9. איך בודקים Custom Action לפני שמפרסמים אותו כריפו נפרד ב-Marketplace?</summary>
+
 משתמשים בו מ-workflow באותו ריפו עם `uses: ./.github/actions/<שם-התיקייה>`, מבלי צורך בריפו נפרד או פרסום רשמי.
 
-**10. מה זה `branding` בקובץ action.yml ולמה הוא רלוונטי?**
+</details>
+
+<details class="qa">
+<summary>10. מה זה <code>branding</code> בקובץ action.yml ולמה הוא רלוונטי?</summary>
+
 שדה אופציונלי שמגדיר אייקון וצבע לייצוג ה-Action בממשק GitHub Marketplace - משפר את המראה המקצועי אך אינו משפיע על הפונקציונליות.
+
+</details>
 
 ## קישורים חיצוניים
 

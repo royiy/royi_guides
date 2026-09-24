@@ -213,10 +213,33 @@ helm install my-release ./my-chart --wait --wait-for-jobs --timeout 5m
 
 ## שאלות לחזרה עצמית
 
-1. מהו סדר העדיפויות בין `--set`, `-f values.yaml` וברירות המחדל?
-2. מה עושה rollback בפועל להיסטוריית ה-revisions?
-3. מתי נדרש להשתמש ב-`--force` באפגרייד, ומה הסיכון בכך?
-4. מה ההבדל בין `--wait` ל-`--wait-for-jobs`?
+<details class="qa">
+<summary>1. מהו סדר העדיפויות בין <code>--set</code>, <code>-f values.yaml</code> וברירות המחדל?</summary>
+
+מהעדיפות הנמוכה לגבוהה: ה-`values.yaml` המובנה ב-Chart, אחריו ערכי subcharts, אחריו קבצי `-f` (לפי סדר הזנתם — האחרון גובר), ובעדיפות העליונה דגלי `--set`/`--set-string`.
+
+</details>
+
+<details class="qa">
+<summary>2. מה עושה rollback בפועל להיסטוריית ה-revisions?</summary>
+
+הוא לא מוחק כלום. Helm יוצר **revision חדש** שתוכנו זהה ל-revision שאליו חוזרים — למשל `helm rollback my-app 3` כשאתם ב-revision 5 ייצור revision 6 עם התוכן של 3. כך ההיסטוריה נשמרת ותמיד אפשר לחזור קדימה או אחורה.
+
+</details>
+
+<details class="qa">
+<summary>3. מתי נדרש להשתמש ב-<code>--force</code> באפגרייד, ומה הסיכון בכך?</summary>
+
+כשיש שדות immutable שאי אפשר לעדכן ב-patch (למשל `selector` של Deployment). `--force` מבצע replace — מחיקה ויצירה מחדש של המשאב — ולכן הסיכון הוא downtime אמיתי: ה-Pods יורדים ועולים מחדש, ובמקרים מסוימים נפגעים גם משאבים תלויים. בפרודקשן עדיף לתכנן שינוי מבוקר במקום לדחוף `--force`.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>--wait</code> ל-<code>--wait-for-jobs</code>?</summary>
+
+`--wait` גורם ל-Helm להמתין עד שהמשאבים (Deployments, StatefulSets, Pods, Services) במצב ready או עד ל-timeout. `--wait-for-jobs` מוסיף לכך גם המתנה לסיום מוצלח של Jobs — בלעדיו Helm יכול לסמן את ה-Release כמוצלח בעוד ה-Job (למשל migration) עדיין רץ.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 7 - Dependencies ו-Subcharts](/devops/helm/07-dependencies-subcharts/)

@@ -253,35 +253,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. מה ההבדל בין `container:` ברמת job לבין `services:`?**
+<details class="qa">
+<summary>1. מה ההבדל בין <code>container:</code> ברמת job לבין <code>services:</code>?</summary>
+
 `container:` גורם לכל ה-job לרוץ בתוך אותו container; `services:` מריץ containers נוספים **לצד** ה-job (למשל מסד נתונים), נגישים ברשת פנימית משותפת, בעוד ה-job עצמו רץ ישירות על ה-runner (או container אחר).
 
-**2. למה כדאי להשתמש ב-GHCR (GitHub Container Registry) במקום Docker Hub?**
+</details>
+
+<details class="qa">
+<summary>2. למה כדאי להשתמש ב-GHCR (GitHub Container Registry) במקום Docker Hub?</summary>
+
 GHCR מאפשר אינטגרציה מלאה עם `GITHUB_TOKEN` המובנה, ללא צורך ביצירת secret נפרד וניהול הרשאות חיצוני - ומקיים בקרת גישה משולבת עם הרשאות הריפו.
 
-**3. מה עושה `docker/setup-qemu-action` בהקשר של multi-architecture builds?**
+</details>
+
+<details class="qa">
+<summary>3. מה עושה <code>docker/setup-qemu-action</code> בהקשר של multi-architecture builds?</summary>
+
 מתקין אמולטורים שמאפשרים ל-runner (שהוא לרוב amd64) לבנות תמונות עבור ארכיטקטורות אחרות, כמו arm64, ללא צורך במכונה פיזית מאותה ארכיטקטורה.
 
-**4. איך מוודאים ש-job לא מתחיל לרוץ בדיקות לפני שה-service container (כמו PostgreSQL) מוכן?**
+</details>
+
+<details class="qa">
+<summary>4. איך מוודאים ש-job לא מתחיל לרוץ בדיקות לפני שה-service container (כמו PostgreSQL) מוכן?</summary>
+
 באמצעות health checks בהגדרת ה-`options` של ה-service (כמו `--health-cmd pg_isready`), שגורמים ל-runner להמתין עד שה-container "בריא" לפני שהצעדים מתחילים לרוץ.
 
-**5. מהו multi-stage build ב-Docker ולמה הוא שימושי ב-CI/CD?**
+</details>
+
+<details class="qa">
+<summary>5. מהו multi-stage build ב-Docker ולמה הוא שימושי ב-CI/CD?</summary>
+
 טכניקה שבה ה-Dockerfile מכיל כמה שלבי בנייה (stages), כאשר רק הפלט הסופי (למשל dist/ ו-node_modules הנחוצים) מועתק לתמונה הסופית - מה שמקטין משמעותית את גודל ה-image הסופי ומשפר אבטחה.
 
-**6. מה זה `cache-from: type=gha` ו-`cache-to: type=gha`?**
+</details>
+
+<details class="qa">
+<summary>6. מה זה <code>cache-from: type=gha</code> ו-<code>cache-to: type=gha</code>?</summary>
+
 מנגנון caching של שכבות Docker שמשתמש ב-GitHub Actions cache backend, כדי לצמצם זמן בנייה חוזר על ידי שימוש חוזר בשכבות שלא השתנו בין ריצות.
 
-**7. איך פורסים תמונת Docker אחת לכמה ארכיטקטורות (amd64 ו-arm64) בו-זמנית?**
+</details>
+
+<details class="qa">
+<summary>7. איך פורסים תמונת Docker אחת לכמה ארכיטקטורות (amd64 ו-arm64) בו-זמנית?</summary>
+
 באמצעות `docker/build-push-action` עם הפרמטר `platforms: linux/amd64,linux/arm64` בשילוב עם `docker/setup-qemu-action` ו-`docker/setup-buildx-action`.
 
-**8. מה החשיבות של `.dockerignore` בהקשר של ביצועי CI?**
+</details>
+
+<details class="qa">
+<summary>8. מה החשיבות של <code>.dockerignore</code> בהקשר של ביצועי CI?</summary>
+
 מונע העתקת קבצים לא נחוצים (כמו `.git`, `node_modules` מקומי) ל-build context, מה שמקצר את זמן העברת הקונטקסט ל-Docker daemon ומזרז את הבנייה.
 
-**9. למה לא מומלץ להריץ תהליכים בתוך container כ-root?**
+</details>
+
+<details class="qa">
+<summary>9. למה לא מומלץ להריץ תהליכים בתוך container כ-root?</summary>
+
 מטעמי אבטחה - אם ה-container נפרץ, הרצה כ-root מעניקה לתוקף הרשאות רחבות יותר בתוך הסביבה. יש להגדיר משתמש ייעודי לא-privileged ב-Dockerfile.
 
-**10. מה ההבדל בין בניית image "רגילה" ל-build עם BuildKit/Buildx?**
+</details>
+
+<details class="qa">
+<summary>10. מה ההבדל בין בניית image "רגילה" ל-build עם BuildKit/Buildx?</summary>
+
 Buildx (מבוסס BuildKit) תומך ב-caching מתקדם, בנייה מקבילית של שכבות, multi-platform builds, ואינטגרציה טובה יותר עם GitHub Actions cache - לעומת ה-Docker builder הישן שאינו תומך בכל אלה.
+
+</details>
 
 ## קישורים חיצוניים
 

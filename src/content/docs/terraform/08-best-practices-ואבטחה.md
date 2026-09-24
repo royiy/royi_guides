@@ -251,20 +251,40 @@ terraform.rc
 
 ## שאלות ראיון נפוצות
 
-**1. איך הייתם מנהלים secrets ב-Terraform בצורה בטוחה?**
+<details class="qa">
+<summary>1. איך הייתם מנהלים secrets ב-Terraform בצורה בטוחה?</summary>
+
 לעולם לא hardcode בקוד. שימוש במנהלי סודות ייעודיים (Vault, AWS Secrets Manager) עם data sources, הצפנת ה-state עצמו, והגבלת גישה ל-backend עם IAM מדויק.
 
-**2. למה חשוב לסרוק קוד Terraform עם כלים כמו tfsec/Checkov לפני apply?**
+</details>
+
+<details class="qa">
+<summary>2. למה חשוב לסרוק קוד Terraform עם כלים כמו tfsec/Checkov לפני apply?</summary>
+
 כדי לזהות בעיות אבטחה (security groups פתוחים, buckets ציבוריים, הצפנה חסרה) לפני שהן מגיעות לפרודקשן - "shift left" על אבטחה.
 
-**3. מה זה "Blast Radius" ואיך מקטינים אותו בארכיטקטורת Terraform?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה "Blast Radius" ואיך מקטינים אותו בארכיטקטורת Terraform?</summary>
+
 היקף הנזק הפוטנציאלי משגיאה. מקטינים על ידי פיצול לקונפיגורציות/state נפרדים לפי domain (network/database/compute) במקום monolith אחד ענק.
 
-**4. האם `.terraform.lock.hcl` צריך להיכנס לגיט?**
+</details>
+
+<details class="qa">
+<summary>4. האם <code>.terraform.lock.hcl</code> צריך להיכנס לגיט?</summary>
+
 כן! זה בניגוד לאינטואיציה הראשונית, אבל נחוץ כדי להבטיח עקביות גרסאות providers בין כל חברי הצוות ו-CI.
 
-**5. איך אוכפים policy ארגוני (למשל "כל bucket חייב להיות מוצפן") ב-CI?**
+</details>
+
+<details class="qa">
+<summary>5. איך אוכפים policy ארגוני (למשל "כל bucket חייב להיות מוצפן") ב-CI?</summary>
+
 עם Policy as Code - Sentinel (Terraform Cloud) או Open Policy Agent (OPA) שבודקים את ה-plan מול חוקים לפני שמאשרים apply.
+
+</details>
 
 ---
 

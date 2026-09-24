@@ -22,62 +22,132 @@ part: 10/10
 
 ## שאלות יסוד (Junior) {#שאלות-יסוד}
 
-**1. מה זה Kubernetes במשפט אחד?**
+<details class="qa">
+<summary>1. מה זה Kubernetes במשפט אחד?</summary>
+
 מערכת קוד-פתוח לתזמור (orchestration) אוטומטי של אפליקציות בקונטיינרים - הרצה, סקיילינג, ריפוי עצמי ועדכונים.
 
-**2. מה ההבדל בין Docker ל-Kubernetes?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין Docker ל-Kubernetes?</summary>
+
 Docker הוא כלי ליצירה והרצה של קונטיינרים בודדים על מכונה אחת. Kubernetes הוא שכבה שמעליו - מנהל אוסף גדול של קונטיינרים (לרוב על הרבה מכונות), כולל scaling, self-healing, networking ו-load balancing.
 
-**3. מה זה Pod?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה Pod?</summary>
+
 יחידת הפריסה הקטנה ביותר ב-Kubernetes - "עטיפה" סביב קונטיינר אחד או יותר שחולקים רשת ואחסון.
 
-**4. מה ההבדל בין Deployment ל-Pod?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין Deployment ל-Pod?</summary>
+
 Pod הוא היחידה הבסיסית; Deployment הוא controller שמנהל אוסף Pods, כולל rolling updates, rollback וסקיילינג.
 
-**5. מה זה Service, ולמה צריך אותו אם ל-Pod כבר יש IP?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה Service, ולמה צריך אותו אם ל-Pod כבר יש IP?</summary>
+
 כי כתובת IP של Pod משתנה בכל פעם שהוא נוצר מחדש. Service מספק כתובת יציבה ו-load balancing אוטומטי לקבוצת Pods.
 
-**6. מה ההבדל בין Namespace שונים?**
+</details>
+
+<details class="qa">
+<summary>6. מה ההבדל בין Namespace שונים?</summary>
+
 Namespace הוא מנגנון בידוד לוגי בתוך קלאסטר - מאפשר להפריד סביבות (dev/staging/prod) או צוותים, כולל הגבלת שמות (שם משאב חייב להיות ייחודי בתוך namespace, לא בהכרח בין namespaces).
 
-**7. מה זה kubectl?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה kubectl?</summary>
+
 כלי שורת הפקודה (CLI) הרשמי לתקשורת עם ה-API Server של Kubernetes - יצירה, עדכון, מחיקה וצפייה במשאבים.
 
-**8. מה ההבדל בין `kubectl apply` ל-`kubectl create`?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין <code>kubectl apply</code> ל-<code>kubectl create</code>?</summary>
+
 `create` יוצר משאב חדש ונכשל אם הוא כבר קיים. `apply` הוא declarative - יוצר אם לא קיים, ומעדכן אם קיים (בהתבסס על ההבדל מהמצב האחרון שהוחל).
+
+</details>
 
 ---
 
 ## שאלות ביניים (Mid-Level) {#שאלות-ביניים}
 
-**1. מה ההבדל בין ConfigMap ל-Secret?**
+<details class="qa">
+<summary>1. מה ההבדל בין ConfigMap ל-Secret?</summary>
+
 שניהם מנגנון לשמירת קונפיגורציה חיצונית לקוד, אבל Secret מיועד למידע רגיש ומוצג ב-Base64 (לא מוצפן כברירת מחדל!) בעוד ConfigMap מוצג כטקסט גלוי.
 
-**2. הסבירו את ה-Rolling Update Strategy.**
+</details>
+
+<details class="qa">
+<summary>2. הסבירו את ה-Rolling Update Strategy.</summary>
+
 Deployment מעדכן Pods בהדרגה לפי `maxSurge` (כמה Pods נוספים מותר ליצור מעבר לכמות הרצויה) ו-`maxUnavailable` (כמה מותר שיהיו לא זמינים) - כדי לשמור על זמינות במהלך העדכון.
 
-**3. מה ההבדל בין livenessProbe ל-readinessProbe?**
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין livenessProbe ל-readinessProbe?</summary>
+
 liveness קובע האם להפעיל מחדש קונטיינר; readiness קובע האם לשלוח אליו תעבורה מה-Service, בלי להרוג אותו.
 
-**4. מה זה StatefulSet, ומתי בוחרים בו על פני Deployment?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה StatefulSet, ומתי בוחרים בו על פני Deployment?</summary>
+
 כשצריך זהות רשת יציבה, סדר עלייה/כיבוי, ואחסון ייחודי ונשמר לכל instance - כמו במסדי נתונים מבוזרים.
 
-**5. מה ההבדל בין requests ל-limits?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין requests ל-limits?</summary>
+
 requests הם ההבטחה המינימלית שה-Scheduler משתמש בה לשיבוץ; limits הם התקרה שאם חורגים ממנה - CPU נחנק (throttle) ו-Memory גורם ל-OOMKill.
 
-**6. מה זה NetworkPolicy?**
+</details>
+
+<details class="qa">
+<summary>6. מה זה NetworkPolicy?</summary>
+
 אובייקט שמגביל תעבורת רשת בין Pods, שכברירת מחדל פתוחה לגמרי - דורש CNI תומך (Calico, Cilium וכו').
 
-**7. מה תפקידו של Ingress Controller?**
+</details>
+
+<details class="qa">
+<summary>7. מה תפקידו של Ingress Controller?</summary>
+
 הרכיב שבפועל מיישם את חוקי ה-Ingress שהוגדרו - בלעדיו אובייקט Ingress הוא רק הצהרה בלי אכיפה.
 
-**8. איך עובד Horizontal Pod Autoscaler (HPA)?**
+</details>
+
+<details class="qa">
+<summary>8. איך עובד Horizontal Pod Autoscaler (HPA)?</summary>
+
 בודק metrics (CPU/Memory או custom metrics) בהשוואה ליעד (target), ומגדיל/מקטין את מספר ה-replicas ב-Deployment בהתאם.
 
-**9. מה ההבדל בין ClusterIP, NodePort ו-LoadBalancer?**
+</details>
+
+<details class="qa">
+<summary>9. מה ההבדל בין ClusterIP, NodePort ו-LoadBalancer?</summary>
+
 ClusterIP - נגיש בקלאסטר בלבד. NodePort - חושף פורט קבוע על כל Node. LoadBalancer - מבקש Load Balancer אמיתי מספק ענן.
 
-**10. מה זה Init Container?**
+</details>
+
+<details class="qa">
+<summary>10. מה זה Init Container?</summary>
+
 קונטיינר שרץ **לפני** הקונטיינרים הראשיים ב-Pod, ומסתיים לפני שהם עולים - שימושי להכנת סביבה, המתנה לתלות חיצונית, או migration.
 
 ```yaml
@@ -91,14 +161,22 @@ spec:
       image: myapp:1.0
 ```
 
+</details>
+
 ---
 
 ## שאלות מתקדמות (Senior / DevOps) {#שאלות-מתקדמות}
 
-**1. הסבירו את ה-Reconciliation Loop ואיך controllers עובדים בפועל.**
+<details class="qa">
+<summary>1. הסבירו את ה-Reconciliation Loop ואיך controllers עובדים בפועל.</summary>
+
 כל controller מריץ לולאה אינסופית: קורא מה-API Server את המצב הרצוי (spec) והמצב בפועל (status), משווה, ואם יש פער - מבצע פעולות לצמצם אותו. זהו הדפוס הבסיסי מאחורי ReplicaSet, Deployment, וכל CRD מותאם אישית (Operator).
 
-**2. מה ההבדל בין Taints/Tolerations ל-Node Affinity?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין Taints/Tolerations ל-Node Affinity?</summary>
+
 Taints מוחלים על Node ו"דוחים" Pods שאין להם toleration תואם - מנגנון "דחייה" (repel). Node Affinity מוגדר ברמת Pod ו"מושך" אותו לכיוון Nodes מסוימים - מנגנון "משיכה" (attract). הם משלימים זה את זה: taints מגנים על nodes ייעודיים (למשל GPU), affinity מבקש להעדיף אותם.
 
 ```yaml
@@ -110,7 +188,11 @@ tolerations:
     effect: "NoSchedule"
 ```
 
-**3. הסבירו PodDisruptionBudget (PDB) ולמה הוא חשוב.**
+</details>
+
+<details class="qa">
+<summary>3. הסבירו PodDisruptionBudget (PDB) ולמה הוא חשוב.</summary>
+
 מגדיר כמה Pods מותר שיהיו לא זמינים במקביל במהלך פעולות **וולונטריות** (voluntary disruptions) - כמו node drain לצורך תחזוקה. לא מגן מפני קריסות פתאומיות (involuntary).
 
 ```yaml
@@ -125,26 +207,56 @@ spec:
       app: myapp
 ```
 
-**4. מה זה CRD (Custom Resource Definition) ו-Operator?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה CRD (Custom Resource Definition) ו-Operator?</summary>
+
 CRD מרחיב את ה-API של Kubernetes בטיפוסי משאבים חדשים ומותאמים אישית (למשל `PostgresCluster`). Operator הוא controller מותאם אישית שמנהל את מחזור החיים של אותו CRD - "אוטומציה של ידע תפעולי אנושי" בקוד.
 
-**5. מה ההבדל בין Rolling Update ל-Blue-Green ל-Canary Deployment?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין Rolling Update ל-Blue-Green ל-Canary Deployment?</summary>
+
 Rolling Update מעדכן בהדרגה (native ל-Deployment). Blue-Green מריץ שתי סביבות מלאות ומקבילות ומחליף תעבורה בבת אחת (דורש שני Deployments + שינוי Service selector). Canary מנתב אחוז קטן מהתעבורה לגרסה חדשה בהדרגה, ומגדיל בהתאם לתוצאות - דורש כלים כמו Argo Rollouts או Service Mesh.
 
-**6. איך מתמודדים עם multi-tenancy בקלאסטר Kubernetes יחיד?**
+</details>
+
+<details class="qa">
+<summary>6. איך מתמודדים עם multi-tenancy בקלאסטר Kubernetes יחיד?</summary>
+
 שילוב של: Namespaces להפרדה לוגית, ResourceQuota ו-LimitRange להגבלת משאבים לכל צוות, RBAC לבידוד הרשאות, NetworkPolicy לבידוד תעבורה, ולעיתים גם node pools נפרדים או Kubernetes multi-cluster לבידוד פיזי מלא יותר.
 
-**7. מה זה etcd ולמה אבטחת/גיבוי שלו קריטיים?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה etcd ולמה אבטחת/גיבוי שלו קריטיים?</summary>
+
 מסד הנתונים המבוזר ששומר את **כל** מצב הקלאסטר. אובדן etcd = אובדן היכולת לנהל את הקלאסטר. תמיד לוודא גיבויים סדירים, quorum תקין (מספר אי-זוגי של instances), ו-encryption at rest.
 
-**8. איך Kubernetes מבצע Scheduling בפועל - מה משפיע על ההחלטה?**
+</details>
+
+<details class="qa">
+<summary>8. איך Kubernetes מבצע Scheduling בפועל - מה משפיע על ההחלטה?</summary>
+
 kube-scheduler עובר שני שלבים: **Filtering** (איזה Nodes בכלל יכולים לארח את ה-Pod - לפי resources, taints, affinity) ו-**Scoring** (דירוג ה-Nodes המתאימים לפי קריטריונים כמו spread, resource balance) - ובוחר את הציון הגבוה ביותר.
 
-**9. מה ההבדל בין Rolling Restart ל-Rolling Update?**
+</details>
+
+<details class="qa">
+<summary>9. מה ההבדל בין Rolling Restart ל-Rolling Update?</summary>
+
 Rolling Update מתרחש כשמשנים את ה-spec (למשל image חדש). Rolling Restart (`kubectl rollout restart`) מפעיל מחדש את כל ה-Pods בלי לשנות שום דבר ב-spec - שימושי למשל אחרי עדכון Secret/ConfigMap שלא מתעדכן אוטומטית.
 
-**10. הסבירו graceful shutdown ב-Kubernetes.**
+</details>
+
+<details class="qa">
+<summary>10. הסבירו graceful shutdown ב-Kubernetes.</summary>
+
 כשPod נמחק, Kubernetes שולח SIGTERM, מסיר את ה-Pod מה-Endpoints (מפסיק לשלוח תעבורה חדשה), וממתין `terminationGracePeriodSeconds` (ברירת מחדל 30 שניות) לפני שליחת SIGKILL. חשוב שהאפליקציה תטפל ב-SIGTERM כדי לסיים בקשות פתוחות בצורה מסודרת.
+
+</details>
 
 ---
 

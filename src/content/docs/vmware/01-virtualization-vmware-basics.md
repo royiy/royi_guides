@@ -227,13 +227,54 @@ ESXi01
 
 ## שאלות ראיון
 
-1. מה ההבדל בין ESXi ל-vCenter?
-2. מהו Hypervisor?
-3. מהו Datastore?
-4. מה ההבדל בין VM ל-Host?
-5. מה עושה HA?
-6. מה עושה DRS?
-7. מה עושה vMotion?
+<details class="qa">
+<summary>1. מה ההבדל בין ESXi ל-vCenter?</summary>
+
+ESXi הוא ה-Hypervisor עצמו — מערכת ההפעלה שמותקנת על השרת הפיזי ומריצה את מכונות האורח. vCenter הוא שרת הניהול שמרכז הרבה שרתי ESXi תחת ממשק אחד ומאפשר את היכולות המתקדמות: vMotion, HA, DRS, הרשאות, Templates ודוחות. ESXi בודד עובד גם בלי vCenter, אבל בלי היכולות ברמת הקלאסטר.
+
+</details>
+
+<details class="qa">
+<summary>2. מהו Hypervisor?</summary>
+
+שכבת תוכנה שמפרידה בין החומרה הפיזית למכונות הווירטואליות ומחלקת ביניהן CPU, זיכרון, אחסון ורשת. Type 1 ("bare-metal", כמו ESXi) מותקן ישירות על החומרה ולכן יעיל ובטוח יותר; Type 2 (כמו Workstation) רץ מעל מערכת הפעלה קיימת ומתאים לתחנות עבודה ולמעבדה.
+
+</details>
+
+<details class="qa">
+<summary>3. מהו Datastore?</summary>
+
+מאגר האחסון הלוגי שבו יושבים קבצי המכונות הווירטואליות (VMDK, VMX, לוגים, snapshots). הוא יכול להיות VMFS על LUN בלוקי (FC/iSCSI/Local) או NFS מתוך שרת קבצים. Datastore משותף בין כמה Hosts הוא התנאי ליכולות כמו vMotion ו-HA.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין VM ל-Host?</summary>
+
+Host הוא השרת הפיזי שעליו מותקן ESXi ושמספק את המשאבים. VM היא מכונה וירטואלית — אוסף קבצים שמתנהג כמו מחשב עצמאי עם מערכת הפעלה משלו — שרצה מעל ה-Host. Host אחד מריץ עשרות VMs, וה-VM יכולה לנדוד בין Hosts.
+
+</details>
+
+<details class="qa">
+<summary>5. מה עושה HA?</summary>
+
+vSphere HA מנטר את ה-Hosts בקלאסטר, וכאשר Host נופל הוא מפעיל מחדש את המכונות שרצו עליו על Hosts אחרים. חשוב להבין: זו הפעלה מחדש (יש זמן השבתה קצר), לא העברה חיה — ההגנה היא מפני כשל חומרה, לא מפני downtime מוחלט.
+
+</details>
+
+<details class="qa">
+<summary>6. מה עושה DRS?</summary>
+
+Distributed Resource Scheduler מאזן עומסים בין ה-Hosts בקלאסטר: הוא מנטר צריכת CPU וזיכרון וממליץ (או מבצע אוטומטית, לפי רמת האוטומציה) vMotion של מכונות ל-Host פנוי יותר. הוא גם אחראי על מיקום ראשוני חכם של VM חדשה.
+
+</details>
+
+<details class="qa">
+<summary>7. מה עושה vMotion?</summary>
+
+מעביר מכונה וירטואלית פעילה מ-Host אחד לאחר **בלי להפיל אותה** — הזיכרון מועתק ברקע ואז מבוצע מעבר מהיר של הבעלות. זה מה שמאפשר תחזוקת חומרה בשעות העבודה: מפנים Host (Maintenance Mode), מטפלים בו ומחזירים אותו לשירות.
+
+</details>
 
 ## סיכום
 

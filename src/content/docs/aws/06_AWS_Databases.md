@@ -33,10 +33,19 @@ aws dynamodb scan --table-name Users
 * ב-DynamoDB, תמיד העדיפו On-Demand Billing (Pay per request) עבור עומסים לא צפויים, ו-Provisioned רק כאשר העומס קבוע וידוע מראש.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל ב-RDS בין Multi-AZ ל-Read Replica?
-   **תשובה:** Multi-AZ משמש ל-High Availability (Disaster Recovery). זהו גיבוי סינכרוני שלא ניתן לקרוא ממנו ביומיום. Read Replica משמש לשיפור ביצועים (Scaling) לקריאות, והוא אסינכרוני.
-2. **שאלה:** האם DynamoDB מתאים לשמירת נתונים עם קשרים מורכבים ושאילתות JOIN?
-   **תשובה:** לא! DynamoDB הוא NoSQL ולא תומך ב-JOIN. לקשרים מורכבים כדאי לבחור ב-RDS (SQL).
+<details class="qa">
+<summary>1. מה ההבדל ב-RDS בין Multi-AZ ל-Read Replica?</summary>
+
+Multi-AZ משמש ל-High Availability (Disaster Recovery). זהו גיבוי סינכרוני שלא ניתן לקרוא ממנו ביומיום. Read Replica משמש לשיפור ביצועים (Scaling) לקריאות, והוא אסינכרוני.
+
+</details>
+
+<details class="qa">
+<summary>2. האם DynamoDB מתאים לשמירת נתונים עם קשרים מורכבים ושאילתות JOIN?</summary>
+
+לא! DynamoDB הוא NoSQL ולא תומך ב-JOIN. לקשרים מורכבים כדאי לבחור ב-RDS (SQL).
+
+</details>
 
 ## קישורים שימושיים
 * [AWS RDS Documentation](https://docs.aws.amazon.com/rds/)

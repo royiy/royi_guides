@@ -121,16 +121,28 @@ app.listen(3000);
 
 ## שאלות נפוצות בראיונות עבודה
 
-**1. אילו שיטות Versioning אתם מכירים, ומה תבחרו ולמה?**
+<details class="qa">
+<summary>1. אילו שיטות Versioning אתם מכירים, ומה תבחרו ולמה?</summary>
+
 URL, Header, Query Param. לרוב עונים: URL Versioning כי הוא הכי פשוט ונפוץ בתעשייה, למרות שהוא "פחות טהור" מבחינת REST.
 
 **2. מה נחשב Breaking Change?** (ראו טבלה למעלה - חשוב לתת דוגמאות קונקרטיות)
 
-**3. איך הייתם מנהלים deprecation של endpoint ישן?**
+</details>
+
+<details class="qa">
+<summary>3. איך הייתם מנהלים deprecation של endpoint ישן?</summary>
+
 שילוב של Headers (`Deprecation`, `Sunset`), תיעוד מפורש, הודעה מראש ללקוחות, וניטור שימוש לפני כיבוי סופי.
 
-**4. האם אפשר לתכנן API כך שלא צריך Versioning בכלל?**
+</details>
+
+<details class="qa">
+<summary>4. האם אפשר לתכנן API כך שלא צריך Versioning בכלל?</summary>
+
 תיאורטית כן ("Evolve, Don't Version") - ע"י הוספה בלבד, שדות אופציונליים, ותמיכה ב-backward compatibility מובנית. בפועל, כמעט כל API גדול בסופו של דבר צריך Major Version בשלב כלשהו.
+
+</details>
 
 ## קישורים חיצוניים ומקורות למידה
 

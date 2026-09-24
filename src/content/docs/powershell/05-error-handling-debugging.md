@@ -161,10 +161,16 @@ Describe "Get-ServerHealth" {
 ```
 
 ## 13. שאלות ראיון
-### למה `-ErrorAction Stop` חשוב?
+<details class="qa">
+<summary>למה <code>-ErrorAction Stop</code> חשוב?</summary>
+
 כי לא כל שגיאה היא terminating error. כדי ש-`catch` יתפוס שגיאה מסוימת צריך לעיתים להפוך אותה ל-terminating error.
 
-### איך תכתוב סקריפט בטוח?
+</details>
+
+<details class="qa">
+<summary>איך תכתוב סקריפט בטוח?</summary>
+
 - Validation
 - Logging
 - Error handling
@@ -174,6 +180,8 @@ Describe "Get-ServerHealth" {
 - Exit codes
 - Tests
 - Documentation
+
+</details>
 
 ## 14. Idempotency
 סקריפט אידמפוטנטי יכול לרוץ שוב בלי לגרום נזק או לשנות שוב ושוב משהו שכבר תקין.
@@ -195,7 +203,6 @@ if ((Get-Service Spooler).StartType -ne 'Automatic') {
 - במקרה כשל — Error ברור
 - `-WhatIf` לפני שינוי
 
-
 ## מקורות מומלצים
 
 ### Microsoft Learn
@@ -212,8 +219,6 @@ if ((Get-Service Spooler).StartType -ne 'Automatic') {
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Error Handling כמו בסביבת Production
 

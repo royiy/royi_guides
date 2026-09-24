@@ -201,35 +201,75 @@ jobs:
 
 ## שאלות ראיון עבודה
 
-**1. מה ההבדל בין Secret ל-Variable ב-GitHub Actions?**
+<details class="qa">
+<summary>1. מה ההבדל בין Secret ל-Variable ב-GitHub Actions?</summary>
+
 Secret הוא ערך מוצפן שמוסתר בלוגים ומיועד לנתונים רגישים; Variable הוא ערך רגיל, לא מוצפן, המיועד לקונפיגורציה לא-רגישה.
 
-**2. מהן שלוש הרמות שבהן ניתן להגדיר Secrets?**
+</details>
+
+<details class="qa">
+<summary>2. מהן שלוש הרמות שבהן ניתן להגדיר Secrets?</summary>
+
 Repository, Environment, ו-Organization.
 
-**3. מה זה GITHUB_TOKEN וממתי הוא נוצר?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה GITHUB_TOKEN וממתי הוא נוצר?</summary>
+
 טוקן זמני שנוצר אוטומטית על ידי GitHub בתחילת כל ריצת workflow, ומאפשר אינטראקציה עם ה-API של הריפו לפי ההרשאות שהוגדרו.
 
-**4. למה חשוב להגדיר `permissions` מפורש בראש קובץ ה-workflow?**
+</details>
+
+<details class="qa">
+<summary>4. למה חשוב להגדיר <code>permissions</code> מפורש בראש קובץ ה-workflow?</summary>
+
 כדי לממש את עקרון ההרשאה המינימלית - להגביל את מה שה-GITHUB_TOKEN יכול לעשות, ובכך לצמצם נזק פוטנציאלי אם ה-workflow מנוצל לרעה.
 
-**5. מה זה OIDC וכיצד הוא משפר אבטחה מול ספקי ענן?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה OIDC וכיצד הוא משפר אבטחה מול ספקי ענן?</summary>
+
 פרוטוקול שמאפשר קבלת טוקן זמני וממוקד-הרשאות בזמן ריצה, במקום החזקת מפתחות סטטיים כ-secrets - מצמצם סיכון דליפה של אישורי גישה קבועים.
 
-**6. האם secrets רגילים זמינים ב-Pull Request שמגיע מ-fork?**
+</details>
+
+<details class="qa">
+<summary>6. האם secrets רגילים זמינים ב-Pull Request שמגיע מ-fork?</summary>
+
 לא, מטעמי אבטחה - למעט GITHUB_TOKEN עם הרשאות מוגבלות (בדרך כלל read-only).
 
-**7. איך מעבירים secrets ל-reusable workflow?**
+</details>
+
+<details class="qa">
+<summary>7. איך מעבירים secrets ל-reusable workflow?</summary>
+
 באמצעות `secrets: inherit` (כל הסודות של הקורא) או פירוט ידני של סודות ספציפיים תחת `secrets:` בקריאה ל-workflow.
 
-**8. מה קורה אם מנסים לגשת ל-secret שלא קיים?**
+</details>
+
+<details class="qa">
+<summary>8. מה קורה אם מנסים לגשת ל-secret שלא קיים?</summary>
+
 הביטוי מוחזר כמחרוזת ריקה, ללא שגיאה - מה שיכול לגרום לבאגים שקטים אם לא בודקים זאת.
 
-**9. מה זה Environment ב-GitHub Actions, ואיך הוא קשור ל-approval gates?**
+</details>
+
+<details class="qa">
+<summary>9. מה זה Environment ב-GitHub Actions, ואיך הוא קשור ל-approval gates?</summary>
+
 שכבת קונפיגורציה שניתן לצרף ל-job (`environment:`), שמאפשרת secrets/variables ייעודיים, וכן דרישת אישור ידני ("required reviewers") לפני ריצת ה-job.
 
-**10. איך מונעים חשיפת secret דרך מניפולציה (למשל קידוד base64)?**
+</details>
+
+<details class="qa">
+<summary>10. איך מונעים חשיפת secret דרך מניפולציה (למשל קידוד base64)?</summary>
+
 על ידי הימנעות מוחלטת מהדפסת נגזרות של secrets ללוגים - מנגנון ה-masking האוטומטי של GitHub מזהה רק את הערך המדויק, לא גרסאות מקודדות שלו.
+
+</details>
 
 ## קישורים חיצוניים
 

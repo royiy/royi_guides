@@ -35,10 +35,19 @@ aws ec2 describe-availability-zones --region us-east-1
 * **יתירות (High Availability):** תמיד תפרסו את המערכת שלכם על פני לפחות 2 Availability Zones כדי לשרוד נפילה של דאטה סנטר שלם.
 
 ## שאלות ראיון עבודה נפוצות
-1. **שאלה:** מה ההבדל בין Region ל-Availability Zone?
-   **תשובה:** Region הוא אזור גיאוגרפי שלם, בעוד ש-AZ הוא דאטה-סנטר (או קבוצה שלהם) בתוך אותו Region. אזור תמיד מכיל לפחות 2 AZs.
-2. **שאלה:** למה משמש שירות Edge Location?
-   **תשובה:** בעיקר ל-Caching (מטמון) של תוכן קרוב למשתמש הקצה דרך Amazon CloudFront, וכן ל-Route53.
+<details class="qa">
+<summary>1. מה ההבדל בין Region ל-Availability Zone?</summary>
+
+Region הוא אזור גיאוגרפי שלם, בעוד ש-AZ הוא דאטה-סנטר (או קבוצה שלהם) בתוך אותו Region. אזור תמיד מכיל לפחות 2 AZs.
+
+</details>
+
+<details class="qa">
+<summary>2. למה משמש שירות Edge Location?</summary>
+
+בעיקר ל-Caching (מטמון) של תוכן קרוב למשתמש הקצה דרך Amazon CloudFront, וכן ל-Route53.
+
+</details>
 
 ## קישורים שימושיים
 * [AWS Global Infrastructure - דוקומנטציה רשמית](https://aws.amazon.com/about-aws/global-infrastructure/)

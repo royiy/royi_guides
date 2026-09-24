@@ -148,13 +148,54 @@ whoami /groups
 ```
 
 ## שאלות ראיון
-1. מה ההבדל בין `Enter-PSSession` ל-`Invoke-Command`?
-2. מתי תשתמש ב-PSSession?
-3. מה ההבדל בין 5985 ל-5986?
-4. מה זה WinRM?
-5. מה הסיכונים של פתיחת Remoting לרשת לא אמינה?
-6. איך תנהל 500 שרתים בלי להציף אותם?
-7. איך תאסוף תוצאות מכל השרתים גם כשחלקם Offline?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>Enter-PSSession</code> ל-<code>Invoke-Command</code>?</summary>
+
+`Enter-PSSession` פותח session אינטראקטיבי מול שרת **אחד** — כאילו אתם יושבים מולו ומקלידים. `Invoke-Command` מריץ בלוק פקודות על שרת אחד או על מאות שרתים **במקביל** ומחזיר את התוצאות כאובייקטים. לחקירה ידנית — `Enter-PSSession`; לאוטומציה ולסקייל — `Invoke-Command`.
+
+</details>
+
+<details class="qa">
+<summary>2. מתי תשתמש ב-PSSession?</summary>
+
+כשצריך לשמור מצב בין כמה פקודות לאותו שרת, או להריץ סדרת פעולות בלי לשלם על הקמת חיבור בכל פעם. יוצרים עם `New-PSSession`, משתמשים שוב ושוב עם `Invoke-Command -Session`, ובסוף סוגרים עם `Remove-PSSession`. זה גם חוסך זמן משמעותי בעבודה מול הרבה שרתים.
+
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין 5985 ל-5986?</summary>
+
+5985 הוא WinRM מעל HTTP ו-5986 הוא WinRM מעל HTTPS. גם ב-HTTP התעבורה מוצפנת כשמדובר באימות Kerberos/NTLM בתוך דומיין, אבל 5986 מוסיף TLS עם תעודה ולכן הוא הבחירה הנכונה מחוץ לדומיין, מול רשתות לא אמינות או כשנדרשת תאימות רגולטורית.
+
+</details>
+
+<details class="qa">
+<summary>4. מה זה WinRM?</summary>
+
+Windows Remote Management — המימוש של מיקרוסופט לפרוטוקול WS-Management, שעליו רץ PowerShell Remoting. הוא שירות שמאזין בפורטים 5985/5986, מבצע אימות (Kerberos בדומיין), ומריץ את הפקודות בצד השרת ומחזיר אובייקטים מסודרים (serialized) ללקוח.
+
+</details>
+
+<details class="qa">
+<summary>5. מה הסיכונים של פתיחת Remoting לרשת לא אמינה?</summary>
+
+מי שמשיג credentials מקבל בפועל הרצת קוד מרחוק על השרת. סיכונים נוספים: ניסיונות brute-force מול השירות, מתקפות relay, ושימוש ב-`TrustedHosts = *` שמבטל אימות זהות של השרת. ההגנות: לא לחשוף את הפורטים לאינטרנט, להשתמש ב-HTTPS (5986), להגביל מקורות ב-Firewall, לעבוד עם JEA והרשאות מינימליות ולנטר את לוגי ה-WinRM.
+
+</details>
+
+<details class="qa">
+<summary>6. איך תנהל 500 שרתים בלי להציף אותם?</summary>
+
+מריצים `Invoke-Command` עם `-ThrottleLimit` כדי להגביל כמה חיבורים מקבילים פתוחים בו-זמנית (ברירת המחדל 32), מחלקים את הרשימה לאצוות, ומוסיפים `-ErrorAction SilentlyContinue` יחד עם `-ErrorVariable` כדי לאסוף כשלים בלי לעצור. בפעולות משנות-מצב עובדים בגלים ובודקים כל גל לפני שממשיכים.
+
+</details>
+
+<details class="qa">
+<summary>7. איך תאסוף תוצאות מכל השרתים גם כשחלקם Offline?</summary>
+
+מסננים מראש את מי שלא עונה (`Test-NetConnection -Port 5985` או `Test-WSMan`), ואז מריצים עם `-ErrorVariable failed -ErrorAction SilentlyContinue`. התוצאות מכילות `PSComputerName` לכל רשומה, כך שאפשר לייצא הכול ל-CSV ולהפיק דוח נפרד של השרתים שנכשלו — במקום שריצה אחת תיפול בגלל שרת אחד כבוי.
+
+</details>
 
 ## תרגיל
 כתוב סקריפט:
@@ -164,7 +205,6 @@ whoami /groups
 - מנסה Remoting
 - מחזיר Status, Error ו-Time
 - מייצא CSV
-
 
 ## מקורות מומלצים
 
@@ -182,8 +222,6 @@ whoami /groups
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Remoting בתרחישים של System Administrator
 

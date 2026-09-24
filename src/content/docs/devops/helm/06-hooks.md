@@ -190,10 +190,33 @@ helm upgrade my-release ./my-chart
 
 ## שאלות לחזרה עצמית
 
-1. מה קורה אם Job שמוגדר כ-`pre-install` hook נכשל?
-2. איך קובעים סדר הרצה בין כמה hooks באותו שלב?
-3. האם משאבי hook נמחקים אוטומטית ב-`helm uninstall`?
-4. מתי כדאי להשתמש ב-Helm Hook לעומת init container?
+<details class="qa">
+<summary>1. מה קורה אם Job שמוגדר כ-<code>pre-install</code> hook נכשל?</summary>
+
+ההתקנה נעצרת ונכשלת — Helm לא ממשיך ליצור את שאר המשאבים, וה-Release נשאר במצב `failed`. משאבי ה-hook עצמם נשארים בקלאסטר לצורך בדיקת הלוגים, אלא אם הוגדרה מדיניות מחיקה מתאימה.
+
+</details>
+
+<details class="qa">
+<summary>2. איך קובעים סדר הרצה בין כמה hooks באותו שלב?</summary>
+
+עם האנוטציה `helm.sh/hook-weight` — מספר (גם שלילי) שרץ מהנמוך לגבוה. hooks עם אותו weight מסודרים לפי סוג המשאב ואז לפי שם, ולכן כשסדר חשוב תמיד עדיף לקבוע weight מפורש.
+
+</details>
+
+<details class="qa">
+<summary>3. האם משאבי hook נמחקים אוטומטית ב-<code>helm uninstall</code>?</summary>
+
+לא. משאבי hook אינם חלק ממניפסט ה-Release, ולכן Helm לא מנהל את מחזור החיים שלהם. כדי לנקות אותם מגדירים `helm.sh/hook-delete-policy` — למשל `before-hook-creation`, `hook-succeeded` או `hook-failed`.
+
+</details>
+
+<details class="qa">
+<summary>4. מתי כדאי להשתמש ב-Helm Hook לעומת init container?</summary>
+
+Hook מתאים לפעולה שצריכה לקרות **פעם אחת ברמת ה-Release**, לפני או אחרי install/upgrade — למשל migration למסד נתונים. init container מתאים להכנה שצריכה לקרות **בכל הפעלה של כל Pod** — למשל המתנה לשירות תלוי או הורדת קובץ קונפיגורציה.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 5 - Repositories](/devops/helm/05-repositories/)

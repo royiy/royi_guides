@@ -259,17 +259,33 @@ Add-Content C:\Temp\test.txt "Second line"
 - מצב השירות Windows Update
 
 ## שאלות ראיון
-### שאלה: מה ההבדל בין `Where-Object` לבין `Select-Object`?
+<details class="qa">
+<summary>מה ההבדל בין <code>Where-Object</code> לבין <code>Select-Object</code>?</summary>
+
 `Where-Object` מסנן אובייקטים. `Select-Object` בוחר או יוצר Properties.
 
-### שאלה: למה `Get-Member` חשוב?
+</details>
+
+<details class="qa">
+<summary>למה <code>Get-Member</code> חשוב?</summary>
+
 כי הוא מאפשר לראות את סוג האובייקט, ה-Properties וה-Methods במקום לנחש.
 
-### שאלה: מה היתרון של Pipeline?
+</details>
+
+<details class="qa">
+<summary>מה היתרון של Pipeline?</summary>
+
 אפשר להעביר אובייקטים בין פקודות ולבצע עיבוד מדורג.
 
-### שאלה: מה ההבדל בין `$null`, מחרוזת ריקה ו-`$false`?
+</details>
+
+<details class="qa">
+<summary>מה ההבדל בין <code>$null</code>, מחרוזת ריקה ו-<code>$false</code>?</summary>
+
 אלה ערכים שונים. צריך להכיר את סוג הנתון ואת ההתנהגות שלהם בתנאים.
+
+</details>
 
 ## טיפים וטריקים
 1. השתמש ב-Tab Completion.
@@ -280,7 +296,6 @@ Add-Content C:\Temp\test.txt "Second line"
 6. העדף `-Filter` של Cmdlet כאשר קיים, במיוחד בחיפושים גדולים.
 7. בדוק `$ErrorActionPreference` ואל תסתיר שגיאות בלי סיבה.
 8. אל תכניס סיסמאות בתוך `.ps1`.
-
 
 ## מקורות מומלצים
 
@@ -298,8 +313,6 @@ Add-Content C:\Temp\test.txt "Second line"
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — עבודה מהיום-יום של System Administrator
 

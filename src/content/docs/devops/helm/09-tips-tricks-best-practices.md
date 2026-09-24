@@ -241,10 +241,33 @@ helm-docs --chart-search-root=./charts
 
 ## שאלות לחזרה עצמית
 
-1. למה חשוב להשתמש ב-`helm diff` לפני `upgrade` בסביבת production?
-2. מה תפקידו של `values.schema.json`?
-3. איך GitOps (עם ArgoCD) משנה את הדרך שבה מריצים פקודות Helm?
-4. מה ההבדל בין `--set` רגיל ל-`--set-string`?
+<details class="qa">
+<summary>1. למה חשוב להשתמש ב-<code>helm diff</code> לפני <code>upgrade</code> בסביבת production?</summary>
+
+כי הוא מציג בדיוק אילו משאבים ואילו שדות עומדים להשתנות — עוד לפני שנוגעים בקלאסטר. כך תופסים מראש שינוי לא צפוי כמו מחיקת משאב, עדכון של שדה immutable או ערך שנשמט מה-values, במקום לגלות אותו כשהשירות כבר נפל.
+
+</details>
+
+<details class="qa">
+<summary>2. מה תפקידו של <code>values.schema.json</code>?</summary>
+
+הוא מגדיר JSON Schema ל-`values` של ה-Chart, ו-Helm מאמת מולו בזמן `install`, `upgrade` ו-`lint`. ערך חסר, מסוג שגוי או מחוץ לטווח מפיל את הפקודה מיד עם שגיאה ברורה, במקום להיכשל מאוחר יותר בתוך הקלאסטר.
+
+</details>
+
+<details class="qa">
+<summary>3. איך GitOps (עם ArgoCD) משנה את הדרך שבה מריצים פקודות Helm?</summary>
+
+מפסיקים להריץ `helm install`/`upgrade` ידנית. ArgoCD מרנדר את ה-Chart בעצמו (בפועל `helm template`) ומסנכרן את התוצאה מול Git כמקור האמת — כך שהשינוי נעשה ב-commit ולא בפקודה, וכל סטייה בקלאסטר מזוהה כ-OutOfSync וניתנת לתיקון אוטומטי.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>--set</code> רגיל ל-<code>--set-string</code>?</summary>
+
+`--set` מנסה לנחש את הטיפוס — מחרוזת שנראית כמו מספר או בוליאני תומר בהתאם. `--set-string` תמיד מעביר מחרוזת, וזה קריטי לערכים כמו `image.tag=1.10` (שאחרת יהפוך למספר 1.1) או מזהים עם אפסים מובילים.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 8 - ניהול Releases](/devops/helm/08-release-management/)

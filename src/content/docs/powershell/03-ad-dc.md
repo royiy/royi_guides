@@ -148,17 +148,29 @@ Test-NetConnection dc01 -Port 53
 8. בודק GPO רק לאחר שהבסיס תקין.
 
 ## שאלות ראיון
-### מה ההבדל בין `Get-ADUser -Filter *` לבין `Get-ADUser -LDAPFilter`?
+<details class="qa">
+<summary>מה ההבדל בין <code>Get-ADUser -Filter *</code> לבין <code>Get-ADUser -LDAPFilter</code>?</summary>
+
 Filter הוא מנגנון סינון של המודול; LDAPFilter מאפשר ביטוי LDAP. בסביבות גדולות חשוב להבין ביצועים והיכן הסינון מתבצע.
 
-### איך תמצא משתמשים ללא Logon במשך 90 יום?
+</details>
+
+<details class="qa">
+<summary>איך תמצא משתמשים ללא Logon במשך 90 יום?</summary>
+
 ```powershell
 Get-ADUser -Filter * -Properties LastLogonDate |
     Where-Object LastLogonDate -lt (Get-Date).AddDays(-90)
 ```
 
-### האם LastLogonDate מדויק לחלוטין?
+</details>
+
+<details class="qa">
+<summary>האם LastLogonDate מדויק לחלוטין?</summary>
+
 לא. זה ערך משוכפל/מקורב. כאשר צריך דיוק מלא יש להבין את `lastLogon` מול DCs ואת מנגנון הרפליקציה.
+
+</details>
 
 ## טיפים
 - אל תבצע Bulk changes לפני Export/Backup מתאים.
@@ -166,7 +178,6 @@ Get-ADUser -Filter * -Properties LastLogonDate |
 - בדוק OU לפני פעולות.
 - השתמש ב-`-SearchBase` כדי לצמצם עומס.
 - לפעולות רגישות דרוש אישור ושמור Audit.
-
 
 ## מקורות מומלצים
 
@@ -184,8 +195,6 @@ Get-ADUser -Filter * -Properties LastLogonDate |
 - Search: PowerShell tutorials: https://www.youtube.com/results?search_query=PowerShell+tutorial
 - Search: PowerShell for administrators: https://www.youtube.com/results?search_query=PowerShell+for+system+administrators
 - Search: PowerShell interview questions: https://www.youtube.com/results?search_query=PowerShell+interview+questions
-
-
 
 # הרחבה — Active Directory בתרחישים אמיתיים
 

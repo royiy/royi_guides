@@ -9,45 +9,95 @@ part: 10/10
 
 ## שאלות בסיסיות (Junior)
 
-**1. מה ההבדל בין SQL ל-DBMS?**
+<details class="qa">
+<summary>1. מה ההבדל בין SQL ל-DBMS?</summary>
+
 SQL היא שפת תקן לתקשורת עם מסדי נתונים רלציוניים. DBMS (Database Management System) היא התוכנה שמיישמת ומריצה את השפה - כמו PostgreSQL, MySQL או SQL Server.
 
-**2. מה ההבדל בין `WHERE` ל-`HAVING`?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין <code>WHERE</code> ל-<code>HAVING</code>?</summary>
+
 `WHERE` מסנן שורות **לפני** קיבוץ (GROUP BY), ואינו יכול להשתמש בפונקציות אגרגציה. `HAVING` מסנן קבוצות **אחרי** ה-GROUP BY, ויכול להשתמש ב-`COUNT`, `SUM`, `AVG` וכו'.
 
-**3. מה ההבדל בין `DELETE`, `TRUNCATE` ו-`DROP`?**
+</details>
+
+<details class="qa">
+<summary>3. מה ההבדל בין <code>DELETE</code>, <code>TRUNCATE</code> ו-<code>DROP</code>?</summary>
+
 `DELETE` מוחק שורות ספציפיות (ניתן ל-Rollback, מפעיל Triggers). `TRUNCATE` מרוקן את כל הטבלה במהירות (לרוב לא ניתן ל-Rollback, לא מפעיל Triggers). `DROP` מוחק את הטבלה כולה כולל המבנה.
 
-**4. מה ההבדל בין `PRIMARY KEY` ל-`UNIQUE`?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין <code>PRIMARY KEY</code> ל-<code>UNIQUE</code>?</summary>
+
 טבלה יכולה להכיל `PRIMARY KEY` אחד בלבד (שגם אינו יכול להיות NULL), אך מספר עמודות `UNIQUE`. שניהם אוכפים ייחודיות ערכים.
 
-**5. מהו NULL ואיך משווים אליו?**
+</details>
+
+<details class="qa">
+<summary>5. מהו NULL ואיך משווים אליו?</summary>
+
 NULL מייצג ערך לא ידוע/חסר. לא ניתן להשתמש ב-`= NULL`; יש להשתמש ב-`IS NULL` / `IS NOT NULL`.
 
-**6. מה ההבדל בין `INNER JOIN` ל-`LEFT JOIN`?**
+</details>
+
+<details class="qa">
+<summary>6. מה ההבדל בין <code>INNER JOIN</code> ל-<code>LEFT JOIN</code>?</summary>
+
 `INNER JOIN` מחזיר רק שורות עם התאמה בשתי הטבלאות. `LEFT JOIN` מחזיר את כל שורות הטבלה השמאלית, גם ללא התאמה (עם NULL בעמודות הימניות).
 
-**7. מה זה Foreign Key?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה Foreign Key?</summary>
+
 עמודה (או קבוצת עמודות) המפנה למפתח ראשי בטבלה אחרת, ואוכפת שהערך המצוין קיים בפועל בטבלה המקורית (Referential Integrity).
 
-**8. מהו ההבדל בין `COUNT(*)` ל-`COUNT(column_name)`?**
+</details>
+
+<details class="qa">
+<summary>8. מהו ההבדל בין <code>COUNT(*)</code> ל-<code>COUNT(column_name)</code>?</summary>
+
 `COUNT(*)` סופר את כל השורות (כולל שורות עם NULL בכל העמודות). `COUNT(column_name)` סופר רק שורות שבהן הערך בעמודה המסוימת אינו NULL.
+
+</details>
 
 ## שאלות בינוניות (Mid-Level)
 
-**9. מה ההבדל בין `UNION` ל-`UNION ALL`?**
+<details class="qa">
+<summary>9. מה ההבדל בין <code>UNION</code> ל-<code>UNION ALL</code>?</summary>
+
 `UNION` מאחד תוצאות משתי שאילתות ומסיר כפילויות (יקר יותר - דורש מיון/השוואה). `UNION ALL` מאחד ללא הסרת כפילויות (מהיר יותר).
 
-**10. הסבירו את ה-ACID.**
+</details>
+
+<details class="qa">
+<summary>10. הסבירו את ה-ACID.</summary>
+
 Atomicity - הכל או כלום. Consistency - שמירה על תקינות הכללים. Isolation - עסקאות מקבילות לא רואות מצבי ביניים זו של זו. Durability - לאחר COMMIT השינוי נשמר גם בקריסת מערכת.
 
-**11. מה זה Index, ומהו ה-Trade-off בשימוש בו?**
+</details>
+
+<details class="qa">
+<summary>11. מה זה Index, ומהו ה-Trade-off בשימוש בו?</summary>
+
 מבנה נתונים (בד"כ B-Tree) שמאיץ חיפוש נתונים. ה-Trade-off: מאיץ SELECT אך מאט INSERT/UPDATE/DELETE, כי המנוע צריך לתחזק גם את מבנה האינדקס.
 
-**12. מה ההבדל בין Subquery ל-JOIN?**
+</details>
+
+<details class="qa">
+<summary>12. מה ההבדל בין Subquery ל-JOIN?</summary>
+
 Subquery היא שאילתה מקוננת בתוך שאילתה אחרת (יכולה להופיע ב-SELECT, WHERE, FROM). JOIN מחבר טבלאות "לרוחב" בשלב אחד. במקרים רבים ניתן להמיר Subquery ל-JOIN לביצועים טובים יותר, אך לא תמיד.
 
-**13. מה זה CTE (Common Table Expression)?**
+</details>
+
+<details class="qa">
+<summary>13. מה זה CTE (Common Table Expression)?</summary>
+
 שאילתה זמנית מוגדרת עם `WITH`, המשמשת לפירוק שאילתות מורכבות לחלקים קריאים:
 ```sql
 WITH high_earners AS (
@@ -56,7 +106,11 @@ WITH high_earners AS (
 SELECT department_id, COUNT(*) FROM high_earners GROUP BY department_id;
 ```
 
-**14. מה ההבדל בין Window Function ל-GROUP BY?**
+</details>
+
+<details class="qa">
+<summary>14. מה ההבדל בין Window Function ל-GROUP BY?</summary>
+
 `GROUP BY` מצמצם את מספר השורות (שורה אחת לכל קבוצה). Window Function (`OVER()`) מחשב ערך אגרגטיבי **בלי** לצמצם שורות - כל שורה מקורית נשארת, עם עמודה נוספת:
 ```sql
 SELECT employee_id, salary,
@@ -64,40 +118,86 @@ SELECT employee_id, salary,
 FROM employees;
 ```
 
-**15. מהי הצורה הנורמלית השלישית (3NF) בקצרה?**
+</details>
+
+<details class="qa">
+<summary>15. מהי הצורה הנורמלית השלישית (3NF) בקצרה?</summary>
+
 אין תלות טרנזיטיבית - עמודה לא-מפתח לא יכולה להיות תלויה בעמודה לא-מפתח אחרת; כל עמודה לא-מפתח תלויה ישירות במפתח הראשי בלבד.
 
-**16. איך מונעים SQL Injection?**
+</details>
+
+<details class="qa">
+<summary>16. איך מונעים SQL Injection?</summary>
+
 שימוש ב-Parameterized Queries / Prepared Statements בלבד. לעולם לא לשרשר קלט משתמש ישירות למחרוזת SQL.
 
-**17. מהי תוכנית ביצוע (Query Plan) ומה עושה EXPLAIN?**
+</details>
+
+<details class="qa">
+<summary>17. מהי תוכנית ביצוע (Query Plan) ומה עושה EXPLAIN?</summary>
+
 `EXPLAIN` מציג כיצד המנוע מתכנן להריץ שאילתה בפועל - האם הוא משתמש באינדקס (Index Scan) או סורק את כל הטבלה (Seq Scan/Full Scan), וכמה שורות הוא צופה לעבד.
+
+</details>
 
 ## שאלות מתקדמות (Senior)
 
-**18. איך תתמודדו עם N+1 Query Problem?**
+<details class="qa">
+<summary>18. איך תתמודדו עם N+1 Query Problem?</summary>
+
 בעיה נפוצה ב-ORMs שבה כל שורה גורמת לשאילתה נוספת (למשל שליפת עובד ואז שאילתה נפרדת לכל department). הפתרון: `JOIN` מראש, `Eager Loading` ב-ORM, או שימוש ב-`IN` לטעינה מרוכזת.
 
-**19. מה ההבדל בין Optimistic Locking ל-Pessimistic Locking?**
+</details>
+
+<details class="qa">
+<summary>19. מה ההבדל בין Optimistic Locking ל-Pessimistic Locking?</summary>
+
 Pessimistic Locking נועל שורה בזמן קריאה (`SELECT ... FOR UPDATE`) ומונע גישה מקבילה. Optimistic Locking לא נועל, אלא בודק גרסה/timestamp בזמן העדכון ומבטל אם משהו השתנה בינתיים - מתאים לעומסי קריאה גבוהים עם עדכונים נדירים.
 
-**20. הסבירו Deadlock וכיצד למנוע אותו.**
+</details>
+
+<details class="qa">
+<summary>20. הסבירו Deadlock וכיצד למנוע אותו.</summary>
+
 מצב שבו שתי עסקאות נועלות משאבים בסדר הפוך וממתינות זו לזו לנצח. המנוע מזהה ומבטל אוטומטית אחת מהעסקאות. מניעה: לגשת למשאבים תמיד באותו סדר עקבי (למשל תמיד לפי `employee_id` עולה), עסקאות קצרות ומהירות ככל האפשר.
 
-**21. מה ההבדל בין Sharding ל-Partitioning?**
+</details>
+
+<details class="qa">
+<summary>21. מה ההבדל בין Sharding ל-Partitioning?</summary>
+
 Partitioning מחלק טבלה גדולה לחלקים לוגיים **בתוך אותו מסד נתונים** (למשל לפי טווח תאריכים). Sharding מפזר נתונים על פני **מספר שרתי מסד נתונים נפרדים לגמרי**, כל אחד עם תת-קבוצה של הנתונים.
 
-**22. איך תתכננו סכימה עבור Multi-Tenant SaaS?**
+</details>
+
+<details class="qa">
+<summary>22. איך תתכננו סכימה עבור Multi-Tenant SaaS?</summary>
+
 שלוש גישות עיקריות: (1) מסד נתונים נפרד לכל לקוח - בידוד מלא, תחזוקה יקרה; (2) Schema נפרד לכל לקוח באותו מסד - בידוד טוב, ניהול בינוני; (3) טבלאות משותפות עם עמודת `tenant_id` - הכי זול לתחזוקה, דורש משמעת קפדנית ב-WHERE כדי למנוע דליפת מידע בין לקוחות.
 
-**23. מה זה Covering Index ומתי הוא משפר ביצועים?**
+</details>
+
+<details class="qa">
+<summary>23. מה זה Covering Index ומתי הוא משפר ביצועים?</summary>
+
 אינדקס שמכיל את כל העמודות הדרושות לשאילתה, כך שהמנוע לא צריך לגשת לטבלה המקורית כלל (Index-Only Scan) - משפר ביצועים משמעותית בשאילתות תכופות שמסננות ומחזירות עמודות ידועות מראש.
 
-**24. איך תבצעו מיגרציית סכימה (Schema Migration) גדולה בלי Downtime?**
+</details>
+
+<details class="qa">
+<summary>24. איך תבצעו מיגרציית סכימה (Schema Migration) גדולה בלי Downtime?</summary>
+
 גישת Expand-Contract: (1) הוסיפו עמודה/טבלה חדשה בלי למחוק את הישנה; (2) עדכנו את האפליקציה לכתוב לשני המקומות; (3) גבו נתונים היסטוריים (Backfill); (4) העבירו קריאה לעמודה החדשה; (5) רק אז מחקו את הישנה - כל שלב Deploy נפרד וניתן לביטול (Rollback).
 
-**25. מהו Two-Phase Commit (2PC), ומתי נדרש?**
+</details>
+
+<details class="qa">
+<summary>25. מהו Two-Phase Commit (2PC), ומתי נדרש?</summary>
+
 פרוטוקול לשמירה על Atomicity בעסקה שחוצה מספר מסדי נתונים/שירותים נפרדים: שלב Prepare (כולם מאשרים מוכנות) ואז שלב Commit (כולם מבצעים בפועל). נדרש בארכיטקטורות Microservices עם עסקאות מבוזרות, אך יקר בביצועים - לרוב מוחלף ב-Saga Pattern במערכות מודרניות.
+
+</details>
 
 ## סימולציית תרחיש (Scenario-Based) - נפוץ בראיונות Senior
 

@@ -287,25 +287,37 @@ terraform output
 
 ## שאלות נפוצות
 
-**1. מה ההבדל בין `plan` ל-`apply`?**
+<details class="qa">
+<summary>1. מה ההבדל בין <code>plan</code> ל-<code>apply</code>?</summary>
 
 `plan` מחשב ומציג את השינויים הצפויים ללא ביצוע בפועל; `apply` מבצע את השינויים בפועל (ולרוב מריץ `plan` פנימי לפני כן).
 
-**2. מה קורה אם `apply` נכשל באמצע הרצה?**
+</details>
+
+<details class="qa">
+<summary>2. מה קורה אם <code>apply</code> נכשל באמצע הרצה?</summary>
 
 Terraform שומר state חלקי - המשאבים שכבר נוצרו נשמרים ב-state, וההרצה הבאה תנסה להשלים מהנקודה שבה נעצר. לכן חשוב תמיד להריץ שוב `plan`/`apply` לאחר כישלון ולא להשאיר את הסביבה ב"מצב ביניים".
 
-**3. למה `-target` נחשב אנטי-פטרן?**
+</details>
+
+<details class="qa">
+<summary>3. למה <code>-target</code> נחשב אנטי-פטרן?</summary>
 
 כי הוא מתעלם מגרף התלויות המלא ועלול ליצור מצב state לא עקבי. משתמשים בו רק לדיבוג נקודתי, ולאחריו חובה להריץ `plan` מלא.
 
-**4. איך מריצים Terraform באופן לא-אינטראקטיבי ב-CI/CD?**
+</details>
+
+<details class="qa">
+<summary>4. איך מריצים Terraform באופן לא-אינטראקטיבי ב-CI/CD?</summary>
 
 ```bash
 terraform init -input=false
 terraform plan -input=false -out=tfplan
 terraform apply -input=false -auto-approve tfplan
 ```
+
+</details>
 
 ---
 

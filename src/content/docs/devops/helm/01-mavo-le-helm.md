@@ -113,10 +113,33 @@ helm list
 
 ## שאלות לחזרה עצמית
 
-1. מה ההבדל בין Chart ל-Release?
-2. מדוע Helm 3 נחשב בטוח יותר מ-Helm 2?
-3. איפה Helm 3 שומר את המידע על releases מותקנים?
-4. מה תפקידו של קובץ `values.yaml`?
+<details class="qa">
+<summary>1. מה ההבדל בין Chart ל-Release?</summary>
+
+Chart הוא החבילה עצמה — templates, `values.yaml` ומטא-דאטה, כמו "מתכון" או קוד מקור. Release הוא מופע מותקן בפועל של Chart בקלאסטר, עם שם ייחודי והיסטוריית revisions משלו. אפשר להתקין את אותו Chart כמה פעמים כ-Releases נפרדים, כל אחד עם values שונים.
+
+</details>
+
+<details class="qa">
+<summary>2. מדוע Helm 3 נחשב בטוח יותר מ-Helm 2?</summary>
+
+כי הוסר **Tiller** — רכיב שרת שרץ בתוך הקלאסטר ב-Helm 2, לרוב עם הרשאות cluster-admin, וכל מי שהגיע אליו קיבל בפועל שליטה מלאה. ב-Helm 3 ה-CLI פונה ישירות ל-Kubernetes API עם ההרשאות של המשתמש המריץ, כך שה-RBAC הרגיל של הקלאסטר הוא זה שקובע מה מותר.
+
+</details>
+
+<details class="qa">
+<summary>3. איפה Helm 3 שומר את המידע על releases מותקנים?</summary>
+
+ב-Secrets בתוך ה-namespace של ה-Release, בשם בתבנית `sh.helm.release.v1.<release>.v<revision>` — Secret אחד לכל revision. ב-Helm 2 המידע נשמר ב-ConfigMaps ב-namespace של Tiller.
+
+</details>
+
+<details class="qa">
+<summary>4. מה תפקידו של קובץ <code>values.yaml</code>?</summary>
+
+הוא מחזיק את ברירות המחדל של כל הפרמטרים שניתן להתאים ב-Chart. ה-templates קוראים אותם דרך `.Values`, וניתן לדרוס אותם בזמן `install`/`upgrade` באמצעות `--set` או קובץ נוסף עם `-f`.
+
+</details>
 
 ---
 **המשך למדריך הבא:** [מדריך 2 - התקנה והגדרה ראשונית](/devops/helm/02-hatkana-vehagdara/)

@@ -236,10 +236,40 @@ helm install my-release ./my-app --dry-run --debug
 
 ## שאלות לחזרה עצמית
 
-1. מה ההבדל בין `include` ל-`template`?
-2. מה עושה הסימן `-` בתוך `{{- }}`?
-3. איך מעבירים בלוק YAML שלם (כמו `resources`) בלי לפרק אותו לשדות בודדים?
-4. איך אפשר לחייב ערך מסוים בלי ברירת מחדל, כך שההתקנה תיכשל אם הוא לא סופק?
+<details class="qa">
+<summary>1. מה ההבדל בין <code>include</code> ל-<code>template</code>?</summary>
+
+`template` היא פעולה מובנית שמדפיסה את התבנית ישירות לפלט, ולכן אי אפשר להעביר את התוצאה שלה ב-pipe. `include` מחזיר מחרוזת, ולכן אפשר לשרשר עליה פונקציות — למשל `{{ include "app.labels" . | nindent 4 }}`. זו הסיבה ש-`include` הוא ברירת המחדל המומלצת.
+
+</details>
+
+<details class="qa">
+<summary>2. מה עושה הסימן <code>-</code> בתוך <code>{{- }}</code>?</summary>
+
+הוא מבצע chomp — מוחק את כל הרווח הלבן (כולל שורת מעבר) בצד שבו הוא מופיע. בלעדיו ה-YAML המרונדר מתמלא בשורות ריקות ובהזחות שגויות, ו-Kubernetes עלול לדחות אותו.
+
+</details>
+
+<details class="qa">
+<summary>3. איך מעבירים בלוק YAML שלם (כמו <code>resources</code>) בלי לפרק אותו לשדות בודדים?</summary>
+
+עם `toYaml` בשילוב `nindent`:
+
+```yaml
+resources:
+  {{- toYaml .Values.resources | nindent 12 }}
+```
+
+כך המשתמש יכול להעביר כל מבנה שירצה ב-`values.yaml`, בלי שה-Chart יצטרך להכיר כל שדה מראש.
+
+</details>
+
+<details class="qa">
+<summary>4. איך אפשר לחייב ערך מסוים בלי ברירת מחדל, כך שההתקנה תיכשל אם הוא לא סופק?</summary>
+
+עם הפונקציה `required`, למשל `{{ required "image.tag הוא שדה חובה" .Values.image.tag }}` — אם הערך חסר או ריק, הרינדור נכשל מיד עם ההודעה שכתבתם, במקום ליצור משאב שגוי בקלאסטר.
+
+</details>
 
 ---
 **המדריך הקודם:** [מדריך 3 - מבנה Chart](/devops/helm/03-mivne-chart/)

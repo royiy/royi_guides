@@ -107,13 +107,54 @@ vpn tu
 
 ## שאלות נפוצות לראיון עבודה בנושא זה
 
-1. מה ההבדל בין Phase 1 ל-Phase 2 ב-IKE?
-2. מה זה VPN Domain ולמה הוא חשוב?
-3. הסבירו את ההבדל בין Meshed Community ל-Star Community.
-4. מה ההבדל בין Domain-Based VPN ל-Route-Based VPN (VTI)?
-5. מהו Office Mode ולמה הוא נדרש ב-Remote Access VPN?
-6. איך הייתם מתחילים לאבחן תקלת VPN שלא עולה?
-7. מה זה SSL Network Extender ומתי משתמשים בו?
+<details class="qa">
+<summary>1. מה ההבדל בין Phase 1 ל-Phase 2 ב-IKE?</summary>
+
+Phase 1 מקים ערוץ ניהול מאובטח בין העמיתים (IKE SA): אימות הדדי (Pre-Shared Key או תעודות), החלפת מפתחות Diffie-Hellman והסכמה על הצפנה. Phase 2 (IPsec SA) מקים בתוכו את המנהרה שבה באמת עוברת התעבורה, ומסכים על ה-encryption domain, הפרוטוקול (ESP) וזמני חידוש המפתח. תקלות אימות שייכות ל-Phase 1; אי-התאמה ברשתות שייכת בדרך כלל ל-Phase 2.
+
+</details>
+
+<details class="qa">
+<summary>2. מה זה VPN Domain ולמה הוא חשוב?</summary>
+
+אוסף הרשתות שנמצאות "מאחורי" כל עמית ושעבורן התעבורה אמורה לעבור במנהרה. אי-התאמה בין ה-VPN Domain שהוגדר אצלנו לבין מה שהצד השני מצפה לו היא אחת הסיבות הנפוצות ביותר לכך ש-Phase 2 לא עולה או שרק חלק מהתעבורה עוברת.
+
+</details>
+
+<details class="qa">
+<summary>3. הסבירו את ההבדל בין Meshed Community ל-Star Community.</summary>
+
+ב-Meshed כל אתר מקים מנהרה לכל אתר אחר — יעיל לתעבורה בין סניפים, אבל מספר המנהרות גדל ריבועית. ב-Star יש Center (בדרך כלל המטה או ה-Data Center) ו-Satellites שמתחברים רק אליו — פשוט יותר לניהול ומאפשר לנתב את כל התעבורה דרך המרכז לצורך בקרה, במחיר של תעבורה עקיפה בין סניפים.
+
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין Domain-Based VPN ל-Route-Based VPN (VTI)?</summary>
+
+ב-Domain-Based ההחלטה מה נכנס למנהרה נגזרת מרשימת הרשתות (VPN Domain). ב-Route-Based נוצר ממשק מנהרה וירטואלי (VTI) וההחלטה נעשית לפי **טבלת הניתוב** — מה שמאפשר פרוטוקולי ניתוב דינמיים (OSPF/BGP), ניתוב גיבוי וטופולוגיות מורכבות, במיוחד מול ספקי ענן.
+
+</details>
+
+<details class="qa">
+<summary>5. מהו Office Mode ולמה הוא נדרש ב-Remote Access VPN?</summary>
+
+מנגנון שמקצה למשתמש המרוחק כתובת IP פנימית מתוך מאגר שהוגדר בגייטוויי. בלעדיו כתובת המקור של המשתמש היא כתובת ה-ISP שלו — מה שמקשה על ניתוב תעבורת חזרה, על כתיבת כללים ועל הימנעות מהתנגשות טווחים עם הרשת הביתית.
+
+</details>
+
+<details class="qa">
+<summary>6. איך הייתם מתחילים לאבחן תקלת VPN שלא עולה?</summary>
+
+קודם קובעים באיזה שלב זה נתקע: `vpn tu` לבדיקת מנהרות קיימות ומחיקת SA תקוע, ולוגים ב-SmartLog עם סינון לפי Blade=VPN. אם Phase 1 נכשל — בודקים אימות (PSK/תעודה), NAT-T וקישוריות UDP/500 ו-4500. אם Phase 2 נכשל — בודקים התאמת encryption domain, אלגוריתמים וזמני חיים. `vpn debug ikeon` לניתוח מעמיק של `ike.elg`.
+
+</details>
+
+<details class="qa">
+<summary>7. מה זה SSL Network Extender ומתי משתמשים בו?</summary>
+
+לקוח VPN מבוסס דפדפן שרץ מעל SSL/TLS (443) ומוריד רכיב קטן בזמן החיבור, בלי התקנה מלאה של Endpoint Client. משתמשים בו לגישה זמנית ממחשב שאינו מנוהל או מרשתות שחוסמות IPsec, במחיר יכולות מצומצמות יותר בהשוואה ל-client מלא.
+
+</details>
 
 ## קישורים חיצוניים
 

@@ -9,99 +9,219 @@ part: 10/10
 
 ## שאלות בסיסיות (Junior)
 
-**1. מה ההבדל בין IaaS, PaaS ו-SaaS?**
+<details class="qa">
+<summary>1. מה ההבדל בין IaaS, PaaS ו-SaaS?</summary>
+
 IaaS (למשל Azure VMs) — אתם מנהלים OS ומעלה; Azure מנהלת רק חומרה ווירטואליזציה. PaaS (למשל App Service) — Azure מנהלת גם את ה-Runtime, אתם רק דואגים לקוד ולנתונים. SaaS (למשל Microsoft 365) — הכל מנוהל, אתם רק צורכים את המוצר.
 
-**2. מה ההבדל בין Region ל-Availability Zone?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין Region ל-Availability Zone?</summary>
+
 Region הוא אזור גאוגרפי (למשל West Europe). Availability Zone הוא מרכז נתונים פיזי נפרד *בתוך* Region, עם חשמל/קירור/רשת עצמאיים — פריסה על פני Zones מגנה מפני כשל DC שלם.
 
-**3. מה זה Resource Group?**
+</details>
+
+<details class="qa">
+<summary>3. מה זה Resource Group?</summary>
+
 קיבוץ לוגי של משאבי Azure החולקים Lifecycle משותף — מחיקת Resource Group מוחקת את כל תוכנו. משמש לארגון, ניהול הרשאות ותיוג עלויות.
 
-**4. מה ההבדל בין Subscription ל-Resource Group?**
+</details>
+
+<details class="qa">
+<summary>4. מה ההבדל בין Subscription ל-Resource Group?</summary>
+
 Subscription הוא גבול חיוב ומכסות עליון; Resource Group הוא קיבוץ לוגי בתוך Subscription. Subscription אחד יכול להכיל מספר רב של Resource Groups.
 
-**5. מה זה Azure Resource Manager (ARM)?**
+</details>
+
+<details class="qa">
+<summary>5. מה זה Azure Resource Manager (ARM)?</summary>
+
 שכבת הניהול המרכזית שדרכה עוברות כל הפעולות ב-Azure (Portal/CLI/PowerShell/SDK) — אחראית על אימות, RBAC, Tagging ו-Dependency Management בין משאבים.
 
-**6. מה ההבדל בין ARM Templates ל-Bicep?**
+</details>
+
+<details class="qa">
+<summary>6. מה ההבדל בין ARM Templates ל-Bicep?</summary>
+
 ARM Templates הם JSON דקלרטיבי, מפורט ומסורבל. Bicep הוא DSL חדש יותר שמתקמפל ל-ARM JSON מאחורי הקלעים, עם תחביר קצר, Type Safety ו-Modules.
 
-**7. מה זה Storage Account ואילו שירותים הוא מכיל?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה Storage Account ואילו שירותים הוא מכיל?</summary>
+
 מיכל עליון לשירותי אחסון של Azure: Blob, File, Queue ו-Table Storage, כולם תחת Namespace ייחודי גלובלית.
 
-**8. מה ההבדל בין Managed Disk ל-Storage Account רגיל?**
+</details>
+
+<details class="qa">
+<summary>8. מה ההבדל בין Managed Disk ל-Storage Account רגיל?</summary>
+
 Managed Disk הוא דיסק המשמש VM, שמנוהל אוטומטית על ידי Azure (מאז 2017) ללא צורך לנהל Storage Account בעצמכם עבורו.
 
-**9. מה זה NSG (Network Security Group)?**
+</details>
+
+<details class="qa">
+<summary>9. מה זה NSG (Network Security Group)?</summary>
+
 Firewall מבוזר ברמת Layer 3/4 עם רשימת חוקי Allow/Deny, שניתן לצרף ל-Subnet או ל-Network Interface.
 
-**10. מה ההבדל בין `az vm stop` ל-`az vm deallocate`?**
+</details>
+
+<details class="qa">
+<summary>10. מה ההבדל בין <code>az vm stop</code> ל-<code>az vm deallocate</code>?</summary>
+
 `stop` מכבה את המכונה אך ממשיך לחייב על המשאבים המוקצים. `deallocate` משחרר את המשאבים לגמרי ומפסיק חיוב Compute.
+
+</details>
 
 ## שאלות ברמת ביניים (Mid-Level)
 
-**11. הסבירו את ה-4 רמות ה-Redundancy באחסון (LRS/ZRS/GRS/GZRS).**
+<details class="qa">
+<summary>11. הסבירו את ה-4 רמות ה-Redundancy באחסון (LRS/ZRS/GRS/GZRS).</summary>
+
 LRS — 3 עותקים באותו Data Center (מגן מפני כשל דיסק/רק). ZRS — 3 עותקים בין Availability Zones (מגן מפני כשל DC). GRS — שכפול ל-Region משני (מגן מפני אסון אזורי, לא נגיש לקריאה כברירת מחדל). GZRS — שילוב ZRS ראשי + LRS משני, ההגנה הגבוהה ביותר. RA-GRS/RA-GZRS מוסיפים גישת קריאה ל-Region המשני.
 
-**12. מה ההבדל בין Availability Set ל-VM Scale Set?**
+</details>
+
+<details class="qa">
+<summary>12. מה ההבדל בין Availability Set ל-VM Scale Set?</summary>
+
 Availability Set מפזר VMs קבועים בין Fault/Update Domains בתוך DC, ללא Scaling אוטומטי. VMSS מנהל צי VMs זהים עם Auto Scaling אוטומטי לפי מדדים, ותומך גם ב-Availability Zones.
 
-**13. מה ההבדל בין Managed Identity ל-Service Principal?**
+</details>
+
+<details class="qa">
+<summary>13. מה ההבדל בין Managed Identity ל-Service Principal?</summary>
+
 Managed Identity מנוהלת אוטומטית על ידי Azure עבור משאב ספציפי, ללא סודות בכלל — עדיפה תמיד בתוך Azure. Service Principal נדרש כשהמקור אינו משאב Azure (CI/CD חיצוני כמו GitHub Actions/Jenkins), ודורש ניהול Secret/Certificate.
 
-**14. מה ההבדל בין System-Assigned ל-User-Assigned Managed Identity?**
+</details>
+
+<details class="qa">
+<summary>14. מה ההבדל בין System-Assigned ל-User-Assigned Managed Identity?</summary>
+
 System-Assigned נוצרת ונמחקת יחד עם Lifecycle של המשאב הספציפי. User-Assigned היא משאב עצמאי שניתן לשייך למספר משאבים במקביל, וממשיכה להתקיים גם אם משאב אחד נמחק.
 
-**15. מה זה VNet Peering, ולמה הוא Non-Transitive?**
+</details>
+
+<details class="qa">
+<summary>15. מה זה VNet Peering, ולמה הוא Non-Transitive?</summary>
+
 מחבר שני VNets דרך רשת ה-Backbone הפרטית של מיקרוסופט, ללא אינטרנט ציבורי. Non-Transitive אומר שאם A מחובר ל-B ו-B מחובר ל-C, A לא יכול "לדבר" עם C ישירות דרך B — נדרש Peering ישיר או ארכיטקטורת Hub-and-Spoke עם Routing מפורש.
 
-**16. מהם Deployment Slots וכיצד Swap עובד?**
+</details>
+
+<details class="qa">
+<summary>16. מהם Deployment Slots וכיצד Swap עובד?</summary>
+
 סביבות נוספות (Staging וכו') תחת אותה App Service, המאפשרות פריסה ללא Downtime. לפני Swap, Azure "מחממת" את ה-Slot החדש (Warm-up) לפני שהיא מפנה אליו את התעבורה, כדי למנוע חשיפת אפליקציה שנכשלה באתחול.
 
-**17. מה ההבדל בין Azure Functions Consumption Plan ל-Premium Plan?**
+</details>
+
+<details class="qa">
+<summary>17. מה ההבדל בין Azure Functions Consumption Plan ל-Premium Plan?</summary>
+
 Consumption הוא Scale-to-zero עם תשלום לפי הרצה בפועל, אך סובל מ-Cold Start. Premium שומר Instances "חמים" מראש (Pre-warmed) ותומך ב-VNet Integration, ללא Cold Start, אך יקר יותר.
 
-**18. מה ההבדל בין App Service ל-Azure Functions מבחינת מודל שימוש?**
+</details>
+
+<details class="qa">
+<summary>18. מה ההבדל בין App Service ל-Azure Functions מבחינת מודל שימוש?</summary>
+
 App Service מתאים לאפליקציות Web עם תעבורה קבועה/רציפה. Functions מתאים למשימות Event-driven, עומסים לא סדירים, ותשלום לפי שימוש בפועל.
 
-**19. מה ההבדל בין Kubenet ל-Azure CNI ב-AKS?**
+</details>
+
+<details class="qa">
+<summary>19. מה ההבדל בין Kubenet ל-Azure CNI ב-AKS?</summary>
+
 Kubenet מקצה IPs ל-Pods מטווח נפרד מה-VNet (עם NAT פנימי), פשוט יותר וחסכוני ב-IP. Azure CNI מקצה IP אמיתי מה-VNet לכל Pod — אינטגרציה מלאה עם NSG/Peering/Private Endpoints, אך "צורך" יותר כתובות.
 
-**20. איך AKS מתחבר ל-ACR ללא Image Pull Secrets ידניים?**
+</details>
+
+<details class="qa">
+<summary>20. איך AKS מתחבר ל-ACR ללא Image Pull Secrets ידניים?</summary>
+
 דרך `az aks update --attach-acr` — Azure מעניקה אוטומטית תפקיד `AcrPull` ל-Managed Identity של הקלאסטר, כך ש-Nodes יכולים למשוך Images ללא Secrets מוגדרים ידנית.
+
+</details>
 
 ## שאלות מתקדמות (Senior)
 
-**21. תארו ארכיטקטורת Hub-and-Spoke ומדוע היא נפוצה בארגונים גדולים.**
+<details class="qa">
+<summary>21. תארו ארכיטקטורת Hub-and-Spoke ומדוע היא נפוצה בארגונים גדולים.</summary>
+
 VNet מרכזי ("Hub") מכיל שירותים משותפים (Firewall, VPN/ExpressRoute Gateway, DNS מרכזי), ו-VNets נוספים ("Spokes") לכל צוות/אפליקציה, מחוברים ל-Hub דרך Peering. זה מרכז ניהול אבטחה ורשת, ומאפשר לצוותים לעבוד באופן עצמאי תוך שמירה על Governance מרכזי. Non-Transitivity נפתרת בד"כ עם NVA (Network Virtual Appliance) או Azure Firewall ב-Hub עם UDRs מתאימים.
 
-**22. איך הייתם מתכננים אסטרטגיית Disaster Recovery בין Regions?**
+</details>
+
+<details class="qa">
+<summary>22. איך הייתם מתכננים אסטרטגיית Disaster Recovery בין Regions?</summary>
+
 שילוב Region Pair, GRS/GZRS לאחסון, Azure Site Recovery ל-VMs, Traffic Manager/Front Door לניתוב תעבורה, ותכנון RTO/RPO ברור לכל שכבה (Compute/Data/Network) — כולל תרגול Failover תקופתי, לא רק תיעוד תיאורטי.
 
-**23. מה ההבדל בין Azure Policy ל-RBAC, ומתי משתמשים בכל אחד?**
+</details>
+
+<details class="qa">
+<summary>23. מה ההבדל בין Azure Policy ל-RBAC, ומתי משתמשים בכל אחד?</summary>
+
 RBAC קובע **מי** יכול לעשות **מה** (הרשאות). Azure Policy קובע **אילו הגדרות מותרות** במשאבים עצמם (למשל "כל Storage Account חייב TLS 1.2+", או "אסור ליצור VM מחוץ ל-West Europe") — נאכף ללא תלות בהרשאות המשתמש שיוצר את המשאב.
 
-**24. איך תבנו Pipeline CI/CD מאובטח לפריסת Bicep/Terraform ל-Azure?**
+</details>
+
+<details class="qa">
+<summary>24. איך תבנו Pipeline CI/CD מאובטח לפריסת Bicep/Terraform ל-Azure?</summary>
+
 Service Principal ייעודי עם הרשאות מצומצמות (Least Privilege) בסקופ Resource Group ספציפי, שימוש ב-OIDC/Workload Identity Federation במקום Client Secret (כשניתן), הרצת `what-if`/`plan` כ-Gate לפני Apply, אישור ידני (Manual Approval) לסביבת Production, וסריקת IaC עם כלים כמו Checkov/PSRule.
 
-**25. מהו Workload Identity ב-AKS, ומדוע הוא עדיף על שיטות קודמות?**
+</details>
+
+<details class="qa">
+<summary>25. מהו Workload Identity ב-AKS, ומדוע הוא עדיף על שיטות קודמות?</summary>
+
 מנגנון שמאפשר ל-Pod ספציפי (דרך ServiceAccount מסומן) לקבל Managed Identity ייעודית לגישה למשאבי Azure (Key Vault, Storage) ללא Secrets בכלל. עדיף על AAD Pod Identity הישן (deprecated) כי הוא מבוסס על סטנדרט OIDC Federation, יציב יותר ואינו דורש DaemonSet נוסף בקלאסטר.
 
-**26. איך תממשו Zero Trust הלכה למעשה ב-Azure?**
+</details>
+
+<details class="qa">
+<summary>26. איך תממשו Zero Trust הלכה למעשה ב-Azure?</summary>
+
 שילוב: Conditional Access עם MFA חובה, PIM (Privileged Identity Management) להרשאות Just-In-Time לתפקידים רגישים, Managed Identities במקום Secrets, Private Endpoints לשירותי PaaS, Network Segmentation עם NSG/Azure Firewall, וניטור מתמשך דרך Microsoft Defender for Cloud.
 
-**27. מה ההבדל בין Azure Monitor Metric Alert ל-Log Alert (Scheduled Query), ומתי תבחרו בכל אחד?**
+</details>
+
+<details class="qa">
+<summary>27. מה ההבדל בין Azure Monitor Metric Alert ל-Log Alert (Scheduled Query), ומתי תבחרו בכל אחד?</summary>
+
 Metric Alert מהיר, זול, ומתאים למדדים מספריים בזמן אמת (CPU, Latency). Log Alert (מבוסס KQL) גמיש יותר, מאפשר לוגיקה מורכבת (Join בין מספר מקורות, אגרגציות מותאמות), אך עם עיכוב מסוים (Query Frequency) ועלות גבוהה יותר.
 
-**28. תארו תרחיש שבו Diagnostic Settings לא הוגדרו על משאב קריטי, ומה ההשלכה בזמן תקרית.**
+</details>
+
+<details class="qa">
+<summary>28. תארו תרחיש שבו Diagnostic Settings לא הוגדרו על משאב קריטי, ומה ההשלכה בזמן תקרית.</summary>
+
 בלי Diagnostic Setting, Logs מסוימים (למשל AppServiceHTTPLogs) פשוט לא נשמרים ב-Log Analytics — כשמתרחשת תקרית, אין נתונים היסטוריים לחקירה (Root Cause Analysis), ולכן יש להגדיר Diagnostic Settings **מראש** על כל משאב קריטי, לא בדיעבד.
 
-**29. איך תתכננו מבנה Resource Groups ו-Naming Convention לארגון עם עשרות צוותים?**
+</details>
+
+<details class="qa">
+<summary>29. איך תתכננו מבנה Resource Groups ו-Naming Convention לארגון עם עשרות צוותים?</summary>
+
 מוסכמת שם קבועה (`rg-<app>-<env>-<region>`), הפרדת Subscriptions לפי סביבה או יחידה עסקית, שימוש ב-Management Groups לאכיפת Policy אחידה, תיוג חובה (`Environment`, `Owner`, `CostCenter`) דרך Azure Policy, ו-Resource Locks על משאבים קריטיים כנגד מחיקה בטעות.
 
-**30. סימולציית תרחיש: אפליקציה ב-AKS מדווחת על Latency גבוה בשעות עומס. איך הייתם מאבחנים?**
+</details>
+
+<details class="qa">
+<summary>30. סימולציית תרחיש: אפליקציה ב-AKS מדווחת על Latency גבוה בשעות עומס. איך הייתם מאבחנים?</summary>
+
 תשובה מומלצת: להתחיל מ-Application Insights Application Map לזיהוי ה-Dependency האיטי (DB? שירות חיצוני?), לבדוק KQL על `AppRequests`/`AppDependencies` לפילוח לפי endpoint, לבדוק Cluster Autoscaler ו-HPA (האם ה-Pods מספיקים לעומס?), לבדוק ניצול Node Pool (CPU/Memory Throttling), ולבדוק אם יש Network Bottleneck (NSG/Azure CNI IP exhaustion). המפתח הוא גישה שיטתית משכבת האפליקציה ועד התשתית, לא ניחוש.
+
+</details>
 
 ## רשימת טיפים וטריקים כלליים (Cheat Sheet)
 

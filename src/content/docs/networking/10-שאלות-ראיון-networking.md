@@ -9,99 +9,219 @@ part: 10/10
 
 ## שאלות בסיסיות (Junior)
 
-**1. מה ההבדל בין מודל OSI למודל TCP/IP?**
+<details class="qa">
+<summary>1. מה ההבדל בין מודל OSI למודל TCP/IP?</summary>
+
 OSI הוא מודל תיאורטי בן 7 שכבות ששימושי בעיקר לאבחון ולימוד. TCP/IP הוא מודל מעשי בן 4 שכבות שבפועל מיישם את האינטרנט. TCP/IP מאגד את שכבות ה-Application/Presentation/Session של OSI לשכבה אחת.
 
-**2. מה ההבדל בין TCP ל-UDP?**
+</details>
+
+<details class="qa">
+<summary>2. מה ההבדל בין TCP ל-UDP?</summary>
+
 TCP הוא פרוטוקול Connection-Oriented, אמין (מבצע Retransmission, Ordering, Flow Control) אך איטי יותר. UDP הוא Connectionless, מהיר יותר אך ללא הבטחת הגעה או סדר - מתאים ל-Streaming/VoIP/DNS.
 
-**3. מהי כתובת IP ומהי Subnet Mask?**
+</details>
+
+<details class="qa">
+<summary>3. מהי כתובת IP ומהי Subnet Mask?</summary>
+
 כתובת IP היא מזהה לוגי של מכשיר ברשת. Subnet Mask מגדירה אילו סיביות בכתובת שייכות לחלק הרשת (Network) ואילו לחלק המארח (Host).
 
-**4. מה זה Default Gateway?**
+</details>
+
+<details class="qa">
+<summary>4. מה זה Default Gateway?</summary>
+
 כתובת ה-Router שאליו נשלחת כל תעבורה שהיעד שלה נמצא מחוץ לרשת המקומית.
 
-**5. מה ההבדל בין Switch ל-Router?**
+</details>
+
+<details class="qa">
+<summary>5. מה ההבדל בין Switch ל-Router?</summary>
+
 Switch פועל ב-Layer 2 ומעביר תעבורה בתוך אותה רשת מקומית לפי כתובות MAC. Router פועל ב-Layer 3 ומקשר בין רשתות שונות לפי כתובות IP.
 
-**6. מה זה DNS ולמה הוא נחוץ?**
+</details>
+
+<details class="qa">
+<summary>6. מה זה DNS ולמה הוא נחוץ?</summary>
+
 מערכת המתרגמת שמות דומיין קריאים (`google.com`) לכתובות IP. ללא DNS, משתמשים היו צריכים לזכור כתובות IP במקום שמות אתרים.
 
-**7. מה זה DHCP ומה תפקידו?**
+</details>
+
+<details class="qa">
+<summary>7. מה זה DHCP ומה תפקידו?</summary>
+
 פרוטוקול המקצה אוטומטית הגדרות רשת (IP, Subnet, Gateway, DNS) למכשירים, ללא צורך בהגדרה ידנית.
 
-**8. מהו VLAN?**
+</details>
+
+<details class="qa">
+<summary>8. מהו VLAN?</summary>
+
 מנגנון המפריד רשת פיזית אחת למספר Broadcast Domains לוגיים נפרדים, לצורך אבטחה, ארגון וביצועים.
 
-**9. מה זה Firewall?**
+</details>
+
+<details class="qa">
+<summary>9. מה זה Firewall?</summary>
+
 מכשיר/תוכנה שמבצע בקרת גישה על תעבורת רשת, לפי מדיניות אבטחה מוגדרת מראש - קובע מה מותר לעבור ומה חסום.
 
-**10. מה זה NAT?**
+</details>
+
+<details class="qa">
+<summary>10. מה זה NAT?</summary>
+
 מנגנון המתרגם כתובות IP פרטיות לכתובת IP ציבורית (ולהפך), מאפשר לרשת שלמה לגשת לאינטרנט דרך כתובת ציבורית אחת או מעטות.
+
+</details>
 
 ## שאלות בינוניות (Mid-Level)
 
-**11. הסבירו את תהליך ה-DORA ב-DHCP.**
+<details class="qa">
+<summary>11. הסבירו את תהליך ה-DORA ב-DHCP.</summary>
+
 Discover (הלקוח משדר בקשה) → Offer (השרת מציע כתובת) → Request (הלקוח מבקש רשמית) → Ack (השרת מאשר סופית). כל השלבים הראשונים הם Broadcast.
 
-**12. איך Router מחליט לאיזה מסלול לשלוח חבילה כשיש כמה רשומות מתאימות בטבלת הניתוב?**
+</details>
+
+<details class="qa">
+<summary>12. איך Router מחליט לאיזה מסלול לשלוח חבילה כשיש כמה רשומות מתאימות בטבלת הניתוב?</summary>
+
 לפי עקרון ה-Longest Prefix Match - הרשומה עם ה-Prefix (CIDR) הספציפי ביותר מנצחת, גם אם קיימת רשומה כללית יותר (כמו Default Route).
 
-**13. מה זה Administrative Distance ולמה הוא חשוב?**
+</details>
+
+<details class="qa">
+<summary>13. מה זה Administrative Distance ולמה הוא חשוב?</summary>
+
 ערך המדרג את מהימנות מקור המידע לניתוב (Static=1, OSPF=110, RIP=120 וכו') - כאשר יש מספר מקורות לאותו יעד, ה-Router בוחר לפי ה-AD הנמוך ביותר.
 
-**14. מה ההבדל בין Static Routing ל-Dynamic Routing?**
+</details>
+
+<details class="qa">
+<summary>14. מה ההבדל בין Static Routing ל-Dynamic Routing?</summary>
+
 Static מוגדר ידנית ולא מתעדכן אוטומטית בשינויים ברשת - מתאים לרשתות קטנות ויציבות. Dynamic (OSPF/BGP) מתעדכן אוטומטית ומתאים לרשתות גדולות ומשתנות, אך צורך יותר משאבים.
 
-**15. מה ההבדל בין רשומת A ל-CNAME ב-DNS?**
+</details>
+
+<details class="qa">
+<summary>15. מה ההבדל בין רשומת A ל-CNAME ב-DNS?</summary>
+
 A ממפה שם דומיין ישירות לכתובת IPv4. CNAME הוא Alias - מפנה משם דומיין אחד לשם דומיין אחר (שבתורו יפתר ל-IP).
 
-**16. מה זה 802.1Q Trunking?**
+</details>
+
+<details class="qa">
+<summary>16. מה זה 802.1Q Trunking?</summary>
+
 תקן לתיוג (Tagging) Frames עם מזהה VLAN, המאפשר להעביר תעבורה של מספר VLANs דרך קישור פיזי יחיד (Trunk Port) בין Switch-ים.
 
-**17. מה ההבדל בין Stateful Firewall ל-Stateless Firewall?**
+</details>
+
+<details class="qa">
+<summary>17. מה ההבדל בין Stateful Firewall ל-Stateless Firewall?</summary>
+
 Stateful עוקב אחרי מצב החיבור המלא (Connection Table) ומזהה תעבורה חוזרת של חיבור לגיטימי אוטומטית. Stateless בודק כל חבילה בנפרד ללא זיכרון הקשר, ודורש כללים מפורשים בשני הכיוונים.
 
-**18. מה ההבדל בין Static NAT, Dynamic NAT ו-PAT?**
+</details>
+
+<details class="qa">
+<summary>18. מה ההבדל בין Static NAT, Dynamic NAT ו-PAT?</summary>
+
 Static NAT הוא מיפוי קבוע 1-ל-1. Dynamic NAT מקצה מתוך מאגר כתובות ציבוריות לפי דרישה. PAT (הנפוץ ביותר) משתף כתובת ציבורית יחידה בין מספר מכשירים פנימיים, ומבחין ביניהם לפי מספרי פורט.
 
-**19. מה ההבדל בין Load Balancer מסוג L4 ל-L7?**
+</details>
+
+<details class="qa">
+<summary>19. מה ההבדל בין Load Balancer מסוג L4 ל-L7?</summary>
+
 L4 מקבל החלטת ניתוב לפי IP/Port בלבד, מהיר יותר. L7 מבין את תוכן הבקשה (URL, Headers, Cookies) ויכול לבצע ניתוב חכם (Path-based routing) וגם SSL Termination.
 
-**20. מה ההבדל בין הצפנה סימטרית לא-סימטרית, וכיצד TLS משלב ביניהן?**
+</details>
+
+<details class="qa">
+<summary>20. מה ההבדל בין הצפנה סימטרית לא-סימטרית, וכיצד TLS משלב ביניהן?</summary>
+
 סימטרית (AES) משתמשת במפתח יחיד, מהירה מאוד. א-סימטרית (RSA/ECC) משתמשת בזוג מפתחות (ציבורי/פרטי), איטית אך מאפשרת אימות. TLS משתמש בא-סימטרי כדי לאמת ולהחליף מפתח סשן בבטחה, ואז עובר להצפנה סימטרית מהירה לכל התעבורה בפועל.
+
+</details>
 
 ## שאלות מתקדמות (Senior)
 
-**21. איך תתכננו VLSM עבור רשת עם דרישות שונות במחלקות שונות?**
+<details class="qa">
+<summary>21. איך תתכננו VLSM עבור רשת עם דרישות שונות במחלקות שונות?</summary>
+
 מזהים את הדרישה המקסימלית של Hosts בכל תת-רשת, בוחרים את ה-CIDR הקטן ביותר שמספק מספיק כתובות (כולל Network+Broadcast), ומקצים תת-רשתות בסדר יורד של גודל כדי למנוע חפיפות ולנצל את מרחב הכתובות ביעילות מקסימלית.
 
-**22. מה ההבדל בין OSPF ל-BGP, ומתי משתמשים בכל אחד?**
+</details>
+
+<details class="qa">
+<summary>22. מה ההבדל בין OSPF ל-BGP, ומתי משתמשים בכל אחד?</summary>
+
 OSPF הוא פרוטוקול Link-State פנים-ארגוני (IGP), מתאים לרשת פנימית/Datacenter ובוחר מסלול לפי Cost. BGP הוא פרוטוקול Path-Vector בין ארגונים/Autonomous Systems (EGP) - "פרוטוקול האינטרנט" - ומקבל החלטות מבוססות מדיניות (Policy) ולא רק מסלול קצר ביותר.
 
-**23. הסבירו כיצד עובד DHCP Relay וכאשר יש צורך בו.**
+</details>
+
+<details class="qa">
+<summary>23. הסבירו כיצד עובד DHCP Relay וכאשר יש צורך בו.</summary>
+
 מכיוון ש-DHCP Discover הוא Broadcast שלא עובר דרך Router, כאשר שרת ה-DHCP נמצא ב-Subnet אחר, מגדירים DHCP Relay Agent (בד"כ `ip helper-address` על ה-Router/L3 Switch) שמעביר את הבקשה כ-Unicast לשרת המרוחק ומחזיר את התשובה ללקוח.
 
-**24. איך תעצבו ארכיטקטורת Security Zones (Trust/DMZ/Untrust) לשרת Web הפונה לציבור עם בסיס נתונים פנימי?**
+</details>
+
+<details class="qa">
+<summary>24. איך תעצבו ארכיטקטורת Security Zones (Trust/DMZ/Untrust) לשרת Web הפונה לציבור עם בסיס נתונים פנימי?</summary>
+
 שרת ה-Web ב-DMZ (נגיש מ-Untrust בפורט 443 בלבד), חוקי Firewall מגבילים מאוד את התעבורה מ-DMZ ל-Trust (רק לפורט DB הספציפי מהשרת הספציפי), ובסיס הנתונים עצמו יושב עמוק ב-Trust Zone ולעולם לא חשוף ישירות לאינטרנט.
 
-**25. מה ההבדל בין Transport Mode ל-Tunnel Mode ב-IPSec, ומתי משתמשים בכל אחד?**
+</details>
+
+<details class="qa">
+<summary>25. מה ההבדל בין Transport Mode ל-Tunnel Mode ב-IPSec, ומתי משתמשים בכל אחד?</summary>
+
 Transport Mode מצפין רק את ה-Payload ושומר את ה-IP Header המקורי - שימוש בתקשורת Host-to-Host. Tunnel Mode מצפין את כל החבילה המקורית ועוטף אותה ב-IP Header חדש - השימוש הסטנדרטי ב-Site-to-Site VPN בין Gateways.
 
-**26. איך תבנו אסטרטגיית Health Check אמינה ל-Load Balancer בסביבת Microservices?**
+</details>
+
+<details class="qa">
+<summary>26. איך תבנו אסטרטגיית Health Check אמינה ל-Load Balancer בסביבת Microservices?</summary>
+
 Endpoint ייעודי (`/health` או `/readyz`) שבודק תלויות קריטיות בפועל (חיבור DB, Cache) ולא רק שהשרת מגיב ל-TCP, עם הפרדה בין Liveness (השרת חי) ל-Readiness (השרת מוכן לקבל תעבורה), Interval/Timeout/Threshold מכוילים לפי אופי העומס.
 
-**27. מה הסיכון האבטחתי ב-VLAN Hopping וכיצד מונעים אותו?**
+</details>
+
+<details class="qa">
+<summary>27. מה הסיכון האבטחתי ב-VLAN Hopping וכיצד מונעים אותו?</summary>
+
 תוקף יכול לנצל תגי 802.1Q כפולים (Double Tagging) או Switch Spoofing כדי לגשת ל-VLAN שאינו מורשה אליו. מניעה: שינוי ה-Native VLAN מברירת המחדל (VLAN 1), ביטול DTP (Dynamic Trunking Protocol) אוטומטי בפורטים לא נחוצים, והגבלת VLANs מורשים על כל Trunk לפי הצורך בפועל.
 
-**28. הסבירו Perfect Forward Secrecy (PFS) ולמה הוא קריטי בהגדרת VPN/TLS מודרני.**
+</details>
+
+<details class="qa">
+<summary>28. הסבירו Perfect Forward Secrecy (PFS) ולמה הוא קריטי בהגדרת VPN/TLS מודרני.</summary>
+
 PFS מבטיח שכל סשן מקבל מפתח הצפנה זמני ייחודי (דרך Diffie-Hellman Ephemeral), כך שגם אם מפתח פרטי ארוך-טווח ייחשף בעתיד, לא ניתן לפענח רטרואקטיבית תעבורה שהוקלטה בעבר.
 
-**29. איך תאבחנו בעיית קישוריות בין שני שרתים שנמצאים ב-VLANs שונים, כאשר Ping לא עובר?**
+</details>
+
+<details class="qa">
+<summary>29. איך תאבחנו בעיית קישוריות בין שני שרתים שנמצאים ב-VLANs שונים, כאשר Ping לא עובר?</summary>
+
 בודקים בסדר: (1) הגדרת Inter-VLAN Routing תקינה (SVI/Router-on-a-Stick), (2) חוקי Firewall/ACL בין ה-Subnets, (3) טבלת הניתוב בשני הצדדים, (4) הגדרות VLAN/Trunk נכונות בין ה-Switch-ים, (5) MTU ותקינות פיזית של הקישור.
 
-**30. מה ההבדל בין BGP eBGP ל-iBGP, ומתי כל אחד רלוונטי?**
+</details>
+
+<details class="qa">
+<summary>30. מה ההבדל בין BGP eBGP ל-iBGP, ומתי כל אחד רלוונטי?</summary>
+
 eBGP (External BGP) פועל בין AS-ים שונים (Administrative Distance=20), משמש לחיבור בין ארגונים/ספקים. iBGP (Internal BGP) פועל בין Router-ים בתוך אותו AS (AD=200), נדרש כדי להפיץ מידע BGP חיצוני לכל הרשת הפנימית בלי לאבד מידע.
+
+</details>
 
 ## סימולציית תרחיש (Scenario-Based) - נפוץ בראיונות Senior
 
