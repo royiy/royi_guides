@@ -205,6 +205,8 @@ terraform {
 }
 ```
 
+> המדריך הבא מוקדש כולו ל-HCP Terraform: מבנה הישויות, שלוש שיטות העבודה, הגירת state, Dynamic Provider Credentials, Sentinel ומתי בכלל כדאי לבחור בו על פני pipeline עצמאי.
+
 ---
 
 ## Drift Detection אוטומטי ב-CI
@@ -290,4 +292,4 @@ OpenID Connect מאפשר ל-CI (למשל GitHub Actions) לקבל טוקן זמ
 
 ---
 
-**במדריך הבא (והאחרון):** שאלות ראיון עבודה מרוכזות + טיפים וטריקים מתקדמים.
+**במדריך הבא:** HCP Terraform (Terraform Cloud) - השירות המנוהל של HashiCorp כחלופה לבניית pipeline עצמאי.
