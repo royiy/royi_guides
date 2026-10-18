@@ -111,7 +111,7 @@ terraform {
     key            = "prod/terraform.tfstate"
     region         = "eu-west-1"
     encrypt        = true                     # הצפנה בענן
-    dynamodb_table = "terraform-locks"         # מניעת מירוצים
+    dynamodb_table = "terraform-locks"         # נעילה למניעת הרצות מקבילות
     kms_key_id     = "arn:aws:kms:eu-west-1:123456789012:key/abcd..."
   }
 }

@@ -58,7 +58,7 @@ terraform {
     bucket         = "my-company-terraform-state"
     key            = "prod/network/terraform.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "terraform-locks"   # למניעת מירוצים (locking)
+    dynamodb_table = "terraform-locks"   # נעילה שמונעת הרצות מקבילות
     encrypt        = true
   }
 }
@@ -74,9 +74,11 @@ terraform {
 
 ---
 
-## State Locking - מניעת מירוצים
+## State Locking - נעילה שמונעת הרצות מקבילות
 
-כאשר שני אנשים מריצים `apply` על אותו state בו-זמנית - בלי locking, זה עלול לגרום ל-**state corruption**. Backends כמו S3+DynamoDB, Terraform Cloud, Azure Blob (עם lease) ו-GCS תומכים ב-locking אוטומטי.
+כששני אנשים מריצים `apply` על אותו state באותו הרגע, שתי ההרצות קוראות את אותו מצב התחלתי וכל אחת כותבת מעל השנייה. התוצאה היא קובץ state שלא מתאר נכון את מה שקיים בענן - מצב שקשה מאוד לתקן, ושנקרא באנגלית **state corruption**.
+
+כדי למנוע את זה, Terraform נועל את ה-state בתחילת כל פעולה שכותבת אליו, ומשחרר את הנעילה בסיומה. הרצה שנייה שמנסה להתחיל בינתיים פשוט לא תתחיל, ותציג את ההודעה הזו:
 
 ```
 Error: Error acquiring the state lock
@@ -89,7 +91,17 @@ Lock Info:
   Created:   2026-08-16 10:23:11
 ```
 
-אם אתם בטוחים שאין הרצה פעילה אמיתית (למשל תהליך שקרס):
+ההודעה מספרת מי מחזיק בנעילה, איזו פעולה הוא מריץ ומתי היא התחילה. מהשדות האלה אפשר להבין אם באמת יש הרצה פעילה של מישהו אחר, או שנשארה נעילה יתומה מתהליך שקרס.
+
+הנעילה עצמה אינה חלק מקובץ ה-state אלא מהשירות שמאחסן אותו, ולכן היא תלויה ב-backend שבחרתם. אלה שתומכים בנעילה אוטומטית:
+
+- **S3 יחד עם DynamoDB** - הנפוץ ביותר ב-AWS. מגרסה 1.10 אפשר גם בלי טבלת DynamoDB
+- **HCP Terraform** - הנעילה מובנית ולא צריך להגדיר כלום
+- **Azure Blob Storage** - מבוסס מנגנון lease של האחסון
+- **GCS** - נעילה מובנית
+
+אם ברור לכם שאין הרצה פעילה אחרת, למשל כי התהליך שהחזיק בנעילה קרס, אפשר לשחרר אותה ידנית:
+
 ```bash
 terraform force-unlock <LOCK_ID>
 ```
@@ -125,7 +137,9 @@ terraform state replace-provider hashicorp/aws registry.example.com/mycompany/aw
 
 ### דוגמת שימוש ב-`state mv` - Refactoring בלי הרס משאבים
 
-נניח ששיניתם שם משאב בקוד מ-`web` ל-`app_server`. בלי `state mv`, Terraform יראה זאת כמחיקת המשאב הישן ויצירת חדש (downtime!). עם `state mv`:
+נניח ששיניתם שם משאב בקוד מ-`web` ל-`app_server`. בלי `state mv`, Terraform יראה בזה מחיקה של המשאב הישן ויצירה של משאב חדש במקומו - כלומר השבתה אמיתית של השירות.
+
+במקום זה, מעדכנים את הכתובת בתוך ה-state:
 
 ```bash
 terraform state mv aws_instance.web aws_instance.app_server
