@@ -127,7 +127,7 @@ SELECT e.first_name, d.department_name
 FROM employees e
 RIGHT JOIN departments d ON e.department_id = d.department_id;
 
--- FULL OUTER JOIN - כל השורות משני הצדדים (לא נתמך ב-MySQL ישירות, אפשר עם UNION)
+-- כל השורות משני הצדדים עם FULL OUTER JOIN (ב-MySQL לא נתמך ישירות, אפשר עם UNION)
 SELECT e.first_name, d.department_name
 FROM employees e
 FULL OUTER JOIN departments d ON e.department_id = d.department_id;

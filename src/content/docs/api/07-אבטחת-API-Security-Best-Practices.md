@@ -132,7 +132,7 @@ db.query(query, [email]);
 - השתמשו ב-Environment Variables (`.env` + `.gitignore`) לפיתוח, ובשירותי ניהול סודות ל-Production: AWS Secrets Manager, HashiCorp Vault, Azure Key Vault, GCP Secret Manager.
 
 ```bash
-# .env (לא נכנס ל-git!)
+# קובץ .env - לא נכנס ל-git!
 DATABASE_URL=postgres://user:pass@localhost/db
 JWT_SECRET=super-secret-key-change-me
 ```

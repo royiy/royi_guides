@@ -55,7 +55,7 @@ IKE Phase 1 (הקמת ערוץ מאובטח לניהול)
   משא ומתן על: אלגוריתם הצפנה, Hash, קבוצת Diffie-Hellman, Authentication
         |
         v
-IKE Phase 2 (הקמת ה-Tunnel בפועל להעברת נתונים)
+IKE Phase 2 (הקמת המנהרה בפועל להעברת הנתונים)
         |
         v
   יצירת IPSec SA (Security Association) - המפתחות בפועל להצפנת התעבורה

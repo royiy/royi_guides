@@ -34,7 +34,7 @@ ipconfig /flushdns
 :: בדיקת תרגום DNS
 nslookup www.google.com
 
-:: PowerShell: ביצוע שאילתת DNS מתקדמת
+:: ביצוע שאילתת DNS מתקדמת ב-PowerShell
 Resolve-DnsName -Name _ldap._tcp.dc._msdcs.corp.local -Type SRV
 ```
 

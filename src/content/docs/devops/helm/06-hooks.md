@@ -135,7 +135,7 @@ spec:
 ## Weight וסדר הרצה - דוגמה מורכבת
 
 ```yaml
-# Hook A - ירוץ ראשון (weight נמוך יותר)
+# ה-Hook הראשון שירוץ (weight נמוך יותר)
 metadata:
   annotations:
     "helm.sh/hook": pre-install

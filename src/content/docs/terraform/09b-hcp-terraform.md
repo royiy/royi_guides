@@ -204,7 +204,7 @@ resource "aws_instance" "app" {
 **Sentinel** היא שפת המדיניות של HashiCorp, ו-HCP Terraform תומך גם ב-**OPA/Rego**. המדיניות נבדקת **בין ה-plan ל-apply**, כך שהפרה נחסמת לפני שהמשאב נוצר:
 
 ```python
-# Sentinel - חסימת instance types יקרים בסביבות שאינן פרודקשן
+# חסימת instance types יקרים בסביבות שאינן פרודקשן
 import "tfplan/v2" as tfplan
 
 allowed_types = ["t3.micro", "t3.small", "t3.medium"]

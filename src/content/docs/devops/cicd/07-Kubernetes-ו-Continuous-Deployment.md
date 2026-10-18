@@ -109,9 +109,9 @@ spec:
 
 **זרימת עבודה טיפוסית:**
 ```
-1. Push קוד -> CI בונה Docker image ודוחף לרג'יסטרי
+1. דחיפת קוד -> ה-CI בונה Docker image ודוחף לרג'יסטרי
 2. CI מעדכן את קובץ ה-manifest ב-repo נפרד (myapp-manifests) עם ה-tag החדש
-3. ArgoCD מזהה שינוי ב-Git, ומסנכרן אוטומטית את ה-cluster
+3. ה-ArgoCD מזהה שינוי ב-Git ומסנכרן אוטומטית את הקלאסטר
 ```
 
 ## עדכון Deployment מ-Pipeline (גישה קלאסית ללא GitOps)

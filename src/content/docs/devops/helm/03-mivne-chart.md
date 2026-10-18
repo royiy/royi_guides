@@ -27,7 +27,7 @@ my-app/
 │   ├── serviceaccount.yaml
 │   ├── hpa.yaml
 │   ├── NOTES.txt        # טקסט שמוצג למשתמש אחרי התקנה
-│   ├── _helpers.tpl     # פונקציות עזר (partials) לשימוש חוזר
+│   ├── _helpers.tpl     # פונקציות עזר לשימוש חוזר
 │   └── tests/
 │       └── test-connection.yaml
 └── .helmignore          # קבצים שיש להתעלם מהם באריזה

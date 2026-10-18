@@ -31,7 +31,7 @@ SQL (Structured Query Language) היא שפת התקן לתקשורת עם מס�
 |----------------------------|          |----------------------------|
 | טבלאות + שורות + עמודות    |          | Documents / Key-Value /     |
 | Schema קשיח מראש           |          | Wide-Column / Graph          |
-| JOIN בין טבלאות            |          | לרוב ללא JOIN מובנה          |
+| JOIN בין טבלאות            |          | לרוב ללא חיבור מובנה         |
 | ACID Transactions          |          | BASE (Eventually Consistent)|
 | Scale Vertically (בעיקר)   |          | Scale Horizontally בקלות     |
 +---------------------------+          +----------------------------+

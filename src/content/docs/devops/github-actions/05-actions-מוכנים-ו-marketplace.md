@@ -132,7 +132,7 @@ steps:
   # Action מתוך Docker image ציבורי
   - uses: docker://alpine:3.19
     with:
-      args: echo "רץ בתוך קונטיינר Alpine"
+      args: echo "רץ בתוך הקונטיינר"
 
   # תת-תיקייה בתוך ריפו (מונו-ריפו של actions)
   - uses: actions/aws/ec2@main

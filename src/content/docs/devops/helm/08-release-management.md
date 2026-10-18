@@ -38,7 +38,7 @@ helm install my-nginx bitnami/nginx --version 15.4.0
 # עם timeout מותאם (למקרה של pull איטי / readiness ארוך)
 helm install my-release ./my-chart --timeout 10m
 
-# atomic - אם ההתקנה נכשלת, מבצע rollback אוטומטי
+# עם atomic, אם ההתקנה נכשלת מבוצע rollback אוטומטי
 helm install my-release ./my-chart --atomic
 ```
 
@@ -53,7 +53,7 @@ helm install my-release ./my-chart --atomic
 
 ```bash
 helm install my-release ./chart -f a.yaml -f b.yaml --set key=override
-# b.yaml מנצח את a.yaml, ו-"--set" מנצח את שניהם
+# הקובץ b.yaml מנצח את a.yaml, ו-"--set" מנצח את שניהם
 ```
 
 ## שדרוג (Upgrade)

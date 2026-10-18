@@ -71,7 +71,7 @@ version.BuildInfo{Version:"v3.15.2", GitCommit:"...", GitTreeState:"clean", GoVe
 Helm לא מגיע "מוכן" עם repositories מוגדרים מראש (זה שונה מ-Helm 2 שהגיע עם `stable` repo כברירת מחדל). צריך להוסיף repos ידנית:
 
 ```bash
-# Bitnami - מכיל עשרות charts איכותיים לאפליקציות פופולריות
+# מאגר Bitnami - עשרות charts איכותיים לאפליקציות פופולריות
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # Ingress-nginx
@@ -130,7 +130,7 @@ echo 'source <(helm completion zsh)' >> ~/.zshrc
 Helm תומך במערכת plugins להרחבת פונקציונליות:
 
 ```bash
-# helm-diff - מציג diff לפני upgrade (חובה כמעט לכל צוות!)
+# התוסף helm-diff - מציג diff לפני upgrade (כמעט חובה לכל צוות!)
 helm plugin install https://github.com/databus23/helm-diff
 
 # helm-secrets - ניהול secrets מוצפנים עם sops

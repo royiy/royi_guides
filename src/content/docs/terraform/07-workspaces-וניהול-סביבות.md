@@ -114,7 +114,7 @@ terraform apply
 environments/
 ├── dev/
 │   ├── main.tf
-│   └── backend.tf   # backend נפרד, אולי אפילו AWS account נפרד
+│   └── backend.tf   # backend נפרד לכל סביבה, ואף חשבון ענן נפרד
 ├── staging/
 │   ├── main.tf
 │   └── backend.tf

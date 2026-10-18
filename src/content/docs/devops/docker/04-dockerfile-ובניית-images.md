@@ -33,7 +33,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
 
-# ADD תומך גם בפתיחת ארכיונים ו-URLs, אבל בד"כ עדיף COPY (יותר צפוי וברור)
+# הפקודה ADD תומכת גם בפתיחת ארכיונים ו-URLs, אבל בדרך כלל עדיף COPY
 ADD https://example.com/file.tar.gz /tmp/
 ```
 

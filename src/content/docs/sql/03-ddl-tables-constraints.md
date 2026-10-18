@@ -97,7 +97,7 @@ CREATE TABLE departments (
 -- CASCADE: מחיקת מחלקה תמחק גם את העובדים בה
 FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE CASCADE
 
--- SET NULL: מחיקת מחלקה תשאיר את העובד עם department_id = NULL
+-- עם SET NULL, מחיקת מחלקה תשאיר את העובד עם department_id = NULL
 FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE SET NULL
 
 -- RESTRICT (ברירת מחדל ברוב המנועים): מונע מחיקת מחלקה שיש לה עובדים

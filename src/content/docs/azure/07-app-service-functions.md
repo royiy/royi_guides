@@ -93,7 +93,7 @@ az webapp deployment slot swap \
   --slot staging \
   --target-slot production
 
-# Rollback מהיר - Swap חוזר אם התגלתה בעיה
+# חזרה מהירה לאחור - Swap נוסף אם התגלתה בעיה
 az webapp deployment slot swap \
   --resource-group rg-webapp-prod-weu \
   --name webapp-espresso-prod \

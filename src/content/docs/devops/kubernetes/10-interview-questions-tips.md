@@ -339,7 +339,7 @@ kubectl top node
 kubectl get endpoints <svc>
 kubectl run debug --rm -it --image=busybox -- sh
 
-# Pod זמני עם כלי דיבאג רשת (netshoot)
+# הרצת Pod זמני עם כלי דיבאג רשת (netshoot)
 kubectl run netshoot --rm -it --image=nicolaka/netshoot -- sh
 
 # debug של Pod קיים בלי לשנות אותו (Ephemeral Containers, Kubernetes 1.25+)

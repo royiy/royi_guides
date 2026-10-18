@@ -18,17 +18,11 @@ description: "הטמעת Terraform בצינור CI/CD: תבנית GitOps, דוג
 
 ## תבנית GitOps טיפוסית
 
-```
-1. מפתח פותח PR עם שינוי ב-.tf files
-2. CI מריץ אוטומטית:
-   - terraform fmt -check
-   - terraform validate
-   - tfsec / checkov (סריקת אבטחה)
-   - terraform plan → מצורף כתגובה ל-PR
-3. Code review אנושי + אישור (approval)
-4. Merge ל-main
-5. CI מריץ terraform apply אוטומטית (או עם gate ידני לפרודקשן)
-```
+1. מפתח פותח PR עם שינוי בקבצי `.tf`
+2. ה-CI מריץ אוטומטית `terraform fmt -check`, `terraform validate`, סריקת אבטחה (tfsec/checkov) ו-`terraform plan` - שתוצאתו מצורפת כתגובה ל-PR
+3. Code review אנושי ואישור
+4. מיזוג ל-`main`
+5. ה-CI מריץ `terraform apply` אוטומטית, או מול gate ידני בפרודקשן
 
 ---
 
@@ -227,7 +221,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
       - run: terraform init
       - run: terraform plan -detailed-exitcode
-        # exit code 0 = אין שינויים, 2 = יש drift, 1 = שגיאה
+        # קודי יציאה: 0 = אין שינויים, 2 = יש drift, 1 = שגיאה
 ```
 
 `-detailed-exitcode` מחזיר קוד יציאה שונה בהתאם למצב - שימושי מאוד להתראות אוטומטיות ב-Slack/PagerDuty כשמתגלה drift.

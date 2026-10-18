@@ -29,7 +29,7 @@ git pull origin main  # שקול ל: git fetch + git merge (או rebase)
 `git fetch` בטוח יותר – מאפשר לבדוק מה השתנה (`git log origin/main`) לפני שמשלבים אותו אצלך.
 
 ```bash
-git pull --rebase origin main   # rebase במקום merge - היסטוריה ליניארית יותר
+git pull --rebase origin main   # עדיף על merge - היסטוריה ליניארית יותר
 ```
 
 ## זרימת עבודה עם Pull Request / Merge Request

@@ -38,8 +38,8 @@ echo ${str/%baz/END}       # החלפה רק אם המחרוזת מסתיימת 
 file="archive.tar.gz"
 echo ${file%.gz}        # archive.tar   (הסרת הסיומת הקצרה ביותר מהסוף)
 echo ${file%%.*}          # archive        (הסרת הכל מהנקודה הראשונה)
-echo ${file#*.}            # tar.gz         (הסרת prefix הקצר ביותר עד הנקודה)
-echo ${file##*.}            # gz             (הסרת prefix הארוך ביותר - שולף סיומת)
+echo ${file#*.}            # מחזיר tar.gz - הסרת ה-prefix הקצר ביותר
+echo ${file##*.}            # מחזיר gz - הסרת ה-prefix הארוך ביותר, כלומר הסיומת
 ```
 
 טבלת עזר: `#` = מהתחלה (prefix), `%` = מהסוף (suffix). כפול (`##`/`%%`) = greedy (הכי ארוך).

@@ -49,7 +49,7 @@ variable "environment" {
 
   validation {
     condition     = contains(["dev", "staging", "prod"], var.environment)
-    error_message = "environment חייב להיות אחד מ: dev, staging, prod."
+    error_message = "הערך של environment חייב להיות dev, staging או prod."
   }
 }
 
@@ -187,7 +187,7 @@ distinct([1,1,2,3])      # [1,2,3]
 max(5, 10, 3)             # 10
 min(5, 10, 3)             # 3
 ceil(4.1)                 # 5
-coalesce(null, null, "x") # "x" - הערך הראשון שאינו null
+coalesce(null, null, "x") # הערך הראשון שאינו null
 try(var.optional, "default")  # מנסה ומחזיר ברירת מחדל אם נכשל
 ```
 

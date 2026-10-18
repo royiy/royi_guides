@@ -84,7 +84,7 @@ feature:        C---D---E
 # cherry-pick של כמה commits ברצף
 git cherry-pick a1b2c3d..e5f6g7h
 
-# cherry-pick בלי commit אוטומטי (לבדיקה לפני)
+# ביצוע cherry-pick בלי commit אוטומטי (לבדיקה לפני)
 git cherry-pick -n a1b2c3d
 ```
 
@@ -133,7 +133,7 @@ git bisect start
 git bisect bad                  # ה-commit הנוכחי מקולקל
 git bisect good v1.0.0          # הגרסה הזו הייתה תקינה
 
-# Git עובר לcommit באמצע - בודקים אם הבאג קיים
+# המערכת עוברת ל-commit באמצע - בודקים אם הבאג קיים
 git bisect good     # אם תקין
 git bisect bad       # אם מקולקל
 

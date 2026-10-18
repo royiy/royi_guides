@@ -29,7 +29,7 @@ part: 8/10
 ## גיבוי לוגי - pg_dump / mysqldump
 
 ```bash
-# PostgreSQL - גיבוי מלא של מסד נתונים בודד לקובץ SQL
+# ב-PostgreSQL: גיבוי מלא של מסד נתונים בודד לקובץ SQL
 pg_dump -h localhost -U postgres -d company_db -F c -f company_db_backup.dump
 
 # שחזור
@@ -83,7 +83,7 @@ Full Backup (00:00)  --->  WAL/Binlog רציף  --->  נקודת התקלה (14:
 ```
 
 ```sql
--- SQL Server - שחזור לנקודת זמן מדויקת (דורש Full + Log Backups)
+-- ב-SQL Server: שחזור לנקודת זמן מדויקת (דורש Full + Log Backups)
 RESTORE DATABASE company_db
 FROM DISK = 'C:\Backups\company_db_full.bak'
 WITH NORECOVERY;
@@ -127,7 +127,7 @@ Replication מעתיק נתונים משרת **Primary** (Master) לשרת/י **
 SELECT client_addr, state, sent_lsn, replay_lsn
 FROM pg_stat_replication;
 
--- MySQL - בדיקת סטטוס בצד ה-Replica
+-- ב-MySQL: בדיקת סטטוס בצד ה-Replica
 SHOW REPLICA STATUS\G   -- MySQL 8.0.22+
 SHOW SLAVE STATUS\G     -- גרסאות ישנות יותר
 ```

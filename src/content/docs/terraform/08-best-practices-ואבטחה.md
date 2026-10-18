@@ -185,12 +185,12 @@ repos:
 אל תשימו את **כל** התשתית של הארגון בקונפיגורציה אחת ענקית עם state אחד. אם `apply` ישבור משהו, אתם רוצים שהנזק יהיה מוגבל.
 
 ```
-❌ מונוליט:               ✅ מפוצל לפי שכבה/domain:
+❌ מונוליט                 ✅ מפוצל לפי שכבה/domain
 infra/                     infra/
 └── main.tf                ├── network/
-    (הכל בקובץ אחד,        ├── security/
-     state אחד ענק)        ├── database/
-                            └── compute/
+                           ├── security/
+                           ├── database/
+                           └── compute/
 ```
 
 ---

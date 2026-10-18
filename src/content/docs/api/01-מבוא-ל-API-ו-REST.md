@@ -45,7 +45,7 @@ REST (Representational State Transfer) הוא לא פרוטוקול וגם לא 
 
 ```
 GET    /users              # קבלת רשימת כל המשתמשים
-GET    /users/42           # קבלת משתמש ספציפי עם ID=42
+GET    /users/42           # קבלת משתמש לפי מזהה 42
 POST   /users              # יצירת משתמש חדש
 PUT    /users/42           # עדכון מלא של משתמש 42
 PATCH  /users/42           # עדכון חלקי של משתמש 42

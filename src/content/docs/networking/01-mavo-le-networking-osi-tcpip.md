@@ -28,7 +28,7 @@ Layer 5 | Session      |  NetBIOS, RPC, Sockets          |  ניהול חיבו�
 Layer 4 | Transport    |  TCP, UDP                        |  אמינות, פורטים
 Layer 3 | Network      |  IP, ICMP, Routing              |  כתובות IP, ניתוב
 Layer 2 | Data Link    |  Ethernet, MAC, Switches         |  כתובות MAC, מסגור
-Layer 1 | Physical     |  כבלים, סיבים, Wi-Fi, ביטים      |  העברת סיגנל חשמלי/אור
+Layer 1 | Physical     |  כבלים, סיבים, אלחוט, ביטים      |  העברת סיגנל חשמלי/אור
 ```
 
 טבלת פירוט מלאה עם דוגמאות ורכיבי ליבה:

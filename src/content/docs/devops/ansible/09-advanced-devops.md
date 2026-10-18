@@ -240,7 +240,7 @@ skip_list:
 ## Strategy Plugins - שליטה בסדר הביצוע
 
 ```yaml
-- name: Play עם free strategy (כל שרת מתקדם בקצב שלו)
+- name: הרצה עם free strategy (כל שרת מתקדם בקצב שלו)
   hosts: all
   strategy: free
   tasks:

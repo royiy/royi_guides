@@ -114,7 +114,7 @@ config user group
     next
 end
 
-# Policy שמאפשר ל-SSL VPN לגשת לרשת הפנימית
+# כלל שמאפשר ל-SSL VPN לגשת לרשת הפנימית
 config firewall policy
     edit 40
         set name "SSLVPN-to-LAN"

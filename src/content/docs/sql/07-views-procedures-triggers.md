@@ -106,7 +106,7 @@ CALL GiveRaise(1, 10);
 ## Functions - פונקציות
 
 ```sql
--- PostgreSQL - פונקציה שמחזירה ערך יחיד, ניתנת לשימוש בתוך SELECT
+-- ב-PostgreSQL: פונקציה שמחזירה ערך יחיד, לשימוש בתוך SELECT
 CREATE OR REPLACE FUNCTION get_employee_full_name(p_employee_id INT)
 RETURNS VARCHAR
 LANGUAGE plpgsql

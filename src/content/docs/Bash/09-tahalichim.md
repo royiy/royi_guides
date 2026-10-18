@@ -20,7 +20,7 @@ jobs -l                      # עם PIDs
 
 ```bash
 long_command             # רץ ב-foreground
-# Ctrl+Z                   # השהיה (suspend) של התהליך
+# השהיית התהליך עם Ctrl+Z (suspend)
 
 bg                        # המשך ריצה ברקע
 fg                         # החזרה ל-foreground
@@ -55,7 +55,7 @@ pkill -f "pattern"             # הרג לפי pattern בשורת הפקודה
 SIGHUP  (1)  - נשלח כשחיבור/טרמינל נסגר; לעתים גורם לתהליך "לטעון מחדש"
 SIGINT  (2)  - נשלח ע"י Ctrl+C
 SIGKILL (9)  - סיום כפוי, לא ניתן לחסום/לתפוס
-SIGTERM (15) - בקשת סיום "מנומסת" - ברירת המחדל של kill
+SIGTERM (15) - בקשת סיום "מנומסת", ברירת המחדל של הפקודה
 SIGSTOP (19) - השהיה כפויה
 SIGCONT (18) - המשך ריצה אחרי השהיה
 ```

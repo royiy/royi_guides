@@ -203,8 +203,8 @@ module "vpc" {
 ```
 modules/
 ├── vpc/          # שכבה בסיסית - רשת
-├── security/     # תלוי ב-vpc
-└── app-stack/    # מודול "מרוכב" שקורא ל-vpc + security + compute
+├── security/     # תלוי במודול הרשת
+└── app-stack/    # vpc + security + compute (מודול מרוכב)
     └── main.tf
         module "vpc" { source = "../vpc" }
         module "security" { source = "../security"; vpc_id = module.vpc.vpc_id }

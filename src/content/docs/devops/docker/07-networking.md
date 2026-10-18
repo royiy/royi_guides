@@ -135,13 +135,13 @@ docker run -d --name db --network app-net \
   -v db-data:/var/lib/postgresql/data \
   postgres:16
 
-# Backend - מתחבר ל-db לפי שם
+# ה-Backend מתחבר ל-db לפי שם
 docker run -d --name api --network app-net \
   -e DATABASE_URL=postgresql://postgres:secret@db:5432/postgres \
   -p 3000:3000 \
   my-backend-image
 
-# Frontend - מתחבר ל-api (יכול להיות גם דרך localhost:3000 מהדפדפן)
+# ה-Frontend מתחבר ל-api (ומהדפדפן גם דרך localhost:3000)
 docker run -d --name web --network app-net \
   -p 80:80 \
   my-frontend-image
@@ -185,7 +185,7 @@ docker run -d --name api --network backend-net my-api
 docker network connect frontend-net api   # api מחובר לשתי הרשתות
 docker run -d --name web --network frontend-net my-web
 
-# web לא יכול לגשת ל-db ישירות - רק דרך api
+# שירות web לא ניגש ל-db ישירות - רק דרך api
 ```
 
 ## דיבוג בעיות רשת

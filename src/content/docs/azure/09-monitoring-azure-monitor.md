@@ -164,7 +164,7 @@ az monitor metrics alert create \
   --action ag-devops-oncall \
   --severity 2
 
-# Log Alert - מבוסס שאילתת KQL (למשל: יותר מ-10 Exceptions בחלון של 5 דקות)
+# התראת Log Alert - מבוססת שאילתת KQL (למשל יותר מ-10 Exceptions ב-5 דקות)
 az monitor scheduled-query create \
   --resource-group rg-monitoring \
   --name alert-high-error-rate \

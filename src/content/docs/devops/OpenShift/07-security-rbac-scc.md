@@ -185,7 +185,7 @@ kind: Secret
 metadata:
   name: db-credentials
 type: Opaque
-stringData:            # stringData מאפשר טקסט רגיל (מוצפן אוטומטית ל-base64)
+stringData:            # השדה stringData מאפשר טקסט רגיל (מוצפן אוטומטית ל-base64)
   username: admin
   password: "SuperSecretPass123!"
 ```

@@ -221,14 +221,14 @@ find "$TARGET_DIR" -name "*.sh" -exec shellcheck {} \;
 ```yaml
 # דוגמה: אותה פונקציונליות בשלוש הגישות
 
-# 1. Composite - רק עוטף Actions/פקודות קיימים
+# 1. סוג Composite - רק עוטף Actions ופקודות קיימים
 runs:
   using: 'composite'
   steps:
     - run: echo "פשוט ומהיר"
       shell: bash
 
-# 2. JavaScript - לוגיקה מותאמת, ריצה ישירה על ה-runner
+# 2. סוג JavaScript - לוגיקה מותאמת שרצה ישירות על ה-runner
 runs:
   using: 'node20'
   main: 'index.js'

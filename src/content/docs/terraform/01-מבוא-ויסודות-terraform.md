@@ -115,10 +115,10 @@ terraform apply   # יוצר בפועל
 
 ```
 my-project/
-├── main.tf          # ההגדרות העיקריות (resources)
+├── main.tf          # ההגדרות העיקריות - המשאבים עצמם
 ├── variables.tf      # הגדרת משתני קלט
 ├── outputs.tf         # ערכי פלט
-├── providers.tf       # הגדרת providers ו-backend
+├── providers.tf       # providers + backend
 ├── terraform.tfvars   # ערכים בפועל למשתנים (לא לשתף בגיט אם רגיש!)
 ├── versions.tf        # אילוצי גרסאות
 └── modules/

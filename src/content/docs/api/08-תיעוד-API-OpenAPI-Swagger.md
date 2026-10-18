@@ -161,7 +161,7 @@ app.listen(3000, () => {
  * @swagger
  * /users/{id}:
  *   get:
- *     summary: קבלת משתמש לפי ID
+ *     summary: קבלת משתמש לפי מזהה
  *     parameters:
  *       - in: path
  *         name: id

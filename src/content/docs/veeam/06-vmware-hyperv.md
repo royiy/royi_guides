@@ -77,7 +77,7 @@ Backup Job → Guest Processing → Enable application-aware processing
 
 ```
 Backup → בחרו נקודת שחזור → Instant VM Recovery
-→ Veeam "מרכיב" את ה-VM ישירות מקובץ הגיבוי (ללא צורך להעתיק אותו קודם)
+→ המערכת "מרכיבה" את ה-VM ישירות מקובץ הגיבוי (ללא צורך להעתיק אותו קודם)
 → ה-VM עולה תוך דקות ורץ ישירות מה-Repository, עם אופציה ל-Storage vMotion אחר כך למיקום קבוע
 ```
 

@@ -15,7 +15,7 @@ Role הוא מבנה תיקיות סטנדרטי המארגן קוד Ansible (Ta
 roles/
 └── nginx/
     ├── tasks/
-    │   └── main.yml          # רשימת ה-Tasks המרכזית
+    │   └── main.yml          # רשימת המשימות המרכזית
     ├── handlers/
     │   └── main.yml          # Handlers של ה-Role
     ├── templates/

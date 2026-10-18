@@ -119,7 +119,7 @@ GET /items/3/reviews?order_id=7
 ## Versioning - סקירה קצרה
 
 ```
-GET /v1/users              # ב-URL (הכי נפוץ ופשוט)
+GET /v1/users              # גרסה בתוך הנתיב (הכי נפוץ ופשוט)
 GET /users
 Header: Accept: application/vnd.myapi.v1+json   # ב-Header (יותר "טהור" REST)
 ```

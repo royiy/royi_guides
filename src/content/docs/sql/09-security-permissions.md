@@ -52,7 +52,7 @@ REVOKE SELECT ON company_db.* FROM 'app_reader'@'%';
 במקום להעניק הרשאות פרטניות לכל משתמש, נהוג ליצור **Roles** (תפקידים לוגיים) עם קבוצת הרשאות מוגדרת, ולשייך משתמשים אליהם:
 
 ```sql
--- PostgreSQL - יצירת Role ושיוך משתמשים
+-- ב-PostgreSQL: יצירת Role ושיוך משתמשים
 CREATE ROLE readonly_role;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_role;
 
@@ -75,7 +75,7 @@ CREATE ROLE readonly_role;
 GRANT SELECT ON SCHEMA::dbo TO readonly_role;
 ALTER ROLE readonly_role ADD MEMBER app_reader;
 
--- Roles מובנים שימושיים ב-SQL Server
+-- תפקידים (Roles) מובנים שימושיים ב-SQL Server
 -- db_datareader, db_datawriter, db_owner
 ALTER ROLE db_datareader ADD MEMBER app_reader;
 ```

@@ -21,7 +21,7 @@ Windows כולל כלי מובנה ואמין לגיבוי הקרוי Windows Se
 :: הפעלת גיבוי System State מיידי לכונן E (משמש כגיבוי דחוף לפני שינויים מסוכנים)
 wbadmin start systemstatebackup -backupTarget:E:
 
-:: PowerShell: חיפוש לוגים ב-Event Viewer (חיפוש כל הכניסות השגויות במערכת - Event ID 4625)
+:: חיפוש לוגים ב-Event Viewer עם PowerShell (כל הכניסות השגויות - Event ID 4625)
 Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} | Select-Object TimeCreated, Message | Format-Table -AutoSize
 ```
 
