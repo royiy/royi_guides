@@ -95,9 +95,12 @@ $obj = [pscustomobject]@{
 ## 6. Modules
 מבנה:
 ```text
-MyModule    MyModule.psd1
-    MyModule.psm1
-    Public    Private```
+MyModule/
+├── MyModule.psd1     # קובץ המניפסט
+├── MyModule.psm1     # המודול עצמו
+├── Public/           # הפונקציות שמיוצאות החוצה
+└── Private/          # פונקציות פנימיות בלבד
+```
 
 בדיקה:
 ```powershell

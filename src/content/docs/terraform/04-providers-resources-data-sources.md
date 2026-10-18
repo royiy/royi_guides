@@ -219,7 +219,9 @@ provider "aws" {
   region = each.key
   for_each = toset(["eu-west-1", "us-east-1"])
 }
-```//לתשומת לב: זהו syntax היפותטי להמחשה - בפועל providers לא תומכים ב-for_each ישירות, לכן יוצרים בלוק provider נפרד לכל region.
+```
+
+> **לתשומת לב:** זהו syntax היפותטי להמחשה בלבד. בפועל בלוק `provider` לא תומך ב-`for_each`, ולכן מגדירים בלוק נפרד לכל אזור - כמו בדוגמה הבאה.
 
 ### Provider אמיתי - S3 buckets בכמה regions
 
