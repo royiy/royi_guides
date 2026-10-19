@@ -243,4 +243,5 @@ helm install my-release ./my-chart --wait --wait-for-jobs --timeout 5m
 
 ---
 **המדריך הקודם:** [מדריך 7 - Dependencies ו-Subcharts](/devops/helm/07-dependencies-subcharts/)
+
 **המשך למדריך הבא:** [מדריך 9 - טיפים, טריקים ו-Best Practices](/devops/helm/09-tips-tricks-best-practices/)

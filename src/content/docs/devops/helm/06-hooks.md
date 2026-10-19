@@ -220,4 +220,5 @@ Hook מתאים לפעולה שצריכה לקרות **פעם אחת ברמת ה
 
 ---
 **המדריך הקודם:** [מדריך 5 - Repositories](/devops/helm/05-repositories/)
+
 **המשך למדריך הבא:** [מדריך 7 - Dependencies ו-Subcharts](/devops/helm/07-dependencies-subcharts/)

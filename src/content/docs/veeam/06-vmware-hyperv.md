@@ -103,4 +103,5 @@ Backup → בחרו נקודת שחזור → Instant VM Recovery
 ---
 
 **חזרה למדריך הקודם:** [05 - Replication ו-DR](/veeam/05-replication-dr/)
+
 **המשך למדריך הבא:** [07 - Veeam ONE, ניטור ודוחות](/veeam/07-monitoring-veeam-one/)

@@ -118,4 +118,5 @@ Veeam ONE תומך בשליחת אירועים ל-SIEM (Splunk, QRadar, Microsof
 ---
 
 **חזרה למדריך הקודם:** [06 - VEEAM עם VMware ו-Hyper-V](/veeam/06-vmware-hyperv/)
+
 **המשך למדריך הבא:** [08 - פתרון בעיות נפוצות](/veeam/08-troubleshooting/)

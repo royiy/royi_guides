@@ -268,4 +268,5 @@ curl -X POST -d '{"key":"value"}' -H "Content-Type: application/json" https://ap
 ---
 
 **חזרה למדריך הקודם:** [06 - שירותים ו-systemd](/linux/06-שירותים-systemd/)
+
 **המשך למדריך הבא:** [08 - ניהול שרתים](/linux/08-ניהול-שרתים/)

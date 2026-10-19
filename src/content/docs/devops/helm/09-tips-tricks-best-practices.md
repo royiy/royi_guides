@@ -271,4 +271,5 @@ helm-docs --chart-search-root=./charts
 
 ---
 **המדריך הקודם:** [מדריך 8 - ניהול Releases](/devops/helm/08-release-management/)
+
 **המשך למדריך הבא:** [מדריך 10 - שאלות ראיון עבודה](/devops/helm/10-sheelot-reayon/)

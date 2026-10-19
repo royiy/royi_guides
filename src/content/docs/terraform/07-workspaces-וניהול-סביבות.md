@@ -104,6 +104,7 @@ terraform apply
 ```
 
 **יתרונות:** DRY - קוד אחד בלבד, אין כפילות.
+
 **חסרונות:**
 - כל הסביבות חולקות backend config זהה - אין הפרדת credentials/access control
 - קל בטעות "לשכוח" באיזה workspace אתם נמצאים ולהריץ apply על prod בטעות!

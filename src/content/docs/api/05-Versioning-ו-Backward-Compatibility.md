@@ -30,6 +30,7 @@ GET https://api.example.com/v1/users
 GET https://api.example.com/v2/users
 ```
 **יתרונות:** פשוט, ברור, קל לבדוק בדפדפן, קל לתעד.
+
 **חסרונות:** "לא טהור" מבחינת REST - ה-URI אמור לזהות משאב, לא גרסת API.
 
 ### 2. Versioning ב-Header

@@ -116,4 +116,5 @@ Backup Copy מעתיק **קבצי גיבוי** (VBK/VIB) ליעד נוסף לצ�
 ---
 
 **חזרה למדריך הקודם:** [03 - Backup Jobs](/veeam/03-backup-jobs/)
+
 **המשך למדריך הבא:** [05 - Replication ו-DR](/veeam/05-replication-dr/)

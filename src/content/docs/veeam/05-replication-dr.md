@@ -123,4 +123,5 @@ Failover → Test Failover → בחרו VM
 ---
 
 **חזרה למדריך הקודם:** [04 - Backup Copy וכלל 3-2-1](/veeam/04-backup-copy-3-2-1/)
+
 **המשך למדריך הבא:** [06 - VEEAM עם VMware ו-Hyper-V](/veeam/06-vmware-hyperv/)

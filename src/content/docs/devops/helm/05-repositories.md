@@ -225,4 +225,5 @@ repository מבוסס HTTP הוא שרת סטטי שמארח קובץ `index.yam
 
 ---
 **המדריך הקודם:** [מדריך 4 - Templates ו-Values](/devops/helm/04-templates-values/)
+
 **המשך למדריך הבא:** [מדריך 6 - Hooks](/devops/helm/06-hooks/)

@@ -273,4 +273,5 @@ resources:
 
 ---
 **המדריך הקודם:** [מדריך 3 - מבנה Chart](/devops/helm/03-mivne-chart/)
+
 **המשך למדריך הבא:** [מדריך 5 - Repositories](/devops/helm/05-repositories/)

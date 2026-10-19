@@ -102,4 +102,5 @@ Backup Infrastructure → Backup Repositories → Add Repository
 ---
 
 **חזרה למדריך הקודם:** [01 - מבוא וארכיטקטורה](/veeam/01-mavo-vearchitectura/)
+
 **המשך למדריך הבא:** [03 - Backup Jobs](/veeam/03-backup-jobs/)

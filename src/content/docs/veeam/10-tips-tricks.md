@@ -117,4 +117,5 @@ Home → SureBackup Job
 ---
 
 **חזרה למדריך הקודם:** [09 - שאלות ראיון עבודה](/veeam/09-interview-questions/)
+
 **חזרה למדריך הראשון:** [01 - מבוא וארכיטקטורה](/veeam/01-mavo-vearchitectura/)

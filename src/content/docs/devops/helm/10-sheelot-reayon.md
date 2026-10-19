@@ -284,4 +284,5 @@ helm diff revision my-release <good-rev> <bad-rev>
 
 ---
 **המדריך הקודם:** [מדריך 9 - טיפים וטריקים](/devops/helm/09-tips-tricks-best-practices/)
+
 **חזרה למדריך הראשון:** [מדריך 1 - מבוא ל-Helm](/devops/helm/01-mavo-le-helm/)

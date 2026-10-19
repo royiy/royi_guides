@@ -130,4 +130,5 @@ Main Menu → Help → Support Information → Export Logs
 ---
 
 **חזרה למדריך הקודם:** [07 - Veeam ONE, ניטור ודוחות](/veeam/07-monitoring-veeam-one/)
+
 **המשך למדריך הבא:** [09 - שאלות ראיון עבודה](/veeam/09-interview-questions/)

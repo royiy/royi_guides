@@ -193,4 +193,5 @@ roleRef:
 
 ---
 **המדריך הקודם:** [מדריך 1 - מבוא ל-Helm](/devops/helm/01-mavo-le-helm/)
+
 **המשך למדריך הבא:** [מדריך 3 - מבנה Chart](/devops/helm/03-mivne-chart/)
