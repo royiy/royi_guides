@@ -215,7 +215,18 @@ ansible web1.example.com -i inventory.ini -m setup -a "filter=ansible_distributi
 <details class="qa">
 <summary>1. הסבירו את סדר העדיפויות (Precedence) של משתנים ב-Ansible - מה מנצח את מה?</summary>
 
-מהנמוך לגבוה (בקירוב): `role defaults` → משתני inventory (`group_vars/all` → `group_vars` ספציפי → `host_vars`) → `vars` ב-Play → `vars_files` → `set_fact`/`register` → `role vars` → משתני Task → ולבסוף `-e` (extra vars) שגובר על הכול. הכלל לזכור: `defaults` הוא החלש ביותר, `-e` הוא החזק ביותר.
+מהעדיפות הנמוכה לגבוהה (בקירוב):
+
+1. `role defaults`
+2. משתני inventory - תחילה `group_vars/all`, אחריו `group_vars` של קבוצה ספציפית, ואז `host_vars`
+3. `vars` שהוגדרו ב-Play
+4. `vars_files`
+5. `set_fact` ו-`register`
+6. `role vars`
+7. משתנים שהוגדרו ברמת ה-Task
+8. `-e` (extra vars) - גובר על כולם
+
+הכלל לזכור: `defaults` הוא החלש ביותר, `-e` הוא החזק ביותר.
 
 </details>
 

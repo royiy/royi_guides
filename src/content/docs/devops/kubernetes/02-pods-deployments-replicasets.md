@@ -259,8 +259,8 @@ containers:
 ```
 
 **ההבדל המהותי:**
-- **Liveness נכשל** → הקונטיינר מופעל מחדש (restart)
-- **Readiness נכשל** → הקונטיינר נשאר רץ, אבל מוסר זמנית מרשימת ה-Endpoints של ה-Service (לא מקבל תעבורה)
+- **Liveness נכשל** - הקונטיינר מופעל מחדש (restart)
+- **Readiness נכשל** - הקונטיינר נשאר רץ, אבל מוסר זמנית מרשימת ה-Endpoints של ה-Service ולא מקבל תעבורה
 
 ---
 
@@ -276,8 +276,8 @@ resources:
     memory: "512Mi"
 ```
 
-- חריגה מ-**memory limit** → הקונטיינר נהרג (OOMKilled)
-- חריגה מ-**CPU limit** → הקונטיינר לא נהרג, אלא "מוחנק" (throttled)
+- חריגה מ-**memory limit** - הקונטיינר נהרג (OOMKilled)
+- חריגה מ-**CPU limit** - הקונטיינר לא נהרג, אלא "מוחנק" (throttled)
 
 ---
 

@@ -168,7 +168,7 @@ Role הוא יחידת ארגון קוד בודדת (Tasks+Templates+Vars). Coll
 <details class="qa">
 <summary>22. מה ההבדל בין <code>ansible.cfg</code> ברמת פרויקט לזה שברמת מערכת (<code>/etc/ansible/ansible.cfg</code>)?</summary>
 
-Ansible טוען קונפיגורציה לפי סדר עדיפויות: `ANSIBLE_CONFIG` env var → `./ansible.cfg` (בתיקייה מהם מריצים) → `~/.ansible.cfg` → `/etc/ansible/ansible.cfg`. קובץ פרויקט מאפשר לכל Repository הגדרות עצמאיות בלי להשפיע על שאר המערכת.
+Ansible טוען קונפיגורציה לפי סדר קבוע: תחילה משתנה הסביבה `ANSIBLE_CONFIG`, אחריו `./ansible.cfg` בתיקייה שממנה מריצים, אחריו `~/.ansible.cfg`, ולבסוף `/etc/ansible/ansible.cfg`. קובץ פרויקט מאפשר לכל Repository הגדרות עצמאיות בלי להשפיע על שאר המערכת.
 
 </details>
 

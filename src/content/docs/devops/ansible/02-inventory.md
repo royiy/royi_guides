@@ -243,7 +243,7 @@ ansible webservers -i inventory.ini --list-hosts
 1. **הפרידו Inventory לפי סביבה** — `inventories/production/`, `inventories/staging/` — כדי למנוע הרצה בטעות על פרודקשן.
 2. **השתמשו ב-`ansible_host` ולא בשם המארח כתובת** — כך תוכלו לתת שם קריא לשרת (למשל `web1`) בעוד ה-IP האמיתי מוגדר בנפרד.
 3. **`group_vars/all.yml`** הוא המקום הטבעי למשתנים גלובליים כמו timezone, DNS servers וכו'.
-4. **סדר עדיפויות משתנים** (מהחלש לחזק): `group_vars/all` → `group_vars/<group>` → `host_vars/<host>` → משתנים שהוגדרו ב-Playbook עצמו. חשוב לזכור סדר זה בזמן דיבוג "למה המשתנה לא מתעדכן".
+4. **סדר עדיפויות משתנים** (מהחלש לחזק): `group_vars/all` → `group_vars/<group>` → `host_vars/<host>`, ולבסוף משתנים שהוגדרו ב-Playbook עצמו. חשוב לזכור סדר זה בזמן דיבוג "למה המשתנה לא מתעדכן".
 5. בדקו Inventory מסובך עם `--graph` ו-`--list` לפני הרצה אמיתית.
 
 ## שאלות ראיון עבודה נפוצות

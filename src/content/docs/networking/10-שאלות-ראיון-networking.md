@@ -84,7 +84,7 @@ Switch פועל ב-Layer 2 ומעביר תעבורה בתוך אותה רשת מ
 <details class="qa">
 <summary>11. הסבירו את תהליך ה-DORA ב-DHCP.</summary>
 
-Discover (הלקוח משדר בקשה) → Offer (השרת מציע כתובת) → Request (הלקוח מבקש רשמית) → Ack (השרת מאשר סופית). כל השלבים הראשונים הם Broadcast.
+Discover (הלקוח משדר בקשה) ← Offer (השרת מציע כתובת) ← Request (הלקוח מבקש רשמית) ← Ack (השרת מאשר סופית). כל השלבים הראשונים הם Broadcast.
 
 </details>
 

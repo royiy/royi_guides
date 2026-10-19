@@ -52,7 +52,7 @@ VeeamBackup&Replication_Setup.exe /accepteula /silent /log="C:\install.log"
 
 ## פריסת Backup Proxy
 
-1. פתחו את הקונסולה → **Backup Infrastructure** → **Backup Proxies** → **Add VMware Proxy** (או Hyper-V בהתאם).
+1. פתחו את הקונסולה ועברו אל **Backup Infrastructure → Backup Proxies → Add VMware Proxy**, או Hyper-V בהתאם.
 2. בחרו שרת קיים או הוסיפו שרת חדש (Managed Server).
 3. הגדירו את מספר ה-Concurrent Tasks (משימות מקבילות) בהתאם לחומרה (כלל אצבע: מספר ליבות CPU חלקי 2).
 4. בחרו את שיטת Transport Mode: `Direct Storage Access`, `Virtual Appliance (Hot-Add)` או `Network (NBD)`.

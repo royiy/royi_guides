@@ -17,7 +17,7 @@ part: 10/10
 <details class="qa">
 <summary>הסבירו את סדר העיבוד (flow) של חבילה שנכנסת ל-FortiGate.</summary>
 
-בקצרה: קליטת החבילה → בדיקת Routing (מציאת יציאה) → בדיקת Policy תואם (מלמעלה למטה) → אם Accept: NAT (אם מוגדר) → Security Profiles (IPS/AV/Web Filter/App Control) → יציאה מהממשק המתאים.
+בקצרה: קליטת החבילה ← בדיקת Routing למציאת היציאה ← חיפוש Policy תואם, מלמעלה למטה ← אם התוצאה היא Accept מופעל NAT, אם הוגדר ← הפעלת Security Profiles כמו IPS, AV ו-Web Filter ← יציאה מהממשק המתאים.
 
 </details>
 

@@ -147,7 +147,13 @@ Helm מתמקד בפריסה חד-פעמית ("templating + install") ואינו
 <details class="qa">
 <summary>20. תארו את זרימת ה-CI/CD המובנית ב-OpenShift (מ-git push ועד production).</summary>
 
-Git push → Webhook מפעיל BuildConfig → S2I/Docker/Pipeline strategy בונה תמונה → נשמרת ב-ImageStream (internal registry) → trigger אוטומטי מעדכן את ה-Deployment → rolling update מבצע פריסה הדרגתית → Route מפנה תעבורה לפודים החדשים.
+1. `git push` מפעיל Webhook
+2. ה-Webhook מפעיל את ה-BuildConfig
+3. ה-strategy שהוגדרה - S2I, Docker או Pipeline - בונה את התמונה
+4. התמונה נשמרת ב-ImageStream שב-registry הפנימי
+5. trigger אוטומטי מעדכן את ה-Deployment
+6. rolling update מבצע פריסה הדרגתית
+7. ה-Route מפנה תעבורה לפודים החדשים
 
 </details>
 

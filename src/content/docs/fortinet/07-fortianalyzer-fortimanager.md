@@ -47,7 +47,7 @@ end
 - אוסף לוגים מכל ה-FortiGate-ים (Traffic logs, Event logs, Security logs — IPS/AV/Web Filter)
 - מאפשר **דוחות** מובנים (למשל: Top Applications, Top Bandwidth Users, Threat Summary)
 - כולל FortiView — ממשק חקירה ויזואלי (Drill-down) לתעבורה ואירועים
-- תומך ב-**Event Handlers** — יצירת התראות אוטומטיות (למשל: 5 ניסיונות כניסה כושלים תוך דקה → Alert)
+- תומך ב-**Event Handlers** — יצירת התראות אוטומטיות (למשל חמישה ניסיונות כניסה כושלים תוך דקה, ואז נשלחת התראה)
 
 ### הגדרת שליחת לוגים מ-FortiGate ל-FortiAnalyzer
 
