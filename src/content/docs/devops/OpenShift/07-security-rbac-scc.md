@@ -138,7 +138,7 @@ CMD ["/app/start.sh"]
 ```bash
 oc create serviceaccount my-app-sa
 
-# צירוף ServiceAccount לדפלוימנט
+# צירוף ServiceAccount ל-Deployment
 oc set serviceaccount deployment/my-app my-app-sa
 ```
 
