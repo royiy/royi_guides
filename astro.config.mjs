@@ -421,6 +421,21 @@ export default defineConfig({
 						},
 					],
 				},
+
+				// =========================
+				// נספח כללי
+				// =========================
+				{
+					label: 'נספח כללי',
+					collapsed: true,
+					items: [
+						{
+							autogenerate: {
+								directory: 'general',
+							},
+						},
+					],
+				},
 			],
 		}),
 	],
